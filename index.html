@@ -173,6 +173,40 @@ img{max-width:100%;display:block}iframe{max-width:100%}
 .pp-365-bottom .pp-big.ini{background:linear-gradient(90deg,#00E5FF,#C8FF3D);color:#04070c;border:none}
 @media(max-width:640px){.pp-365-topbar{padding:12px 12px}.pp-365-bottom{padding:22px 14px}.pp-365-bottom .pp-big{width:100%}}
 
+
+/* FULLSCREEN BLINDADO - CLAXULADO PARA OK.RU */
+#musica-player-wrap-0:fullscreen,
+#musica-player-wrap-0:-webkit-full-screen,
+#musica-player-wrap-0:-moz-full-screen,
+#musica-player-wrap-0:-ms-fullscreen {
+  width:100vw !important;
+  height:100vh !important;
+  aspect-ratio:auto !important;
+  min-height:100vh !important;
+  background:#000 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+#musica-player-wrap-0:fullscreen iframe,
+#musica-player-wrap-0:-webkit-full-screen iframe,
+#musica-player-wrap-0:-moz-full-screen iframe {
+  width:100vw !important;
+  height:100vh !important;
+  position:relative !important;
+  inset:auto !important;
+}
+.musica-fullscreen-active {
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  z-index:99999 !important;
+  background:#000 !important;
+  aspect-ratio:auto !important;
+}
+
 </style>
 <script>
 // ===== SLIDER + LIVE META - NUEVO 2026 - NO TOCA NADA ORIGINAL =====
@@ -427,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <div id="mobileOverlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
 <div id="mobilePanel" class="mobile-menu-panel">
   <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid #26314a"><span style="color:#fff;font-weight:900">☰ Menú 365Perú</span><button onclick="toggleMobileMenu()" style="background:#111827;border:1px solid #26314a;color:#fff;width:32px;height:32px;border-radius:50%">✕</button></div>
+  <div onclick="setCat('musica'); toggleMobileMenu()" class="mobile-menu-item" style="background:linear-gradient(90deg,#7C4494,#e879f9);color:#fff;font-weight:900;border:2px solid #fff;display:flex;align-items:center;gap:8px"><img src="https://i.ibb.co/jvPZc1bp/image-ff46b0a5.jpg" style="width:32px;height:32px;border-radius:8px;object-fit:cover;border:1px solid #fff">🎵 Música</div>
   <div onclick="setCat('miblog'); toggleMobileMenu()" class="mobile-menu-item">📝 Mi Blog</div>
   <div onclick="setCat('deportes'); toggleMobileMenu()" class="mobile-menu-item" style="background:#0284c7;color:#fff">⚽ Deportes Builder</div>
   <div onclick="openProductosPlanes365(); toggleMobileMenu()" class="mobile-menu-item" style="background:linear-gradient(90deg,#00E5FF,#C8FF3D);color:#04070c;font-weight:900;border:2px solid #00E5FF;box-shadow:0 0 14px rgba(0,229,255,.4)">📦 Productos / Planes</div>
@@ -1835,12 +1870,92 @@ function initTwitchMenu(){
   }
 }
 
+
+// === MENU MUSICA - CLON EXACTO MY BLOG FIX - SOLO MUSICA ===
+let vistaActualMusica = null;
+const musicaData = [
+  {
+    id: 'bryan-adams',
+    titulo: 'Bryan Adams',
+    subtitulo: 'Cantante musical, canadiense',
+    categoria: 'Pop Rock',
+    imagen: 'https://i.ibb.co/jvPZc1bp/image-ff46b0a5.jpg',
+    resumen: 'Cantante musical canadiense de Pop, Rock y baladas. Musicas actuales, de coleccion y modernas.',
+    autor: '365Perú',
+    fecha: '11 de septiembre de 2025',
+    videoSrc: '//ok.ru/videoembed/9735592348414?nochat=1',
+    contenidoLargo: 'Bryan Guy Adams (Kingston, Ontario, Canada, 5 noviembre 1959) es cantante canadiense Pop, Rock, Balada.\n\nQuien es y como se inicio: A los 15 anos guitarra y piano. A los 18 firmo contrato. Fama internacional 1983 Cuts Like a Knife y 1984 Reckless (12 millones copias).\n\nNacionalidad Canadiense, musica en ingles, Pop Rock Balada.\n\nMusicas actuales, musica de coleccion, musicas modernas, clasicas y estrenos.\n\nCarrera: 100M discos, 1 Grammy, 20 Juno, Oscar/Globo nominado por (Everything I Do).\n\nCanciones: Summer of 69, Heaven, Everything I Do, Please Forgive Me, Run to You, Have You Ever Really Loved a Woman.'
+  }
+];
+function getMusicaHubCardHTML(){
+  var b = musicaData[0];
+  return '<div class="myblog-hub-wrap"><div class="myblog-hub-hero"><img src="'+b.imagen+'" style="opacity:.7;object-fit:cover"><div class="myblog-hub-content"><span style="background:#e8ff00;color:#000;font-size:10px;font-weight:900;padding:4px 10px;border-radius:9999px">'+musicaData.length+' POSTS • MUSICA</span><h1 style="margin:12px 0 6px;font-size:clamp(22px,4.5vw,34px);font-weight:900;line-height:1.1">MÚSICA 365Perú.com<br><span style="color:#e8ff00;font-size:16px">Músicas actuales, de colección y modernas</span></h1><p style="font-size:12px;color:#e2e8f0;margin:10px 0;line-height:1.5">Contenido de músicas actuales, música de colección, músicas modernas, clásicas y estrenos. Todo en el mismo formato de My Blog FIX.</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0"><span style="background:rgba(255,255,255,.15);padding:3px 8px;border-radius:9999px;font-size:9px">🎵 Actual</span><span style="background:rgba(255,255,255,.15);padding:3px 8px;border-radius:9999px;font-size:9px">💿 Colección</span><span style="background:rgba(255,255,255,.15);padding:3px 8px;border-radius:9999px;font-size:9px">✨ Modernas</span><span style="background:rgba(255,255,255,.15);padding:3px 8px;border-radius:9999px;font-size:9px">🚀 Estrenos</span></div><button onclick="openMusicaHub()" class="myblog-btn-impact" style="margin-top:12px;border-radius:9999px;background:linear-gradient(90deg,#7C4494,#e879f9);color:#fff;padding:12px 22px;font-weight:900;border:none;cursor:pointer">🚀 VER POSTS →</button></div></div></div>';
+}
+function openMusicaHub(){ selectedId='musica-hub'; vistaActualMusica=null; currentCat='musica'; render(); }
+function getMusicaInsideHTML(){
+  var grid = '<div class="blog-dev-grid">';
+  for(var i=0;i<musicaData.length;i++){
+    var b=musicaData[i];
+    grid += '<div class="blog-dev-card" onclick="verMusicaDetalle('+i+')"><div class="blog-dev-thumb"><img src="'+b.imagen+'" loading="lazy"><span class="blog-dev-badge nuevo">NUEVO</span></div><div class="blog-dev-body"><div class="blog-dev-title">'+b.titulo+'</div><div style="font-size:11px;color:#7C4494;font-weight:800;margin-top:2px">'+b.subtitulo+'</div><div class="blog-dev-meta">'+b.autor+'<br>'+b.fecha+'</div><div style="margin-top:8px"><button class="blog-dev-btn" onclick="event.stopPropagation(); verMusicaDetalle('+i+')">Leer más</button></div></div></div>';
+  }
+  grid+='</div>';
+  return '<div class="myblog-hub-wrap" style="border:none;box-shadow:none;background:transparent"><div style="padding:16px 0 10px;display:flex;justify-content:space-between;align-items:center"><h2 style="color:#111;font-weight:900;font-size:28px;font-family:Georgia,serif">Música</h2><button onclick="setCat(\'miblog\')" style="background:#fff;color:#111;border:1px solid #e5e7eb;padding:10px 16px;border-radius:9999px;font-weight:900;font-size:11px">🏠 INICIO</button></div><div>'+grid+'</div><div class="blog-pagination"><div style="font-weight:800;font-size:15px">Más contenido</div><div class="blog-pages"><button class="blog-page-btn active">1</button></div></div></div>';
+}
+function verMusicaDetalle(i){ vistaActualMusica=i; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function getMusicaDetalleHTML(i){
+  var b=musicaData[i];
+  var likeCount = parseInt(localStorage.getItem('musica_like_'+b.id+'_c')||'89');
+  var dislikeCount = parseInt(localStorage.getItem('musica_dislike_'+b.id+'_c')||'3');
+  var voted = localStorage.getItem('musica_vote_'+b.id)||'';
+  return '<div style="width:100%;background:#fff;border-radius:22px;overflow:hidden;border:1px solid #e5e7eb;box-shadow:0 10px 40px rgba(0,0,0,.15)"><div id="musica-player-wrap-'+i+'" style="position:relative;width:100%;aspect-ratio:16/9;min-height:420px;background:#000;overflow:hidden"><iframe id="musica-player-'+i+'" src="'+b.videoSrc+'" style="width:100%;height:100%;position:absolute;inset:0;border:0;z-index:1" frameborder="0" allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allowFullScreen="true"></iframe><button onclick="openMusicaHub()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.95);color:#111;border:none;padding:8px 14px;border-radius:9999px;font-weight:900;font-size:11px;cursor:pointer;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.3)">✕ CERRAR</button></div><div style="padding:14px 18px;background:linear-gradient(90deg,#0f172a,#1e1b4b);display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between"><div style="display:flex;gap:8px;align-items:center"><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:900;padding:5px 12px;border-radius:9999px">'+b.categoria+'</span><span style="background:#e879f9;color:#fff;font-size:10px;font-weight:900;padding:5px 12px;border-radius:9999px">🎵 MUSICA</span><span style="color:#e9d5ff;font-size:11px">• Pantalla completa disponible en el player</span></div><div style="display:flex;gap:8px"><button onclick="musicaFullScreen('+i+')" style="background:linear-gradient(90deg,#7C4494,#e879f9);color:#fff;border:none;padding:10px 18px;border-radius:9999px;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 4px 14px rgba(124,68,148,.4)">⛶ PANTALLA COMPLETA REAL</button><button onclick="musicaExpandir('+i+')" style="background:#fff;color:#111;border:1px solid #e5e7eb;padding:10px 18px;border-radius:9999px;font-weight:900;font-size:12px;cursor:pointer">🔍 EXPANDIR GRANDE</button></div></div><div style="padding:22px;max-width:900px;margin:0 auto"><h1 style="font-size:clamp(24px,4vw,34px);font-weight:900;line-height:1.1;margin:0">'+b.titulo+'</h1><p style="font-size:14px;color:#7C4494;font-weight:800;margin-top:6px">'+b.subtitulo+'</p><div style="font-size:11px;color:#9ca3af;margin-top:6px">'+b.fecha+' • '+b.autor+'</div><div style="background:linear-gradient(90deg,#fffef5,#fef3c7);border-left:4px solid #f59e0b;padding:16px 18px;border-radius:12px;margin:20px 0;font-size:14px;color:#92400e;line-height:1.6"><strong>📌 Resumen:</strong> '+b.resumen+'</div><div style="font-size:16px;line-height:1.9;color:#1f2937;white-space:pre-wrap;font-family:Georgia,serif">'+b.contenidoLargo+'</div><div style="margin-top:32px;background:linear-gradient(135deg,#f8fafc,#f1f5f9);border:1px solid #e2e8f0;border-radius:20px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.05)"><div style="font-size:12px;font-weight:900;letter-spacing:1.2px;color:#7C4494;margin-bottom:14px;text-align:center">¿TE GUSTÓ ESTE VIDEO? ¡VOTA!</div><div style="display:flex;gap:12px;flex-wrap:wrap"><button onclick="musicaLike(\''+b.id+'\',\'like\')" style="flex:1;min-width:150px;padding:14px 18px;border-radius:14px;border:2px solid '+(voted==='like'?'#10b981':'#e2e8f0')+';background:'+(voted==='like'?'linear-gradient(135deg,#ecfdf5,#d1fae5)':'#fff')+';font-weight:900;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><span style="font-size:18px">👍</span> Me gusta <span style="background:'+(voted==='like'?'#10b981':'#0f172a')+';color:#fff;padding:3px 10px;border-radius:9999px;font-size:11px">'+likeCount+'</span></button><button onclick="musicaLike(\''+b.id+'\',\'dislike\')" style="flex:1;min-width:150px;padding:14px 18px;border-radius:14px;border:2px solid '+(voted==='dislike'?'#f87171':'#e2e8f0')+';background:'+(voted==='dislike'?'linear-gradient(135deg,#fef2f2,#fee2e2)':'#fff')+';font-weight:900;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><span style="font-size:18px">👎</span> No me gusta <span style="background:'+(voted==='dislike'?'#ef4444':'#64748b')+';color:#fff;padding:3px 10px;border-radius:9999px;font-size:11px">'+dislikeCount+'</span></button><button onclick="musicaShare()" style="flex:1;min-width:150px;padding:14px 18px;border-radius:14px;border:2px solid #e2e8f0;background:#fff;font-weight:900;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">🔗 Compartir</button></div><div id="musica-share-msg" style="display:none;margin-top:14px;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #10b981;color:#065f46;padding:12px 16px;border-radius:12px;font-size:12px;font-weight:700;text-align:center"></div></div><div style="margin-top:18px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center"><div style="font-size:12px">☕ <b>¿Te gustó el video? Invítame un cafecito</b></div><form action="https://www.paypal.com/donate" method="post" target="_top"><input type="hidden" name="hosted_button_id" value="RLG57F5VG5G92" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="Donar" alt="Donar con PayPal" /></form></div><div style="margin-top:32px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;border-top:1px solid #e5e7eb;padding-top:20px"><button onclick="openMusicaHub()" style="background:#fff;border:1.5px solid #111;padding:12px 20px;border-radius:9999px;font-weight:900;font-size:12px">‹ Retroceder</button><button onclick="openMusicaHub()" style="background:#111;color:#fff;padding:12px 20px;border-radius:9999px;font-weight:900;font-size:12px">🏠 Inicio al Blog</button></div></div></div>';
+}
+
+function musicaExpandir(idx){ var wrap=document.getElementById('musica-player-wrap-'+idx); if(wrap.classList.contains('musica-fullscreen-active')){ wrap.classList.remove('musica-fullscreen-active'); document.body.style.overflow=''; } else { wrap.classList.add('musica-fullscreen-active'); document.body.style.overflow='hidden'; window.scrollTo({top:0,behavior:'smooth'}); } }
+function musicaFullScreen(idx){
+  var wrap=document.getElementById('musica-player-wrap-'+idx);
+  var iframe=document.getElementById('musica-player-'+idx);
+  // Intenta fullscreen del contenedor, si falla abre en nueva ventana
+  if(wrap.requestFullscreen){ wrap.requestFullscreen().catch(function(){ if(iframe.requestFullscreen) iframe.requestFullscreen().catch(function(){ window.open(musicaData[idx].videoSrc.replace('//','https://'),'_blank'); }); }); }
+  else if(wrap.webkitRequestFullscreen){ wrap.webkitRequestFullscreen(); }
+  else if(wrap.mozRequestFullScreen){ wrap.mozRequestFullScreen(); }
+  else if(wrap.msRequestFullscreen){ wrap.msRequestFullscreen(); }
+  else { window.open(musicaData[idx].videoSrc.replace('//','https://'),'_blank'); }
+}
+function musicaLike(id,type){
+  var likeKey='musica_vote_'+id;
+  var cur=localStorage.getItem(likeKey);
+  var lc=parseInt(localStorage.getItem('musica_like_'+id+'_c')||'89');
+  var dc=parseInt(localStorage.getItem('musica_dislike_'+id+'_c')||'3');
+  if(cur===type){
+    localStorage.removeItem(likeKey);
+    if(type==='like') lc--; else dc--;
+  } else {
+    if(cur==='like') lc--;
+    if(cur==='dislike') dc--;
+    if(type==='like') lc++; else dc++;
+    localStorage.setItem(likeKey,type);
+  }
+  localStorage.setItem('musica_like_'+id+'_c',lc);
+  localStorage.setItem('musica_dislike_'+id+'_c',dc);
+  var el=document.getElementById('musica-share-msg');
+  if(el){
+    el.style.display='block';
+    if(cur===type){ el.textContent='🔄 Voto retirado'; }
+    else { el.textContent=(type==='like'?'👍 ¡Gracias! Te gustó '+musicaData.find(function(b){return b.id===id}).titulo:'👎 Gracias por tu feedback'); }
+    setTimeout(function(){el.style.display='none'; render();},1200);
+  } else { render(); }
+}
+function musicaShare(){ var url=window.location.href; if(navigator.share){ navigator.share({title:'Música 365Perú - Bryan Adams',text:'Mira este video',url:url}).catch(function(){ copyLink(url); }); } else { copyLink(url); } }
+function copyLink(url){ navigator.clipboard.writeText(url).then(function(){ var el=document.getElementById('musica-share-msg'); if(el){ el.style.display='block'; el.textContent='✅ 🔗 Link copiado: '+url; setTimeout(function(){el.style.display='none'},4000); } }); }
+
 function render(){
  const app=document.getElementById("app");
  cargarBlogs(); cargarDeportes(); cargarAnuncios(); cargarStoragePremium();
  let mainContent="";
- if(currentCat==="twitch"){ mainContent=getTwitchBloqueHTML(); }
- if(currentCat==="youtube"){ mainContent=getYoutubeBloqueHTML(); }
+ if(currentCat==="musica"){ if(selectedId==='musica-hub'){ mainContent= vistaActualMusica!==null? getMusicaDetalleHTML(vistaActualMusica) : getMusicaInsideHTML(); } else { mainContent=getMusicaHubCardHTML(); } }
+ else if(currentCat==="twitch"){ mainContent=getTwitchBloqueHTML(); }
+ else if(currentCat==="youtube"){ mainContent=getYoutubeBloqueHTML(); }
  else if(currentCat==="videos"){ mainContent=getPeliculasBloquesHTML(); }
  else if(currentCat==="religion"){ mainContent=getEntretenimientoBloquesHTML(); }
  else if(currentCat==="deportes"){
@@ -1856,6 +1971,7 @@ function render(){
  app.innerHTML=`
 <header class="bg-white border-b sticky top-0 z-[60] w-full"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px">365<span style="color:#00809d">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
 <div style="max-width:1280px;margin:8px auto 0;padding:0 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
+<button onclick="setCat('musica')" style="padding:6px 12px;border-radius:9999px;border:1px solid #7C4494;font-size:11px;font-weight:900;white-space:nowrap;background:#fdf4ff;color:#7C4494">🎵 Música</button>
 <button onclick="setCat('twitch')" style="padding:6px 12px;border-radius:9999px;border:1px solid #9146FF;font-size:11px;font-weight:900;white-space:nowrap;${currentCat==='twitch'?'background:#9146FF;color:#fff':'background:#f3e8ff;color:#6b21a8'}">🟣 Twitch Canal Vivo</button>
 <button onclick="setCat('youtube')" style="padding:6px 12px;border-radius:9999px;border:1px solid #FF0000;font-size:11px;font-weight:900;white-space:nowrap;${currentCat==='youtube'?'background:#FF0000;color:#fff':'background:#ffe8e8;color:#cc0000'}">🔴 YouTube Canal Oficial</button>
 <button onclick="setCat('miblog')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='miblog'?'background:#111;color:#fff':''}">📝 My Blog FIX</button>
@@ -2075,7 +2191,7 @@ function render(){
 `;
  setTimeout(()=>{ initVisitorCounter(); initHeroSlider(); initLiveClocks(); initDollar(); if(currentCat==='twitch') initTwitchMenu(); if(currentCat==='videos') renderVideotecaPremium(); if(currentCat==='miblog'&&selectedId==='myblog-hub'&&vistaActualBlog===null) renderMyBlogLista(); if(currentCat==='deportes'&&selectedId==='deportes-hub'&&vistaActualDeporte===null) renderDeportesLista(); if(currentCat==='anuncia'&&selectedId==='anuncia-hub'&&vistaActualAnuncia===null) renderAnunciaLista(); },100);
 }
-function setCat(c){ currentCat=c; selectedId=null; vistaActualBlog=null; vistaActualDeporte=null; vistaActualAnuncia=null; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function setCat(c){ currentCat=c; selectedId=null; vistaActualBlog=null; vistaActualDeporte=null; vistaActualAnuncia=null; vistaActualMusica=null; render(); window.scrollTo({top:0,behavior:'smooth'}); }
 function openArticulo(id){ selectedId=id; vistaActualBlog=null; vistaActualDeporte=null; vistaActualAnuncia=null; render(); window.scrollTo({top:0,behavior:'smooth'}); }
 render();
 </script>
