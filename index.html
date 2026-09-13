@@ -1884,7 +1884,19 @@ const musicaData = [
     autor: '365Perú',
     fecha: '11 de septiembre de 2025',
     videoSrc: '//ok.ru/videoembed/9735592348414?nochat=1',
-    contenidoLargo: 'Bryan Guy Adams (Kingston, Ontario, Canada, 5 noviembre 1959) es cantante canadiense Pop, Rock, Balada.\n\nQuien es y como se inicio: A los 15 anos guitarra y piano. A los 18 firmo contrato. Fama internacional 1983 Cuts Like a Knife y 1984 Reckless (12 millones copias).\n\nNacionalidad Canadiense, musica en ingles, Pop Rock Balada.\n\nMusicas actuales, musica de coleccion, musicas modernas, clasicas y estrenos.\n\nCarrera: 100M discos, 1 Grammy, 20 Juno, Oscar/Globo nominado por (Everything I Do).\n\nCanciones: Summer of 69, Heaven, Everything I Do, Please Forgive Me, Run to You, Have You Ever Really Loved a Woman.'
+    contenidoLargo: 'Bryan Guy Adams (Kingston, Ontario, Canada, 5 noviembre 1959) es cantante canadiense Pop, Rock, Balada.\\n\\nQuien es y como se inicio: A los 15 anos guitarra y piano. A los 18 firmo contrato. Fama internacional 1983 Cuts Like a Knife y 1984 Reckless (12 millones copias).\\n\\nNacionalidad Canadiense, musica en ingles, Pop Rock Balada.\\n\\nMusicas actuales, musica de coleccion, musicas modernas, clasicas y estrenos.\\n\\nCarrera: 100M discos, 1 Grammy, 20 Juno, Oscar/Globo nominado por (Everything I Do).\\n\\nCanciones: Summer of 69, Heaven, Everything I Do, Please Forgive Me, Run to You, Have You Ever Really Loved a Woman.'
+  },
+  {
+    id: 'cindy-loper',
+    titulo: 'Cindy Loper - Cyndi Lauper',
+    subtitulo: 'Cantante musical, americana',
+    categoria: 'Pop Rock',
+    imagen: 'https://i.ibb.co/60dMJtXY/2026-09-12-214756.png',
+    resumen: 'Cantante musical americana de Pop, Rock y baladas. Musicas actuales, de coleccion y modernas.',
+    autor: '365Perú',
+    fecha: '12 de septiembre de 2025',
+    videoSrc: '//ok.ru/videoembed/7449863522984?nochat=1',
+    contenidoLargo: 'Cynthia Ann Stephanie Lauper (Brooklyn, Nueva York, USA, 22 junio 1953) conocida mundialmente como Cyndi Lauper - Cindy Loper es cantante americana Pop, Rock, Balada, New Wave.\\n\\nQUIEN ES Y COMO SE INICIO: De joven canto en bares de Nueva York. En 1977 formo la banda Blue Angel (retro-rockabilly). En 1983 firmo como solista con Portrait Records y lanzo su primer disco Shes So Unusual (1983). Fue la primera mujer en la historia en tener 4 canciones Top 5 en Billboard Hot 100 con un album debut: Girls Just Want to Have Fun, Time After Time, She Bop, All Through The Night. Gano Grammy a Mejor Artista Nuevo en 1985.\\n\\nNACIONALIDAD: Americana, musica en ingles, Pop Rock Balada New Wave Dance.\\n\\nMUSICAS ACTUALES, MUSICA DE COLECCION, MUSICAS MODERNAS, CLASICAS Y ESTRENOS.\\n\\nCARRERA Y COMO LOGRO EL EXITO: Su exito se logro por su imagen rompedora, colorida, voz unica y himnos de libertad. Shes So Unusual vendio 4.5 millones solo en USA. True Colors (1986) la consolido como compositora seria. Ha vendido mas de 50 millones de discos, ganado Grammy, Emmy y Tony. Es activista y empresaria. En 2024 estreno su documental Let The Canary Sing.\\n\\nDISCOS MAS CONOCIDOS: \\n1. Shes So Unusual (1983) - Girls Just Want to Have Fun, Time After Time\\n2. True Colors (1986) - True Colors, Change of Heart\\n3. A Night to Remember (1989) - I Drove All Night\\n4. Hat Full of Stars (1993)\\n5. Sisters of Avalon (1996)\\n6. Merry Christmas...Have a Nice Life (1998)\\n7. At Last (2003)\\n8. The Body Acoustic (2005)\\n9. Bring Ya to the Brink (2008)\\n10. Memphis Blues (2010) - #1 Blues\\n11. Detour (2016) - country\\n\\nCANCIONES: Girls Just Want to Have Fun (himno feminista mundial), Time After Time, True Colors, She Bop, All Through The Night, I Drove All Night, Change of Heart.\\n\\nCONCIERTO EN EL QUE ESTA TOCANDO AHORA: Actualmente esta en su gira mundial de despedida Girls Just Wanna Have Fun Farewell Tour 2024-2025-2026. Inicio el 18 de octubre de 2024 en Montreal, Canada y termino la fase USA en Chicago 5 diciembre 2024. En 2025-2026 sigue por Europa y residencias: 20 junio 2026 Atlantis Beach Nassau Bahamas, 18 junio 2026 Parque Tejo Portugal, y 2026 Live in Las Vegas. Ella dice que no se retira de la musica, solo deja los aviones y autobuses, y seguira cantando ocasionalmente en Nueva York.'
   }
 ];
 function getMusicaHubCardHTML(){
@@ -1969,7 +1981,64 @@ function render(){
  else if(currentCat==="servicios"){ mainContent=getServiciosHTML(); }
  else { if(selectedId==='myblog-hub'){ mainContent= vistaActualBlog!==null? getBlogDetalleHTML(vistaActualBlog) : getMyBlogInsideHTML(); } else { mainContent=getMiBlogHubCardHTML(); } }
  app.innerHTML=`
-<header class="bg-white border-b sticky top-0 z-[60] w-full"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px">365<span style="color:#00809d">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
+<header class="bg-white border-b sticky top-0 z-[60] w-full" style="background:#ffffff !important; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:9999; width:100%; display:block !important; visibility:visible !important;"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px">365<span style="color:#00809d">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
+
+<!-- BLOQUE MANCHESTER - VERSION SEGURA - NO TOCA MENUS - SOLO HTML -->
+<div id="bloque-man-utd-city" style="width:100%; max-width:1280px; margin:12px auto; padding:0 12px; box-sizing:border-box; display:block !important;">
+
+  <div style="background:#0a0a0f; border:2px solid #7C4494; border-radius:16px; overflow:hidden;">
+    <div style="background:#7C4494; padding:8px 0; overflow:hidden; white-space:nowrap;">
+      <div style="display:inline-block; color:#fff; font-weight:900; font-size:13px; animation:marqueeSimple 15s linear infinite; padding-left:100%;">🔴 HOY JUEGA MANCHESTER UNITED VS MANCHESTER CITY - MIRA HOY VIVO AQUI 🔴 HOY JUEGA MANCHESTER UNITED VS MANCHESTER CITY - MIRA HOY VIVO AQUI 🔴</div>
+    </div>
+    <div style="padding:12px; background:#15151f; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <span style="color:#fff; font-weight:800; font-size:13px;">🔴 EN VIVO HOY: Man United vs Man City - Old Trafford</span>
+      <a href="#entrada-man-city" onclick="document.getElementById('entrada-man-city').style.display='block'; document.getElementById('entrada-man-city').scrollIntoView({behavior:'smooth'}); return false;" style="background:#7C4494; color:#fff; padding:10px 18px; border-radius:10px; font-weight:900; text-decoration:none; display:inline-block;">▶ VER EN VIVO</a>
+    </div>
+  </div>
+
+  <div style="margin-top:12px; background:#fff; border:2px solid #7C4494; border-radius:16px; display:grid; grid-template-columns:120px 1fr; overflow:hidden;">
+    <img src="https://i.ibb.co/7NKTYFyd/blog-800x1000.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <div style="padding:12px;">
+      <div style="font-size:9px; font-weight:900; color:#0284c7; background:#e0f2fe; display:inline-block; padding:3px 8px; border-radius:999px;">PREMIER LEAGUE - HOY 13 SEP</div>
+      <h3 style="margin:6px 0 0; font-size:14px; font-weight:900;">MANCHESTER UNITED vs MANCHESTER CITY</h3>
+      <p style="margin:4px 0 0; font-size:11px; color:#666;">11:30 AM ET / 15:30 GMT | Old Trafford</p>
+      <a href="#entrada-man-city" onclick="document.getElementById('entrada-man-city').style.display='block'; document.getElementById('entrada-man-city').scrollIntoView({behavior:'smooth'}); return false;" style="margin-top:8px; background:#111; color:#fff; padding:6px 12px; border-radius:8px; font-size:11px; font-weight:800; text-decoration:none; display:inline-block;">VER AHORA</a>
+    </div>
+  </div>
+</div>
+
+<div id="entrada-man-city" style="display:none; width:100%; max-width:1280px; margin:12px auto; padding:0 12px; box-sizing:border-box;">
+  <div style="background:#fff; border:2px solid #111; border-radius:18px; overflow:hidden;">
+    <div style="position:relative; background:#000; aspect-ratio:16/9;">
+      <img src="https://i.ibb.co/7NKTYFyd/blog-800x1000.jpg" style="width:100%; height:100%; object-fit:cover; opacity:0.6; position:absolute; inset:0;">
+      <div style="position:absolute; inset:0; background:linear-gradient(0deg,rgba(0,0,0,0.9),rgba(0,0,0,0.2));"></div>
+      <div style="position:absolute; bottom:0; left:0; padding:16px; color:#fff;">
+        <h2 style="margin:0; font-size:22px; font-weight:900;">MAN UTD vs MAN CITY - EN VIVO</h2>
+        <p style="margin:4px 0 0; font-size:12px;">Hoy juega - 13 SEP 2025 - Old Trafford</p>
+      </div>
+    </div>
+    <div style="padding:12px; background:#f8fafc;">
+      <div style="display:flex; gap:8px; margin-bottom:10px;">
+        <button onclick="document.getElementById('frame-espn').style.display='block'; document.getElementById('frame-tele').style.display='none';" style="flex:1; background:#111; color:#fff; padding:10px; border-radius:10px; font-weight:900; border:none; cursor:pointer;">ESPN</button>
+        <button onclick="document.getElementById('frame-tele').style.display='block'; document.getElementById('frame-espn').style.display='none';" style="flex:1; background:#fff; color:#111; padding:10px; border-radius:10px; font-weight:900; border:1px solid #ddd; cursor:pointer;">TELEMUNDO</button>
+      </div>
+      <div id="frame-espn" style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden; position:relative;">
+        <iframe src="https://la18hd.su/vivo/canal.php?stream=espn" allowfullscreen scrolling="no" frameborder="0" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
+      </div>
+      <div id="frame-tele" style="display:none; width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden; position:relative;">
+        <iframe src="https://la18hd.su/vivo/canal.php?stream=telemundo" allowfullscreen scrolling="no" frameborder="0" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
+      </div>
+    </div>
+    <div style="padding:12px; text-align:center; border-top:1px solid #eee;">
+      <button onclick="document.getElementById('entrada-man-city').style.display='none'; window.scrollTo({top:0,behavior:'smooth'});" style="background:#111; color:#fff; padding:10px 20px; border-radius:10px; font-weight:900; border:none; cursor:pointer;">← INICIO - VOLVER AL BLOG</button>
+    </div>
+  </div>
+</div>
+
+<style>@keyframes marqueeSimple{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
+<!-- FIN BLOQUE MANCHESTER -->
+
+
 <div style="max-width:1280px;margin:8px auto 0;padding:0 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
 <button onclick="setCat('musica')" style="padding:6px 12px;border-radius:9999px;border:1px solid #7C4494;font-size:11px;font-weight:900;white-space:nowrap;background:#fdf4ff;color:#7C4494">🎵 Música</button>
 <button onclick="setCat('twitch')" style="padding:6px 12px;border-radius:9999px;border:1px solid #9146FF;font-size:11px;font-weight:900;white-space:nowrap;${currentCat==='twitch'?'background:#9146FF;color:#fff':'background:#f3e8ff;color:#6b21a8'}">🟣 Twitch Canal Vivo</button>
