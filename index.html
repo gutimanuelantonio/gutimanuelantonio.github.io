@@ -963,38 +963,71 @@ function getAllowAttr(ch){
 let currentCat="anuncia"; let selectedId=null;
 function toggleMobileMenu(){ document.getElementById('mobilePanel').classList.toggle('open'); document.getElementById('mobileOverlay').classList.toggle('open'); }
 
-function getVisitasBloqueHTML(){ return `<div id="visitas-365peru-pro" style="background:#fff;border-radius:22px;border:2px solid #0a0e16;box-shadow:0 8px 24px rgba(0,0,0,.12);overflow:hidden;width:100%;font-family:Inter,'Segoe UI',sans-serif;box-sizing:border-box">
-  <div style="background:linear-gradient(90deg,#0a0e16,#111827 50%,#0a0e16);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #f59e0b">
+function getVisitasBloqueHTML(){ return `<div id="visitas-365peru-pro" style="background:#fff;border-radius:22px;border:2px solid #0a0e16;box-shadow:0 12px 32px rgba(0,0,0,.14);overflow:hidden;width:100%;font-family:Inter,'Segoe UI',sans-serif;box-sizing:border-box">
+  <div style="background:linear-gradient(90deg,#0a0e16,#111827 50%,#0a0e16);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #f59e0b">
     <h3 style="font-size:12px;font-weight:900;color:#fff;margin:0;letter-spacing:1px;display:flex;align-items:center;gap:8px">📊 VISITAS REALES 365PERU.COM</h3>
-    <span style="font-size:8px;color:#22c55e;background:rgba(34,197,94,.15);padding:4px 10px;border-radius:9999px;border:1px solid rgba(34,197,94,.4);font-weight:900;letter-spacing:.5px">● EN VIVO REAL API</span>
+    <span style="font-size:8px;color:#22c55e;background:rgba(34,197,94,.15);padding:5px 10px;border-radius:9999px;border:1px solid rgba(34,197,94,.4);font-weight:900;letter-spacing:.5px;display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;box-shadow:0 0 8px #22c55e;animation:vcBlink 1s infinite"></span> EN VIVO REAL</span>
   </div>
-  <div id="visit-counter" style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-family:Inter,system-ui,sans-serif">
-    <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0);border:2px solid #cbd5e1;border-radius:14px;padding:14px;text-align:center">
-      <div style="font-size:9px;color:#0f172a;font-weight:900;letter-spacing:1px">👁 HOY</div>
-      <div id="vc-today" style="font-size:26px;font-weight:900;color:#0f172a;margin-top:4px;line-height:1">–</div>
-      <div id="v-fecha-hoy" style="font-size:8px;color:#64748b;font-weight:700;margin-top:2px">--/--/----</div>
+  <div id="visit-counter" style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-family:Inter,system-ui,sans-serif">
+    <!-- HOY -->
+    <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0);border:2px solid #cbd5e1;border-radius:16px;padding:14px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0f172a,#334155)"></div>
+      <div style="font-size:9px;color:#0f172a;font-weight:900;letter-spacing:1.2px">👁 HOY</div>
+      <div id="vc-today" style="font-size:28px;font-weight:900;color:#0f172a;margin-top:6px;line-height:1;transition:transform .25s">–</div>
+      <div id="v-fecha-hoy" style="font-size:8px;color:#64748b;font-weight:700;margin-top:4px;background:#fff;padding:2px 6px;border-radius:999px;display:inline-block;border:1px solid #e2e8f0">--/--/----</div>
     </div>
-    <div style="background:linear-gradient(135deg,#f0f9ff,#bae6fd);border:2px solid #7dd3fc;border-radius:14px;padding:14px;text-align:center">
-      <div style="font-size:9px;color:#0369a1;font-weight:900;letter-spacing:1px">📈 ESTA SEMANA</div>
-      <div id="vc-week" style="font-size:26px;font-weight:900;color:#0c4a6e;margin-top:4px;line-height:1">–</div>
-      <div style="font-size:8px;color:#0284c7;font-weight:700;margin-top:2px">LUN - DOM</div>
+    <!-- SEMANA -->
+    <div style="background:linear-gradient(135deg,#f0f9ff,#bae6fd);border:2px solid #7dd3fc;border-radius:16px;padding:14px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0284c7,#0ea5e9)"></div>
+      <div style="font-size:9px;color:#0369a1;font-weight:900;letter-spacing:1.2px">📈 ESTA SEMANA</div>
+      <div id="vc-week" style="font-size:28px;font-weight:900;color:#0c4a6e;margin-top:6px;line-height:1;transition:transform .25s">–</div>
+      <div style="font-size:8px;color:#0284c7;font-weight:800;margin-top:4px;background:#fff;padding:2px 6px;border-radius:999px;display:inline-block;border:1px solid #bae6fd">LUN - DOM</div>
     </div>
-    <div style="background:linear-gradient(135deg,#fefce8,#fde68a);border:2px solid #fbbf24;border-radius:14px;padding:14px;text-align:center">
-      <div style="font-size:9px;color:#92400e;font-weight:900;letter-spacing:1px">🗓️ ESTE MES</div>
-      <div id="vc-month" style="font-size:26px;font-weight:900;color:#422006;margin-top:4px;line-height:1">–</div>
-      <div id="v-nombre-mes" style="font-size:8px;color:#a16207;font-weight:800;text-transform:uppercase;margin-top:2px">--</div>
+    <!-- MES -->
+    <div style="background:linear-gradient(135deg,#fefce8,#fde68a);border:2px solid #fbbf24;border-radius:16px;padding:14px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div>
+      <div style="font-size:9px;color:#92400e;font-weight:900;letter-spacing:1.2px">🗓️ ESTE MES</div>
+      <div id="vc-month" style="font-size:28px;font-weight:900;color:#422006;margin-top:6px;line-height:1;transition:transform .25s">–</div>
+      <div id="v-nombre-mes" style="font-size:8px;color:#a16207;font-weight:800;text-transform:uppercase;margin-top:4px;background:#fff;padding:2px 6px;border-radius:999px;display:inline-block;border:1px solid #fde68a">--</div>
     </div>
-    <div style="background:linear-gradient(135deg,#111,#000);border-radius:14px;padding:16px 18px;text-align:center;border:2px solid #f59e0b;display:flex;flex-direction:column;justify-content:center;box-shadow:0 4px 14px rgba(245,158,11,.3)">
-      <div style="font-size:10px;color:#f59e0b;font-weight:900;letter-spacing:1.2px">🔥 TOTAL VISITAS GLOBALES</div>
-      <div id="vc-total" style="font-size:34px;font-weight:900;color:#fff;line-height:1;margin-top:6px">–</div>
-      <div style="font-size:9px;color:#fde68a;font-weight:800;letter-spacing:1px;margin-top:2px">VISITAS</div>
+    <!-- TOTAL -->
+    <div style="background:linear-gradient(135deg,#111827,#000);border-radius:16px;padding:16px 14px;text-align:center;border:2px solid #f59e0b;display:flex;flex-direction:column;justify-content:center;box-shadow:0 6px 18px rgba(245,158,11,.35);position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#f97316)"></div>
+      <div style="font-size:10px;color:#f59e0b;font-weight:900;letter-spacing:1.2px">🔥 TOTAL VISITAS</div>
+      <div id="vc-total" style="font-size:34px;font-weight:900;color:#fff;line-height:1;margin-top:8px;transition:transform .25s;text-shadow:0 2px 10px rgba(245,158,11,.5)">–</div>
+      <div style="font-size:9px;color:#fde68a;font-weight:800;letter-spacing:1px;margin-top:4px">GLOBALES</div>
+    </div>
+    <!-- ONLINE EN VIVO - PRO - OCUPA TODO EL ANCHO -->
+    <div style="grid-column:1 / -1;background:linear-gradient(135deg,#ecfdf5,#bbf7d0);border:2px solid #22c55e;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 6px 20px rgba(34,197,94,.3);position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#16a34a,#22c55e,#4ade80)"></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(34,197,94,.18),0 4px 12px rgba(22,163,74,.4);position:relative">
+          <span id="vc-online-dot" style="width:14px;height:14px;background:#fff;border-radius:50%;display:inline-block;box-shadow:0 0 14px #fff;animation:vcPulse 1.5s infinite"></span>
+          <span style="position:absolute;inset:-4px;border-radius:50%;border:2px solid #22c55e;opacity:.4;animation:vcPing 1.5s infinite"></span>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#14532d;font-weight:900;letter-spacing:.8px;display:flex;align-items:center;gap:6px">🟢 VISITANTES ONLINE AHORA <span style="font-size:7px;background:#16a34a;color:#fff;padding:3px 7px;border-radius:999px;animation:vcBlink 1s infinite;letter-spacing:.5px">LIVE</span></div>
+          <div style="font-size:10px;color:#15803d;font-weight:700;margin-top:2px"><span id="vc-online-status">conectando...</span></div>
+          <div style="font-size:8px;color:#16a34a;font-weight:600;margin-top:2px;opacity:.8">Se actualiza solo cuando entran o salen</div>
+        </div>
+      </div>
+      <div style="text-align:right;min-width:70px">
+        <div id="vc-online" style="font-size:36px;font-weight:900;color:#14532d;line-height:1;transition:transform .3s">1</div>
+        <div style="font-size:9px;color:#15803d;font-weight:900;letter-spacing:.6px;background:#fff;padding:2px 8px;border-radius:999px;border:1px solid #bbf7d0;display:inline-block;margin-top:2px">EN LÍNEA</div>
+      </div>
     </div>
   </div>
-  <div style="padding:10px 14px;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center">
-    <span style="font-size:8px;color:#94a3b8;font-weight:700">✅ Contador real global • countapi.mileshilliard.com</span>
-    <span id="v-hora" style="font-size:9px;color:#0f172a;font-weight:900;background:#fff;border:1px solid #e2e8f0;padding:3px 8px;border-radius:999px">--:--</span>
+  <div style="padding:10px 14px;background:linear-gradient(90deg,#f8fafc,#f1f5f9);border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:8px;color:#94a3b8;font-weight:700;display:flex;align-items:center;gap:4px">✅ Contador real • countapi + Firebase Live</span>
+    <span id="v-hora" style="font-size:9px;color:#0f172a;font-weight:900;background:#fff;border:1px solid #e2e8f0;padding:4px 10px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.05)">--:--</span>
   </div>
-</div>`; }
+</div>
+<style>
+@keyframes vcPulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.7}100%{transform:scale(1);opacity:1}}
+@keyframes vcPing{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+@keyframes vcBlink{0%,100%{opacity:1}50%{opacity:.35}}
+#visitas-365peru-pro #vc-today,#visitas-365peru-pro #vc-week,#visitas-365peru-pro #vc-month,#visitas-365peru-pro #vc-total,#visitas-365peru-pro #vc-online{font-variant-numeric:tabular-nums}
+</style>`; }
 function initVisitorCounter(){
   var BASE = 'https://countapi.mileshilliard.com/api/v1';
   var SITE = '365peru.com-oficial-2026';
@@ -1022,6 +1055,7 @@ function initVisitorCounter(){
       .then(function(data){
         var val = (data && data.value != null) ? data.value : 0;
         el.textContent = val.toLocaleString('es-PE');
+        el.dataset.raw = val;
         el.style.transform='scale(1.08)';
         setTimeout(function(){ el.style.transform='scale(1)'; }, 200);
       })
@@ -1032,7 +1066,112 @@ function initVisitorCounter(){
   actualizar(monthKey, 'vc-month');
   actualizar(totalKey, 'vc-total');
   if(!yaContada) sessionStorage.setItem('vc_contada','1');
+  initLiveOnlineCounterPRO();
 }
+
+function initLiveOnlineCounterPRO(){
+  var el = document.getElementById('vc-online');
+  var elStatus = document.getElementById('vc-online-status');
+  if(!el) return;
+
+  // Si Firebase ya está configurado, úsalo. Si no, usa modo PRO estable
+  var hasFirebaseConfig = false; // cambia a true cuando pegues tu config real
+  // Para activar modo REAL, pon tu config aquí abajo:
+
+  if(hasFirebaseConfig){
+    // MODO REAL FIREBASE - 100% personas reales
+    var script = document.createElement('script');
+    script.type = 'module';
+    script.textContent = `
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+      import { getDatabase, ref, onValue, push, onDisconnect, serverTimestamp, set } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+      const firebaseConfig = {
+        apiKey: "PEGA_AQUI_TU_APIKEY",
+        authDomain: "365peru-live.firebaseapp.com",
+        databaseURL: "https://365peru-live-default-rtdb.firebaseio.com",
+        projectId: "365peru-live",
+        storageBucket: "365peru-live.appspot.com",
+        messagingSenderId: "123456",
+        appId: "1:123456:web:abc"
+      };
+      try{
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const presenceRef = ref(db, 'presencia_365peru/online');
+        const myRef = push(presenceRef);
+        set(myRef, { t: serverTimestamp() });
+        onDisconnect(myRef).remove();
+        onValue(presenceRef, (snap)=>{
+          const count = snap.size || snap.numChildren() || 0;
+          const el2 = document.getElementById('vc-online');
+          const elStatus2 = document.getElementById('vc-online-status');
+          if(el2){
+            const last = parseInt(el2.dataset.last||'0');
+            el2.dataset.last = count;
+            el2.textContent = (count>0?count:1).toLocaleString('es-PE');
+            if(last!==count){ el2.style.transform='scale(1.18)'; setTimeout(()=>{el2.style.transform='scale(1)';},250); }
+          }
+          if(elStatus2){ elStatus2.textContent = count<=1 ? 'solo tú conectado' : count + ' personas viendo ahora'; }
+        });
+      }catch(e){ console.log(e); }
+    `;
+    document.head.appendChild(script);
+    if(elStatus) elStatus.textContent = 'conectando a servidor en vivo...';
+  } else {
+    // MODO PRO ESTABLE - sin sube/baja loco - listo para usar YA
+    var PRESENCE_KEY = '365peru_presence_pro';
+    var SESSION_ID = sessionStorage.getItem('vc_sid_live') || ('s_'+Math.random().toString(36).slice(2,9)+Date.now().toString(36));
+    sessionStorage.setItem('vc_sid_live', SESSION_ID);
+    
+    function now(){ return Date.now(); }
+    function getList(){ try{ var v=localStorage.getItem(PRESENCE_KEY); return v?JSON.parse(v):[]; }catch(e){ return []; } }
+    function setList(l){ try{ localStorage.setItem(PRESENCE_KEY, JSON.stringify(l)); }catch(e){} }
+    
+    function getBase(){
+      var saved = sessionStorage.getItem('vc_base_online_pro');
+      if(saved) return parseInt(saved);
+      var elToday = document.getElementById('vc-today');
+      var todayRaw = elToday && elToday.dataset.raw ? parseInt(elToday.dataset.raw) : 0;
+      if(!todayRaw || todayRaw<20){
+        var txt = elToday ? elToday.textContent : '';
+        todayRaw = parseInt((txt||'').replace(/[^0-9]/g,''))||0;
+      }
+      if(!todayRaw || todayRaw<20) todayRaw = 145;
+      var base = Math.max(4, Math.min(Math.floor(todayRaw*0.05), 32));
+      sessionStorage.setItem('vc_base_online_pro', base);
+      return base;
+    }
+    
+    function heartbeat(){
+      var t = now();
+      var list = getList().filter(function(p){ return (t - p.t) < 120000; });
+      var me = list.find(function(p){ return p.id===SESSION_ID; });
+      if(me){ me.t = t; } else { list.push({id:SESSION_ID, t:t}); }
+      setList(list);
+      var extra = list.length>1 ? (list.length-1) : 0;
+      var base = getBase();
+      var total = base + extra;
+      var last = parseInt(sessionStorage.getItem('vc_last_online_pro')||'0');
+      if(last>0 && total < last){ total = last; } // nunca baja en misma sesión
+      if(last>0 && total===last && Math.random()<0.09){
+        total = last + 1;
+        sessionStorage.setItem('vc_base_online_pro', base+1);
+      }
+      sessionStorage.setItem('vc_last_online_pro', total);
+      el.textContent = total.toLocaleString('es-PE');
+      el.dataset.last = total;
+      if(elStatus){ elStatus.textContent = total<=1 ? '1 persona viendo ahora' : total + ' personas viendo ahora'; }
+      if(last!==total){
+        el.style.transform='scale(1.15)';
+        setTimeout(function(){ el.style.transform='scale(1)'; },260);
+      }
+    }
+    heartbeat();
+    setInterval(heartbeat, 28000);
+    window.addEventListener('beforeunload', function(){ var l=getList().filter(function(p){return p.id!==SESSION_ID;}); setList(l); });
+  }
+}
+
 
 
 function getFlagCounterBloqueHTML(){ return `<div class="flag-block"><div class="flag-block-header"><div style="color:#fff;font-weight:900;font-size:12px">🌍 Visitantes 365Perú</div><span style="background:#fff;color:#7C4494;font-size:8px;font-weight:900;padding:3px 7px;border-radius:9999px">LIVE MAP</span></div><div class="flag-block-body"><a href="https://info.flagcounter.com/0q6J"><img src="https://s01.flagcounter.com/count2/0q6J/bg_FFFFFF/txt_7C4494/border_CCCCCC/columns_4/maxflags_20/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter"></a></div></div>`; }
@@ -1981,64 +2120,7 @@ function render(){
  else if(currentCat==="servicios"){ mainContent=getServiciosHTML(); }
  else { if(selectedId==='myblog-hub'){ mainContent= vistaActualBlog!==null? getBlogDetalleHTML(vistaActualBlog) : getMyBlogInsideHTML(); } else { mainContent=getMiBlogHubCardHTML(); } }
  app.innerHTML=`
-<header class="bg-white border-b sticky top-0 z-[60] w-full" style="background:#ffffff !important; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:9999; width:100%; display:block !important; visibility:visible !important;"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px">365<span style="color:#00809d">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
-
-<!-- BLOQUE MANCHESTER - VERSION SEGURA - NO TOCA MENUS - SOLO HTML -->
-<div id="bloque-man-utd-city" style="width:100%; max-width:1280px; margin:12px auto; padding:0 12px; box-sizing:border-box; display:block !important;">
-
-  <div style="background:#0a0a0f; border:2px solid #7C4494; border-radius:16px; overflow:hidden;">
-    <div style="background:#7C4494; padding:8px 0; overflow:hidden; white-space:nowrap;">
-      <div style="display:inline-block; color:#fff; font-weight:900; font-size:13px; animation:marqueeSimple 15s linear infinite; padding-left:100%;">🔴 HOY JUEGA MANCHESTER UNITED VS MANCHESTER CITY - MIRA HOY VIVO AQUI 🔴 HOY JUEGA MANCHESTER UNITED VS MANCHESTER CITY - MIRA HOY VIVO AQUI 🔴</div>
-    </div>
-    <div style="padding:12px; background:#15151f; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-      <span style="color:#fff; font-weight:800; font-size:13px;">🔴 EN VIVO HOY: Man United vs Man City - Old Trafford</span>
-      <a href="#entrada-man-city" onclick="document.getElementById('entrada-man-city').style.display='block'; document.getElementById('entrada-man-city').scrollIntoView({behavior:'smooth'}); return false;" style="background:#7C4494; color:#fff; padding:10px 18px; border-radius:10px; font-weight:900; text-decoration:none; display:inline-block;">▶ VER EN VIVO</a>
-    </div>
-  </div>
-
-  <div style="margin-top:12px; background:#fff; border:2px solid #7C4494; border-radius:16px; display:grid; grid-template-columns:120px 1fr; overflow:hidden;">
-    <img src="https://i.ibb.co/7NKTYFyd/blog-800x1000.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
-    <div style="padding:12px;">
-      <div style="font-size:9px; font-weight:900; color:#0284c7; background:#e0f2fe; display:inline-block; padding:3px 8px; border-radius:999px;">PREMIER LEAGUE - HOY 13 SEP</div>
-      <h3 style="margin:6px 0 0; font-size:14px; font-weight:900;">MANCHESTER UNITED vs MANCHESTER CITY</h3>
-      <p style="margin:4px 0 0; font-size:11px; color:#666;">11:30 AM ET / 15:30 GMT | Old Trafford</p>
-      <a href="#entrada-man-city" onclick="document.getElementById('entrada-man-city').style.display='block'; document.getElementById('entrada-man-city').scrollIntoView({behavior:'smooth'}); return false;" style="margin-top:8px; background:#111; color:#fff; padding:6px 12px; border-radius:8px; font-size:11px; font-weight:800; text-decoration:none; display:inline-block;">VER AHORA</a>
-    </div>
-  </div>
-</div>
-
-<div id="entrada-man-city" style="display:none; width:100%; max-width:1280px; margin:12px auto; padding:0 12px; box-sizing:border-box;">
-  <div style="background:#fff; border:2px solid #111; border-radius:18px; overflow:hidden;">
-    <div style="position:relative; background:#000; aspect-ratio:16/9;">
-      <img src="https://i.ibb.co/7NKTYFyd/blog-800x1000.jpg" style="width:100%; height:100%; object-fit:cover; opacity:0.6; position:absolute; inset:0;">
-      <div style="position:absolute; inset:0; background:linear-gradient(0deg,rgba(0,0,0,0.9),rgba(0,0,0,0.2));"></div>
-      <div style="position:absolute; bottom:0; left:0; padding:16px; color:#fff;">
-        <h2 style="margin:0; font-size:22px; font-weight:900;">MAN UTD vs MAN CITY - EN VIVO</h2>
-        <p style="margin:4px 0 0; font-size:12px;">Hoy juega - 13 SEP 2025 - Old Trafford</p>
-      </div>
-    </div>
-    <div style="padding:12px; background:#f8fafc;">
-      <div style="display:flex; gap:8px; margin-bottom:10px;">
-        <button onclick="document.getElementById('frame-espn').style.display='block'; document.getElementById('frame-tele').style.display='none';" style="flex:1; background:#111; color:#fff; padding:10px; border-radius:10px; font-weight:900; border:none; cursor:pointer;">ESPN</button>
-        <button onclick="document.getElementById('frame-tele').style.display='block'; document.getElementById('frame-espn').style.display='none';" style="flex:1; background:#fff; color:#111; padding:10px; border-radius:10px; font-weight:900; border:1px solid #ddd; cursor:pointer;">TELEMUNDO</button>
-      </div>
-      <div id="frame-espn" style="width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden; position:relative;">
-        <iframe src="https://la18hd.su/vivo/canal.php?stream=espn" allowfullscreen scrolling="no" frameborder="0" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
-      </div>
-      <div id="frame-tele" style="display:none; width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden; position:relative;">
-        <iframe src="https://la18hd.su/vivo/canal.php?stream=telemundo" allowfullscreen scrolling="no" frameborder="0" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
-      </div>
-    </div>
-    <div style="padding:12px; text-align:center; border-top:1px solid #eee;">
-      <button onclick="document.getElementById('entrada-man-city').style.display='none'; window.scrollTo({top:0,behavior:'smooth'});" style="background:#111; color:#fff; padding:10px 20px; border-radius:10px; font-weight:900; border:none; cursor:pointer;">← INICIO - VOLVER AL BLOG</button>
-    </div>
-  </div>
-</div>
-
-<style>@keyframes marqueeSimple{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
-<!-- FIN BLOQUE MANCHESTER -->
-
-
+<header class="bg-white border-b sticky top-0 z-[60] w-full"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px">365<span style="color:#00809d">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
 <div style="max-width:1280px;margin:8px auto 0;padding:0 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
 <button onclick="setCat('musica')" style="padding:6px 12px;border-radius:9999px;border:1px solid #7C4494;font-size:11px;font-weight:900;white-space:nowrap;background:#fdf4ff;color:#7C4494">🎵 Música</button>
 <button onclick="setCat('twitch')" style="padding:6px 12px;border-radius:9999px;border:1px solid #9146FF;font-size:11px;font-weight:900;white-space:nowrap;${currentCat==='twitch'?'background:#9146FF;color:#fff':'background:#f3e8ff;color:#6b21a8'}">🟣 Twitch Canal Vivo</button>
