@@ -424,45 +424,7 @@ body{top:0!important;}
   .twitch-btn.verde{background:#00f593;color:#000}
 </style>
 
-<div class="twitch-wrap-principal" id="twitch-principal">
-  <div class="movie-card" style="border-color:#9146FF">
-    <div class="movie-head" style="background:linear-gradient(90deg,#9146FF,#5a2ca0);display:flex;justify-content:space-between;align-items:center">
-      <div class="movie-title">💜 MI TWITCH PRINCIPAL - OMIKANALI - 365Perú</div>
-      <div style="font-size:10px;background:#ff0000;color:#fff;padding:3px 8px;border-radius:999px;font-weight:900;animation:pulse 1.5s infinite">● LIVE</div>
-    </div>
-    <div class="twitch-container-principal">
-      <div id="twitch-embed-principal"></div>
-    </div>
-    <div style="padding:14px;background:#0a0e16;border-top:1px solid #26314a">
-      <div style="color:#fff;font-weight:800;margin-bottom:10px">¿Quieres verlo directo en Twitch?</div>
-      <div class="twitch-btns">
-        <a href="https://www.twitch.tv/omikanali" target="_blank" class="twitch-btn morado">💜 Ver en mi Twitch Principal</a>
-        <a href="https://www.twitch.tv/omikanali/about" target="_blank" class="twitch-btn negro">👤 Ir a mi Perfil</a>
-        <a href="https://www.twitch.tv/omikanali/videos" target="_blank" class="twitch-btn negro">📼 Todos mis Videos</a>
-        <button onclick="window.open('https://www.twitch.tv/omikanali','_blank')" class="twitch-btn verde">➕ SEGUIR EN TWITCH</button>
-      </div>
-      <div style="margin-top:10px;color:#6b7280;font-size:11px">Video actual: 2832307385 • Canal: omikanali • Se ve directo en 365Peru.com como YouTube</div>
-    </div>
-  </div>
-</div>
 
-<script src="https://player.twitch.tv/js/embed/v1.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  if(document.getElementById('twitch-embed-principal')){
-    new Twitch.Player("twitch-embed-principal", {
-      channel: "omikanali",
-      width: "100%",
-      height: "100%",
-      autoplay: false,
-      muted: false,
-      parent: ["365peru.com", "www.365peru.com", "365peru.com.pe", "localhost", "127.0.0.1", "365peru.com.win", "win", "netlify.app"]
-    });
-  }
-});
-</script>
-<style>@keyframes pulse{0%{opacity:1}50%{opacity:.5}100%{opacity:1}}</style>
-<!-- ====== FIN BLOQUE PRINCIPAL ====== -->
 
 <div id="mobileOverlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
 <div id="mobilePanel" class="mobile-menu-panel">
@@ -472,7 +434,6 @@ document.addEventListener('DOMContentLoaded', function(){
   <div onclick="setCat('deportes'); toggleMobileMenu()" class="mobile-menu-item" style="background:#0284c7;color:#fff">⚽ Deportes Builder</div>
   <div onclick="openProductosPlanes365(); toggleMobileMenu()" class="mobile-menu-item" style="background:linear-gradient(90deg,#00E5FF,#C8FF3D);color:#04070c;font-weight:900;border:2px solid #00E5FF;box-shadow:0 0 14px rgba(0,229,255,.4)">📦 Productos / Planes</div>
   <div onclick="setCat('videos'); toggleMobileMenu()" class="mobile-menu-item">🎬 Videos 14</div>
-  <div onclick="document.getElementById('twitch-principal')?.scrollIntoView({behavior:'smooth'}); toggleMobileMenu()" class="mobile-menu-item" style="background:#9146FF;color:#fff;border:2px solid #fff">💜 Mi Twitch Principal - DIRECTO</div>
   <div onclick="setCat('religion'); toggleMobileMenu()" class="mobile-menu-item">📺 Entretenimiento 10</div>
   <div onclick="setCat('anuncia'); toggleMobileMenu()" class="mobile-menu-item" style="background:#f59e0b;color:#000">📢 Anuncia - NUEVO ADMIN</div>
   <div class="allons-mobile-wrap" id="allonsMobileWrap">
