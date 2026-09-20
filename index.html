@@ -207,6 +207,19 @@ img{max-width:100%;display:block}iframe{max-width:100%}
   aspect-ratio:auto !important;
 }
 
+
+#view-analisis-deportivo-full{position:fixed;inset:0;z-index:10001;background:#0a0f14;display:none;flex-direction:column;overflow-y:auto}
+#view-analisis-deportivo-full.open{display:flex}
+.ad-full-header{position:sticky;top:0;z-index:2;background:rgba(10,15,20,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,255,136,.15);padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.ad-full-body{flex:1;width:100%;max-width:1280px;margin:0 auto;padding:12px;box-sizing:border-box}
+.ad-full-iframe-wrap{width:100%;min-height:calc(100vh - 160px);background:#fff;border-radius:16px;overflow:hidden;border:2px solid #00FF88;box-shadow:0 12px 32px rgba(0,255,136,.15)}
+.ad-full-iframe-wrap iframe{width:100%!important;height:100%!important;min-height:900px;border:0}
+.ad-full-bottom{position:sticky;bottom:0;background:rgba(10,15,20,.97);border-top:2px solid #00FF88;padding:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.pp-big{padding:14px 22px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:none;transition:.2s}
+.pp-big.vol{background:linear-gradient(135deg,#111827,#1f2937);color:#fff;border:1px solid #374151}
+.pp-big.ini{background:linear-gradient(135deg,#00FF88,#10b981);color:#0a0f14}
+.pp-big:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+
 </style>
 <script>
 // ===== SLIDER + LIVE META - NUEVO 2026 - NO TOCA NADA ORIGINAL =====
@@ -2801,6 +2814,31 @@ document.addEventListener('click',function(ev){
 });
 </script>
 
+
+<!-- NUEVO BLOQUE FULL PAGE ANALISIS DEPORTIVO - TERCERA BANDEJA -->
+<div id="view-analisis-deportivo-full">
+  <div class="ad-full-header">
+    <div style="display:flex;align-items:center;gap:10px;color:#fff;font-weight:900">
+      <span style="background:#00FF88;color:#0a0f14;padding:6px 10px;border-radius:8px;font-size:11px">EN VIVO</span>
+      <span style="font-size:14px">Apuestas Deportivas - Análisis Profesional 365Perú</span>
+    </div>
+    <button onclick="closeAnalisisDeportivoFull()" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer">✕ Cerrar</button>
+  </div>
+  <div class="ad-full-body">
+    <div id="ad-full-content-mount"></div>
+  </div>
+  <div class="ad-full-bottom">
+    <button class="pp-big vol" onclick="closeAnalisisDeportivoFull()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Volver al Blog
+    </button>
+    <button class="pp-big ini" onclick="goInicioAnalisisDeportivo()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio - Página Principal
+    </button>
+  </div>
+</div>
+
 <div id="view-productos-planes-365">
   <div class="pp-365-topbar">
     <div class="pp-365-brand"><span class="dot"></span>365Perú / Productos Planes</div>
@@ -2942,6 +2980,66 @@ document.addEventListener('click',function(ev){
 </div>
 
 <script>
+
+// ===== NUEVA LOGICA FULL PAGE ANALISIS DEPORTIVO - TERCERA BANDEJA =====
+function openAnalisisDeportivoFull(){
+  // Busca datos de apuestas
+  try{
+    const data = (typeof peliculasEstrenosData !== 'undefined') ? peliculasEstrenosData.find(b=>b.id==='apuestas-deportivas-analisis') : null;
+    const mount = document.getElementById('ad-full-content-mount');
+    if(data && mount){
+      // Usa el iframe ya guardado (contiene el aplicativo deportivo completo)
+      mount.innerHTML = data.iframe || '<div style="color:#fff;padding:20px">Cargando análisis...</div>';
+      // Si el iframe es data:text/html base64, asegúrate altura completa
+      const innerIframe = mount.querySelector('iframe');
+      if(innerIframe){
+        innerIframe.style.height='900px';
+        innerIframe.style.minHeight='85vh';
+      }
+    }
+  }catch(e){ console.log('Error montando analisis', e); }
+  const el=document.getElementById('view-analisis-deportivo-full');
+  el.classList.add('open');
+  document.body.style.overflow='hidden';
+  window.scrollTo(0,0);
+  el.scrollTop=0;
+  history.pushState({adFull:true},'','#analisis-deportivo-full');
+}
+function closeAnalisisDeportivoFull(){
+  const el=document.getElementById('view-analisis-deportivo-full');
+  if(!el) return;
+  el.classList.remove('open');
+  document.body.style.overflow='';
+  // Limpiar si quieres liberar memoria: document.getElementById('ad-full-content-mount').innerHTML='';
+}
+function goInicioAnalisisDeportivo(){
+  closeAnalisisDeportivoFull();
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Si quieres ir a inicio real:
+  // location.href = '/';
+}
+// Interceptar click de tercera bandeja - override en render
+// Modifica openArticulo para detectar apuestas
+const _originalOpenArticulo = window.openArticulo;
+window.openArticulo = function(id){
+  if(id==='peliculas-estrenos-detalle'){
+    try{
+      const idx = (typeof vistaActualPeliEstreno !== 'undefined') ? vistaActualPeliEstreno : -1;
+      const item = (typeof peliculasEstrenosData !== 'undefined' && idx>=0) ? peliculasEstrenosData[idx] : null;
+      if(item && item.id==='apuestas-deportivas-analisis'){
+        openAnalisisDeportivoFull();
+        return;
+      }
+    }catch(e){}
+  }
+  if(typeof _originalOpenArticulo === 'function') return _originalOpenArticulo(id);
+}
+// Cerrar con botón atrás del navegador
+window.addEventListener('popstate', function(){
+  const el=document.getElementById('view-analisis-deportivo-full');
+  if(el && el.classList.contains('open')) closeAnalisisDeportivoFull();
+});
+
 // LOGICA PRODUCTOS PLANES - NO TOCA TU CODIGO ORIGINAL
 function openProductosPlanes365(){
   const el=document.getElementById('view-productos-planes-365');
