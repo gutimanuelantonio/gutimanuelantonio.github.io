@@ -377,6 +377,168 @@ body{top:0!important;}
 
 </head>
 <body class="min-h-screen pb-[140px]">
+<!-- ===== BLOQUE PREMIUM FUTBOL 365PERU - INSERTAR ARRIBA DE TODO (DESPUES DE <body>) ===== -->
+<style>
+@keyframes marquee{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+@keyframes fosfor{0%,100%{text-shadow:0 0 6px #00ff88,0 0 12px #00ff88,0 0 24px #00ff88; opacity:1} 50%{text-shadow:0 0 2px #00ff88,0 0 6px #00ff88; opacity:.75}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.4)}50%{box-shadow:0 0 0 12px rgba(0,255,136,0)}}
+.ft365-wrap{width:100%;max-width:1280px;margin:12px auto;padding:0 8px;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+.ft365-topbar{background:#0a0e16;border:2px solid #00ff88;border-radius:14px;overflow:hidden;display:flex;align-items:center;height:42px;position:relative}
+.ft365-topbar-label{background:linear-gradient(135deg,#00ff88,#00cc6a);color:#000;font-weight:900;font-size:12px;padding:0 14px;height:100%;display:flex;align-items:center;letter-spacing:.5px;white-space:nowrap;z-index:2}
+.ft365-marquee{flex:1;overflow:hidden;white-space:nowrap;position:relative}
+.ft365-marquee-track{display:inline-block;white-space:nowrap;animation:marquee 28s linear infinite;padding-left:100%}
+.ft365-marquee-track span{color:#00ff88;font-weight:800;font-size:13px;margin-right:60px;letter-spacing:.3px}
+.ft365-marquee-track .fosfor{animation:fosfor 1.2s infinite;display:inline-block}
+.ft365-main{margin-top:14px;background:linear-gradient(180deg,#101624 0%,#0a0e16 100%);border-radius:22px;border:2px solid #1e2a44;box-shadow:0 16px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden;position:relative}
+.ft365-main::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00ff88,#0ea5e9,#7c4494,#f59e0b,#00ff88);background-size:300% 100%;animation:marquee 8s linear infinite reverse}
+.ft365-header{padding:18px 18px 12px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.ft365-title{color:#fff;font-weight:900;font-size:clamp(18px,3vw,26px);line-height:1.1;display:flex;align-items:center;gap:10px}
+.ft365-title b.live{color:#000;background:#00ff88;border-radius:999px;padding:4px 10px;font-size:11px;letter-spacing:1px;animation:pulseGlow 2s infinite}
+.ft365-subtitle{color:#8b9bb4;font-size:12px;font-weight:600;letter-spacing:.4px;margin-top:4px}
+.ft365-badges{display:flex;gap:8px;flex-wrap:wrap}
+.ft365-badge{border-radius:999px;padding:6px 12px;font-size:11px;font-weight:800;border:1px solid #26314a;background:#151c2e;color:#cbd5e1}
+.ft365-badge.premier{border-color:#00ff88;color:#00ff88;background:rgba(0,255,136,.1)}
+.ft365-badge.derby{border-color:#f59e0b;color:#fbbf24;background:rgba(245,158,11,.1)}
+.ft365-player-wrap{padding:0 12px 12px}
+.ft365-player{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;border:1px solid #26314a;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.ft365-player iframe{position:absolute;inset:0;width:100%!important;height:100%!important;border:0}
+.ft365-controls{display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px;background:rgba(0,0,0,.25);border-top:1px solid #1e2a44}
+.ft365-btn{flex:1;min-width:130px;cursor:pointer;border-radius:12px;padding:12px 14px;font-weight:900;font-size:13px;border:2px solid #26314a;background:#121a2c;color:#e2e8f0;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;position:relative;overflow:hidden}
+.ft365-btn:hover{transform:translateY(-1px);border-color:#3b4a6b;background:#17213a}
+.ft365-btn.active{border-color:#00ff88;background:linear-gradient(135deg,#00ff88,#0ea5e9);color:#000;box-shadow:0 6px 18px rgba(0,255,136,.35)}
+.ft365-btn.active::after{content:'● EN VIVO';position:absolute;top:6px;right:8px;font-size:8px;font-weight:900;letter-spacing:.5px}
+.ft365-action-bar{padding:12px 18px;background:#0e1422;border-top:1px solid #1e2a44;display:flex;flex-direction:column;gap:10px}
+.ft365-action-marquee{background:#111827;border:1px solid #1f2937;border-radius:999px;overflow:hidden;height:38px;display:flex;align-items:center}
+.ft365-action-marquee .track{animation:marquee 22s linear infinite;white-space:nowrap;color:#9ca3af;font-size:12px;font-weight:700}
+.ft365-react{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.ft365-react-left{display:flex;gap:10px}
+.ft365-react-btn{border-radius:12px;border:1px solid #26314a;background:#121a2c;color:#fff;padding:10px 16px;font-weight:800;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s}
+.ft365-react-btn:hover{transform:translateY(-1px)}
+.ft365-react-btn.like.active-like{background:linear-gradient(135deg,#00ff88,#0ea5e9);color:#000;border-color:#00ff88}
+.ft365-react-btn.dislike.active-dislike{background:linear-gradient(135deg,#f43f5e,#7c4494);color:#fff;border-color:#f43f5e}
+.ft365-counter{color:#8b9bb4;font-size:12px;font-weight:700}
+.ft365-counter b{color:#00ff88}
+.ft365-thanks{display:none;background:linear-gradient(135deg,rgba(0,255,136,.15),rgba(14,165,233,.15));border:1px solid #00ff88;color:#00ff88;border-radius:10px;padding:8px 12px;font-weight:800;font-size:12px;text-align:center}
+.ft365-thanks.show{display:block}
+@media(max-width:640px){.ft365-header{padding:14px}.ft365-player-wrap{padding:0 8px 8px}.ft365-controls{padding:10px}.ft365-btn{min-width:100%;}}
+</style>
+
+<div class="ft365-wrap" id="bloque-futbol-top">
+  <!-- TEXTO DESLIZANTE SUPERIOR FOSFORESCENTE -->
+  <div class="ft365-topbar">
+    <div class="ft365-topbar-label">⚽ 365PERÚ EN VIVO</div>
+    <div class="ft365-marquee">
+      <div class="ft365-marquee-track">
+        <span class="fosfor">🔴 HOY VIVO FÚTBOL 🔴</span>
+        <span>⚽ MIRAR FÚTBOL HOY MÁS IMPORTANTE ⚽</span>
+        <span class="fosfor">🔥 HOY DÍA EL PARTIDO DE FÚTBOL ES IMPORTANTE - ¡NO TE LO PIERDAS! 🔥</span>
+        <span>🏆 PREMIER LEAGUE HOY - FECHA CLAVE 🏆</span>
+        <span class="fosfor">⚔️ CLÁSICO REAL MADRID vs ATLÉTICO DE MADRID - HOY EN VIVO ⚔️</span>
+      <span class="fosfor">⚽ HOY DÍA JUEGA INTER MIAMI - EN VIVO POR INTER MIAMI TV ⚽</span>
+      <span</span>
+        <span>📺 CANALES ESPN • ESPN2 • LA LIGA CHANNEL • INTER MIAMI 📺</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE PRINCIPAL REPRODUCTOR PREMIUM -->
+  <div class="ft365-main">
+    <div class="ft365-header">
+      <div>
+        <div class="ft365-title"><b class="live">EN VIVO</b> FÚTBOL PARA HOY DÍA</div>
+        <div class="ft365-subtitle">Premier League • Clásico Real Madrid - Atlético de Madrid • ⚽ HOY DÍA JUEGA INTER MIAMI • Partidos más importantes del día</div>
+      </div>
+      <div class="ft365-badges">
+        <div class="ft365-badge premier">🏴󠁧󠁢󠁥󠁮󠁧󠁿 PREMIER LIGA HOY</div>
+        <div class="ft365-badge derby">⚔️ REAL MADRID vs ATLÉTICO</div>
+        <div class="ft365-badge" style="border-color:#ff6ec7;color:#ff6ec7;background:rgba(255,110,199,.12)">⚽ HOY JUEGA INTER MIAMI</div><div class="ft365-badge">HD 1080p</div>
+      </div>
+    </div>
+
+    <div class="ft365-player-wrap">
+      <div class="ft365-player" id="ft365-player">
+        <iframe id="ft365-iframe" src="https://stream-xhd.com/live1.php?stream=espn" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media; picture-in-picture; autoplay"></iframe>
+      </div>
+    </div>
+
+    <div class="ft365-controls">
+      <button class="ft365-btn active" data-stream="espn" onclick="ft365Cambiar('espn',this)">📺 ESPN</button>
+      <button class="ft365-btn" data-stream="espn2" onclick="ft365Cambiar('espn2',this)">📺 ESPN 2</button>
+      <button class="ft365-btn" data-stream="daznlaliga" onclick="ft365Cambiar('daznlaliga',this)">🇪🇸 LA LIGA CHANNEL</button>
+      <button class="ft365-btn" data-stream="appletv1" onclick="ft365Cambiar('appletv1',this)">⚽ INTER MIAMI HOY</button>
+    </div>
+
+    <div class="ft365-action-bar">
+      <div class="ft365-action-marquee">
+        <div class="track">💬 Si te gusta este medio o esta forma de darte el entretenimiento danos tu aprobación • Dale like para seguir trayendo fútbol premium • ¡Gracias por tu apoyo 365Perú! • 💬 Si te gusta este medio o esta forma de darte el entretenimiento danos tu aprobación •</div>
+      </div>
+      <div class="ft365-react">
+        <div class="ft365-react-left">
+          <button class="ft365-react-btn like" id="btnLike" onclick="ft365Like(1)">👍 <span>Me gusta</span> <b id="likeCount">0</b></button>
+          <button class="ft365-react-btn dislike" id="btnDislike" onclick="ft365Like(-1)">👎 <span>No me gusta</span> <b id="dislikeCount">0</b></button>
+        </div>
+        <div class="ft365-counter">👥 <b id="totalReaccion">0</b> personas les gusta esta acción • <span id="canalActualTxt">Canal: ESPN</span></div>
+      </div>
+      <div class="ft365-thanks" id="ft365Thanks">✅ ¡Gracias por tu acción! Tu voto ayuda a mejorar 365Perú. ¡Sigue disfrutando del fútbol!</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ft365Streams = {
+  espn: 'https://stream-xhd.com/live1.php?stream=espn',
+  espn2: 'https://stream-xhd.com/live1.php?stream=espn2',
+  daznlaliga: 'https://stream-xhd.com/live1.php?stream=daznlaliga',
+  appletv1: 'https://stream-xhd.com/live1.php?stream=appletv1'
+};
+function ft365Cambiar(key, btn){
+  const iframe = document.getElementById('ft365-iframe');
+  const url = ft365Streams[key];
+  if(!url) return;
+  iframe.src = url;
+  document.querySelectorAll('.ft365-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const nombres = {espn:'ESPN', espn2:'ESPN2', daznlaliga:'LA LIGA CHANNEL', appletv1:'INTER MIAMI HOY'};
+  document.getElementById('canalActualTxt').textContent = 'Canal: ' + (nombres[key]||key.toUpperCase());
+  // pequeño efecto
+  document.getElementById('ft365-player').style.opacity='.6';
+  setTimeout(()=>{document.getElementById('ft365-player').style.opacity='1'},300);
+}
+let likes = parseInt(localStorage.getItem('ft365_likes')||'1248');
+let dislikes = parseInt(localStorage.getItem('ft365_dislikes')||'27');
+let miVoto = localStorage.getItem('ft365_miVoto')||'';
+function ft365Render(){
+  document.getElementById('likeCount').textContent = likes;
+  document.getElementById('dislikeCount').textContent = dislikes;
+  document.getElementById('totalReaccion').textContent = (likes);
+  document.getElementById('btnLike').classList.toggle('active-like', miVoto==='like');
+  document.getElementById('btnDislike').classList.toggle('active-dislike', miVoto==='dislike');
+}
+function ft365Like(tipo){
+  const nuevo = tipo===1?'like':'dislike';
+  if(miVoto===nuevo){
+    // quitar voto
+    if(nuevo==='like') likes--; else dislikes--;
+    miVoto='';
+  } else {
+    if(miVoto==='like') likes--;
+    if(miVoto==='dislike') dislikes--;
+    if(nuevo==='like') likes++; else dislikes++;
+    miVoto=nuevo;
+    const th = document.getElementById('ft365Thanks');
+    th.classList.add('show');
+    setTimeout(()=>th.classList.remove('show'),4000);
+  }
+  localStorage.setItem('ft365_likes', likes);
+  localStorage.setItem('ft365_dislikes', dislikes);
+  localStorage.setItem('ft365_miVoto', miVoto);
+  ft365Render();
+}
+ft365Render();
+</script>
+<!-- ===== FIN BLOQUE PREMIUM FUTBOL ===== -->
+
+
 
 <!-- === TRADUCTOR 365PERU DISCRETO - NO TAPA CHAT NI MENUS === -->
 <button id="peru-translator-discreet-btn" onclick="peruToggleTranslator()" title="Traducir página">
