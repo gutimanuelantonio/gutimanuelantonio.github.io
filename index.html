@@ -262,6 +262,26 @@ iframe[src*="netlify"], iframe[src*="squarefree"], div[id*="netlify"], a[href*="
 .goog-te-banner-frame{display:none!important;}
 body{top:0!important;}
 
+
+
+/* CONTRASTE FORMULARIO - FIX */
+#form-anuncia-simple input, #form-anuncia-simple select, #form-anuncia-simple textarea {
+  color:#111827 !important;
+  background:#ffffff !important;
+  font-weight:600 !important;
+}
+#form-anuncia-simple input::placeholder, #form-anuncia-simple textarea::placeholder {
+  color:#6b7280 !important;
+  opacity:1 !important;
+  font-weight:500 !important;
+}
+#form-anuncia-simple select {
+  color:#111827 !important;
+}
+
+/* FIX ANUNCIA PALPITANTE */
+@keyframes anunciaPalpita{0%{background:#facc15;color:#000;box-shadow:0 0 0 0 rgba(250,204,21,.7);transform:scale(1)}25%{background:#ef4444;color:#fff;box-shadow:0 0 0 8px rgba(239,68,68,0),0 0 18px rgba(239,68,68,.9);transform:scale(1.06)}50%{background:#22c55e;color:#fff;box-shadow:0 0 0 0 rgba(34,197,94,.7),0 0 18px rgba(34,197,94,.9);transform:scale(1.02)}75%{background:#facc15;color:#000;box-shadow:0 0 18px rgba(250,204,21,.9);transform:scale(1.08)}100%{background:#facc15;color:#000;box-shadow:0 0 0 0 rgba(250,204,21,.7);transform:scale(1)}}
+.btn-anuncia-fix-pulse{animation:anunciaPalpita 1.2s infinite ease-in-out !important;border:2px solid #000 !important;font-weight:900 !important;}
 </style>
 
 <style id="allons-fix-css">
@@ -1903,7 +1923,142 @@ return `
 
 
 function getAnunciaHubCardHTML(){ cargarAnuncios(); return `<div class="myblog-hub-wrap" style="border-color:#f59e0b"><div class="myblog-hub-hero" style="background:#422006"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"><div class="myblog-hub-content"><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:900;padding:4px 10px;border-radius:9999px">${anunciosDinamicos.length} NEGOCIOS FIX</span><h1 style="margin:12px 0 6px;font-size:clamp(24px,5vw,38px);font-weight:900">ANUNCIA TU NEGOCIO</h1><h2 style="margin:0 0 10px;font-size:16px;font-weight:800;color:#fde68a">¿Tienes un negocio?</h2><div style="background:rgba(0,0,0,.4);border-radius:12px;padding:10px"><p style="font-size:12px;color:#fff">Anuncia en nuestro blog - Generamos un anuncio en nuestro blog <b>Solo 20 soles</b> - Contáctame +51 901397859</p><a href="https://wa.me/51901397859?text=Hola%2C%20he%20mirado%20en%20su%20web%20para%20subir%20anuncio%20en%20su%20blog" style="background:#25D366;color:#fff;padding:10px 16px;border-radius:9999px;text-decoration:none;font-weight:900;display:inline-flex;margin-top:8px">💬 WhatsApp</a></div><button onclick="openArticulo('anuncia-hub')" class="myblog-btn-impact naranja" style="margin-top:12px;border-radius:9999px">🚀 VER ANUNCIOS →</button></div></div></div>`; }
-function getAnunciaInsideHTML(){   return `<div class="myblog-hub-wrap" style="border-color:#f59e0b;background:#ffffff"> <div style="padding:16px;background:linear-gradient(90deg,#111,#422006);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"> <h2 style="color:#fff;font-weight:900">📢 ANUNCIA • SOLO 20 SOLES</h2><button onclick="setCat('anuncia')" style="background:transparent;color:#9ca3af;border:1px solid #374151;padding:10px 16px;border-radius:9999px;font-size:11px">← Volver</button></div>   <div style="padding:18px;background:#ffffff">    <div style="background:#fcfcfd;border:2px solid #f59e0b;border-radius:18px;padding:18px;margin-bottom:18px;box-shadow:0 8px 24px rgba(245,158,11,.12)">      <div style="background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:14px;padding:14px 16px;margin:-2px -2px 16px -2px">        <h3 style="margin:0;color:#000;font-weight:900;font-size:18px">🚀 Bienvenido a 365Perú.com</h3>        <p style="margin:6px 0 0;color:rgba(0,0,0,.8);font-size:13px;line-height:1.4;font-weight:600">¿Quieres anunciar dentro de nuestro blog? Solo llena este formulario deslizable y te hablamos antes de 24 horas. Tendrás una <b>landing page profesional</b> para tu negocio.</p>        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">          <span style="background:#000;color:#fbbf24;font-size:10px;font-weight:900;padding:5px 10px;border-radius:9999px">📱 +51 901397859</span>          <span style="background:#fff;color:#000;font-size:10px;font-weight:900;padding:5px 10px;border-radius:9999px">📧 gutimanuelantonio@gmail.com</span>        </div>      </div>      <form id="form-anuncia-simple" action="https://formsubmit.co/gutimanuelantonio@gmail.com" method="POST">        <input type="hidden" name="_subject" value="NUEVO FORMULARIO ANUNCIA - 365Perú">        <input type="hidden" name="_captcha" value="false">        <input type="hidden" name="_template" value="table">        <input type="hidden" name="_next" value="https://365peru.com">        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">          <div>            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">📧 Tu correo *</label>            <input type="email" name="correo" required placeholder="tu@gmail.com" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box">          </div>          <div>            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🏪 Nombre negocio *</label>            <input type="text" name="negocio" required placeholder="Ej: Cevichería El Tumbes" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box">          </div>        </div>        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">          <div>            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🌍 País - deslizable *</label>            <select name="pais" required style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px">              <option value="">-- Selecciona --</option>              <option value="Perú">🇵🇪 Perú</option>              <option value="España">🇪🇸 España</option>              <option value="México">🇲🇽 México</option>              <option value="Argentina">🇦🇷 Argentina</option>              <option value="Chile">🇨🇱 Chile</option>              <option value="Colombia">🇨🇴 Colombia</option>              <option value="Ecuador">🇪🇨 Ecuador</option>              <option value="EEUU">🇺🇸 Estados Unidos</option>              <option value="Japón">🇯🇵 Japón</option>              <option value="Israel">🇮🇱 Israel</option>              <option value="Rusia">🇷🇺 Rusia</option>              <option value="Singapur">🇸🇬 Singapur</option>              <option value="Irán">🇮🇷 Irán</option>              <option value="Filipinas">🇵🇭 Filipinas</option>              <option value="Brasil">🇧🇷 Brasil</option>              <option value="Bolivia">🇧🇴 Bolivia</option>              <option value="Venezuela">🇻🇪 Venezuela</option>              <option value="Italia">🇮🇹 Italia</option>              <option value="Francia">🇫🇷 Francia</option>              <option value="Otros">🌐 Otros</option>            </select>          </div>          <div>            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">📂 Categoría - deslizable *</label>            <select name="categoria" required style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px">              <option value="">-- Selecciona --</option>              <option value="Restaurante">🍽️ Restaurante / Comida</option>              <option value="Ropa">👗 Ropa / Moda</option>              <option value="Tecnología">📱 Tecnología</option>              <option value="Belleza">💇 Belleza / Spa</option>              <option value="Salud">🏥 Salud</option>              <option value="Educación">📚 Educación</option>              <option value="Servicios">🔧 Servicios</option>              <option value="Transporte">🚚 Transporte</option>              <option value="Construcción">🏗️ Construcción</option>              <option value="Inmobiliaria">🏠 Inmobiliaria</option>              <option value="Marketing">💻 Marketing / Web</option>              <option value="Gimnasio">🏋️ Gimnasio</option>              <option value="Mascotas">🐶 Mascotas</option>              <option value="Bodega">🛒 Bodega</option>              <option value="Otro">📦 Otro</option>            </select>          </div>        </div>        <div style="margin-top:12px">          <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">📝 Detalles de tu negocio - con micrófono 🎤</label>          <div style="position:relative">            <textarea id="detalleNegocio" name="detalles" required placeholder="¿Qué vendes? ¿Dónde estás? Ej: Vendo ceviche en Tumbes..." style="width:100%;min-height:90px;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 44px 11px 13px;font-size:13px;box-sizing:border-box;resize:vertical"></textarea>            <button type="button" id="btnVozSimple" onclick="vozSimple()" style="position:absolute;right:8px;top:8px;background:#f3f4f6;border:1px solid #e5e7eb;width:34px;height:34px;border-radius:10px;cursor:pointer">🎤</button>          </div>          <div id="estadoVozSimple" style="font-size:10px;color:#6b7280;margin-top:4px;display:none">🎙️ Escuchando...</div>        </div>        <div style="margin-top:14px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px;font-size:11px;color:#92400e">          ✅ <b>Gratis y directo:</b> Llega directo a <b>gutimanuelantonio@gmail.com</b> y a mi WhatsApp. Sin registro.        </div>        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">          <button type="button" onclick="enviarWSPAnuncia()" style="flex:1;min-width:140px;background:#25D366;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:900;font-size:13px;cursor:pointer">💬 Enviar por WhatsApp</button>          <button type="submit" style="flex:1;min-width:140px;background:#111;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:900;font-size:13px;cursor:pointer">📧 Enviar a mi Gmail</button>        </div>      </form>    </div>    <div id="anuncia-lista-container"></div>  </div></div>`; }
+function getAnunciaInsideHTML(){   return `<div class="myblog-hub-wrap" style="border-color:#f59e0b;background:#0a0e16">
+ <div style="padding:16px;background:linear-gradient(90deg,#111,#422006);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+ <h2 style="color:#fff;font-weight:900">📢 ANUNCIA • PUBLICIDAD PROFESIONAL</h2><button onclick="setCat('anuncia')" style="background:transparent;color:#9ca3af;border:1px solid #374151;padding:10px 16px;border-radius:9999px;font-size:11px">← Volver</button></div>
+
+<div style="padding:0;background:#0a0e16">
+
+<!-- BLOQUE LIMPIO NUEVO - BIENVENIDA -->
+<div style="background:radial-gradient(1000px 300px at 15% 0%, #facc15 0%, transparent 60%), radial-gradient(700px 300px at 90% 0%, #22c55e 0%, transparent 60%), linear-gradient(180deg,#121827 0%, #0a0e16 100%); padding:26px 20px; border-bottom:1px solid #1f2937;">
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+    <span style="background:#facc15; color:#000; font-weight:900; font-size:10px; padding:5px 10px; border-radius:9999px;">🚀 365Perú.com</span>
+    <span style="background:#1f2937; color:#facc15; border:1px solid #374151; font-weight:800; font-size:9px; padding:5px 10px; border-radius:9999px;">BIENVENIDO A NUESTRO SITIO WEB</span>
+  </div>
+  <h3 style="margin:0; color:#fff; font-weight:900; font-size:22px; line-height:1.2;">¿Quieres una publicidad dentro<br>de nuestro blog?</h3>
+  <p style="margin:10px 0 0; color:#d1d5db; font-size:13px; line-height:1.6;">
+    Ofrecemos servicio de <b style="color:#facc15;">marketing y publicidad dentro de nuestro blog</b>. ¿Quieres que más clientes te vean? Te ayudamos con una <b style="color:#fff;">Landing Page profesional</b> o una página web con <b>subdominio propio, dominio, hosting, API, catálogos, banners, PayPal, MercadoPago, redes sociales enlazadas, TikTok ID Page 24/7, WhatsApp automático, formularios con preguntas y respuestas y mapa GPS con Google Maps.</b>
+  </p>
+  <p style="margin:10px 0 0; color:#9ca3af; font-size:11px;">Solamente contáctanos mediante el formulario. Llena tus datos y estaremos contactándote por WhatsApp o correo electrónico. Dentro de las 24 horas te respondemos.</p>
+  <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+    <a href="https://wa.me/51901397859" target="_blank" style="background:#22c55e; color:#fff; font-weight:900; font-size:11px; padding:8px 12px; border-radius:9999px; text-decoration:none;">💬 +51 901 397 859</a>
+    <span style="background:#fff; color:#000; font-weight:800; font-size:10px; padding:8px 12px; border-radius:9999px;">📧 gutimanuelantonio@gmail.com</span>
+  </div>
+</div>
+
+<!-- SERVICIOS CON IMAGENES BONITAS -->
+<div style="padding:18px; background:#0d111a;">
+  <h4 style="margin:0 0 12px; color:#facc15; font-weight:900; font-size:13px; text-transform:uppercase;">✨ Nuestro trabajo - Todo incluido</h4>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px;">
+    <div style="background:#111827; border:1px solid #1f2937; border-radius:12px; padding:12px; text-align:center;"><div style="font-size:22px;">🌐</div><div style="font-weight:800; color:#fff; font-size:11px; margin-top:5px;">Web Personalizada</div><div style="font-size:9px; color:#9ca3af;">Dominio + Hosting</div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&q=70&auto=format&fit=crop" style="margin-top:8px; border-radius:8px; height:70px; width:100%; object-fit:cover;"></div>
+    <div style="background:#111827; border:1px solid #1f2937; border-radius:12px; padding:12px; text-align:center;"><div style="font-size:22px;">🛒</div><div style="font-weight:800; color:#fff; font-size:11px; margin-top:5px;">Tienda 24/7</div><div style="font-size:9px; color:#9ca3af;">Catálogo + Stock</div><img src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=300&q=70&auto=format&fit=crop" style="margin-top:8px; border-radius:8px; height:70px; width:100%; object-fit:cover;"></div>
+    <div style="background:#111827; border:1px solid #1f2937; border-radius:12px; padding:12px; text-align:center;"><div style="font-size:22px;">💳</div><div style="font-weight:800; color:#fff; font-size:11px; margin-top:5px;">Pagos Online</div><div style="font-size:9px; color:#9ca3af;">PayPal / MercadoPago</div><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&q=70&auto=format&fit=crop" style="margin-top:8px; border-radius:8px; height:70px; width:100%; object-fit:cover;"></div>
+    <div style="background:#111827; border:1px solid #1f2937; border-radius:12px; padding:12px; text-align:center;"><div style="font-size:22px;">📲</div><div style="font-weight:800; color:#fff; font-size:11px; margin-top:5px;">TikTok ID Page</div><div style="font-size:9px; color:#9ca3af;">Link bio 24/7</div><img src="https://images.unsplash.com/photo-1611162616805-8f6e1d0b6d93?w=300&q=70&auto=format&fit=crop" style="margin-top:8px; border-radius:8px; height:70px; width:100%; object-fit:cover;"></div>
+    <div style="background:#111827; border:1px solid #1f2937; border-radius:12px; padding:12px; text-align:center;"><div style="font-size:22px;">📍</div><div style="font-weight:800; color:#fff; font-size:11px; margin-top:5px;">GPS + Maps</div><div style="font-size:9px; color:#9ca3af;">WhatsApp Auto</div><img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=300&q=70&auto=format&fit=crop" style="margin-top:8px; border-radius:8px; height:70px; width:100%; object-fit:cover;"></div>
+    <div style="background:#111827; border:1px solid #1f2937; border-radius:12px; padding:12px; text-align:center;"><div style="font-size:22px;">🤖</div><div style="font-weight:800; color:#fff; font-size:11px; margin-top:5px;">ChatBot + Forms</div><div style="font-size:9px; color:#9ca3af;">Q&A Automático</div><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&q=70&auto=format&fit=crop" style="margin-top:8px; border-radius:8px; height:70px; width:100%; object-fit:cover;"></div>
+  </div>
+</div>
+
+<!-- FORMULARIO BLANCO PROFESIONAL -->
+<div style="padding:18px;background:#ffffff">
+    <div style="background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:14px;padding:14px 16px;margin-bottom:16px">
+      <h3 style="margin:0;color:#000;font-weight:900;font-size:18px">🚀 Bienvenido a 365Perú.com</h3>
+      <p style="margin:6px 0 0;color:rgba(0,0,0,.8);font-size:13px;line-height:1.4;font-weight:600">¿Quieres anunciar dentro de nuestro blog? Solo llena este formulario y te hablamos antes de 24 horas. Tendrás una <b>landing page profesional</b> para tu negocio.</p>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#000;color:#fbbf24;font-size:10px;font-weight:900;padding:5px 10px;border-radius:9999px">📱 +51 901397859</span>
+        <span style="background:#fff;color:#000;font-size:10px;font-weight:900;padding:5px 10px;border-radius:9999px">📧 gutimanuelantonio@gmail.com</span>
+      </div>
+    </div>
+
+      <form id="form-anuncia-simple" action="https://formsubmit.co/gutimanuelantonio@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="NUEVO FORMULARIO ANUNCIA - 365Perú">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://365peru.com">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">👤 Nombre *</label>
+            <input type="text" name="nombre" required placeholder="Tu nombre" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box;color:#111827;font-weight:600">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">👤 Apellidos *</label>
+            <input type="text" name="apellidos" required placeholder="Apellidos" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box;color:#111827;font-weight:600">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">📞 Teléfono *</label>
+            <input type="tel" name="telefono" required placeholder="+51 9..." style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box;color:#111827;font-weight:600">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">📧 Correo *</label>
+            <input type="email" name="correo" required placeholder="tu@gmail.com" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box;color:#111827;font-weight:600">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🏪 Negocio *</label>
+            <input type="text" name="negocio" required placeholder="Ej: Cevichería El Tumbes" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;box-sizing:border-box;color:#111827;font-weight:600">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🗂️ Categoría *</label>
+            <select name="categoria" required style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;color:#111827;font-weight:600">
+              <option value="">-- Selecciona --</option>
+              <option>Restaurante / Cevichería</option><option>Pollería</option><option>Hotel / Hostal</option><option>Bodega</option><option>Ropa / Moda</option><option>Tecnología</option><option>Barbería / Salón</option><option>Gimnasio</option><option>Educación</option><option>Transporte</option><option>Talleres</option><option>Construcción</option><option>Inmobiliaria</option><option>Salud / Clínica</option><option>Mascotas</option><option>Eventos</option><option>Marketing / Web</option><option>Servicios</option><option>Farmacia</option><option>Ferretería</option><option>Calzado</option><option>Belleza / Spa</option><option>Abogados</option><option>Contadores</option><option>Otros</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🌍 País *</label>
+            <select name="pais" required style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;color:#111827;font-weight:600">
+              <option value="">--</option>
+              <option>🇵🇪 Perú</option><option>🇨🇱 Chile</option><option>🇦🇷 Argentina</option><option>🇨🇴 Colombia</option><option>🇪🇨 Ecuador</option><option>🇧🇴 Bolivia</option><option>🇲🇽 México</option><option>🇪🇸 España</option><option>🇺🇸 EEUU</option><option>🇧🇷 Brasil</option><option>🇺🇾 Uruguay</option><option>🇵🇦 Panamá</option><option>🇨🇷 Costa Rica</option><option>🇩🇴 Dominicana</option><option>🇯🇵 Japón</option><option>🇮🇱 Israel</option><option>Otro</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🏙️ Ciudad</label>
+            <select name="ciudad" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;color:#111827;font-weight:600">
+              <option value="">--</option><option>Lima</option><option>Arequipa</option><option>Trujillo</option><option>Piura</option><option>Chiclayo</option><option>Cusco</option><option>Tumbes</option><option>Tacna</option><option>Huancayo</option><option>Iquitos</option><option>Otra</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:block;margin-bottom:5px">🗣️ Idioma</label>
+            <select name="idioma" style="width:100%;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 13px;font-size:13px;color:#111827;font-weight:600">
+              <option>Español</option><option>Inglés</option><option>Portugués</option><option>Quechua</option><option>Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <label style="font-size:11px;font-weight:900;color:#111;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:5px">📝 Detalles de tu proyecto - escribe o habla <span style="background:#111;color:#fff;font-size:8px;padding:3px 6px;border-radius:9999px;">🎤 VOZ</span></label>
+          <div style="position:relative">
+            <textarea id="detalleNegocio" name="detalles" required placeholder="¿Qué vendes? ¿Dónde estás? Ej: Vendo ceviche en Tumbes..." style="width:100%;min-height:90px;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:11px 44px 11px 13px;font-size:13px;box-sizing:border-box;resize:vertical;color:#111827;font-weight:600"></textarea>
+            <button type="button" id="btnVozSimple" onclick="vozSimple()" style="position:absolute;right:8px;top:8px;background:#111827;color:#fff;border:1px solid #374151;width:34px;height:34px;border-radius:10px;cursor:pointer;transition:all .2s;">🎤</button>
+          </div>
+          <div id="estadoVozSimple" style="font-size:10px;color:#22c55e;font-weight:800;margin-top:4px;display:none">● Escuchando... habla ahora, el texto se escribe solo</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:4px;">Puedes escribir y puedes hablar y se escribirá el texto automáticamente.</div>
+        </div>
+
+        <div style="margin-top:14px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px;font-size:11px;color:#92400e">
+          ✅ <b>Gratis y directo:</b> Llega directo a <b>gutimanuelantonio@gmail.com</b> y a mi WhatsApp. Sin registro.
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+          <button type="button" onclick="enviarWSPAnuncia()" style="flex:1;min-width:140px;background:#25D366;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:900;font-size:13px;cursor:pointer">💬 Enviar por WhatsApp</button>
+          <button type="submit" style="flex:1;min-width:140px;background:#111;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:900;font-size:13px;cursor:pointer">📧 Enviar a mi Gmail</button>
+        </div>
+        <div style="text-align:center;margin-top:10px;font-size:11px;color:#6b7280;font-weight:600;">⏰ Dentro de las 24 horas te contactamos. Llena el formulario y te enviamos la info adecuada.</div>
+      </form>
+    </div>
+    <div id="anuncia-lista-container"></div>
+  </div></div>`; }
+
+
 
 function renderAnunciaLista(){
   const cont=document.getElementById('anuncia-lista-container'); if(!cont) return;
@@ -2196,7 +2351,7 @@ function render(){
 <button onclick="setCat('deportes')" style="padding:6px 12px;border-radius:9999px;border:1px solid #0284c7;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='deportes'?'background:#0284c7;color:#fff':'color:#0284c7'}">⚽ Deportes FIX</button>
 <button onclick="setCat('videos')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='videos'?'background:#111;color:#fff':''}">🎬 Videos FIX</button>
 <button onclick="setCat('religion')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='religion'?'background:#111;color:#fff':''}">📺 Entretenimiento</button>
-<button onclick="setCat('anuncia')" style="padding:6px 12px;border-radius:9999px;border:1px solid #f59e0b;font-size:11px;font-weight:900;white-space:nowrap;${currentCat==='anuncia'?'background:#f59e0b;color:#000':'background:#fef3c7;color:#92400e'}">📢 Anuncia FIX</button>
+<button onclick="setCat('anuncia')" style="padding:6px 12px;border-radius:9999px;border:1px solid #f59e0b;font-size:11px;font-weight:900;white-space:nowrap;background:#facc15;color:#000" class="btn-anuncia-fix-pulse">📢 Anuncia FIX</button>
 <button onclick="openProductosPlanes365()" style="padding:6px 12px;border-radius:9999px;border:1px solid #00E5FF;font-size:11px;font-weight:900;white-space:nowrap;background:linear-gradient(90deg,#00E5FF,#C8FF3D);color:#04070c;box-shadow:0 0 12px rgba(0,229,255,.3)">📦 Productos / Planes</button>
 <div class="allons-dropdown">
 <button onclick="toggleAllons(event)" class="allons-dropdown-btn ${currentCat==='servicios'?'active':''}" id="allonsBtn">🛠 Servicios Allons-y <span class="arrow" id="allonsArrow">▼</span></button>
