@@ -208,82 +208,6 @@ img{max-width:100%;display:block}iframe{max-width:100%}
 }
 
 
-#view-analisis-deportivo-full{position:fixed;inset:0;z-index:10001;background:#0a0f14;display:none;flex-direction:column;overflow-y:auto}
-#view-analisis-deportivo-full.open{display:flex}
-.ad-full-header{position:sticky;top:0;z-index:2;background:rgba(10,15,20,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,255,136,.15);padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
-.ad-full-body{flex:1;width:100%;max-width:1280px;margin:0 auto;padding:12px;box-sizing:border-box}
-.ad-full-iframe-wrap{width:100%;min-height:calc(100vh - 160px);background:#fff;border-radius:16px;overflow:hidden;border:2px solid #00FF88;box-shadow:0 12px 32px rgba(0,255,136,.15)}
-.ad-full-iframe-wrap iframe{width:100%!important;height:100%!important;min-height:900px;border:0}
-.ad-full-bottom{position:sticky;bottom:0;background:rgba(10,15,20,.97);border-top:2px solid #00FF88;padding:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.pp-big{padding:14px 22px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:none;transition:.2s}
-.pp-big.vol{background:linear-gradient(135deg,#111827,#1f2937);color:#fff;border:1px solid #374151}
-.pp-big.ini{background:linear-gradient(135deg,#00FF88,#10b981);color:#0a0f14}
-.pp-big:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.25)}
-
-</style>
-<script>
-// ===== SLIDER + LIVE META - NUEVO 2026 - NO TOCA NADA ORIGINAL =====
-let heroIndex=0;
-let heroTimer=null;
-function initHeroSlider(){
-  const slides=document.querySelectorAll('.hero-slide');
-  const dots=document.querySelectorAll('.hero-dot');
-  if(!slides.length) return;
-  function show(n){
-    slides.forEach((s,i)=> s.classList.toggle('active', i===n));
-    dots.forEach((d,i)=> d.classList.toggle('active', i===n));
-    heroIndex=n;
-  }
-  window.heroNext=function(){ show((heroIndex+1)%slides.length) }
-  window.heroPrev=function(){ show((heroIndex-1+slides.length)%slides.length) }
-  window.heroGo=function(n){ show(n); reset() }
-  function reset(){
-    clearInterval(heroTimer);
-    heroTimer=setInterval(()=> heroNext(), 4000);
-  }
-  show(0); reset();
-}
-function initLiveClocks(){
-  function update(){
-    const now=new Date();
-    // fecha larga
-    const fechaEl=document.getElementById('live-fecha');
-    if(fechaEl){
-      fechaEl.textContent= now.toLocaleDateString('es-PE',{weekday:'long', day:'numeric', month:'long', year:'numeric'});
-    }
-    const opts={hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false};
-    const lima=now.toLocaleTimeString('es-PE',{...opts,timeZone:'America/Lima'});
-    const madrid=now.toLocaleTimeString('es-ES',{...opts,timeZone:'Europe/Madrid'});
-    const ny=now.toLocaleTimeString('en-US',{...opts,timeZone:'America/New_York'});
-    const e1=document.getElementById('clock-lima'); if(e1) e1.textContent=lima;
-    const e2=document.getElementById('clock-madrid'); if(e2) e2.textContent=madrid;
-    const e3=document.getElementById('clock-ny'); if(e3) e3.textContent=ny;
-  }
-  update(); setInterval(update,1000);
-}
-async function initDollar(){
-  // fallback inicial
-  const setVals=(pen,eur)=>{
-    const a=document.getElementById('usd-pen'); if(a) a.textContent=`S/ ${pen}`;
-    const b=document.getElementById('usd-eur'); if(b) b.textContent=`€ ${eur}`;
-    const c=document.getElementById('usd-usd'); if(c) c.textContent=`$ 1.00`;
-    const d=document.getElementById('dolar-fecha'); if(d) d.textContent=new Date().toLocaleDateString('es-PE');
-  };
-  setVals('3.78','0.92'); // fallback
-  try{
-    const r=await fetch('https://open.er-api.com/v6/latest/USD');
-    const j=await r.json();
-    if(j && j.rates){
-      const pen=j.rates.PEN ? j.rates.PEN.toFixed(3) : '3.78';
-      const eur=j.rates.EUR ? j.rates.EUR.toFixed(3) : '0.92';
-      setVals(pen,eur);
-    }
-  }catch(e){ console.log('dolar offline',e) }
-}
-</script><style>
-/* === FIX 365PERU: CHAT ARRIBA + OCULTAR NETLIFY / SQUAREFREE BADGE === */
-#chatFix365{bottom:85px!important;right:16px!important;z-index:9999999!important;}
-@media(max-width:768px){#chatFix365{bottom:95px!important;right:14px!important;width:58px!important;height:58px!important;}}
 /* Tapa el banner de Netlify / Squarefree que sale abajo derecha */
 iframe[src*="netlify"], iframe[src*="squarefree"], div[id*="netlify"], a[href*="app.netlify.com"]{display:none!important;}
 /* Si Squarefree pone un footer flotante abajo, lo empujamos y lo tapamos con nuestro chat */
@@ -376,35 +300,16 @@ body{top:0!important;}
 </script>
 
 
-/* === 365PERU DEPORTIVO PRO INTEGRATION - RESPONSIVE === */
+
+
+<style id="fix-deportivo-pro">
 #view-analisis-deportivo-full{position:fixed;inset:0;background:#0a0a0a;z-index:99999;display:none;overflow-y:auto;overflow-x:hidden}
 #view-analisis-deportivo-full.open{display:block}
-.ad-pro-wrapper{width:100%;min-height:100vh;background:#0a0a0a;color:#fff;font-family:Inter,system-ui}
-.ad-pro-inner{max-width:1280px;margin:0 auto;padding:12px}
-@media(min-width:1024px){.ad-pro-inner{padding:20px}}
-
-
-<style id="apuestas-menu-effect">
-@keyframes apuestasBlink {
-  0%,100% { box-shadow:0 0 12px rgba(0,255,136,.5); border-color:#00ff88; transform:scale(1); }
-  50% { box-shadow:0 0 24px rgba(0,255,136,.9),0 0 8px #00ff88; border-color:#00ff88; transform:scale(1.05); }
-}
-@keyframes apuestasActive {
-  0% { background-position:0% 50%; }
-  100% { background-position:100% 50%; }
-}
-.btn-apuestas-active {
-  background:linear-gradient(90deg,#00ff88,#ff1a1a,#00ff88) !important;
-  background-size:200% 100% !important;
-  color:#fff !important;
-  animation:apuestasActive 2s linear infinite, apuestasBlink 1s infinite !important;
-  border:2px solid #fff !important;
-}
-#view-analisis-deportivo-full{position:fixed;inset:0;background:#0a0a0a;z-index:99999;display:none;overflow-y:auto;overflow-x:hidden}
-#view-analisis-deportivo-full.open{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 </style>
-
+<style id="apuestas-menu-effect">
+@keyframes apuestasBlink{0%,100%{box-shadow:0 0 12px rgba(0,255,136,.5);border-color:#00ff88;transform:scale(1)}50%{box-shadow:0 0 24px rgba(0,255,136,.9);border-color:#00ff88;transform:scale(1.05)}}
+.btn-apuestas-active{background:linear-gradient(90deg,#00ff88,#ff1a1a,#00ff88)!important;background-size:200% 100%!important;color:#fff!important;animation:apuestasBlink 1s infinite!important;border:2px solid #fff!important}
+</style>
 </head>
 <body class="min-h-screen pb-[140px]">
 
@@ -2956,35 +2861,16 @@ document.addEventListener('click',function(ev){
 </script>
 
 
-/* === 365PERU DEPORTIVO PRO INTEGRATION - RESPONSIVE === */
+
+
+<style id="fix-deportivo-pro">
 #view-analisis-deportivo-full{position:fixed;inset:0;background:#0a0a0a;z-index:99999;display:none;overflow-y:auto;overflow-x:hidden}
 #view-analisis-deportivo-full.open{display:block}
-.ad-pro-wrapper{width:100%;min-height:100vh;background:#0a0a0a;color:#fff;font-family:Inter,system-ui}
-.ad-pro-inner{max-width:1280px;margin:0 auto;padding:12px}
-@media(min-width:1024px){.ad-pro-inner{padding:20px}}
-
-
-<style id="apuestas-menu-effect">
-@keyframes apuestasBlink {
-  0%,100% { box-shadow:0 0 12px rgba(0,255,136,.5); border-color:#00ff88; transform:scale(1); }
-  50% { box-shadow:0 0 24px rgba(0,255,136,.9),0 0 8px #00ff88; border-color:#00ff88; transform:scale(1.05); }
-}
-@keyframes apuestasActive {
-  0% { background-position:0% 50%; }
-  100% { background-position:100% 50%; }
-}
-.btn-apuestas-active {
-  background:linear-gradient(90deg,#00ff88,#ff1a1a,#00ff88) !important;
-  background-size:200% 100% !important;
-  color:#fff !important;
-  animation:apuestasActive 2s linear infinite, apuestasBlink 1s infinite !important;
-  border:2px solid #fff !important;
-}
-#view-analisis-deportivo-full{position:fixed;inset:0;background:#0a0a0a;z-index:99999;display:none;overflow-y:auto;overflow-x:hidden}
-#view-analisis-deportivo-full.open{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 </style>
-
+<style id="apuestas-menu-effect">
+@keyframes apuestasBlink{0%,100%{box-shadow:0 0 12px rgba(0,255,136,.5);border-color:#00ff88;transform:scale(1)}50%{box-shadow:0 0 24px rgba(0,255,136,.9);border-color:#00ff88;transform:scale(1.05)}}
+.btn-apuestas-active{background:linear-gradient(90deg,#00ff88,#ff1a1a,#00ff88)!important;background-size:200% 100%!important;color:#fff!important;animation:apuestasBlink 1s infinite!important;border:2px solid #fff!important}
+</style>
 </head>
 <body>
 <div class="bg-grid"></div>
