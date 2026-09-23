@@ -333,43 +333,197 @@ body{top:0!important;}
 </head>
 <body class="min-h-screen pb-[140px]">
 
-<!-- ===== BLOQUE PANAMERICANA - REEMPLAZA SALIDA 8 - NO TOCA MENUS ===== -->
+
+<!-- ===== BLOQUE REPRODUCTORES - REEMPLAZA SALIDA 8 - NO TOCA MENUS ===== -->
 <div id="salida8-top-wrapper" style="max-width:1280px;margin:18px auto 20px;padding:0 12px;box-sizing:border-box;">
 <div style="max-width:1160px;margin:0 auto;background:#0e0e0e;border:2px solid #ff0a16;border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px #1a1a1a;">
-  <div style="padding:18px 22px 14px 22px;display:flex;justify-content:space-between;gap:20px;">
-    <div style="flex:1;min-width:0;">
-      <h1 style="margin:0;font-size:26px;font-weight:900;letter-spacing:-0.5px;line-height:1.1;text-transform:uppercase;">
-        <span style="color:#ff0a16;">PANAMERICANA</span> <span style="color:#ffffff;">— TV EN VIVO</span>
+  <!-- SELECTOR SUPERIOR -->
+  <div style="background:#000;border-bottom:1px solid #1f1f1f;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;">
+    <div style="display:flex;gap:6px;align-items:center;">
+      <span style="color:#444;font-size:10px;font-weight:800;letter-spacing:.08em;margin-right:6px;">REPRODUCTORES:</span>
+      <button onclick="cambiarPeli(0)" id="btn-peli-1" style="min-width:36px;height:32px;padding:0 12px;border-radius:4px;border:1px solid #ff0a16;background:#ff0a16;color:#fff;font-weight:900;font-size:13px;cursor:pointer;">1</button>
+      <button onclick="cambiarPeli(1)" id="btn-peli-2" style="min-width:36px;height:32px;padding:0 12px;border-radius:4px;border:1px solid #2a2a2a;background:#1a1a1a;color:#999;font-weight:800;font-size:13px;cursor:pointer;">2</button>
+      <button onclick="cambiarPeli(2)" id="btn-peli-3" style="min-width:36px;height:32px;padding:0 12px;border-radius:4px;border:1px solid #2a2a2a;background:#1a1a1a;color:#999;font-weight:800;font-size:13px;cursor:pointer;">3</button>
+      <button onclick="cambiarPeli(3)" id="btn-peli-4" style="min-width:36px;height:32px;padding:0 12px;border-radius:4px;border:1px solid #2a2a2a;background:#1a1a1a;color:#999;font-weight:800;font-size:13px;cursor:pointer;">4</button>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span id="visitas-live" style="background:#1a1a1a;border:1px solid #2a2a2a;color:#aaa;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite;"></span><span id="visitas-num">0</span> viendo</span>
+      <button id="btn-like" onclick="toggleLike()" style="background:#1a1a1a;border:1px solid #2a2a2a;color:#999;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:5px;">❤️ <span id="like-text">Me gusta</span> <span id="like-num" style="background:#222;padding:2px 6px;border-radius:3px;font-size:10px;">0</span></button>
+    </div>
+  </div>
+
+  <div style="padding:18px 22px 14px 22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <h1 id="peli-titulo" style="margin:0;font-size:26px;font-weight:900;letter-spacing:-0.5px;line-height:1.1;text-transform:uppercase;">
+        <span id="peli-sub-rojo" style="color:#ff0a16;">PANAMERICANA</span> <span id="peli-sub-blanco" style="color:#ffffff;">— TV EN VIVO</span>
       </h1>
-      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;">
-        <span style="background:#ff0a16;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900">EN VIVO</span>
-        <span style="background:#222;border:1px solid #333;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700">NACIONAL</span>
-        <span style="background:#222;border:1px solid #333;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700">NOTICIAS</span>
-        <span style="background:#222;border:1px solid #333;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700">TV PERÚ</span>
-        <span style="background:#facc15;color:#000;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900">HD 1080p</span>
-        <span style="background:#222;border:1px solid #333;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700">1959</span>
-        <span style="background:#222;border:1px solid #333;color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700">24/7</span>
-      </div>
-      <p style="margin:16px 0 0 0;color:#c9c9c9;font-size:13.5px;line-height:1.55;max-width:760px;">
-        <strong style="color:#ffffff;">Panamericana Televisión es una cadena de televisión abierta peruana,</strong> la cual inició sus transmisiones en 1959. Es la tercera red de televisión comercial más antigua del país, después de TV Perú y América Televisión, respectivamente.
-      </p>
+      <div id="peli-tags" style="display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;"></div>
+      <p id="peli-desc" style="margin:16px 0 0 0;color:#c9c9c9;font-size:13.5px;line-height:1.55;max-width:760px;"></p>
     </div>
-    <div style="width:200px;flex-shrink:0;text-align:left;font-size:12px;line-height:1.5;">
-      <div style="margin-bottom:12px;"><div style="color:#fff;font-weight:700">Cadena:</div><div style="color:#9a9a9a;">Panamericana Televisión</div></div>
-      <div style="margin-bottom:12px;"><div style="color:#fff;font-weight:700">Audio:</div><div style="color:#9a9a9a;">Latino / En Vivo</div></div>
-      <div style="margin-bottom:12px;"><div style="color:#fff;font-weight:700">Calidad:</div><div style="color:#9a9a9a;">Full HD 1080p</div></div>
-      <div style="margin-bottom:12px;"><div style="color:#fff;font-weight:700">Categoría:</div><div style="color:#9a9a9a;">TV Perú · Nacional</div></div>
-    </div>
+    <div id="peli-sidebar" style="width:200px;flex-shrink:0;text-align:left;font-size:12px;line-height:1.5;"></div>
   </div>
+
   <div style="width:100%;height:0;padding-bottom:56.25%;position:relative;background:#000">
-    <iframe allow="autoplay; fullscreen; picture-in-picture; encrypted-media; web-share" class="dailymotion-player" frameborder="0" src="https://geo.dailymotion.com/player/x1ks1a.html?video=xa50i1c" title="Dailymotion video player - Panamericana TV En Vivo" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe>
+    <iframe id="peli-iframe" src="https://geo.dailymotion.com/player/x1ks1a.html?video=xa50i1c" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; web-share" frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" title="Player"></iframe>
   </div>
-  <div style="background:#0e0e0e;border-top:1px solid #1f1f1f;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
-    <span style="color:#555;font-size:11px;">🌐 ES • Panamericana Televisión · En Vivo · Perú</span>
-    <span style="background:linear-gradient(90deg,#22d3ee,#a3e635);color:#000;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:800;">📦 Productos / Planes</span>
+
+  <div style="background:#0a0a0a;border-top:1px solid #1a1a1a;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <span style="color:#444;font-size:10px;letter-spacing:.05em;text-transform:uppercase;">Bloque #1 · Full HD · Player integrado</span>
+    <span style="color:#333;font-size:10px;">Diseño oscuro premium · #0a0a0a · borde #ff0a16</span>
   </div>
 </div>
 </div>
+
+<script>
+const pelis = [
+  {
+    id:1,
+    tituloRojo:"PANAMERICANA",
+    tituloBlanco:"— TV EN VIVO",
+    tags:[{text:"EN VIVO",c:"#ff0a16",t:"#fff"},{text:"NACIONAL",c:"#222",t:"#fff"},{text:"NOTICIAS",c:"#222",t:"#fff"},{text:"TV PERÚ",c:"#222",t:"#fff"},{text:"HD 1080p",c:"#facc15",t:"#000"},{text:"1959",c:"#222",t:"#fff"},{text:"24/7",c:"#222",t:"#fff"}],
+    desc:'<strong style="color:#ffffff;">Panamericana Televisión es una cadena de televisión abierta peruana,</strong> la cual inició sus transmisiones en 1959. Es la tercera red de televisión comercial más antigua del país, después de TV Perú y América Televisión, respectivamente.',
+    sidebar:[{l:"Cadena",v:"Panamericana Televisión"},{l:"Audio",v:"Latino / En Vivo"},{l:"Calidad",v:"Full HD 1080p"},{l:"Categoría",v:"TV Perú · Nacional"},{l:"Transmisión",v:"24 horas en directo"}],
+    iframe:"https://geo.dailymotion.com/player/x1ks1a.html?video=xa50i1c",
+    visitasBase:3241,likesBase:892
+  },
+  {
+    id:2,
+    tituloRojo:"EL EXORCISTA DEL PAPA",
+    tituloBlanco:"— TERROR 2023",
+    tags:[{text:"TERROR",c:"#ff0a16",t:"#fff"},{text:"ESTRENO",c:"#222",t:"#fff"},{text:"HD 1080p",c:"#facc15",t:"#000"},{text:"LATINO",c:"#222",t:"#fff"},{text:"1h 43m",c:"#222",t:"#fff"},{text:"+16",c:"#222",t:"#fff"}],
+    desc:'<strong style="color:#ffffff;">Película sobre Gabriele Amorth, un sacerdote que ejerció como exorcista principal del Vaticano,</strong> realizando más de cien mil exorcismos a lo largo de su vida. Amorth escribió dos libros de memorias donde detalló sus experiencias luchando contra Satanás.',
+    sidebar:[{l:"Título",v:"El Exorcista del Papa"},{l:"Audio",v:"Latino"},{l:"Calidad",v:"Full HD 1080p"},{l:"Categoría",v:"Terror · Basada en hechos reales"},{l:"Año",v:"2023"}],
+    iframe:"https://morencius.com/embed/f7h9qq9eo3jl",
+    visitasBase:2184,likesBase:513
+  },
+  {
+    id:3,
+    tituloRojo:"QUANTUM SUPREMACY",
+    tituloBlanco:"— CIENCIA FICCIÓN 2024",
+    tags:[{text:"CIENCIA FICCIÓN",c:"#22d3ee",t:"#000"},{text:"ACCIÓN",c:"#222",t:"#fff"},{text:"HD 1080p",c:"#facc15",t:"#000"},{text:"LATINO",c:"#222",t:"#fff"},{text:"2h 05m",c:"#222",t:"#fff"},{text:"+14",c:"#222",t:"#fff"}],
+    desc:'<strong style="color:#ffffff;">En un futuro amenazado por robots deshonestos y una IA todopoderosa,</strong> el Capitán Monroe y su tripulación corren para evitar la caída de la humanidad. Una batalla épica por la supervivencia.',
+    sidebar:[{l:"Título",v:"Quantum Supremacy"},{l:"Audio",v:"Latino"},{l:"Calidad",v:"Full HD 1080p"},{l:"Categoría",v:"Ciencia Ficción · Acción"},{l:"Año",v:"2024"}],
+    iframe:"https://morencius.com/embed/fdzcasuklho4",
+    visitasBase:1765,likesBase:398
+  },
+  {
+    id:4,
+    tituloRojo:"TALLER CLANDESTINO",
+    tituloBlanco:"— DRAMA 2024",
+    tags:[{text:"DRAMA",c:"#facc15",t:"#000"},{text:"EXCLUSIVO",c:"#222",t:"#fff"},{text:"HD 1080p",c:"#facc15",t:"#000"},{text:"LATINO",c:"#222",t:"#fff"},{text:"1h 52m",c:"#222",t:"#fff"},{text:"+14",c:"#222",t:"#fff"}],
+    desc:'<strong style="color:#ffffff;">Una mirada a los estragos de las redes sociales</strong> a través de los ojos de Daisy Moriarty, quien, mientras lidia con una caótica vida personal, se ve inmersa en los entresijos de Internet.',
+    sidebar:[{l:"Título",v:"Taller Clandestino Estadounidense"},{l:"Audio",v:"Latino"},{l:"Calidad",v:"Full HD 1080p"},{l:"Categoría",v:"Drama · Social"},{l:"Año",v:"2024"}],
+    iframe:"https://morencius.com/embed/gg2x8fqooc4v",
+    visitasBase:1342,likesBase:287
+  }
+];
+
+let peliActual = 0;
+function renderTags(tags){
+  const cont = document.getElementById('peli-tags');
+  cont.innerHTML = '';
+  tags.forEach(t=>{
+    const s = document.createElement('span');
+    s.textContent = t.text;
+    let bg = t.c;
+    let color = t.t;
+    let border = (bg==='#222' || bg==='#1a1a1a') ? '1px solid #333' : 'none';
+    let extra = (bg==='#ff0a16') ? 'font-weight:900' : 'font-weight:700';
+    s.style.cssText = `background:${bg};color:${color};padding:5px 12px;border-radius:20px;font-size:11px;${extra};border:${border};display:inline-block;`;
+    if(bg==='#facc15') s.style.color = '#000';
+    cont.appendChild(s);
+  });
+}
+function renderSidebar(items){
+  const cont = document.getElementById('peli-sidebar');
+  cont.innerHTML='';
+  items.forEach(it=>{
+    const d = document.createElement('div');
+    d.style.marginBottom='12px';
+    d.innerHTML = `<div style="color:#fff;font-weight:700">${it.l}:</div><div style="color:#9a9a9a;">${it.v}</div>`;
+    cont.appendChild(d);
+  });
+}
+function cambiarPeli(idx){
+  peliActual = idx;
+  const p = pelis[idx];
+  document.getElementById('peli-sub-rojo').textContent = p.tituloRojo;
+  document.getElementById('peli-sub-blanco').textContent = p.tituloBlanco;
+  document.getElementById('peli-desc').innerHTML = p.desc;
+  document.getElementById('peli-iframe').src = p.iframe;
+  renderTags(p.tags);
+  renderSidebar(p.sidebar);
+  // botones
+  for(let i=0;i<4;i++){
+    const b = document.getElementById('btn-peli-'+(i+1));
+    if(i===idx){
+      b.style.background='#ff0a16'; b.style.borderColor='#ff0a16'; b.style.color='#fff';
+    }else{
+      b.style.background='#1a1a1a'; b.style.borderColor='#2a2a2a'; b.style.color='#999';
+    }
+  }
+  actualizarContadores();
+  localStorage.setItem('peli_actual_idx', idx);
+  // scroll suave al player en mobile
+  if(window.innerWidth<768){
+    document.getElementById('peli-iframe').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+function actualizarContadores(){
+  const p = pelis[peliActual];
+  // visitas
+  let baseV = p.visitasBase;
+  let visitas = parseInt(localStorage.getItem('visitas_peli_'+p.id) || baseV);
+  // +1 primera vez en sesión
+  if(!sessionStorage.getItem('visitado_peli_'+p.id)){
+    visitas += 1;
+    sessionStorage.setItem('visitado_peli_'+p.id,'1');
+    localStorage.setItem('visitas_peli_'+p.id, visitas);
+  }
+  document.getElementById('visitas-num').textContent = visitas.toLocaleString('es-PE');
+  // likes
+  let likes = parseInt(localStorage.getItem('likes_peli_'+p.id) || p.likesBase);
+  let liked = localStorage.getItem('liked_peli_'+p.id)==='1';
+  document.getElementById('like-num').textContent = likes.toLocaleString('es-PE');
+  document.getElementById('like-text').textContent = liked ? '¡Te gusta!' : 'Me gusta';
+  const btnLike = document.getElementById('btn-like');
+  if(liked){
+    btnLike.style.background='#ff0a16'; btnLike.style.borderColor='#ff0a16'; btnLike.style.color='#fff';
+  }else{
+    btnLike.style.background='#1a1a1a'; btnLike.style.borderColor='#2a2a2a'; btnLike.style.color='#999';
+  }
+}
+function toggleLike(){
+  const p = pelis[peliActual];
+  let likes = parseInt(localStorage.getItem('likes_peli_'+p.id) || p.likesBase);
+  let liked = localStorage.getItem('liked_peli_'+p.id)==='1';
+  if(liked){
+    likes = Math.max(0, likes-1);
+    localStorage.setItem('liked_peli_'+p.id,'0');
+  }else{
+    likes +=1;
+    localStorage.setItem('liked_peli_'+p.id,'1');
+  }
+  localStorage.setItem('likes_peli_'+p.id, likes);
+  actualizarContadores();
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+  let idx = parseInt(localStorage.getItem('peli_actual_idx')||'0');
+  if(idx<0||idx>3) idx=0;
+  cambiarPeli(idx);
+  // simulación live visitas +/- cada 4s
+  setInterval(()=>{
+    const p = pelis[peliActual];
+    let visitas = parseInt(localStorage.getItem('visitas_peli_'+p.id) || p.visitasBase);
+    visitas += (Math.random()>0.5?1:-1);
+    if(visitas < p.visitasBase) visitas = p.visitasBase;
+    localStorage.setItem('visitas_peli_'+p.id, visitas);
+    document.getElementById('visitas-num').textContent = visitas.toLocaleString('es-PE');
+  },4000);
+});
+</script>
+<style>@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}</style>
+
 <!-- ===== FIN BLOQUE PANAMERICANA ===== -->
 
 
