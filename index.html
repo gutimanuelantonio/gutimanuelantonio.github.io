@@ -3414,6 +3414,10 @@ html{scroll-behavior:smooth;}
     <button class="channel-btn" onclick="changeChannel('espn2', this)">ESPN 2</button>
     <button class="channel-btn" onclick="changeChannel('tudn', this)">TUDN</button>
     <button class="channel-btn" onclick="changeChannel('univision', this)">Univisión</button>
+    <button class="channel-btn" onclick="changeChannel('https://streamxhd.com/live1.php?stream=disney3', this)" style="background:#1e1b4b;">DISNEY+ 3</button>
+    <button class="channel-btn" onclick="changeChannel('https://streamxhd.com/live1.php?stream=disney4', this)" style="background:#1e1b4b;">DISNEY+ 4</button>
+    <button class="channel-btn" onclick="changeChannel('https://streamxhd.com/live1.php?stream=espnar', this)" style="background:#7f1d1d;">ESPN ARG</button>
+    <button class="channel-btn" onclick="changeChannel('https://streamxhd.com/live1.php?stream=disney7', this)" style="background:#1e1b4b;">DISNEY+ 7</button>
   </div>
 </div>
 
@@ -3447,7 +3451,7 @@ html{scroll-behavior:smooth;}
   </div>
 </div>
 <script>
-function changeChannel(streamName, buttonElement) { const iframe = document.getElementById('mainVideoPlayer'); if(iframe){ iframe.src = `https://tvf90.com/online/canal.php?stream=${streamName}`; } const buttons = document.querySelectorAll('.channel-btn'); buttons.forEach(btn => { btn.classList.remove('active'); btn.style.background='#334155'; }); buttonElement.classList.add('active'); buttonElement.style.background='#2563eb'; }
+function changeChannel(streamName, buttonElement) { const iframe = document.getElementById('mainVideoPlayer'); if(iframe){ if(streamName.startsWith('http')){ iframe.src = streamName; } else { iframe.src = `https://tvf90.com/online/canal.php?stream=${streamName}`; } } const buttons = document.querySelectorAll('.channel-btn'); buttons.forEach(btn => { btn.classList.remove('active'); btn.style.background='#334155'; }); buttonElement.classList.add('active'); buttonElement.style.background='#2563eb'; }
 function openUefaFull(){ 
   const el=document.getElementById('view-uefa-full');
   el.classList.add('open');
