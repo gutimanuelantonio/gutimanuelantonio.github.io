@@ -3515,7 +3515,14 @@ html{scroll-behavior:smooth;}
 @media(max-width:800px){.page{width:94%;}.matches{grid-template-columns:1fr;}.teams-main{grid-template-columns:1fr 65px 1fr;}.news-header-main{padding:24px 20px;}.section-head{align-items:flex-start;flex-direction:column;gap:5px;}}
 @media(max-width:520px){.topbar-inner{min-height:42px;}.brand{font-size:13px;}.top-date{display:none;}.news-header{border-radius:12px;}.news-header-main{padding:22px 17px;}.news-title{font-size:34px;}.header-info{padding:12px;}.main-match{border-radius:14px;}.main-match-body{padding:23px 14px;}.teams-main{grid-template-columns:1fr;gap:8px;}.vs-main{font-size:27px;}.flag-main{font-size:57px;}.team-main{font-size:23px;}.main-detail{width:100%;text-align:center;}.match-body{padding:18px 14px 15px;}.team{font-size:14px;}.flag{font-size:34px;}}
 
-  #view-uefa-full .return-bar{position:sticky;bottom:0;left:0;right:0;background:#07111f;padding:16px;display:flex;justify-content:center;gap:12px;z-index:10;border-top:3px solid #e30613;}
+  .video-player-container{width:100%;max-width:900px;margin:20px auto;background:#0f172a;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);}
+.iframe-wrapper{position:relative;width:100%;padding-top:56.25%;}
+.iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.channel-buttons-bar{display:flex;flex-wrap:wrap;gap:10px;padding:15px;background:#1e293b;justify-content:center;border-top:1px solid #334155;}
+.channel-btn{background:#334155;color:#f8fafc;border:none;padding:10px 20px;font-size:14px;font-weight:600;border-radius:8px;cursor:pointer;transition:all 0.2s ease-in-out;}
+.channel-btn:hover{background:#475569;transform:translateY(-1px);}
+.channel-btn.active{background:#2563eb;color:#ffffff;box-shadow:0 4px 12px rgba(37,99,235,0.4);}
+#view-uefa-full .return-bar{position:sticky;bottom:0;left:0;right:0;background:#07111f;padding:16px;display:flex;justify-content:center;gap:12px;z-index:10;border-top:3px solid #e30613;}
   #view-uefa-full .btn-volver{background:linear-gradient(90deg,#ffcc00,#ffae00);color:#000;font-weight:900;padding:14px 28px;border-radius:12px;border:2px solid #000;cursor:pointer;font-size:14px;text-transform:uppercase;}
   </style>
   <div class="topbar"><div class="topbar-inner"><div class="brand">365<span>PERÚ</span> · FÚTBOL</div><div class="top-date">JUEVES 24 DE SEPTIEMBRE DE 2026</div></div></div>
@@ -3524,7 +3531,7 @@ html{scroll-behavior:smooth;}
 <header class="news-header"><div class="news-header-main"><div class="category">UEFA NATIONS LEAGUE</div><h1 class="news-title">UEFA NATIONS <span>LEAGUE 2026/27</span></h1><p class="news-subtitle">Programación completa · Jornada 1 · Jueves 24 de septiembre</p></div><div class="header-info"><div class="header-pill">📅 24 SEPTIEMBRE 2026</div><div class="header-pill">🇵🇪 HORA DE PERÚ</div><div class="header-pill">⚽ JORNADA 1</div><div class="header-pill">🏆 UEFA NATIONS LEAGUE</div></div></header>
 <div class="alert"><strong>📢 PROGRAMACIÓN:</strong> La fase de liga de la UEFA Nations League 2026/27 comienza el jueves 24 de septiembre. La jornada incluye ocho encuentros.</div>
 <section class="main-match"><div class="main-match-top"><div class="live-dot"><i></i>PARTIDO DESTACADO</div><div>GRUPO A4</div></div><div class="main-match-body"><div class="match-label">PRIMER PARTIDO DESTACADO · TRANSMISIÓN POR ESTE MEDIO</div><div class="teams-main"><div class="team-main"><span class="flag-main">🇳🇴</span>NORUEGA</div><div class="vs-main">VS</div><div class="team-main"><span class="flag-main">🇩🇰</span>DINAMARCA</div></div><div class="main-details"><div class="main-detail">🕐 <strong>1:45 PM</strong> · PERÚ</div><div class="main-detail">📅 Jueves 24/09/2026</div><div class="main-detail">🏟 Ullevaal Stadion · Oslo</div></div><div class="broadcast">🔴 TRANSMISIÓN EN VIVO POR ESTE MEDIO</div></div>
-<!-- ===== REPRODUCTOR UEFA NATIONS LEAGUE - ESPN DEPORTES ===== -->
+<!-- ===== REPRODUCTOR UEFA NATIONS LEAGUE - ACTUALIZADO CON 4 CANALES ===== -->
 <section class="uefa-player-box" style="margin:22px 0;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#07111f 0%,#0b2a5a 100%);border:2px solid #12346b;box-shadow:0 14px 40px rgba(7,17,31,0.25);">
   <div style="padding:16px 20px;background:linear-gradient(90deg,#0a1930,#12346b);border-bottom:3px solid #e30613;display:flex;align-items:center;justify-content:space-between;gap:12px;">
     <div style="display:flex;flex-direction:column;gap:2px;">
@@ -3533,14 +3540,30 @@ html{scroll-behavior:smooth;}
     </div>
     <span style="background:#e30613;color:#fff;font-size:10px;font-weight:900;padding:6px 10px;border-radius:999px;letter-spacing:0.5px;">LIVE</span>
   </div>
-  <div style="padding:12px 16px;background:#07111f;display:flex;align-items:center;gap:10px;">
-    <span style="width:10px;height:10px;background:#22c55e;border-radius:50%;display:inline-block;box-shadow:0 0 10px #22c55e;animation:pulse 1.5s infinite;"></span>
-    <span style="color:#fff;font-weight:900;font-size:13px;letter-spacing:0.5px;">ESPN DEPORTES EN VIVO</span>
-    <span style="color:#8fb4dc;font-size:11px;margin-left:auto;">HD • 1080p • Sin cortes</span>
+  <div class="video-player-container">
+  <!-- Reproductor Único Dinámico -->
+  <div class="iframe-wrapper">
+    <iframe 
+      id="mainVideoPlayer" 
+      src="https://tvf90.com/online/canal.php?stream=espn" 
+      title="Reproductor de TV en vivo" 
+      allowfullscreen 
+      allow="encrypted-media" 
+      scrolling="no" 
+      frameborder="0" 
+      loading="lazy">
+    </iframe>
   </div>
-  <div class="player-wrap" style="position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;">
-    <iframe src="https://stream-xhd.com/live1.php?stream=espndeportes" width="100%" height="100%" style="position:absolute;inset:0;width:100%;height:100%;border:0;" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media; picture-in-picture"></iframe>
+
+  <!-- Botones de Control de Canales -->
+  <div class="channel-buttons-bar">
+    <button class="channel-btn active" onclick="changeChannel('espn', this)">ESPN</button>
+    <button class="channel-btn" onclick="changeChannel('espn2', this)">ESPN 2</button>
+    <button class="channel-btn" onclick="changeChannel('tudn', this)">TUDN</button>
+    <button class="channel-btn" onclick="changeChannel('univision', this)">Univisión</button>
   </div>
+</div>
+
   <div style="padding:14px 18px;background:#0a1930;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;border-top:1px solid #12346b;">
     <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#cbd5e1;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:700;">📺 ESPN DEPORTES</span>
     <span style="background:rgba(255,204,0,0.12);border:1px solid rgba(255,204,0,0.25);color:#ffcc00;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:800;">⚽ UEFA NATIONS LEAGUE 2026/27</span>
@@ -3571,6 +3594,7 @@ html{scroll-behavior:smooth;}
   </div>
 </div>
 <script>
+function changeChannel(streamName, buttonElement) { const iframe = document.getElementById('mainVideoPlayer'); if(iframe){ iframe.src = `https://tvf90.com/online/canal.php?stream=${streamName}`; } const buttons = document.querySelectorAll('.channel-btn'); buttons.forEach(btn => { btn.classList.remove('active'); btn.style.background='#334155'; }); buttonElement.classList.add('active'); buttonElement.style.background='#2563eb'; }
 function openUefaFull(){ 
   const el=document.getElementById('view-uefa-full');
   el.classList.add('open');
