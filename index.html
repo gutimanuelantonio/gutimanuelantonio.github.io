@@ -3384,7 +3384,7 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
     <!-- IZQUIERDA: CANALES + PLAYER -->
     <div class="uefa-left">
       <div class="player-wrap relative w-full aspect-video bg-black">
-        <iframe id="mainVideoPlayer" src="https://streamxhd.com/live1.php?stream=evento1" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media; picture-in-picture" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+        <iframe id="mainVideoPlayer" src="https://streamxhd.com/live1.php?stream=disney7" width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media; picture-in-picture" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
       </div>
 
       <style>
@@ -3438,89 +3438,78 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
 
 
     <!-- DERECHA: MENU PARTIDOS NUEVO - JUEVES 2 OCT - REEMPLAZO COMPLETO -->
+        <!-- DERECHA: MENU PARTIDOS - SABADO 3 OCT 2026 - CODIGOS EXACTOS -->
     <div class="uefa-right">
-      <div class="bg-gradient-to-r from-[#b91c1c] to-[#7f1d1d] p-3 flex justify-between items-center shrink-0">
-        <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ ⚽ PROGRAMACIÓN JUEVES 2 OCT</h3>
-        <span class="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full">Hora Perú -05:00</span>
+      <div class="bg-gradient-to-r from-[#b91c1c] to-[#7f1d1d] p-3 flex flex-col gap-2 shrink-0">
+        <div class="flex justify-between items-center">
+          <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ PROGRAMACIÓN <span id="fecha-auto">SÁB 3 OCT</span></h3>
+          <span class="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full">Hora Perú -05:00</span>
+        </div>
+        <div class="flex justify-between items-center bg-black/30 rounded-lg px-3 py-1.5">
+          <span id="fecha-larga-auto" class="text-[10px] text-yellow-200 font-bold tracking-widest">Sábado 3 de Octubre 2026</span>
+          <span id="reloj-auto" class="text-[11px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">00:00:00</span>
+        </div>
       </div>
 
-      
       <div class="uefa-right-scroll space-y-2" id="menu-eventos-limpio">
-        <!-- PROGRAMACION JUEVES 2 OCTUBRE 2026 - 11 EVENTOS -->
+        <!-- PROGRAMACION SABADO 3 OCT - 8 EVENTOS CON IFRAME EXACTO -->
 
-        <div class="text-[10px] font-black tracking-widest text-[#38bdf8] px-2 mt-2">06:00 AM • ELIMINATORIAS</div>
-        <button onclick="playMatch('evento1','ev1',this)" id="ev1" class="match-btn w-full text-left bg-[#111827] border border-[#facc15] rounded-xl p-3 hover:border-yellow-400 transition menu-btn-active">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">06:00 AM</span><span class="text-[10px] text-gray-400">Seoul World Cup</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">KR</span><span class="text-white font-bold text-sm">Corea del Sur</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Venezuela</span><span class="text-xs font-bold text-gray-400">VE</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 Leskovac - Evento 1</div>
+        <div class="text-[10px] font-black tracking-widest text-[#38bdf8] px-2 mt-2">11:00 AM • ELIMINATORIAS UEFA</div>
+        
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney7','ev1',this)" id="ev1" class="match-btn w-full text-left bg-[#111827] border border-[#facc15] rounded-xl p-3 hover:border-yellow-400 transition menu-btn-active">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">11:00 AM</span><span class="text-[10px] text-gray-400">Disney 7</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">IS</span><span class="text-white font-bold text-sm">Islandia</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Bulgaria</span><span class="text-xs font-bold text-gray-400">BG</span></div></div>
+          <div class="text-[10px] text-gray-400 mt-1">📍 Sáb 03 Oct 11:00 • disney7</div>
         </button>
 
-        <div class="text-[10px] font-black tracking-widest text-[#38bdf8] px-2 mt-3">09:00 AM • ELIMINATORIAS UEFA</div>
-        <button onclick="playMatch('espn2','ev2',this)" id="ev2" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">09:00 AM</span><span class="text-[10px] text-gray-400">Astana Arena</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">KZ</span><span class="text-white font-bold text-sm">Kazajistán</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Moldavia</span><span class="text-xs font-bold text-gray-400">MD</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 09:00 - ESPN 2</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney8','ev2',this)" id="ev2" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">11:00 AM</span><span class="text-[10px] text-gray-400">Disney 8</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">EE</span><span class="text-white font-bold text-sm">Estonia</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Luxemburgo</span><span class="text-xs font-bold text-gray-400">LU</span></div></div>
+          <div class="text-[10px] text-gray-400 mt-1">📍 Sáb 03 Oct 11:00 • disney8</div>
         </button>
 
-        <div class="text-[10px] font-black tracking-widest text-[#38bdf8] px-2 mt-3">11:00 AM • ELIMINATORIAS UEFA</div>
-        <button onclick="playMatch('espn2','ev3',this)" id="ev3" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">11:00 AM</span><span class="text-[10px] text-gray-400">AEK Arena</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">CY</span><span class="text-white font-bold text-sm">Chipre</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Armenia</span><span class="text-xs font-bold text-gray-400">AM</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 11:00 - ESPN 2</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn','ev3',this)" id="ev3" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">11:00 AM</span><span class="text-[10px] text-gray-400">ESPN</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">HR</span><span class="text-white font-bold text-sm">Croacia</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Inglaterra</span><span class="text-xs font-bold text-gray-400">ENG</span></div></div>
+          <div class="text-[10px] text-gray-400 mt-1">📍 Sáb 03 Oct 11:00 • espn</div>
         </button>
 
-        <button onclick="playMatch('disney6','ev4',this)" id="ev4" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">11:00 AM</span><span class="text-[10px] text-gray-400">Skonto Stadium</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">LV</span><span class="text-white font-bold text-sm">Letonia</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Montenegro</span><span class="text-xs font-bold text-gray-400">ME</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 11:00 - Disney 6</div>
+        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">13:00 PM • AMISTOSOS INTERNACIONAL • PERÚ</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=americatv','ev4',this)" id="ev4" class="match-btn w-full text-left bg-[#111827] border border-[#facc15] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-red-600 text-white font-black px-2 py-0.5 rounded-full">13:00 PM</span><span class="text-[10px] text-gray-400">América TV</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">CA</span><span class="text-white font-bold text-sm">Canadá</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Perú</span><span class="text-xs font-bold text-gray-400">PE</span></div></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Sáb 03 Oct 13:00 • americatv 🔴 EN VIVO</div>
         </button>
 
         <div class="text-[10px] font-black tracking-widest text-[#38bdf8] px-2 mt-3">13:45 PM • ELIMINATORIAS UEFA</div>
-        <button onclick="playMatch('disney7','ev5',this)" id="ev5" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Torsvollur</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">FO</span><span class="text-white font-bold text-sm">Islas Feroe</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Eslovaquia</span><span class="text-xs font-bold text-gray-400">SK</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - Disney 7</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney12','ev5',this)" id="ev5" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Disney 12</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">MK</span><span class="text-white font-bold text-sm">Macedonia N.</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Escocia</span><span class="text-xs font-bold text-gray-400">SCO</span></div></div>
+          <div class="text-[10px] text-gray-400 mt-1">📍 Sáb 03 Oct 13:45 • disney12</div>
         </button>
 
-        <button onclick="playMatch('espnar','ev6',this)" id="ev6" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Parc des Princes</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">FR</span><span class="text-white font-bold text-sm">Francia</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Italia</span><span class="text-xs font-bold text-gray-400">IT</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - ESPN AR • PARTIDAZO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney13','ev6',this)" id="ev6" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Disney 13</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">CH</span><span class="text-white font-bold text-sm">Suiza</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Eslovenia</span><span class="text-xs font-bold text-gray-400">SI</span></div></div>
+          <div class="text-[10px] text-gray-400 mt-1">📍 Sáb 03 Oct 13:45 • disney13</div>
         </button>
 
-        <button onclick="playMatch('disney9','ev7',this)" id="ev7" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">King Baudouin</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">BE</span><span class="text-white font-bold text-sm">Bélgica</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Turquía</span><span class="text-xs font-bold text-gray-400">TR</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - Disney 9</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn','ev7',this)" id="ev7" class="match-btn w-full text-left bg-[#111827] border border-[#facc15] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">ESPN - Tartiere</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">ES</span><span class="text-white font-bold text-sm">España</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Rep. Checa</span><span class="text-xs font-bold text-gray-400">CZ</span></div></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Sáb 03 Oct 13:45 • espn ⭐ PARTIDAZO</div>
         </button>
 
-        <button onclick="playMatch('disney10','ev8',this)" id="ev8" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Wroclaw</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">UA</span><span class="text-white font-bold text-sm">Ucrania</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Irlanda Norte</span><span class="text-xs font-bold text-gray-400">NI</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - Disney 10</div>
-        </button>
-
-        <button onclick="playMatch('disney11','ev9',this)" id="ev9" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">National Stadium</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">PL</span><span class="text-white font-bold text-sm">Polonia</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Rumania</span><span class="text-xs font-bold text-gray-400">RO</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - Disney 11</div>
-        </button>
-
-        <button onclick="playMatch('disney12','ev10',this)" id="ev10" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Puskas Arena</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">HU</span><span class="text-white font-bold text-sm">Hungría</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Georgia</span><span class="text-xs font-bold text-gray-400">GE</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - Disney 12</div>
-        </button>
-
-        <button onclick="playMatch('espn2','ev11',this)" id="ev11" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#3b82f6] text-white font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Bilino Polje</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">BA</span><span class="text-white font-bold text-sm">Bosnia-Herz.</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Suecia</span><span class="text-xs font-bold text-gray-400">SE</span></div></div>
-          <div class="text-[10px] text-gray-400 mt-1">📍 13:45 - ESPN 2</div>
+        <div class="text-[10px] font-black tracking-widest text-[#38bdf8] px-2 mt-3">21:00 PM • AMISTOSO INTERNACIONAL</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn2ar','ev8',this)" id="ev8" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3 hover:border-yellow-400 transition">
+          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-gray-700 text-white font-black px-2 py-0.5 rounded-full">21:00 PM</span><span class="text-[10px] text-gray-400">ESPN 2 AR</span></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">US</span><span class="text-white font-bold text-sm">EE. UU.</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">México</span><span class="text-xs font-bold text-gray-400">MX</span></div></div>
+          <div class="text-[10px] text-gray-400 mt-1">📍 Sáb 03 Oct 21:00 • espn2ar</div>
         </button>
 
       </div>
 
-      <div class="p-2 bg-black/50 text-[9px] text-gray-500 text-center shrink-0">Jueves 2 octubre 2026 · Horarios Perú PET -05:00 · ACAS + España</div>
+      <div class="p-2 bg-black/50 text-[9px] text-gray-500 text-center shrink-0"><span id="footer-fecha">Sábado 3 Octubre 2026</span> · Horarios Perú PET -05:00 · <span id="footer-reloj">--:--</span></div>
     </div>
 
 
@@ -3533,19 +3522,15 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
   </div>
 </div>
 <script>
+
 function changeChannel(streamName, buttonElement) { 
   const iframe = document.getElementById('mainVideoPlayer'); 
   if(iframe){ 
     let newSrc = '';
     if(streamName.startsWith('http')){ newSrc = streamName; } 
     else { newSrc = 'https://streamxhd.com/live1.php?stream=' + streamName; } 
-    // Force reload even if same stream
-    if(iframe.src === newSrc){
-      iframe.src = 'about:blank';
-      setTimeout(()=>{ iframe.src = newSrc; }, 50);
-    } else {
-      iframe.src = newSrc;
-    }
+    iframe.src = 'about:blank';
+    setTimeout(()=>{ iframe.src = newSrc; }, 50);
     console.log('▶ Reproduciendo:', newSrc);
   } 
   if(buttonElement){
@@ -3557,8 +3542,12 @@ function changeChannel(streamName, buttonElement) {
     buttonElement.classList.remove('bg-[#1e293b]','text-white','border-[#334155]');
   }
 }
-function playMatch(streamName, matchId, el){
-  changeChannel(streamName, null);
+function reproducirExacto(urlCompleta, matchId, el){
+  const iframe = document.getElementById('mainVideoPlayer');
+  if(iframe){
+    iframe.src = 'about:blank';
+    setTimeout(()=>{ iframe.src = urlCompleta; console.log('▶ EXACTO:', urlCompleta); }, 80);
+  }
   document.querySelectorAll('.match-btn').forEach(b=>{
     b.classList.remove('active','border-[#facc15]','menu-btn-active');
     b.classList.add('border-[#1e293b]');
@@ -3566,14 +3555,15 @@ function playMatch(streamName, matchId, el){
   const m = document.getElementById(matchId);
   if(m){ m.classList.add('active','border-[#facc15]','menu-btn-active'); m.classList.remove('border-[#1e293b]'); }
   if(el){ el.classList.add('active','border-[#facc15]'); el.classList.remove('border-[#1e293b]'); }
-  // En móvil, subir al reproductor al hacer clic
   const player = document.getElementById('mainVideoPlayer');
   if(player && window.innerWidth < 1024){
     setTimeout(()=>{ player.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
   }
-  // efecto slide
   const wrap = document.querySelector('.player-wrap');
   if(wrap){ wrap.classList.remove('slide-player'); void wrap.offsetWidth; wrap.classList.add('slide-player'); }
+}
+function playMatch(streamName, matchId, el){
+  reproducirExacto('https://streamxhd.com/live1.php?stream=' + streamName, matchId, el);
 }
 
 function openUefaFull(){ 
@@ -3699,6 +3689,31 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(tryInject, 300);
   };
   document.addEventListener('DOMContentLoaded', tryInject);
+})();
+</script>
+
+
+<script>
+(function(){
+  function actualizarFechaReloj(){
+    const ahora = new Date();
+    const fechaLarga = ahora.toLocaleDateString('es-PE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Lima' });
+    const horaPeru = ahora.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'America/Lima' });
+    const fechaCorta = ahora.toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'America/Lima' }).toUpperCase();
+    const diaSem = ahora.toLocaleDateString('es-PE', { weekday: 'short', timeZone: 'America/Lima' }).toUpperCase();
+    const elReloj = document.getElementById('reloj-auto');
+    const elFechaLarga = document.getElementById('fecha-larga-auto');
+    const elFecha = document.getElementById('fecha-auto');
+    const elFooterFecha = document.getElementById('footer-fecha');
+    const elFooterReloj = document.getElementById('footer-reloj');
+    if(elReloj) elReloj.textContent = horaPeru + ' PET';
+    if(elFechaLarga) elFechaLarga.textContent = fechaLarga.charAt(0).toUpperCase() + fechaLarga.slice(1);
+    if(elFecha) elFecha.textContent = diaSem + ' ' + fechaCorta;
+    if(elFooterFecha) elFooterFecha.textContent = fechaLarga.charAt(0).toUpperCase() + fechaLarga.slice(1);
+    if(elFooterReloj) elFooterReloj.textContent = horaPeru;
+  }
+  setInterval(actualizarFechaReloj, 1000);
+  actualizarFechaReloj();
 })();
 </script>
 
