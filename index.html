@@ -3481,19 +3481,16 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
         .canales-scroll:active{cursor:grabbing}
         .canales-scroll .channel-btn{scroll-snap-align:start;flex-shrink:0}
       </style>
-      <div class="bg-[#111827] border border-[#26314a] rounded-xl p-3">
+            <div class="bg-[#111827] border border-[#26314a] rounded-xl p-3">
         <div class="flex justify-between items-center mb-2">
-          <div class="text-[11px] font-black tracking-widest text-yellow-400 uppercase">📺 CANALES UEFA - DOM 4 OCT - DESLIZA →</div>
-          <div class="text-[10px] text-facc15 bg-[#facc15] text-black px-2 py-0.5 rounded-full font-black animate-pulse">DESLIZA →</div>
+          <div class="text-[11px] font-black tracking-widest text-yellow-400 uppercase">📺 CANALES - LUN 5 OCT - TUDN • ESPN • ESPN2</div>
+          <div class="text-[10px] bg-[#facc15] text-black px-2 py-0.5 rounded-full font-black">DESLIZA →</div>
         </div>
         <div class="canales-scroll flex gap-2" id="canalesScroll">
-          <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney12','ev1',document.getElementById('ev1'))" class="channel-btn active whitespace-nowrap px-5 py-2.5 bg-[#eab308] text-black rounded-full text-xs font-black border border-[#eab308]">DISNEY 12 - IRL vs ISR</button>
-          <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn2','ev2',document.getElementById('ev2'))" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">ESPN 2 - GRE vs GER</button>
-          <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney14','ev3',document.getElementById('ev3'))" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">DISNEY 14 - NED vs SRB</button>
-          <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn','ev4',document.getElementById('ev4'))" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">ESPN - POR vs NOR ⭐</button>
-          <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney16','ev5',document.getElementById('ev5'))" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">DISNEY 16 - WAL vs DEN</button>
+          <button onclick="document.getElementById('mainVideoPlayer').src='https://tvf90.com/online/canal.php?stream=tudn'" class="channel-btn active whitespace-nowrap px-5 py-2.5 bg-[#eab308] text-black rounded-full text-xs font-black border border-[#eab308]">TUDN EN VIVO</button>
+          <button onclick="document.getElementById('mainVideoPlayer').src='https://streamxhd.com/live1.php?stream=espn'" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">ESPN</button>
+          <button onclick="document.getElementById('mainVideoPlayer').src='https://streamxhd.com/live1.php?stream=espn2'" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">ESPN 2</button>
         </div>
-        <div class="text-[9px] text-gray-500 mt-1 text-center">👆 Desliza horizontal para ver todos los canales - Agarra y arrastra</div>
       </div>
       <script>
         (function(){
@@ -3513,7 +3510,7 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
       
 
       <div class="bg-yellow-400 text-black text-[11px] font-black text-center py-2.5 rounded-xl flex items-center justify-center gap-2">
-        <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse inline-block"></span> DOMINGO 4 OCT 2026 · EN VIVO AHORA - 5 PARTIDOS - DESLIZA PARA VER →
+        <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse inline-block"></span> LUNES 5 OCT 2026 · EN VIVO AHORA - 5 PARTIDOS - DESLIZA PARA VER →
       </div>
 
       <div class="flex gap-2 lg:hidden">
@@ -3523,29 +3520,62 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
     </div>
 
 
-    <!-- DERECHA: MENU PARTIDOS NUEVO - JUEVES 2 OCT - REEMPLAZO COMPLETO -->
-        <!-- DERECHA: MENU PARTIDOS - SABADO 3 OCT 2026 - CODIGOS EXACTOS -->
+    
+    <!-- DERECHA: MENU PARTIDOS - LUN 5 OCT 2026 - 6 EVENTOS LIMPIO -->
     <div class="uefa-right">
       <div class="bg-gradient-to-r from-[#b91c1c] to-[#7f1d1d] p-3 flex flex-col gap-2 shrink-0">
         <div class="flex justify-between items-center">
-          <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ PROGRAMACIÓN <span id="fecha-auto">DOM 4 OCT 2026</span></h3>
+          <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ PROGRAMACIÓN <span id="fecha-auto">LUN 5 OCT 2026</span></h3>
           <span class="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full">Hora Perú -05:00</span>
         </div>
         <div class="flex justify-between items-center bg-black/30 rounded-lg px-3 py-1.5">
-          <span id="fecha-larga-auto" class="text-[10px] text-yellow-200 font-bold tracking-widest">Domingo, 4 de octubre de 2026</span>
+          <span id="fecha-larga-auto" class="text-[10px] text-yellow-200 font-bold tracking-widest">Lunes, 5 de octubre de 2026</span>
           <span id="reloj-auto" class="text-[11px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">00:00:00</span>
         </div>
       </div>
 
       <div class="uefa-right-scroll space-y-2" id="menu-eventos-limpio">
-        <!-- ✅ DOM 4 OCT - 5 PARTIDOS DESLIZANTE -->
+        <div class="uefa-right-desliza-hint">👆 6 EVENTOS HOY - LUN 5 OCT - DESLIZA ↕️ 👇</div>
+        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-2">LUN 5 OCT • 13:45 • UEFA NATIONS</div>
 
-        <div class="uefa-right-desliza-hint">👆 DESLIZA ARRIBA/ABAJO PARA VER TODOS LOS PARTIDOS - 5 EVENTOS HOY - AGARRA Y ARRASTRA 👇</div>
-        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-2">DOM 4 OCT • 13:45 PM • UEFA NATIONS • DESLIZA ↕️</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney3','ev1',this)" id="ev1" class="match-btn w-full text-left bg-[#111827] border border-[#facc15] rounded-xl p-3 menu-btn-active">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 3</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Italia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Turquía</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Lun 05 Oct 13:45 • disney3 🔴 EN VIVO</div>
+        </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney12','ev1',this)" id="ev1" class="match-btn w-full text-left bg-[#111827] border border-[#facc15] rounded-xl p-3 hover:border-yellow-400 transition menu-btn-active">
-          <div class="flex justify-between items-center mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45 PM</span><span class="text-[10px] text-gray-400">Disney 12</span></div>
-          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-400">IE</span><span class="text-white font-bold text-sm">Rep. Irlanda</span></div><span class="text-yellow-400 text-xs font-black">VS</span><div class="flex items-center gap-2"><span class="text-white font-bold text-sm">Israel</span><span class="text-xs font-bold text-gray-400">IL</span></div></div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn','ev2',this)" id="ev2" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">ESPN</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Francia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Bélgica</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Lun 05 Oct 13:45 • espn 🔴 EN VIVO</div>
+        </button>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney5','ev3',this)" id="ev3" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 5</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Ucrania</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Hungría</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Lun 05 Oct 13:45 • disney5 🔴 EN VIVO</div>
+        </button>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn2','ev4',this)" id="ev4" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">ESPN 2</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Rumania</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Suecia</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Lun 05 Oct 13:45 • espn2 🔴 EN VIVO</div>
+        </button>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney7','ev5',this)" id="ev5" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 7</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Irlanda del Norte</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Georgia</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Lun 05 Oct 13:45 • disney7 🔴 EN VIVO</div>
+        </button>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney8','ev6',this)" id="ev6" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 8</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Bosnia-Herzegovina</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Polonia</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Lun 05 Oct 13:45 • disney8 🔴 EN VIVO</div>
+        </button>
+      </div>
+    </div>
+
           <div class="text-[10px] text-yellow-300 mt-1">📍 Dom 04 Oct 13:45 • disney12 🔴 EN VIVO</div>
         </button>
 
@@ -3574,7 +3604,7 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
         </button>
 
         <div style="background:#111827;border:1px dashed #334155;border-radius:12px;padding:12px;text-align:center;margin-top:8px">
-          <div style="font-size:9px;color:#facc15;font-weight:900">✅ 5 PARTIDOS CARGADOS - DOM 4 OCT 2026</div>
+          <div style="font-size:9px;color:#facc15;font-weight:900">✅ 5 PARTIDOS CARGADOS - LUN 5 OCT 2026</div>
           <div style="font-size:8px;color:#64748b;margin-top:4px">Desliza para ver todos - Agarra y arrastra arriba/abajo</div>
         </div>
 
@@ -3582,7 +3612,7 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
 
       <div style="padding:0; background:#0a0e16; border-top:3px solid #facc15; border-radius:0 0 12px 12px; overflow:hidden">
         <div style="background:linear-gradient(90deg,#b91c1c,#7f1d1d);padding:12px 14px;display:flex;justify-content:space-between;align-items:center">
-          <span style="color:#fff;font-weight:900;font-size:11px">⚽ UEFA NATIONS - BLOQUE DESLIZANTE - DOM 4 OCT</span>
+          <span style="color:#fff;font-weight:900;font-size:11px">⚽ UEFA NATIONS - BLOQUE DESLIZANTE - LUN 5 OCT</span>
           <span style="background:#facc15;color:#000;font-size:8px;font-weight:900;padding:3px 8px;border-radius:9999px">DESLIZA ↕️</span>
         </div>
         <div style="max-height:320px;overflow-y:auto;padding:10px;background:#0f172a;display:flex;flex-direction:column;gap:8px;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#facc15 #111827" id="bloque-desliza-uefa">
@@ -3756,7 +3786,7 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
   function renderUefaRanking(){
     var container=document.getElementById('vc-uefa-ranking-global');
     if(!container) return;
-    var partidos=[]; // 🧹 LIMPIADO DOM 4 OCT 2026 - listo para nuevos // 🧹 LIMPIO - DOM 4 OCT 2026
+    var partidos=[]; // 🧹 LIMPIADO LUN 5 OCT 2026 - listo para nuevos // 🧹 LIMPIO - LUN 5 OCT 2026
     container.innerHTML='<div style="font-size:9px;color:#64748b;text-align:center;padding:8px">🔄 Consultando audiencia UEFA...</div>';
     var promesas=partidos.map(function(p){
       var key=SITE_UEFA+'_match_'+p;
