@@ -525,6 +525,139 @@ renderMenu();
 <!-- ===== FIN BLOQUE INICIO NUEVO ===== -->
 
 
+<!-- ===== BLOQUE NUEVO MADAME WEB - AMARILLO EFECTO ===== -->
+<section id="bloque-madame-web" style="max-width:1280px;margin:20px auto;padding:0 8px;box-sizing:border-box;">
+  <style>
+    #bloque-madame-web .mw-wrap{
+      background: linear-gradient(135deg,#0a0a0a 0%, #1a1a0a 100%);
+      border-radius:22px;
+      overflow:hidden;
+      border:2px solid #facc15;
+      box-shadow: 0 0 0 4px rgba(250,204,21,.15), 0 20px 40px rgba(250,204,21,.25), 0 0 80px rgba(250,204,21,.15);
+      position:relative;
+    }
+    #bloque-madame-web .mw-wrap::before{
+      content:'';
+      position:absolute;
+      top:-2px; left:-2px; right:-2px; height:4px;
+      background: linear-gradient(90deg,#facc15,#fde047,#facc15,#eab308);
+      background-size: 200% 100%;
+      animation: mwYellowShine 2.5s linear infinite;
+      z-index:3;
+    }
+    @keyframes mwYellowShine{0%{background-position:0% 0%}100%{background-position:200% 0%}}
+    #bloque-madame-web .mw-header{
+      padding:18px 22px 14px;
+      background: linear-gradient(90deg,rgba(250,204,21,.12), rgba(250,204,21,.03));
+      border-bottom:1px solid rgba(250,204,21,.25);
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    }
+    #bloque-madame-web .mw-badge{
+      background:#facc15;
+      color:#000;
+      font-weight:900;
+      font-size:10px;
+      letter-spacing:1.5px;
+      padding:6px 12px;
+      border-radius:9999px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      box-shadow:0 0 18px rgba(250,204,21,.6);
+      animation: mwPulse 1.5s infinite;
+    }
+    @keyframes mwPulse{0%,100%{box-shadow:0 0 10px rgba(250,204,21,.5); transform:scale(1)}50%{box-shadow:0 0 22px rgba(250,204,21,.9); transform:scale(1.04)}}
+    #bloque-madame-web .mw-title{
+      font-size:clamp(22px,4vw,36px);
+      font-weight:900;
+      color:#fff;
+      letter-spacing:-1px;
+      line-height:1;
+      text-shadow: 0 0 20px rgba(250,204,21,.5);
+    }
+    #bloque-madame-web .mw-title span{
+      color:#facc15;
+    }
+    #bloque-madame-web .mw-player-box{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+      overflow:hidden;
+    }
+    #bloque-madame-web .mw-player-box iframe{
+      position:absolute;
+      inset:0;
+      width:100%!important;
+      height:100%!important;
+      border:0;
+    }
+    #bloque-madame-web .mw-content{
+      padding:20px 22px;
+      background: radial-gradient(800px at 20% 0%, rgba(250,204,21,.12), transparent 60%), #111111;
+    }
+    #bloque-madame-web .mw-sub{
+      color:#facc15;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    #bloque-madame-web .mw-sub::before{
+      content:'';
+      width:28px; height:3px;
+      background:#facc15;
+      border-radius:9999px;
+      box-shadow:0 0 10px #facc15;
+      display:inline-block;
+    }
+    #bloque-madame-web .mw-desc{
+      color:#cbd5e1;
+      font-size:13px;
+      line-height:1.7;
+      font-weight:500;
+    }
+    #bloque-madame-web .mw-desc b{color:#fff}
+  </style>
+
+  <div class="mw-wrap">
+    <div class="mw-header">
+      <div>
+        <div class="mw-badge">🎬 ESTRENO MARVEL • HD</div>
+        <div class="mw-title" style="margin-top:10px;">MADAME <span>WEB</span></div>
+        <div style="font-size:11px;color:#64748b;font-weight:700;letter-spacing:1px;margin-top:4px;">THRILLER • ORIGEN • DAKOTA JOHNSON</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span style="font-size:10px;color:#000;background:#fff;padding:5px 10px;border-radius:9999px;font-weight:900;">🔴 EN VIVO</span>
+        <span style="font-size:10px;color:#000;background:#facc15;padding:5px 10px;border-radius:9999px;font-weight:900;box-shadow:0 0 12px rgba(250,204,21,.6)">⭐ MARVEL</span>
+      </div>
+    </div>
+
+    <div class="mw-player-box">
+      <iframe src="https://morencius.com/embed/dhexgbxtmw58" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="640" height="360" allowfullscreen allow="autoplay; encrypted-media; fullscreen"></iframe>
+    </div>
+
+    <div class="mw-content">
+      <div class="mw-sub">Sinopsis</div>
+      <p class="mw-desc">
+        <b>Mientras tanto en otro universo...</b> Con un giro dentro del clásico género, <b style="color:#facc15">Madame Web</b> cuenta la excepcional historia del origen de una de las heroínas más enigmáticas de Marvel. Un thriller de suspense protagonizado por <b>Dakota Johnson</b> en el papel de <b>Cassandra Webb</b>, una paramédica en Manhattan que podría tener habilidades clarividentes. Obligada a enfrentarse a sucesos que se han revelado de su pasado, crea una relación con tres jóvenes destinadas a tener un futuro poderoso... si consiguen sobrevivir a un presente mortal.
+      </p>
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.3);color:#facc15;font-size:10px;font-weight:800;padding:6px 12px;border-radius:9999px;">🕷️ UNIVERSO MARVEL</span>
+        <span style="background:#0f172a;border:1px solid #1e293b;color:#94a3b8;font-size:10px;font-weight:800;padding:6px 12px;border-radius:9999px;">⏱️ 1h 56m</span>
+        <span style="background:#0f172a;border:1px solid #1e293b;color:#94a3b8;font-size:10px;font-weight:800;padding:6px 12px;border-radius:9999px;">🎭 Suspense</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== FIN BLOQUE MADAME WEB ===== -->
+
+
+
 
 
 
