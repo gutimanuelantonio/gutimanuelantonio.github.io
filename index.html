@@ -3884,114 +3884,92 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
     
     
     
-    <!-- DERECHA: MENU PARTIDOS - MAR 6 OCT 2026 - 14 EVENTOS LIMPIO -->
+    <!-- DERECHA: MENU PARTIDOS - VIE 9 OCT 2026 - 14 EVENTOS LIMPIO -->
     <div class="uefa-right">
       <div class="bg-gradient-to-r from-[#b91c1c] to-[#7f1d1d] p-3 flex flex-col gap-2 shrink-0">
         <div class="flex justify-between items-center">
-          <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ PROGRAMACIÓN <span id="fecha-auto">MAR 6 OCT 2026</span></h3>
+          <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ PROGRAMACIÓN <span id="fecha-auto">VIE 9 OCT 2026</span></h3>
           <span class="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full">Hora Perú -05:00</span>
         </div>
         <div class="flex justify-between items-center bg-black/30 rounded-lg px-3 py-1.5">
-          <span id="fecha-larga-auto" class="text-[10px] text-yellow-200 font-bold tracking-widest">Martes, 6 de octubre de 2026</span>
+          <span id="fecha-larga-auto" class="text-[10px] text-yellow-200 font-bold tracking-widest">Viernes, 9 de octubre de 2026</span>
           <span id="reloj-auto" class="text-[11px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">00:00:00</span>
         </div>
       </div>
 
       <div class="uefa-right-scroll space-y-2" id="menu-eventos-limpio">
-        <div class="uefa-right-desliza-hint">👆 14 EVENTOS HOY - MAR 6 OCT - DESLIZA ↕️ 👇</div>
+
+        <div class="uefa-right-desliza-hint">👆 10 EVENTOS HOY - VIE 9 OCT - DESLIZA ↕️ 👇</div>
         
-        <div class="text-[10px] font-black tracking-widest text-[#22d3ee] px-2 mt-2">🇦🇷 AMISTOSO • LA DESPEDIDA DE MESSI</div>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=tycsports','ev1',this)" id="ev1" class="match-btn w-full text-left bg-gradient-to-r from-[#0a192f] to-[#112240] border-2 border-[#facc15] rounded-xl p-3 menu-btn-active relative overflow-hidden" style="box-shadow:0 0 20px rgba(250,204,21,.4); animation: palpitar-messi 1.8s infinite;">
-          <style>@keyframes palpitar-messi{0%,100%{transform:scale(1); box-shadow:0 0 15px rgba(250,204,21,.3)}50%{transform:scale(1.02); box-shadow:0 0 30px rgba(250,204,21,.7)}} @keyframes brillo{0%{left:-100%}100%{left:100%}} .brillo-messi{position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:brillo 2.5s infinite;pointer-events:none}</style>
-          <div class="brillo-messi"></div>
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full animate-pulse">18:00 ⭐ MESSI</span><span class="text-[10px] text-yellow-300 font-bold">TYC SPORTS</span></div>
-          <div class="flex justify-between items-center"><span class="text-white font-black text-sm">🇦🇷 Argentina</span><span class="text-[#facc15] text-xs font-black animate-pulse">VS</span><span class="text-white font-black text-sm">Benín 🇧🇯</span></div>
-          <div class="text-[11px] text-yellow-200 mt-1 font-bold">🔥 LA DESPEDIDA DE MESSI • Mar 06 Oct 18:00 • tycsports 🔴 EN VIVO</div>
-          <div class="text-[9px] text-cyan-300 mt-0.5 font-black tracking-widest">✨ SU ÚLTIMO PARTIDO CON LA SELECCIÓN ✨</div>
+        <div class="text-[10px] font-black tracking-widest text-[#22d3ee] px-2 mt-2">🇹🇷 SUPER LIG • TURQUÍA</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney7','ev1',this)" id="ev1" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">12:00</span><span class="text-[10px] text-gray-400">TR • Super Lig</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Galatasaray</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Kasımpaşa</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 12:00 • disney7 🔴 EN VIVO</div>
         </button>
 
-        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">MAR 6 OCT • AMISTOSOS</div>
+        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">13:00 • FÚTBOL INTERNACIONAL</div>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=evento2','ev2',this)" id="ev2" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">12:00</span><span class="text-[10px] text-gray-400">EVENTO 2</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Jordania</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Venezuela</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 12:00 • evento2 🔴 EN VIVO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=foxone','ev2',this)" id="ev2" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:00</span><span class="text-[10px] text-gray-400">ARA • Saudi Pro League</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Al Nassr</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Al Draih</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:00 • foxone 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=americatv','ev3',this)" id="ev3" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">18:45</span><span class="text-[10px] text-gray-400">AMERICA TV</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Colombia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Perú</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 18:45 • americatv 🔴 EN VIVO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney8','ev3',this)" id="ev3" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:00</span><span class="text-[10px] text-gray-400">HOL • Eredivisie</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">PSV</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Heerenveen</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:00 • disney8 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=universo','ev4',this)" id="ev4" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#1e293b] text-white font-black px-2 py-0.5 rounded-full">19:00</span><span class="text-[10px] text-gray-400">UNIVERSO</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Estados Unidos</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Canadá</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 19:00 • universo 🔴 EN VIVO</div>
+        <div class="text-[10px] font-black tracking-widest text-pink-400 px-2 mt-3">13:30 • FEMENINO & BUNDESLIGA</div>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney9','ev4',this)" id="ev4" class="match-btn w-full text-left bg-[#111827] border border-pink-900/40 rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-pink-600 text-white font-black px-2 py-0.5 rounded-full">13:30</span><span class="text-[10px] text-pink-300">FIFA • Amistoso FEM</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">🇩🇪 Alemania</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Australia 🇦🇺</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:30 • disney9 🔴 EN VIVO • WOMAN</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=azteca7','ev5',this)" id="ev5" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#065f46] text-white font-black px-2 py-0.5 rounded-full">21:30</span><span class="text-[10px] text-gray-400">AZTECA 7</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">México</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Chile</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 21:30 • azteca7 🔴 EN VIVO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn5','ev5',this)" id="ev5" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:30</span><span class="text-[10px] text-gray-400">ALE • Bundesliga</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">B. Dortmund</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">W. Bremen</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:30 • espn5 🔴 EN VIVO</div>
         </button>
 
-        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">MAR 6 OCT • 13:45 • UEFA NATIONS</div>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney2','ev6',this)" id="ev6" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 2</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Luxemburgo</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Bulgaria</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney2 🔴 EN VIVO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn4','ev6',this)" id="ev6" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">FR • Ligue 1</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Lens</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Lyon</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:45 • espn4 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney3','ev7',this)" id="ev7" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 3</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Suiza</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Macedonia N.</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney3 🔴 EN VIVO</div>
+        <div class="text-[10px] font-black tracking-widest text-[#22d3ee] px-2 mt-3">14:00 • TARDE EUROPEA</div>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn2','ev7',this)" id="ev7" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">14:00</span><span class="text-[10px] text-gray-400">ES • LaLiga2</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Málaga</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Espanyol</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 14:00 • espn2 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney4','ev8',this)" id="ev8" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 4</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Escocia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Eslovenia</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney4 🔴 EN VIVO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn7','ev8',this)" id="ev8" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">14:00</span><span class="text-[10px] text-gray-400">ENG • Championship</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">West Ham</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">QPR</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 14:00 • espn7 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn2','ev9',this)" id="ev9" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">ESPN 2</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Inglaterra</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Rep. Checa</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • espn2 🔴 EN VIVO</div>
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=dsports2','ev9',this)" id="ev9" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">14:15</span><span class="text-[10px] text-gray-400">PT • Primeira Liga</span></div>
+          <div class="flex justify-between"><span class="text-white font-bold text-sm">Sp. Braga</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Sporting CP</span></div>
+          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 14:15 • dsports2 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney5','ev10',this)" id="ev10" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 5</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Albania</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">San Marino</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney5 🔴 EN VIVO</div>
+        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">🇵🇪 LIGA 1 • PERÚ - ESTELAR</div>
+
+        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=l1max','ev10',this)" id="ev10" class="match-btn w-full text-left bg-gradient-to-r from-[#7f1d1d] to-[#450a0a] border-2 border-[#facc15] rounded-xl p-3" style="box-shadow:0 0 15px rgba(250,204,21,.3)">
+          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full animate-pulse">20:00</span><span class="text-[10px] text-yellow-300 font-bold">PE • Liga 1</span></div>
+          <div class="flex justify-between items-center"><span class="text-white font-black text-sm">D. Garcilaso</span><span class="text-[#facc15] text-xs font-black animate-pulse">VS</span><span class="text-white font-black text-sm">S. Huancayo</span></div>
+          <div class="text-[11px] text-yellow-200 mt-1 font-bold">🔥 Liga 1 Perú • Vie 09 Oct 20:00 • l1max 🔴 EN VIVO</div>
         </button>
 
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney7','ev11',this)" id="ev11" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 7</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Bielorrusia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Finlandia</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney7 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney8','ev12',this)" id="ev12" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 8</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Estonia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Islandia</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney8 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney9','ev13',this)" id="ev13" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">DISNEY 9</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Moldavia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Eslovaquia</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • disney9 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn','ev14',this)" id="ev14" class="match-btn w-full text-left bg-[#111827] border-2 border-[#ef4444] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#ef4444] text-white font-black px-2 py-0.5 rounded-full">13:45 • PARTIDAZO</span><span class="text-[10px] text-gray-400">ESPN</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Croacia</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">España</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Mar 06 Oct 13:45 • espn 🔴 EN VIVO</div>
-        </button>
       </div>
     </div>
 
@@ -4123,7 +4101,7 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
   function renderUefaRanking(){
     var container=document.getElementById('vc-uefa-ranking-global');
     if(!container) return;
-    var partidos=[]; // 🧹 LIMPIADO MAR 6 OCT 2026 - listo para nuevos // 🧹 LIMPIO - MAR 6 OCT 2026
+    var partidos=[]; // 🧹 LIMPIADO VIE 9 OCT 2026 - listo para nuevos // 🧹 LIMPIO - VIE 9 OCT 2026
     container.innerHTML='<div style="font-size:9px;color:#64748b;text-align:center;padding:8px">🔄 Consultando audiencia UEFA...</div>';
     var promesas=partidos.map(function(p){
       var key=SITE_UEFA+'_match_'+p;
