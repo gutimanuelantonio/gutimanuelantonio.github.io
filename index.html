@@ -344,6 +344,10 @@ body{top:0!important;}
 /* FIX ANUNCIA PALPITANTE */
 @keyframes anunciaPalpita{0%{background:#facc15;color:#000;box-shadow:0 0 0 0 rgba(250,204,21,.7);transform:scale(1)}25%{background:#ef4444;color:#fff;box-shadow:0 0 0 8px rgba(239,68,68,0),0 0 18px rgba(239,68,68,.9);transform:scale(1.06)}50%{background:#22c55e;color:#fff;box-shadow:0 0 0 0 rgba(34,197,94,.7),0 0 18px rgba(34,197,94,.9);transform:scale(1.02)}75%{background:#facc15;color:#000;box-shadow:0 0 18px rgba(250,204,21,.9);transform:scale(1.08)}100%{background:#facc15;color:#000;box-shadow:0 0 0 0 rgba(250,204,21,.7);transform:scale(1)}}
 .btn-anuncia-fix-pulse{animation:anunciaPalpita 1.2s infinite ease-in-out !important;border:2px solid #000 !important;font-weight:900 !important;}
+
+/* FULL BLEED OVERRIDE PARA BLOQUE FUTBOL */
+#bloque-futbol{width:100vw !important;max-width:100vw !important;margin-left:calc(-50vw + 50%) !important;left:0 !important;}
+.main-layout #bloque-futbol{grid-column:1 / -1 !important;}
 </style>
 
 <style id="allons-fix-css">
@@ -3828,333 +3832,134 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
   <!-- BLOQUE PRINCIPAL: MENU CANAL + REPRODUCTOR IZQ | MENU PARTIDOS DER -->
   
   <!-- BLOQUE PRINCIPAL: MENU CANAL + REPRODUCTOR IZQ | MENU PARTIDOS DER -->
-  <div id="bloque-futbol" class="uefa-bloque">
-
-    <!-- IZQUIERDA: CANALES + PLAYER -->
-    <div class="uefa-left">
-      <div class="player-wrap relative w-full aspect-video bg-black">
-        <iframe id="mainVideoPlayer" src="https://streamxhd.com/live1.php?stream=tycsports" width="100%" height="500" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media; picture-in-picture" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
-      </div>
-
-      <style>
-        .canales-scroll{overflow-x:auto;overflow-y:hidden;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;scroll-snap-type:x mandatory;padding-bottom:6px}
-        .canales-scroll::-webkit-scrollbar{display:none}
-        .canales-scroll:active{cursor:grabbing}
-        .canales-scroll .channel-btn{scroll-snap-align:start;flex-shrink:0}
-      </style>
-            <div class="bg-[#111827] border border-[#26314a] rounded-xl p-3">
-        <div class="flex justify-between items-center mb-2">
-          <div class="text-[11px] font-black tracking-widest text-yellow-400 uppercase">📺 CANALES - MAR 6 OCT - TUDN • ESPN • ESPN2</div>
-          <div class="text-[10px] bg-[#facc15] text-black px-2 py-0.5 rounded-full font-black">DESLIZA →</div>
-        </div>
-        <div class="canales-scroll flex gap-2" id="canalesScroll">
-          <button onclick="document.getElementById('mainVideoPlayer').src='https://tvf90.com/online/canal.php?stream=tudn'" class="channel-btn active whitespace-nowrap px-5 py-2.5 bg-[#eab308] text-black rounded-full text-xs font-black border border-[#eab308]">TUDN EN VIVO</button>
-          <button onclick="document.getElementById('mainVideoPlayer').src='https://streamxhd.com/live1.php?stream=espn'" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">ESPN</button>
-          <button onclick="document.getElementById('mainVideoPlayer').src='https://streamxhd.com/live1.php?stream=espn2'" class="channel-btn whitespace-nowrap px-5 py-2.5 bg-[#1e293b] text-white rounded-full text-xs font-bold border border-[#334155]">ESPN 2</button>
-        </div>
-      </div>
-      <script>
-        (function(){
-          const slider = document.getElementById('canalesScroll');
-          if(!slider) return;
-          let isDown=false,startX,scrollLeft;
-          slider.addEventListener('mousedown',e=>{isDown=true;slider.classList.add('dragging');startX=e.pageX-slider.offsetLeft;scrollLeft=slider.scrollLeft;});
-          slider.addEventListener('mouseleave',()=>{isDown=false;});
-          slider.addEventListener('mouseup',()=>{isDown=false;});
-          slider.addEventListener('mousemove',e=>{if(!isDown) return;e.preventDefault();const x=e.pageX-slider.offsetLeft;const walk=(x-startX)*2;slider.scrollLeft=scrollLeft-walk;});
-          // touch
-          let startTouch=0, scrollTouch=0;
-          slider.addEventListener('touchstart',e=>{startTouch=e.touches[0].pageX-slider.offsetLeft;scrollTouch=slider.scrollLeft;},{passive:true});
-          slider.addEventListener('touchmove',e=>{const x=e.touches[0].pageX-slider.offsetLeft;const walk=(x-startTouch)*1.5;slider.scrollLeft=scrollTouch-walk;},{passive:true});
-        })();
-      </script>
-      
-
-      <div class="bg-yellow-400 text-black text-[11px] font-black text-center py-2.5 rounded-xl flex items-center justify-center gap-2">
-        <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse inline-block"></span> MARTES 6 OCT 2026 · EN VIVO AHORA - 5 PARTIDOS - DESLIZA PARA VER →
-      </div>
-
-      <div class="flex gap-2 lg:hidden">
-        <button onclick="closeUefaFull()" class="flex-1 px-4 py-3 bg-[#111827] border border-[#26314a] rounded-xl text-white text-xs font-bold">← Volver</button>
-        <button onclick="document.querySelector('.uefa-right').scrollIntoView({behavior:'smooth'})" class="flex-1 px-4 py-3 bg-white text-black rounded-xl text-xs font-bold">Ver partidos ↓</button>
-      </div>
-    </div>
-
-
-    
-    
-    
-    <!-- DERECHA: MENU PARTIDOS - VIE 9 OCT 2026 - 14 EVENTOS LIMPIO -->
-    <div class="uefa-right">
-      <div class="bg-gradient-to-r from-[#b91c1c] to-[#7f1d1d] p-3 flex flex-col gap-2 shrink-0">
-        <div class="flex justify-between items-center">
-          <h3 class="text-white font-black text-xs uppercase tracking-wider">⚽ PROGRAMACIÓN <span id="fecha-auto">VIE 9 OCT 2026</span></h3>
-          <span class="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full">Hora Perú -05:00</span>
-        </div>
-        <div class="flex justify-between items-center bg-black/30 rounded-lg px-3 py-1.5">
-          <span id="fecha-larga-auto" class="text-[10px] text-yellow-200 font-bold tracking-widest">Viernes, 9 de octubre de 2026</span>
-          <span id="reloj-auto" class="text-[11px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full">00:00:00</span>
-        </div>
-      </div>
-
-      <div class="uefa-right-scroll space-y-2" id="menu-eventos-limpio">
-
-        <div class="uefa-right-desliza-hint">👆 10 EVENTOS HOY - VIE 9 OCT - DESLIZA ↕️ 👇</div>
-        
-        <div class="text-[10px] font-black tracking-widest text-[#22d3ee] px-2 mt-2">🇹🇷 SUPER LIG • TURQUÍA</div>
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney7','ev1',this)" id="ev1" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">12:00</span><span class="text-[10px] text-gray-400">TR • Super Lig</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Galatasaray</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Kasımpaşa</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 12:00 • disney7 🔴 EN VIVO</div>
-        </button>
-
-        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">13:00 • FÚTBOL INTERNACIONAL</div>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=foxone','ev2',this)" id="ev2" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:00</span><span class="text-[10px] text-gray-400">ARA • Saudi Pro League</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Al Nassr</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Al Draih</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:00 • foxone 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney8','ev3',this)" id="ev3" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:00</span><span class="text-[10px] text-gray-400">HOL • Eredivisie</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">PSV</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Heerenveen</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:00 • disney8 🔴 EN VIVO</div>
-        </button>
-
-        <div class="text-[10px] font-black tracking-widest text-pink-400 px-2 mt-3">13:30 • FEMENINO & BUNDESLIGA</div>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=disney9','ev4',this)" id="ev4" class="match-btn w-full text-left bg-[#111827] border border-pink-900/40 rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-pink-600 text-white font-black px-2 py-0.5 rounded-full">13:30</span><span class="text-[10px] text-pink-300">FIFA • Amistoso FEM</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">🇩🇪 Alemania</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Australia 🇦🇺</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:30 • disney9 🔴 EN VIVO • WOMAN</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn5','ev5',this)" id="ev5" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:30</span><span class="text-[10px] text-gray-400">ALE • Bundesliga</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">B. Dortmund</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">W. Bremen</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:30 • espn5 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn4','ev6',this)" id="ev6" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">13:45</span><span class="text-[10px] text-gray-400">FR • Ligue 1</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Lens</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Lyon</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 13:45 • espn4 🔴 EN VIVO</div>
-        </button>
-
-        <div class="text-[10px] font-black tracking-widest text-[#22d3ee] px-2 mt-3">14:00 • TARDE EUROPEA</div>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn2','ev7',this)" id="ev7" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">14:00</span><span class="text-[10px] text-gray-400">ES • LaLiga2</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Málaga</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Espanyol</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 14:00 • espn2 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=espn7','ev8',this)" id="ev8" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">14:00</span><span class="text-[10px] text-gray-400">ENG • Championship</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">West Ham</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">QPR</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 14:00 • espn7 🔴 EN VIVO</div>
-        </button>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=dsports2','ev9',this)" id="ev9" class="match-btn w-full text-left bg-[#111827] border border-[#1e293b] rounded-xl p-3">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#334155] text-white font-black px-2 py-0.5 rounded-full">14:15</span><span class="text-[10px] text-gray-400">PT • Primeira Liga</span></div>
-          <div class="flex justify-between"><span class="text-white font-bold text-sm">Sp. Braga</span><span class="text-yellow-400 text-xs">VS</span><span class="text-white font-bold text-sm">Sporting CP</span></div>
-          <div class="text-[10px] text-yellow-300 mt-1">📍 Vie 09 Oct 14:15 • dsports2 🔴 EN VIVO</div>
-        </button>
-
-        <div class="text-[10px] font-black tracking-widest text-[#facc15] px-2 mt-3">🇵🇪 LIGA 1 • PERÚ - ESTELAR</div>
-
-        <button onclick="reproducirExacto('https://streamxhd.com/live1.php?stream=l1max','ev10',this)" id="ev10" class="match-btn w-full text-left bg-gradient-to-r from-[#7f1d1d] to-[#450a0a] border-2 border-[#facc15] rounded-xl p-3" style="box-shadow:0 0 15px rgba(250,204,21,.3)">
-          <div class="flex justify-between mb-1"><span class="text-[10px] bg-[#facc15] text-black font-black px-2 py-0.5 rounded-full animate-pulse">20:00</span><span class="text-[10px] text-yellow-300 font-bold">PE • Liga 1</span></div>
-          <div class="flex justify-between items-center"><span class="text-white font-black text-sm">D. Garcilaso</span><span class="text-[#facc15] text-xs font-black animate-pulse">VS</span><span class="text-white font-black text-sm">S. Huancayo</span></div>
-          <div class="text-[11px] text-yellow-200 mt-1 font-bold">🔥 Liga 1 Perú • Vie 09 Oct 20:00 • l1max 🔴 EN VIVO</div>
-        </button>
-
-      </div>
-    </div>
-
-
-  </div>
-
-
   
-<script>
-(function(){
-  // ===== CONTADOR UEFA NATIONS - BLOQUE INDEPENDIENTE =====
-  var BASE = 'https://countapi.mileshilliard.com/api/v1';
-  var SITE_UEFA = '365peru.com-uefa-nations-oct2026-v1';
-  function pad(n){ return n<10?'0'+n:''+n; }
-  var ahora = new Date();
-  var elHora=document.getElementById('v-hora-uefa'); if(elHora) elHora.textContent=ahora.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit', timeZone:'America/Lima'});
-  var elFecha=document.getElementById('v-fecha-uefa-hoy'); if(elFecha) elFecha.textContent=ahora.toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'});
-  var elMesNombre=document.getElementById('v-nombre-mes-uefa'); if(elMesNombre) elMesNombre.textContent=ahora.toLocaleDateString('es-PE',{month:'long'}).toUpperCase();
-  var elSem=document.getElementById('v-semana-uefa');
-  var dayKey = SITE_UEFA + '_d_' + ahora.getFullYear() + pad(ahora.getMonth()+1) + pad(ahora.getDate());
-  var monthKey = SITE_UEFA + '_m_' + ahora.getFullYear() + pad(ahora.getMonth()+1);
-  var totalKey = SITE_UEFA + '_total';
-  var tmp = new Date(ahora); tmp.setHours(0,0,0,0); tmp.setDate(tmp.getDate() + 3 - ((tmp.getDay()+6)%7));
-  var week1 = new Date(tmp.getFullYear(),0,4);
-  var weekNum = 1 + Math.round(((tmp - week1)/86400000 - 3 + ((week1.getDay()+6)%7))/7);
-  var weekKey = SITE_UEFA + '_w_' + tmp.getFullYear() + 'W' + pad(weekNum);
-  if(elSem) elSem.textContent = weekNum;
-  var yaContada = sessionStorage.getItem('vc_uefa_contada_v1');
-  var action = yaContada ? 'get' : 'hit';
-  function actualizar(key, elId){
-    var el=document.getElementById(elId);
-    if(!el) return;
-    fetch(BASE + '/' + action + '/' + key)
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        var val = (data && data.value != null) ? data.value : 0;
-        el.textContent = val.toLocaleString('es-PE');
-        el.style.transform='scale(1.08)';
-        setTimeout(function(){ el.style.transform='scale(1)'; }, 200);
-      })
-      .catch(function(){ el.textContent='--'; });
-  }
-  actualizar(dayKey, 'vc-uefa-today');
-  actualizar(weekKey, 'vc-uefa-week');
-  actualizar(monthKey, 'vc-uefa-month');
-  actualizar(totalKey, 'vc-uefa-total');
-  if(!yaContada) sessionStorage.setItem('vc_uefa_contada_v1','1');
 
-  // ONLINE REAL PARA ESTE BLOQUE
-  var onlineEl = document.getElementById('vc-uefa-online');
-  var onlineListEl = document.getElementById('vc-uefa-online-list');
-  var PRESENCE_KEY = '365peru_uefa_online_v1';
-  var MY_ID = sessionStorage.getItem('365peru_uefa_my_id') || ('u_'+Date.now()+'_'+Math.random().toString(36).substr(2,5));
-  sessionStorage.setItem('365peru_uefa_my_id', MY_ID);
 
-  function getCurrentMatch(){
-    var active = document.querySelector('.match-btn.active, .menu-btn-active');
-    if(active){
-      var txt = active.innerText.replace(/\n/g,' ').substring(0,30);
-      return txt;
-    }
-    return 'UEFA Nations League';
-  }
+<!-- BLOQUE NUEVO FULL WIDTH - OCUPA TODO EL BLOQUE UEFA -->
+<div id="bloque-futbol" style="width:100vw;max-width:100vw;margin-left:calc(-50vw + 50%);margin-right:0;margin-top:0;padding:0;box-sizing:border-box;background:#080808;position:relative;left:0;right:0">
+  <style>
+    #bloque-futbol *{box-sizing:border-box}
+    #bloque-futbol .fb-full{width:100%;max-width:100%;margin:0 auto;padding:0;background:#080808}
+    #bloque-futbol .fb-grid{width:100%;display:grid;grid-template-columns:2.2fr 0.9fr;gap:0;align-items:stretch;min-height:92vh}
+    @media(max-width:1100px){#bloque-futbol .fb-grid{grid-template-columns:1fr;}}
+    #bloque-futbol .player-side{background:#000;display:flex;flex-direction:column;width:100%}
+    #bloque-futbol .player-top{height:46px;background:#0a0e16;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center;padding:0 16px;color:#fff;font-size:13px;font-weight:800}
+    #bloque-futbol .player-wrap{flex:1;position:relative;background:#000;aspect-ratio:16/9;width:100%}
+    @media(min-width:1100px){#bloque-futbol .player-wrap{aspect-ratio:auto;flex:1;height:calc(92vh - 110px)}}
+    #bloque-futbol .player-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    #bloque-futbol .canales{padding:12px 16px;background:#0f172a;border-top:1px solid #1e293b;display:flex;flex-wrap:wrap;gap:8px}
+    #bloque-futbol .ch-btn{padding:9px 16px;border-radius:9999px;border:1px solid #334155;background:#1e293b;color:#fff;font-size:12px;font-weight:700;cursor:pointer}
+    #bloque-futbol .ch-btn.active{background:#00ff88;color:#000;border-color:#00ff88}
+    #bloque-futbol .bottom-actions{padding:12px 16px;background:#0a0e16;border-top:1px solid #1e293b;display:flex;gap:8px;flex-wrap:wrap}
+    #bloque-futbol .btn-inicio{flex:1;min-width:180px;padding:13px 16px;border-radius:12px;border:none;font-weight:900;font-size:13px;cursor:pointer}
+    #bloque-futbol .btn-green{background:linear-gradient(90deg,#00ff88,#0ea5e9);color:#000}
+    #bloque-futbol .btn-dark{background:#1e293b;color:#fff;border:1px solid #334155}
+    #bloque-futbol .btn-white{background:#fff;color:#000}
+    #bloque-futbol .timeline{background:#111827;border-left:1px solid #1e293b;overflow-y:auto;max-height:92vh;width:100%}
+    @media(max-width:1100px){#bloque-futbol .timeline{max-height:70vh;border-left:none;border-top:1px solid #1e293b}}
+    #bloque-futbol .hora-head{position:sticky;top:0;z-index:10;background:#0f172a;border-bottom:1px solid #1e293b;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+    #bloque-futbol .match{padding:14px 16px;border-bottom:1px solid #1e293b;display:flex;gap:12px;cursor:pointer;transition:.15s}
+    #bloque-futbol .match:hover{background:#1e293b}
+    #bloque-futbol .match.active{background:#1e293b;border-left:4px solid #00ff88}
+    #bloque-futbol .time-box{min-width:70px;height:60px;background:#0a0e16;border:1px solid #1e293b;border-radius:10px;display:grid;place-items:center;text-align:center}
+  </style>
 
-  function updatePresenceReal(){
-    var now = Date.now();
-    var users = {};
-    try{ users = JSON.parse(localStorage.getItem(PRESENCE_KEY) || '{}'); }catch(e){ users={}; }
-    for(var id in users){ if(now - users[id].lastSeen > 90000) delete users[id]; }
-    users[MY_ID] = { lastSeen: now, match: getCurrentMatch(), time: ahora.toLocaleTimeString('es-PE'), page: 'uefa-nations-league' };
-    localStorage.setItem(PRESENCE_KEY, JSON.stringify(users));
-    return users;
-  }
-  function renderOnlineReal(){
-    var users = updatePresenceReal();
-    var count = Object.keys(users).length;
-    if(onlineEl) onlineEl.textContent = count + '+';
-    if(onlineListEl){
-      var matches = {};
-      for(var id in users){ var m = users[id].match || 'UEFA'; matches[m] = (matches[m]||0)+1; }
-      var top = Object.keys(matches).sort(function(a,b){ return matches[b]-matches[a]; })[0] || 'UEFA Nations League';
-      if(count<=1){
-        onlineListEl.textContent = '1 viendo '+ top.substring(0,22) + ' ahora';
-      } else {
-        onlineListEl.textContent = count + ' viendo ' + top.substring(0,18) + ' 🔴 EN VIVO';
-      }
-    }
-  }
-  renderOnlineReal();
-  setInterval(renderOnlineReal, 10000);
-  try{
-    var bc = new BroadcastChannel('365peru_uefa_online_v1');
-    bc.onmessage = function(){ renderOnlineReal(); };
-    setInterval(function(){ bc.postMessage('ping'); }, 8000);
-  }catch(e){}
+  <div class="fb-full">
+    <div class="fb-grid">
+      <!-- IZQUIERDA: PLAYER FULL -->
+      <div class="player-side">
+        <div class="player-top">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:8px;background:#ef4444;border-radius:50%;display:inline-block"></span><span id="fb-match-title">Arsenal vs Leeds United • Premier League • 06:30</span></div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="font-size:11px;background:#1e293b;border:1px solid #334155;padding:4px 10px;border-radius:9999px">76 PARTIDOS • 06:30→22:10</span>
+            <button onclick="document.getElementById('mainVideoPlayer')?.requestFullscreen()" style="width:34px;height:34px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#fff;cursor:pointer">⛶</button>
+            <button onclick="let u=document.getElementById('mainVideoPlayer').src; if(u) window.open(u,'_blank')" style="padding:0 14px;height:34px;background:#00ff88;color:#000;border-radius:8px;font-weight:900;font-size:11px;border:none;cursor:pointer">ABRIR ↗</button>
+          </div>
+        </div>
+        <div class="player-wrap">
+          <iframe id="mainVideoPlayer" src="https://streamxhd.com/live2.php?stream=disney4" allowfullscreen allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="canales" id="fb-canales"></div>
+        <div class="bottom-actions">
+          <button class="btn-inicio btn-green" onclick="if(window.setCat) setCat('inicio'); window.location.href='https://365peru.com/#inicio'">← REGRESAR AL INICIO</button>
+          <button class="btn-inicio btn-dark" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ IR ARRIBA</button>
+          <button class="btn-inicio btn-white" onclick="window.location.href='https://365peru.com/'">⌂ MENÚ PRINCIPAL 365PERU.COM</button>
+        </div>
+        <div style="padding:10px 16px;background:#080808;border-top:1px solid #1e293b;display:flex;gap:8px">
+          <input id="fb-custom-name" placeholder="Nombre canal" style="flex:1;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 14px;color:#fff;font-size:12px">
+          <input id="fb-custom-url" placeholder="https://streamxhd.com/live2.php?stream=..." style="flex:2.5;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 14px;color:#fff;font-size:12px">
+          <button onclick="fbAddCustom()" style="background:#fff;color:#000;border:none;padding:10px 18px;border-radius:8px;font-weight:900;font-size:12px;cursor:pointer">+ Agregar</button>
+        </div>
+      </div>
 
-  // TRACKING DE PARTIDOS
-  function trackUefaMatch(){
-    var match = getCurrentMatch().replace(/\s+/g,'-').toLowerCase().substring(0,40);
-    var pageKey = SITE_UEFA + '_match_' + match.replace(/[^a-z0-9-]/g,'');
-    fetch(BASE + '/hit/' + pageKey).catch(function(){});
-    var hist = {};
-    try{ hist = JSON.parse(localStorage.getItem('365peru_uefa_hist') || '{}'); }catch(e){}
-    hist[match] = (hist[match]||0)+1;
-    hist['_last']=match;
-    localStorage.setItem('365peru_uefa_hist', JSON.stringify(hist));
-    renderUefaTop();
-    renderUefaRanking();
-  }
-
-  function renderUefaTop(){
-    var hist={}; try{ hist=JSON.parse(localStorage.getItem('365peru_uefa_hist')||'{}'); }catch(e){}
-    var container=document.getElementById('vc-uefa-top-pages');
-    if(!container) return;
-    var sorted=Object.keys(hist).filter(function(k){return k!=='_last';}).sort(function(a,b){return hist[b]-hist[a];});
-    if(sorted.length===0){
-      container.innerHTML='<div style="background:linear-gradient(135deg,#facc15,#eab308);border-radius:12px;padding:10px;color:#000;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:8px;font-weight:900;opacity:.8">🥇 EN VIVO AHORA</div><div style="font-size:11px;font-weight:900;margin-top:2px">Islandia vs Bulgaria</div><div style="font-size:7px;opacity:.8">Sáb 3 Oct 11:00 • Disney 7</div></div><div style="background:#000;color:#facc15;font-size:10px;font-weight:900;padding:6px 10px;border-radius:999px">🔴 LIVE</div></div>';
-      return;
-    }
-    var html=''; var icons=['🥇','🥈','🥉','4️⃣','5️⃣']; var total=sorted.slice(0,5).reduce(function(s,k){return s+hist[k];},0);
-    sorted.slice(0,5).forEach(function(page,i){
-      var count=hist[page]; var label=page.replace(/-/g,' ').substring(0,30); var pct=Math.round((count/Math.max(1,total))*100);
-      var bg=i===0?'linear-gradient(135deg,#facc15,#eab308)':'#fff'; var textColor=i===0?'#000':'#0f172a'; var border=i===0?'#facc15':'#e2e8f0';
-      html+='<div style="background:'+bg+';border:1.5px solid '+border+';border-radius:12px;padding:10px;display:flex;justify-content:space-between;align-items:center;color:'+textColor+'"><div><div style="font-size:8px;font-weight:900;opacity:.8">'+icons[i]+' '+(i+1)+'er MAS VISTO</div><div style="font-size:11px;font-weight:900;margin-top:2px">'+label+'</div><div style="font-size:7px;opacity:.8">'+count+' views • '+pct+'%</div></div><div style="background:'+(i===0?'#000':'#0f172a')+';color:'+(i===0?'#facc15':'#fff')+';font-size:10px;font-weight:900;padding:6px 10px;border-radius:999px">🔥 '+count+'</div></div>';
-    });
-    container.innerHTML=html;
-  }
-
-  function renderUefaRanking(){
-    var container=document.getElementById('vc-uefa-ranking-global');
-    if(!container) return;
-    var partidos=[]; // 🧹 LIMPIADO VIE 9 OCT 2026 - listo para nuevos // 🧹 LIMPIO - VIE 9 OCT 2026
-    container.innerHTML='<div style="font-size:9px;color:#64748b;text-align:center;padding:8px">🔄 Consultando audiencia UEFA...</div>';
-    var promesas=partidos.map(function(p){
-      var key=SITE_UEFA+'_match_'+p;
-      return fetch(BASE+'/get/'+key).then(function(r){return r.json();}).then(function(d){return {page:p,count:(d.value||0)}}).catch(function(){
-        var h={}; try{h=JSON.parse(localStorage.getItem('365peru_uefa_hist')||'{}');}catch(e){}
-        return {page:p,count:h[p]||0};
-      });
-    });
-    Promise.all(promesas).then(function(res){
-      res.sort(function(a,b){return b.count-a.count;});
-      var total=res.reduce(function(s,r){return s+r.count;},0);
-      var html=''; var iconos=['🥇','🥈','🥉','4','5','6','7','8'];
-      res.slice(0,8).forEach(function(item,i){
-        if(i>2 && item.count===0) return;
-        var pct=total>0?Math.round((item.count/total)*100):0;
-        var label=item.page.replace(/-/g,' ').toUpperCase();
-        var bgItem=i===0?'linear-gradient(135deg,#facc15,#eab308)':i===1?'linear-gradient(135deg,#0ea5e9,#0284c7)':i===2?'linear-gradient(135deg,#22c55e,#16a34a)':'#fff';
-        var textCol=i<3?'#000':'#0f172a'; if(i===1||i===2) textCol='#fff';
-        var border=i<3?'none':'1.5px solid #e2e8f0';
-        html+='<div style="background:'+bgItem+';border:'+border+';border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;color:'+textCol+';position:relative;overflow:hidden"><div style="position:absolute;left:0;top:0;bottom:0;width:'+pct+'%;background:rgba(0,0,0,.08);"></div><div style="position:relative;z-index:1;display:flex;align-items:center;gap:10px;flex:1;min-width:0"><div style="width:28px;height:28px;background:'+(i<3?'rgba(0,0,0,.15)':'#f1f5f9')+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:'+textCol+'">'+iconos[i]+'</div><div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+label+'</div><div style="font-size:7px;opacity:.8;">'+item.count+' views • '+pct+'% audiencia</div></div></div><div style="position:relative;z-index:1;background:'+(i<3?'#000':'#0f172a')+';color:'+(i<3?'#facc15':'#fff')+';font-size:9px;font-weight:900;padding:5px 9px;border-radius:999px">'+item.count+'</div></div>';
-      });
-      if(!html) html='<div style="font-size:10px;text-align:center;padding:12px;color:#64748b">Aún no hay datos UEFA - ¡Sé el primero en ver un partido!</div>';
-      container.innerHTML=html;
-    });
-  }
-
-  // Inicializar y trackear clics en partidos
-  setTimeout(function(){ renderUefaTop(); renderUefaRanking(); trackUefaMatch(); }, 800);
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('.match-btn');
-    if(btn){ setTimeout(trackUefaMatch, 500); }
-  });
-
-  // Observar cuando entran al bloque UEFA
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        trackUefaMatch();
-        renderOnlineReal();
-      }
-    });
-  }, {threshold:0.2});
-  var bloque = document.getElementById('uefa-live-contador');
-  if(bloque) observer.observe(bloque);
-
-})();
-</script>
-
-<div class="max-w-[1280px] mx-auto p-3 flex gap-2">
-    <button class="btn-volver px-4 py-2 bg-[#111827] border border-[#26314a] rounded-lg text-white text-xs font-bold" onclick="closeUefaFull()">← Volver al sitio web</button>
-    <button class="btn-volver px-4 py-2 bg-white text-black rounded-lg text-xs font-bold hidden lg:block" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Ir arriba</button>
+      <!-- DERECHA: TIMELINE FULL -->
+      <div class="timeline" id="fb-timeline"></div>
+    </div>
   </div>
 </div>
+
+<script>
+const FB_MATCHES = [
+  {time:"06:30",league:"Premier League",country:"ENG",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",home:"Arsenal",away:"Leeds United",channels:[["Disney +","disney4"],["ESPN AR","espnar"],["ESPN","espn"],["Universo","universo"],["Max 1","max1"]]},
+  {time:"06:30",league:"Championship",country:"ENG",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",home:"West Brom",away:"Birmingham City",channels:[["ESPN 5","espn5"]]},
+  {time:"07:00",league:"LaLiga",country:"ES",flag:"🇪🇸",home:"Rayo Vallecano",away:"Athletic Club",channels:[["Disney +","disney5"],["ESPN 2 AR","espn2ar"],["ESPN +","espnplus1"],["ESPN Dep","espndeportes"],["DAZN LaLiga","daznlaliga"],["ESPN 2","espn2"]]},
+  {time:"08:00",league:"Serie A",country:"IT",flag:"🇮🇹",home:"Genoa",away:"Fiorentina",channels:[["Disney +","disney6"]]},
+  {time:"08:00",league:"Super Lig",country:"TUR",flag:"🇹🇷",home:"Samsunspor",away:"Trabzonspor",channels:[["Disney +","disney7"]]},
+  {time:"08:30",league:"Bundesliga",country:"ALE",flag:"🇩🇪",home:"Augsburg",away:"Bayern München",channels:[["Disney +","disney12"],["Telemundo","telemundo"]]},
+  {time:"08:30",league:"Bundesliga",country:"ALE",flag:"🇩🇪",home:"Hoffenheim",away:"Hamburger SV",channels:[["Disney +","disney13"]]},
+  {time:"08:30",league:"Bundesliga",country:"ALE",flag:"🇩🇪",home:"Mainz 05",away:"Bayer Leverkusen",channels:[["Disney +","disney14"],["ESPN 5","espn5"]]},
+  {time:"09:00",league:"Premier League",country:"ENG",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",home:"Aston Villa",away:"Brentford",channels:[["Disney +","disney17"],["Universo","universo"]]},
+  {time:"09:00",league:"Premier League",country:"ENG",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",home:"Chelsea",away:"Bournemouth",channels:[["Disney +","disney18"],["ESPN","espn"]]},
+  {time:"11:30",league:"LaLiga",country:"ES",flag:"🇪🇸",home:"Barcelona",away:"Getafe",channels:[["Disney +","disney28"],["ESPN 2 AR","espn2ar"]]},
+  {time:"13:00",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"ADT",away:"FC Cajamarca",channels:[["L1 Max","l1max"]]},
+  {time:"18:00",league:"Liga MX",country:"MEX",flag:"🇲🇽",home:"FC Juárez",away:"Tijuana",channels:[["FOX One","foxone"],["Azteca 7","azteca7"]]},
+  {time:"19:00",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Universitario",away:"Melgar",channels:[["L1 Max","l1max"]]},
+  {time:"19:30",league:"Liga Profesional",country:"AR",flag:"🇦🇷",home:"River Plate",away:"Estudiantes RC",channels:[["ESPN Premium","espnpremium"]]},
+  {time:"20:00",league:"Liga MX",country:"MEX",flag:"🇲🇽",home:"Atlas",away:"Guadalajara",channels:[["Canal 5 MX","canal5mx"],["TUDN USA","tudn_usa"]]},
+  {time:"22:10",league:"Liga MX",country:"MEX",flag:"🇲🇽",home:"América",away:"Monterrey",channels:[["Canal 5 MX","canal5mx"]]}
+];
+let fbCurrent = FB_MATCHES[0];
+function fbToMin(t){let [h,m]=t.split(":").map(Number);return h*60+m;}
+function fbRenderTimeline(){
+  let cont=document.getElementById("fb-timeline"); if(!cont) return;
+  let sorted=[...FB_MATCHES].sort((a,b)=>fbToMin(a.time)-fbToMin(b.time));
+  let grupos={}; sorted.forEach(m=>{if(!grupos[m.time]) grupos[m.time]=[]; grupos[m.time].push(m);});
+  let html="";
+  Object.keys(grupos).sort((a,b)=>fbToMin(a)-fbToMin(b)).forEach(hora=>{
+    html+=`<div class="hora-head"><div style="display:flex;gap:8px;align-items:center"><span style="font-weight:900;color:#fff;font-size:17px">${hora}</span><span style="font-size:10px;background:#00ff88;color:#000;padding:3px 10px;border-radius:9999px;font-weight:900">${grupos[hora].length} PARTIDOS</span></div><span style="font-size:11px;color:#00ff88;font-weight:800">TEMPRANO</span></div>`;
+    grupos[hora].forEach(match=>{
+      let active=fbCurrent && fbCurrent.home===match.home && fbCurrent.time===match.time ? "active":"";
+      html+=`<div class="match ${active}" onclick="fbSelectMatch('${match.home.replace(/'/g,"\'")}','${match.time}')">
+        <div class="time-box"><div style="font-weight:900;color:#fff;font-size:15px">${match.time}</div><div style="font-size:8px;color:#00ff88;font-weight:900">PRONTO</div><div style="font-size:11px;margin-top:2px">${match.flag}</div></div>
+        <div style="flex:1;min-width:0"><div style="font-weight:800;color:#fff;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${match.home} <span style="color:#64748b">VS</span> ${match.away}</div><div style="font-size:11px;color:#94a3b8;margin-top:3px">${match.flag} ${match.country} • ${match.league}</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:7px">${match.channels.slice(0,3).map(c=>`<span style="font-size:9px;background:#1e293b;border:1px solid #334155;padding:3px 7px;border-radius:9999px;color:#94a3b8">${c[0]}</span>`).join("")}</div></div>
+        <div style="display:flex;flex-direction:column;align-items:end;gap:6px"><div style="width:9px;height:9px;border-radius:50%;background:${active?"#00ff88":"#334155"}"></div><span style="font-size:10px;background:#1e293b;border:1px solid #334155;padding:4px 8px;border-radius:6px;color:#94a3b8">VER</span></div>
+      </div>`;
+    });
+  });
+  cont.innerHTML=html;
+}
+function fbSelectMatch(home,time){
+  let match=FB_MATCHES.find(m=>m.home===home && m.time===time); if(!match) return;
+  fbCurrent=match;
+  document.getElementById("fb-match-title").textContent=`${match.home} vs ${match.away} • ${match.league} • ${match.time}`;
+  fbRenderCanales(); fbRenderTimeline();
+  if(window.innerWidth<1100) document.getElementById("bloque-futbol").scrollIntoView({behavior:"smooth"});
+}
+function fbRenderCanales(){
+  let cont=document.getElementById("fb-canales"); if(!cont||!fbCurrent) return;
+  cont.innerHTML=fbCurrent.channels.map((c,i)=>{
+    let url=c[1].startsWith("http")?c[1]:`https://streamxhd.com/live2.php?stream=${c[1]}`;
+    return `<button class="ch-btn ${i===0?"active":""}" onclick="fbPlay('${url}',this)">${c[0]}</button>`;
+  }).join("");
+  let first=fbCurrent.channels[0]; let firstUrl=first[1].startsWith("http")?first[1]:`https://streamxhd.com/live2.php?stream=${first[1]}`;
+  document.getElementById("mainVideoPlayer").src=firstUrl;
+}
+function fbPlay(url,el){document.getElementById("mainVideoPlayer").src=url; document.querySelectorAll("#fb-canales .ch-btn").forEach(b=>b.classList.remove("active")); if(el) el.classList.add("active");}
+function fbAddCustom(){let name=document.getElementById("fb-custom-name").value.trim(); let url=document.getElementById("fb-custom-url").value.trim(); if(!name||!url) return alert("Falta nombre y URL"); if(!fbCurrent) fbCurrent=FB_MATCHES[0]; fbCurrent.channels.push([name,url]); fbRenderCanales(); document.getElementById("fb-custom-name").value=""; document.getElementById("fb-custom-url").value="";}
+document.addEventListener("DOMContentLoaded",()=>{fbRenderTimeline(); fbRenderCanales();});
+</script>
+
+
 <script>
 
 function changeChannel(streamName, buttonElement) { 
