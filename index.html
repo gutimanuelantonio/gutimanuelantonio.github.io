@@ -3138,6 +3138,53 @@ function render(){
 </div>
 <style>@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}</style>
 
+
+<!-- ===== BLOQUE BANNER PELICULAS 365 - CREADO 11 OCT 2026 - ENTRE LINEA VERDE Y BLANCA ===== -->
+<style>
+#bloque-peliculas-slider-365{width:100%;max-width:1280px;margin:12px auto 0;padding:0 8px;box-sizing:border-box;position:relative;z-index:10}
+.peliculas-slider-premium{position:relative;width:100%;border-radius:18px;overflow:hidden;border:2px solid #d4af37;box-shadow:0 0 0 1px rgba(212,175,55,.3),0 12px 40px rgba(0,0,0,.45);cursor:pointer;aspect-ratio: 1920/400;background: radial-gradient(120% 120% at 20% 30%, #0a1931 0%, #050a1a 40%, #1a0505 100%);display:flex;align-items:center;justify-content:center;transition:transform .25s ease, box-shadow .25s ease}
+.peliculas-slider-premium:hover{transform:translateY(-2px) scale(1.005);box-shadow:0 0 0 1px rgba(212,175,55,.5),0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(212,175,55,.25)}
+.peliculas-slider-premium img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.95}
+.peliculas-slider-overlay{position:absolute;inset:0;background: linear-gradient(90deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 40%, rgba(0,0,0,.4) 100%);z-index:1}
+.peliculas-slider-content{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;width:100%;padding:18px 28px;gap:16px}
+.peliculas-logos{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.peliculas-logos span{font-weight:900;font-size:13px;letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.peliculas-cta{flex-shrink:0;background:linear-gradient(135deg,#0a1931 0%, #8b0000 100%);border:2px solid #d4af37;border-radius:999px;padding:14px 28px;color:#ffe9a8;font-weight:900;font-size:15px;letter-spacing:.8px;box-shadow:0 0 20px rgba(212,175,55,.4), inset 0 1px 0 rgba(255,255,255,.2);display:inline-flex;align-items:center;gap:10px;animation:ctaPulse365 2.5s infinite}
+@keyframes ctaPulse365{0%,100%{box-shadow:0 0 20px rgba(212,175,55,.4), inset 0 1px 0 rgba(255,255,255,.2)}50%{box-shadow:0 0 35px rgba(212,175,55,.7), 0 0 50px rgba(255,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3);transform:scale(1.03)}}
+@media(max-width:768px){.peliculas-slider-content{flex-direction:column;text-align:center;padding:14px}.peliculas-logos{justify-content:center}.peliculas-cta{font-size:13px;padding:12px 22px}.peliculas-slider-premium{aspect-ratio:16/6}}
+</style>
+
+<div id="bloque-peliculas-slider-365">
+  <div class="peliculas-slider-premium" onclick="openPeliculasEnVivo365()" title="Ver Películas Estrenos">
+    <!-- Fondo con efecto cine -->
+    <div style="position:absolute;inset:0;background:radial-gradient(800px at 15% 50%, rgba(255,215,0,.18), transparent 60%), radial-gradient(600px at 85% 30%, rgba(255,0,0,.25), transparent 60%), linear-gradient(90deg, #020824 0%, #0a0e2a 30%, #1a0a1a 70%, #2a0505 100%)"></div>
+    <div class="peliculas-slider-overlay"></div>
+    <div class="peliculas-slider-content">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <span style="color:#FFD700;font-size:16px;font-weight:900;text-shadow:0 0 12px rgba(255,215,0,.8)">UNIVERSAL</span>
+          <span style="color:#FF6B35">P</span><span style="color:#7ED321">I</span><span style="color:#4A90E2">X</span><span style="color:#BD10E0">A</span><span style="color:#F8E71C">R</span>
+          <span style="color:#fff;font-family:serif;font-style:italic;font-size:18px">Disney</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="color:#fff;font-weight:900;font-size:20px;letter-spacing:2px">HBO</span>
+          <span style="color:#00A8E1;font-weight:800">prime video</span>
+          <span style="color:#E50914;font-weight:900">NETFLIX</span>
+          <span style="border:1px solid #d4af37;color:#d4af37;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:800">▶ PREMIER</span>
+        </div>
+      </div>
+      <div class="peliculas-cta">
+        VER PELÍCULAS ESTRENOS <span style="font-size:20px">›</span>
+      </div>
+    </div>
+    <!-- Brillos -->
+    <div style="position:absolute;top:12%;left:25%;width:12px;height:12px;background:#fff;border-radius:50%;box-shadow:0 0 20px #fff,0 0 40px #ffd700;opacity:.8;z-index:2;animation:twinkle 2s infinite"></div>
+    <div style="position:absolute;top:30%;right:20%;width:8px;height:8px;background:#ff6b6b;border-radius:50%;box-shadow:0 0 15px #ff6b6b;opacity:.7;z-index:2;animation:twinkle 2.5s infinite .5s"></div>
+  </div>
+</div>
+<style>@keyframes twinkle{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}</style>
+<!-- ===== FIN BLOQUE BANNER PELICULAS ===== -->
+
 <div class="main-layout">
   <div class="main-content"><div id="segundo-tercero-destacado" style="margin-bottom:12px"></div><div id="segundo-tercero-destacado" style="margin-bottom:12px"></div>${mainContent}</div>
   <div class="sidebar">${getVisitasBloqueHTML()}${getFlagCounterBloqueHTML()}</div>
@@ -3911,5 +3958,227 @@ document.addEventListener('DOMContentLoaded', ()=>{ try{ initHeroSlider(); }catc
   });
 })();
 </script>
+
+<!-- ===== VISTA PELICULAS EN VIVO 365 - BLOQUE NUEVO ===== -->
+<style>
+#view-peliculas-en-vivo-365{display:none;position:fixed;inset:0;z-index:10002;background:#0a0a0f;overflow-y:auto;overflow-x:hidden}
+#view-peliculas-en-vivo-365.open{display:block;animation:fadeIn365 .3s ease}
+@keyframes fadeIn365{from{opacity:0}to{opacity:1}}
+.pev-topbar{position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);background:rgba(10,10,15,.92);border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;padding:14px 18px}
+.pev-brand{color:#fff;font-weight:900;display:flex;align-items:center;gap:10px;font-size:14px;letter-spacing:.5px}
+.pev-brand .dot{width:10px;height:10px;border-radius:50%;background:#FFD700;box-shadow:0 0 12px #FFD700;animation:pulseDot 1.5s infinite}
+@keyframes pulseDot{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.pev-btn{font-weight:800;font-size:12px;padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:.2s}
+.pev-btn.vol{background:#111118;color:#fff}
+.pev-btn.ini{background:#fff;color:#000}
+.pev-btn:hover{transform:translateY(-1px)}
+.pev-player-wrap{max-width:1640px;margin:0 auto;padding:18px}
+.pev-marquee{border-y:1px solid rgba(255,215,0,.18);background:linear-gradient(90deg,rgba(255,215,0,.08),rgba(0,0,0,.6) 15%, rgba(0,0,0,.6) 85%, rgba(229,9,20,.10));backdrop-filter:blur(12px);overflow:hidden;position:relative;height:44px;display:flex;align-items:center}
+.pev-marquee-track{animation:marqueeSlow 38s linear infinite;display:flex;white-space:nowrap}
+.pev-marquee-track:hover{animation-play-state:paused}
+@keyframes marqueeSlow{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.pev-grid{display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:start;margin-top:18px}
+@media(max-width:1024px){.pev-grid{grid-template-columns:1fr}}
+.pev-player-card{position:relative;border-radius:18px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 80px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.08)}
+.pev-player-card::before{content:'';position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,#FFD700,#ffb800,#E50914);z-index:-1;opacity:.8}
+.pev-player-iframe-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#050508}
+.pev-player-iframe-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.pev-sidebar{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.pev-sidebar-head{padding:16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;background:rgba(14,14,21,.9);backdrop-filter:blur(12px);z-index:2}
+.pev-list{max-height:68vh;overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:8px}
+.pev-list::-webkit-scrollbar{width:6px}.pev-list::-webkit-scrollbar-thumb{background:linear-gradient(180deg,gold,#ffb800);border-radius:999px}
+.pev-item{text-align:left;width:100%;border-radius:12px;padding:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:.25s}
+.pev-item.active{background:linear-gradient(135deg,#FFD700,#ffb800);box-shadow:0 0 18px rgba(255,215,0,.5)}
+.pev-item-inner{background:#111118;border-radius:10px;display:flex;align-items:center;gap:10px;padding:10px 12px}
+.pev-item.active .pev-item-inner{background:#15120a}
+.pev-num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;border:1px solid rgba(255,255,255,.15);flex-shrink:0}
+.pev-item.active .pev-num{background:#FFD700;color:#000;border-color:#FFD700}
+.pev-info{flex:1;min-width:0}
+.pev-title{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.pev-tag{font-size:9px;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+.pev-bottom-bar{margin-top:28px;border-top:1px solid rgba(255,255,255,.08);background:#0e0e15;padding:22px;border-radius:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.pev-impact-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:900;font-size:14px;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:.25s;text-decoration:none}
+.pev-impact-btn.gold{background:linear-gradient(90deg,#FFD700,#ffb800);color:#000;box-shadow:0 0 24px rgba(255,215,0,.45)}
+.pev-impact-btn.green{background:linear-gradient(90deg,#25D366,#128C7E);color:#fff;box-shadow:0 10px 28px rgba(37,211,102,.35)}
+.pev-impact-btn:hover{transform:translateY(-2px) scale(1.02)}
+</style>
+
+<div id="view-peliculas-en-vivo-365">
+  <div class="pev-topbar">
+    <div class="pev-brand"><span class="dot"></span> 365Perú / Películas en Vivo • 30 TÍTULOS HD</div>
+    <div style="display:flex;gap:10px">
+      <button class="pev-btn vol" onclick="closePeliculasEnVivo365()">← Volver</button>
+      <button class="pev-btn ini" onclick="goInicioPeliculas365()">⌂ Inicio</button>
+    </div>
+  </div>
+
+  <div class="pev-marquee">
+    <div class="pev-marquee-track">
+      <div style="display:flex;gap:40px;padding-right:40px">
+        <span style="color:#FFD700;font-weight:800;font-size:13px">⭐ 365 PERÚ - PELÍCULAS CLÁSICOS - ESTRENOS NETFLIX DRAMAS</span>
+        <span style="color:rgba(255,255,255,.85);font-size:13px">Somos creadores de contenido — Podemos crear tu página web — Creamos diseños web como este diseño premium</span>
+        <span style="color:#fff1a0;font-weight:700;font-size:13px">Si quieres saber más de nosotros, comunícate por WhatsApp al +51 901 397 859</span>
+        <span style="color:rgba(255,255,255,.4);font-size:12px">Diseño Web Profesional • 365 Perú © 2026</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px" aria-hidden="true">
+        <span style="color:#FFD700;font-weight:800;font-size:13px">⭐ 365 PERÚ - PELÍCULAS CLÁSICOS - ESTRENOS NETFLIX DRAMAS</span>
+        <span style="color:rgba(255,255,255,.85);font-size:13px">Somos creadores de contenido — Podemos crear tu página web — Creamos diseños web como este diseño premium</span>
+        <span style="color:#fff1a0;font-weight:700;font-size:13px">Si quieres saber más de nosotros, comunícate por WhatsApp al +51 901 397 859</span>
+        <span style="color:rgba(255,255,255,.4);font-size:12px">Diseño Web Profesional • 365 Perú © 2026</span>
+      </div>
+    </div>
+    <a href="https://wa.me/51901397859?text=Hola%2C%20he%20visto%20que%20haces%20sitios%20web.%20Quisiera%20saber%20m%C3%A1s%20informaci%C3%B3n.%20Lo%20vi%20por%20medio%20de%20su%20p%C3%A1gina%20web%20365%20Per%C3%BA" target="_blank" style="position:absolute;right:12px;z-index:3;background:linear-gradient(90deg,#FFD700,#ffb800);color:#000;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:900;text-decoration:none">¡Quiero mi web!</a>
+  </div>
+
+  <div class="pev-player-wrap">
+    <div class="pev-grid">
+      <!-- PLAYER IZQUIERDA -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center">🎬</div>
+            <div>
+              <div id="pev-current-title" style="font-size:18px;font-weight:800">El Hombre Invisible</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.5);display:flex;gap:8px"><span id="pev-current-tag" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);padding:2px 8px;border-radius:999px">Estreno</span> • Reproduciendo ahora • 16:9 • Autoplay</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;animation:pulseDot 1.5s infinite"></span><span style="font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.4)">STREAM ESTABLE</span></div>
+        </div>
+        <div class="pev-player-card">
+          <div class="pev-player-iframe-wrap" id="pev-player-wrap">
+            <iframe id="pev-iframe" src="https://ok.ru/videoembed/8566006221441?nochat=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;border-radius:8px;background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.2);display:grid;place-items:center">⚡</div><div><div style="font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.4)">VELOCIDAD</div><div style="font-size:12px;font-weight:800">Ultra rápida • Sin lag</div></div></div>
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;border-radius:8px;background:rgba(229,9,20,.15);border:1px solid rgba(229,9,20,.2);display:grid;place-items:center">🎥</div><div><div style="font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.4)">CALIDAD</div><div style="font-size:12px;font-weight:800">Full HD • Sonido pro</div></div></div>
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.2);display:grid;place-items:center">✨</div><div><div style="font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.4)">DISEÑO</div><div style="font-size:12px;font-weight:800">Premium 2026</div></div></div>
+        </div>
+      </div>
+      <!-- SIDEBAR DERECHA -->
+      <div class="pev-sidebar">
+        <div class="pev-sidebar-head">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;font-weight:900;letter-spacing:2px;color:#FFD700">CATÁLOGO</span><span style="width:18px;height:18px;border-radius:50%;background:#FFD700;color:#000;display:grid;place-items:center;font-size:10px;font-weight:900" id="pev-count">30</span></div>
+          <div style="font-size:13px;font-weight:800;margin-top:6px">30 TÍTULOS • CLICK PARA REPRODUCIR</div>
+          <div style="margin-top:12px;position:relative">
+            <input id="pev-search" placeholder="Filtrar películas..." style="width:100%;height:40px;padding-left:36px;padding-right:12px;border-radius:999px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:13px;outline:none">
+            <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.4">🔍</span>
+          </div>
+        </div>
+        <div class="pev-list" id="pev-list"></div>
+        <div style="padding:10px;border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.2)">
+          <div style="border-radius:10px;background:linear-gradient(135deg,rgba(255,215,0,.10),rgba(229,9,20,.08));border:1px solid rgba(255,215,0,.15);padding:10px;display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;border-radius:8px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center">👑</div><div style="font-size:11px;line-height:1.3;color:rgba(255,255,255,.7)"><b style="color:#fff">Tip premium:</b> usa el buscador para filtrar y haz click para cambio instantáneo con efecto fade.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pev-bottom-bar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#FFD700,#ffb800);display:grid;place-items:center;box-shadow:0 0 18px rgba(255,215,0,.5);color:#000;font-size:22px">✨</div>
+        <div><div style="font-size:16px;font-weight:800">¿Te gustó este reproductor? Creamos tu web igual de premium</div><div style="font-size:12px;color:rgba(255,255,255,.5)">Somos creadores de contenido • Landing pages, catálogos, reproductores, tiendas • Entrega rápida</div></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="pev-impact-btn green" href="https://wa.me/51901397859?text=Hola%2C%20he%20visto%20que%20haces%20sitios%20web.%20Quisiera%20saber%20m%C3%A1s%20informaci%C3%B3n.%20Lo%20vi%20por%20medio%20de%20su%20p%C3%A1gina%20web%20365%20Per%C3%BA" target="_blank">💬 Cotiza tu página web aquí</a>
+        <button class="pev-impact-btn gold" onclick="goInicioPeliculas365()">⌂ Volver al inicio</button>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;text-align:center;color:rgba(255,255,255,.3);font-size:11px;letter-spacing:1px">365 Perú © 2026 — Diseño Web Profesional • +51 901 397 859 • Hecho con ❤ en Perú • Premium Player</div>
+  </div>
+</div>
+
+<script>
+const peliculas365Data = [
+{id:1,title:"El Hombre Invisible",src:"https://ok.ru/videoembed/8566006221441?nochat=1",tag:"Estreno"},
+{id:2,title:"El Hombre de la Máscara de Hierro",src:"https://ok.ru/videoembed/8904620051073?nochat=1",tag:"Clásico"},
+{id:3,title:"Grandes Espías",src:"https://ok.ru/videoembed/10489807833722?nochat=1",tag:"Comedia"},
+{id:4,title:"Mujer Bonita",src:"https://ok.ru/videoembed/9027569125981?nochat=1",tag:"Romance"},
+{id:5,title:"Caballo de Guerra",src:"https://ok.ru/videoembed/3755901520473?nochat=1",tag:"Drama"},
+{id:6,title:"Corazón de Acero",src:"https://ok.ru/videoembed/7821991545391?nochat=1",tag:"Bélico"},
+{id:7,title:"Línea de Extinción",src:"https://ok.ru/videoembed/16105860762159?nochat=1",tag:"Sci-Fi"},
+{id:8,title:"Proyecto Géminis - Gemini Man",src:"https://morencius.com/embed/m9ttfvgi3ayi",tag:"Acción"},
+{id:9,title:"Toy Story 5 (2026)",src:"https://ok.ru/videoembed/16462736657025?nochat=1",tag:"Estreno"},
+{id:10,title:"Brigada 49",src:"https://ok.ru/videoembed/16462735280769?nochat=1",tag:"Clásico"},
+{id:11,title:"La Última Casa",src:"https://ok.ru/videoembed/16335065582209?nochat=1",tag:"Terror"},
+{id:12,title:"La Odisea",src:"https://ok.ru/videoembed/16320779389569?nochat=1",tag:"Aventura"},
+{id:13,title:"Embestida",src:"https://ok.ru/videoembed/16507816381057?nochat=1",tag:"Acción"},
+{id:14,title:"Agente Salt",src:"https://ok.ru/videoembed/15641082858031?nochat=1",tag:"Acción"},
+{id:15,title:"Star Wars Episodio I - La Amenaza Fantasma",src:"https://ok.ru/videoembed/16079705410206?nochat=1",tag:"Sci-Fi"},
+{id:16,title:"Star Wars Episodio II - El Ataque de los Clones",src:"https://ok.ru/videoembed/16079886289566?nochat=1",tag:"Sci-Fi"},
+{id:17,title:"Rebel Ridge",src:"https://ok.ru/videoembed/7790353451609?nochat=1",tag:"Thriller"},
+{id:18,title:"Supergirl",src:"https://ok.ru/videoembed/15956097174105?nochat=1",tag:"Super"},
+{id:19,title:"Scary Movie 6",src:"https://ok.ru/videoembed/15516879489625?nochat=1",tag:"Comedia"},
+{id:20,title:"Karate Kid",src:"https://ok.ru/videoembed/9859567258201?nochat=1",tag:"Artes"},
+{id:21,title:"The Union",src:"https://ok.ru/videoembed/7730078026329?nochat=1",tag:"Acción"},
+{id:22,title:"B.A.D B.O.Y.S",src:"https://ok.ru/videoembed/7658635135577?nochat=1",tag:"Acción"},
+{id:23,title:"Antes de Separarnos",src:"https://morencius.com/embed/gvcq3lpls2z2",tag:"Romance"},
+{id:24,title:"Madame Web",src:"https://morencius.com/embed/dhexgbxtmw58",tag:"Super"},
+{id:25,title:"Vengadores Enigma",src:"https://morencius.com/embed/a1jcewb0khl2",tag:"Super"},
+{id:26,title:"Super Girl (2026)",src:"https://morencius.com/embed/6d4mcbs5lw78",tag:"Estreno"},
+{id:27,title:"Exorcista del Papa",src:"https://morencius.com/embed/f7h9qq9eo3jl",tag:"Terror"},
+{id:28,title:"Spiderman 202",src:"https://morencius.com/embed/9cdop2d5430w",tag:"Super"},
+{id:29,title:"Salida 8",src:"https://morencius.com/embed/h3b9kabe1a6v",tag:"Thriller"},
+{id:30,title:"Predator 2026",src:"https://morencius.com/embed/lfx29up48bpk",tag:"Estreno"}
+];
+let currentPeli365 = peliculas365Data[0];
+function renderPeliculas365List(filter=''){
+  const listEl = document.getElementById('pev-list');
+  if(!listEl) return;
+  const filtered = peliculas365Data.filter(p=>p.title.toLowerCase().includes(filter.toLowerCase()));
+  document.getElementById('pev-count').textContent = filtered.length;
+  listEl.innerHTML = filtered.map((p,i)=>`
+    <button class="pev-item ${currentPeli365.id===p.id?'active':''}" onclick="selectPeli365(${p.id})">
+      <div class="pev-item-inner">
+        <div class="pev-num">${String(i+1).padStart(2,'0')}</div>
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;flex-shrink:0">▶</div>
+        <div class="pev-info">
+          <div class="pev-title">${p.title}</div>
+          <div style="display:flex;gap:6px;margin-top:4px;align-items:center"><span class="pev-tag">${p.tag}</span><span style="font-size:9px;color:rgba(255,255,255,.3)">• HD</span>${currentPeli365.id===p.id?'<span style="font-size:9px;color:#22c55e">● ON</span>':''}</div>
+        </div>
+        <div style="width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;font-size:12px">›</div>
+      </div>
+    </button>
+  `).join('');
+}
+function selectPeli365(id){
+  const p = peliculas365Data.find(x=>x.id===id);
+  if(!p) return;
+  const iframe = document.getElementById('pev-iframe');
+  const wrap = document.getElementById('pev-player-wrap');
+  if(wrap){wrap.style.opacity='0';wrap.style.transform='scale(0.98)';}
+  setTimeout(()=>{
+    currentPeli365 = p;
+    document.getElementById('pev-current-title').textContent = p.title;
+    document.getElementById('pev-current-tag').textContent = p.tag;
+    if(iframe) iframe.src = p.src;
+    if(wrap){wrap.style.opacity='1';wrap.style.transform='scale(1)';}
+    renderPeliculas365List(document.getElementById('pev-search')?.value||'');
+    if(window.innerWidth<1024) document.getElementById('pev-player-wrap')?.scrollIntoView({behavior:'smooth',block:'start'});
+  },220);
+}
+function openPeliculasEnVivo365(){
+  const el = document.getElementById('view-peliculas-en-vivo-365');
+  if(el){el.classList.add('open');document.body.style.overflow='hidden';window.scrollTo(0,0);el.scrollTop=0;history.pushState({pelis:true},'',' #peliculas-en-vivo');renderPeliculas365List('');}
+}
+function closePeliculasEnVivo365(){
+  const el = document.getElementById('view-peliculas-en-vivo-365');
+  if(el){el.classList.remove('open');document.body.style.overflow='';}
+}
+function goInicioPeliculas365(){
+  closePeliculasEnVivo365();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const s = document.getElementById('pev-search');
+  if(s) s.addEventListener('input',(e)=>renderPeliculas365List(e.target.value));
+  renderPeliculas365List('');
+});
+window.addEventListener('popstate',()=>{
+  const el = document.getElementById('view-peliculas-en-vivo-365');
+  if(el && el.classList.contains('open')) closePeliculasEnVivo365();
+});
+</script>
+<!-- ===== FIN VISTA PELICULAS EN VIVO ===== -->
+
 </body>
 </html>
