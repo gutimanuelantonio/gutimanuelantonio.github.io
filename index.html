@@ -747,7 +747,7 @@ body{top:0!important;}
         </div>
       </div>
       <div id="bv-player-wrap" style="position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;">
-        <iframe id="bv-iframe" src="https://streamxhd.com/live2.php?stream=espn&autoplay=1&muted=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+        <iframe id="bv-iframe" src="https://streamxhd.com/live1.php?stream=espn&autoplay=1&muted=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
         <button id="bv-overlay" onclick="bvUnmute()" style="position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);border:0;cursor:pointer;color:#fff">
           <div style="text-align:center">
             <div style="height:56px;width:56px;border-radius:9999px;background:#00ff88;display:grid;place-items:center;margin:0 auto;box-shadow:0 0 30px rgba(0,255,136,.6);font-size:22px">🔊</div>
@@ -797,27 +797,41 @@ body{top:0!important;}
 
 <script>
 const bvChannelsData=[
-{name:"ESPN",url:"https://streamxhd.com/live2.php?stream=espn",color:"#ff3b30"},
-{name:"ESPN 2",url:"https://streamxhd.com/live2.php?stream=espn2",color:"#ff3b30"},
-{name:"ESPN 3",url:"https://streamxhd.com/live2.php?stream=espn3",color:"#ff3b30"},
-{name:"ESPN 4",url:"https://streamxhd.com/live2.php?stream=espn4",color:"#ff3b30"},
-{name:"ESPN Premium",url:"https://streamxhd.com/live2.php?stream=espnpremium",color:"#7a0000"},
-{name:"DSports",url:"https://streamxhd.com/live2.php?stream=dsports",color:"#00c2ff"},
-{name:"FOX Sports 2",url:"https://streamxhd.com/live2.php?stream=fox2ar",color:"#0033a0"},
-{name:"DAZN F1",url:"https://streamxhd.com/live2.php?stream=daznf1",color:"#ff004e"},
-{name:"LaLiga TV",url:"https://streamxhd.com/live2.php?stream=laligahypermotion",color:"#ff4b44"},
-{name:"L1 Max",url:"https://streamxhd.com/live2.php?stream=l1max",color:"#f5c518"},
-{name:"Win Sports+",url:"https://streamxhd.com/live2.php?stream=winplus",color:"#ff0000"},
-{name:"Premiere",url:"https://streamxhd.com/live2.php?stream=premiere1",color:"#00a859"},
+{name:"ESPN",url:"https://streamxhd.com/live1.php?stream=espn",color:"#ff3b30"},
+{name:"ESPN 2",url:"https://streamxhd.com/live1.php?stream=espn2",color:"#ff3b30"},
+{name:"ESPN 3",url:"https://streamxhd.com/live1.php?stream=espn3",color:"#ff3b30"},
+{name:"ESPN 4",url:"https://streamxhd.com/live1.php?stream=espn4",color:"#ff3b30"},
+{name:"ESPN 5",url:"https://streamxhd.com/live1.php?stream=espn5",color:"#ff3b30"},
+{name:"ESPN 6",url:"https://streamxhd.com/live1.php?stream=espn6",color:"#ff3b30"},
+{name:"ESPN 7",url:"https://streamxhd.com/live1.php?stream=espn7",color:"#ff3b30"},
+{name:"ESPN USA",url:"https://tvf90.com/online/canal.php?stream=espn_usa",color:"#cc0000"},
+{name:"ESPN2 USA",url:"https://tvf90.com/online/canal.php?stream=espn2_usa",color:"#cc0000"},
+{name:"ESPN Deportes",url:"https://tvf90.com/online/canal.php?stream=espndeportes",color:"#cc0000"},
+{name:"VIX 1",url:"https://streamxhd.com/live1.php?stream=vix1",color:"#7C4494"},
+{name:"América TV",url:"https://streamxhd.com/live1.php?stream=americatv",color:"#ff6600"},
+{name:"TUDN USA",url:"https://streamxhd.com/live1.php?stream=tudn_usa",color:"#00a651"},
+{name:"TUDN",url:"https://tvf90.com/online/canal.php?stream=tudn",color:"#00a651"},
+{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max",color:"#f5c518"},
+{name:"FOX Deportes",url:"https://tvf90.com/online/canal.php?stream=foxdeportes",color:"#0033a0"},
+{name:"FS1 USA",url:"https://tvf90.com/online/canal.php?stream=foxsports1_usa",color:"#0033a0"},
+{name:"FS2 USA",url:"https://tvf90.com/online/canal.php?stream=foxsports2_usa",color:"#0033a0"},
+{name:"Universo",url:"https://tvf90.com/online/canal.php?stream=universo",color:"#6b21a8"},
+{name:"BeIN Sports",url:"https://tvf90.com/online/canal.php?stream=beinsportes",color:"#000000"},
+{name:"USA Network",url:"https://tvf90.com/online/canal.php?stream=usanetwork",color:"#ff0000"},
+{name:"Telemundo",url:"https://tvf90.com/online/canal.php?stream=telemundo",color:"#e60000"},
+{name:"DAZN 1",url:"https://tvf90.com/online/canal.php?stream=dazn1",color:"#ff004e"},
+{name:"DAZN 2",url:"https://tvf90.com/online/canal.php?stream=dazn2",color:"#ff004e"},
+{name:"DAZN 3",url:"https://tvf90.com/online/canal.php?stream=dazn3",color:"#ff004e"},
+{name:"TVE",url:"https://tvf90.com/online/canal.php?stream=a1tve",color:"#ff0000"},
 ];
 const bvEventsData=[
-{time:"05:30",league:"Serie A",country:"IT",flag:"🇮🇹",home:"Como",away:"Roma",status:"PRONTO",cat:"futbol",servers:[{name:"Disney +",url:"https://streamxhd.com/live2.php?stream=disney2"},{name:"ESPN",url:"https://streamxhd.com/live2.php?stream=espn"}]},
-{time:"07:00",league:"LaLiga",country:"ES",flag:"🇪🇸",home:"Elche",away:"Celta",status:"PRONTO",cat:"futbol",servers:[{name:"DSports",url:"https://streamxhd.com/live2.php?stream=dsports"}]},
-{time:"10:30",league:"Premier League",country:"ENG",flag:"🏴",home:"Liverpool",away:"Man City",status:"EN VIVO",cat:"futbol",servers:[{name:"ESPN",url:"https://streamxhd.com/live2.php?stream=espn"}]},
-{time:"13:00",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"UTC",away:"Cristal",status:"PRONTO",cat:"futbol",servers:[{name:"L1 Max",url:"https://streamxhd.com/live2.php?stream=l1max"}]},
-{time:"15:30",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Sport Boys",away:"Alianza Atl.",status:"PRONTO",cat:"futbol",servers:[{name:"L1 Max",url:"https://streamxhd.com/live2.php?stream=l1max"}]},
-{time:"18:30",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Cusco",away:"Alianza Lima",status:"EN VIVO",cat:"futbol",servers:[{name:"L1 Max",url:"https://streamxhd.com/live2.php?stream=l1max"}]},
-{time:"07:00",league:"F1 GP Singapur",country:"SGP",flag:"🇸🇬",home:"F1",away:null,status:"EN VIVO",cat:"motor",servers:[{name:"DAZN F1",url:"https://streamxhd.com/live2.php?stream=daznf1"}]},
+{time:"05:30",league:"Serie A",country:"IT",flag:"🇮🇹",home:"Como",away:"Roma",status:"PRONTO",cat:"futbol",servers:[{name:"ESPN",url:"https://streamxhd.com/live1.php?stream=espn"},{name:"ESPN USA",url:"https://tvf90.com/online/canal.php?stream=espn_usa"},{name:"ESPN Deportes",url:"https://tvf90.com/online/canal.php?stream=espndeportes"}]},
+{time:"07:00",league:"LaLiga",country:"ES",flag:"🇪🇸",home:"Elche",away:"Celta",status:"PRONTO",cat:"futbol",servers:[{name:"ESPN 3",url:"https://streamxhd.com/live1.php?stream=espn3"},{name:"TUDN",url:"https://tvf90.com/online/canal.php?stream=tudn"},{name:"BeIN Sports",url:"https://tvf90.com/online/canal.php?stream=beinsportes"}]},
+{time:"10:30",league:"Premier League",country:"ENG",flag:"🏴",home:"Liverpool",away:"Man City",status:"EN VIVO",cat:"futbol",servers:[{name:"ESPN",url:"https://streamxhd.com/live1.php?stream=espn"},{name:"ESPN USA",url:"https://tvf90.com/online/canal.php?stream=espn_usa"},{name:"USA Network",url:"https://tvf90.com/online/canal.php?stream=usanetwork"},{name:"Telemundo",url:"https://tvf90.com/online/canal.php?stream=telemundo"}]},
+{time:"13:00",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"UTC",away:"Cristal",status:"PRONTO",cat:"futbol",servers:[{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max"},{name:"América TV",url:"https://streamxhd.com/live1.php?stream=americatv"}]},
+{time:"15:30",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Sport Boys",away:"Alianza Atl.",status:"PRONTO",cat:"futbol",servers:[{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max"}]},
+{time:"18:30",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Cusco",away:"Alianza Lima",status:"EN VIVO",cat:"futbol",servers:[{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max"},{name:"América TV",url:"https://streamxhd.com/live1.php?stream=americatv"}]},
+{time:"07:00",league:"F1 GP Singapur",country:"SGP",flag:"🇸🇬",home:"F1",away:null,status:"EN VIVO",cat:"motor",servers:[{name:"DAZN 1",url:"https://tvf90.com/online/canal.php?stream=dazn1"},{name:"DAZN 2",url:"https://tvf90.com/online/canal.php?stream=dazn2"},{name:"DAZN 3",url:"https://tvf90.com/online/canal.php?stream=dazn3"}]},
 ];
 let bvMutedState=true;
 let bvCurrentCat="todos";
