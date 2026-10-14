@@ -705,75 +705,65 @@ body{top:0!important;}
 <!-- ===== FIN NUEVO BLOQUE PRINCIPAL 365PERU.COM ===== -->
 
 
-<!-- ===== BLOQUE VIVO FUTBOL - VERSION CORREGIDA SINGLE FILE - SIN 404 ===== -->
+
+<!-- ===== BLOQUE VIVO FUTBOL - NUEVO CODIGO SINGLE FILE SIN 404 - REEMPLAZA 708-915 ===== -->
 <section id="bloque-vivo-futbol" style="max-width:1280px;margin:20px auto;padding:0 8px;box-sizing:border-box;">
 <style>
-#bloque-vivo-futbol *{font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;box-sizing:border-box}
-#bloque-vivo-futbol .mono{font-family:"JetBrains Mono",monospace}
-#bloque-vivo-futbol .glass{background:rgba(18,24,33,0.9);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.08)}
-#bloque-vivo-futbol .bv-grid{grid-template-columns:1fr 380px}
+#bloque-vivo-futbol *{font-family:Inter,system-ui,sans-serif;box-sizing:border-box}
+#bloque-vivo-futbol .bv-wrap{background:#0a0e14;border:2px solid #00ff88;border-radius:22px;overflow:hidden;box-shadow:0 0 0 4px rgba(0,255,136,.12),0 20px 40px rgba(0,0,0,.4);}
+#bloque-vivo-futbol .bv-header{padding:14px 18px;background:linear-gradient(90deg,rgba(0,255,136,.15),rgba(0,255,136,.03));border-bottom:1px solid rgba(0,255,136,.25);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+#bloque-vivo-futbol .bv-player{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;width:100%;}
+#bloque-vivo-futbol .bv-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+#bloque-vivo-futbol .bv-grid{display:grid;grid-template-columns:1fr 380px}
 @media(max-width:1024px){#bloque-vivo-futbol .bv-grid{grid-template-columns:1fr !important}}
+#bloque-vivo-futbol .bv-ch{padding:12px;background:rgba(18,24,33,.5);border-top:1px solid rgba(255,255,255,.06)}
+#bloque-vivo-futbol .bv-ev{max-height:680px;overflow-y:auto}
 #bloque-vivo-futbol ::-webkit-scrollbar{width:6px;height:6px}
 #bloque-vivo-futbol ::-webkit-scrollbar-thumb{background:#1f2937;border-radius:999px}
 </style>
 
-<div style="background:#0a0e14;border:2px solid #00ff88;border-radius:22px;overflow:hidden;box-shadow:0 0 0 4px rgba(0,255,136,.12),0 20px 40px rgba(0,0,0,.4);">
-  <!-- HEADER -->
-  <div style="padding:14px 18px;background:linear-gradient(90deg,rgba(0,255,136,.15),rgba(0,255,136,.03));border-bottom:1px solid rgba(0,255,136,.25);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+<div class="bv-wrap">
+  <div class="bv-header">
     <div>
       <span style="background:#00ff88;color:#000;font-weight:900;font-size:10px;letter-spacing:1.5px;padding:6px 12px;border-radius:9999px;display:inline-flex;gap:6px;">⚽ BLOQUE VIVO FUTBOL • HD</span>
-      <div style="font-size:clamp(20px,4vw,30px);font-weight:900;color:#fff;margin-top:8px;letter-spacing:-1px;">FUTBOL EN <span style="color:#00ff88;">VIVO</span> • 24/7</div>
+      <div style="font-size:clamp(20px,4vw,30px);font-weight:900;color:#fff;margin-top:8px;letter-spacing:-1px;">FUTBOL EN <span style="color:#00ff88;">VIVO</span> • 24/7 - NUEVO</div>
     </div>
     <div style="display:flex;gap:8px;align-items:center">
       <span style="font-size:10px;color:#fff;background:#ef4444;padding:5px 10px;border-radius:9999px;font-weight:900;">🔴 EN VIVO</span>
-      <span id="bv-clock" style="font-size:11px;color:#00ff88;background:rgba(0,0,0,.5);padding:5px 10px;border-radius:9999px;font-weight:700;border:1px solid rgba(255,255,255,.1)">00:00:00 PET</span>
+      <span id="bv-clock" style="font-size:11px;color:#00ff88;background:rgba(0,0,0,.5);padding:5px 10px;border-radius:9999px;font-weight:700;border:1px solid rgba(255,255,255,.1)">LIMA - PERU</span>
     </div>
   </div>
 
-  <!-- GRID PRINCIPAL -->
   <div class="bv-grid" style="display:grid;gap:0;">
     <!-- PLAYER -->
     <div style="min-width:0;border-right:1px solid rgba(255,255,255,.06);">
       <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#121821;border-bottom:1px solid rgba(255,255,255,.06);">
         <div style="display:flex;align-items:center;gap:8px;min-width:0;">
-          <div style="h:24px;width:24px;background:#1e293b;border-radius:9999px;display:grid;place-items:center;font-size:10px">📡</div>
-          <span id="bv-title" style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff">ESPN • En vivo</span>
+          <span id="bv-title" style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff">ESPN • En vivo - Nuevo Sistema live2.php</span>
           <span id="bv-muted-badge" style="font-size:9px;padding:2px 8px;border-radius:9999px;background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">MUTED</span>
         </div>
         <div style="display:flex;gap:6px;">
-          <button onclick="bvCopy()" style="height:28px;width:28px;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">⎙</button>
           <button onclick="bvMute()" id="bv-mute-btn" style="height:28px;width:28px;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">🔇</button>
           <button onclick="bvFS()" style="height:28px;width:28px;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">⛶</button>
         </div>
       </div>
       <div id="bv-player-wrap" style="position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;">
-        <iframe id="bv-iframe" src="https://streamxhd.com/live1.php?stream=espn&autoplay=1&muted=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+        <iframe id="bv-iframe" src="https://streamxhd.com/live2.php?stream=espn&autoplay=1&muted=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
         <button id="bv-overlay" onclick="bvUnmute()" style="position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);border:0;cursor:pointer;color:#fff">
           <div style="text-align:center">
             <div style="height:56px;width:56px;border-radius:9999px;background:#00ff88;display:grid;place-items:center;margin:0 auto;box-shadow:0 0 30px rgba(0,255,136,.6);font-size:22px">🔊</div>
             <div style="margin-top:12px;font-weight:800;font-size:14px">Click para activar audio</div>
-            <div style="font-size:11px;opacity:.6;margin-top:4px">Inicia silenciado por Chrome / Safari</div>
+            <div style="font-size:11px;opacity:.6;margin-top:4px">Nuevo sistema live2.php</div>
           </div>
         </button>
-        <div style="position:absolute;left:10px;bottom:10px;display:flex;gap:6px;pointer-events:none">
-          <span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:9999px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);font-size:10px;font-weight:800"><span style="height:8px;width:8px;border-radius:9999px;background:#ef4444;display:inline-block;animation: bvPulse 1s infinite"></span>LIVE</span>
-          <span id="bv-copied" style="display:none;padding:5px 10px;border-radius:9999px;background:#00ff88;color:#000;font-size:10px;font-weight:800">¡Link copiado!</span>
-        </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);background:#0f141e;border-top:1px solid rgba(255,255,255,.06);font-size:10px;font-family:monospace;color:rgba(255,255,255,.5)">
-        <div style="padding:8px 12px;display:flex;justify-content:space-between"><span>Reproducción</span><span style="color:#fff">Manual</span></div>
-        <div style="padding:8px 12px;display:flex;justify-content:space-between;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)"><span>Calidad</span><span style="color:#00ff88">AUTO 1080p</span></div>
-        <div style="padding:8px 12px;display:flex;justify-content:space-between"><span>Latencia</span><span style="color:#fff">~2.4s</span></div>
-      </div>
-
-      <!-- CANALES -->
-      <div style="padding:12px;background:rgba(18,24,33,.5);border-top:1px solid rgba(255,255,255,.06)">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:12px;font-weight:700;color:#fff">📺 Canales 24/7</span><span style="font-size:10px;color:rgba(255,255,255,.4)">Click para cargar</span></div>
+      <div class="bv-ch">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:12px;font-weight:700;color:#fff">📺 Canales 24/7 - TODOS LOS CANALES (67)</span><span style="font-size:10px;color:rgba(255,255,255,.4)">Click para cargar</span></div>
         <div id="bv-channels" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px"></div>
       </div>
     </div>
 
-    <!-- EVENTOS -->
+    <!-- EVENTOS - TU NUEVA AGENDA -->
     <div style="min-width:0;background:#0a0e14">
       <div style="padding:12px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(18,24,33,.8)">
         <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="font-size:13px;font-weight:800;color:#fff">Centro de eventos <span id="bv-count" style="font-size:10px;padding:2px 8px;border-radius:9999px;background:#00ff88;color:#000;margin-left:6px">0 EVENTOS</span></h3></div>
@@ -781,65 +771,102 @@ body{top:0!important;}
           <input id="bv-search" oninput="bvFilter()" placeholder="Buscar equipo, liga..." style="width:100%;height:32px;border-radius:9999px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);padding-left:32px;padding-right:12px;font-size:12px;color:#fff;outline:none">
           <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px;opacity:.4">🔍</span>
         </div>
-        <div style="margin-top:10px;display:flex;gap:6px;overflow-x:auto">
-          <button onclick="bvSetCat('todos')" data-cat="todos" class="bv-cat" style="white-space:nowrap;height:26px;padding:0 12px;border-radius:9999px;font-size:11px;border:1px solid #00ff88;background:#00ff88;color:#000;font-weight:700">🌐 Todos</button>
-          <button onclick="bvSetCat('futbol')" data-cat="futbol" class="bv-cat" style="white-space:nowrap;height:26px;padding:0 12px;border-radius:9999px;font-size:11px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)">⚽ Fútbol</button>
-          <button onclick="bvSetCat('motor')" data-cat="motor" class="bv-cat" style="white-space:nowrap;height:26px;padding:0 12px;border-radius:9999px;font-size:11px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)">🏎️ Motor</button>
-        </div>
       </div>
-      <div id="bv-events" style="max-height:680px;overflow-y:auto"></div>
+      <div id="bv-events" class="bv-ev"></div>
     </div>
   </div>
 </div>
-</section>
-
-<style>@keyframes bvPulse{0%,100%{opacity:1}50%{opacity:.4}}</style>
 
 <script>
-const bvChannelsData=[
-{name:"ESPN",url:"https://streamxhd.com/live1.php?stream=espn",color:"#ff3b30"},
-{name:"ESPN 2",url:"https://streamxhd.com/live1.php?stream=espn2",color:"#ff3b30"},
-{name:"ESPN 3",url:"https://streamxhd.com/live1.php?stream=espn3",color:"#ff3b30"},
-{name:"ESPN 4",url:"https://streamxhd.com/live1.php?stream=espn4",color:"#ff3b30"},
-{name:"ESPN 5",url:"https://streamxhd.com/live1.php?stream=espn5",color:"#ff3b30"},
-{name:"ESPN 6",url:"https://streamxhd.com/live1.php?stream=espn6",color:"#ff3b30"},
-{name:"ESPN 7",url:"https://streamxhd.com/live1.php?stream=espn7",color:"#ff3b30"},
-{name:"ESPN USA",url:"https://tvf90.com/online/canal.php?stream=espn_usa",color:"#cc0000"},
-{name:"ESPN2 USA",url:"https://tvf90.com/online/canal.php?stream=espn2_usa",color:"#cc0000"},
-{name:"ESPN Deportes",url:"https://tvf90.com/online/canal.php?stream=espndeportes",color:"#cc0000"},
-{name:"VIX 1",url:"https://streamxhd.com/live1.php?stream=vix1",color:"#7C4494"},
-{name:"América TV",url:"https://streamxhd.com/live1.php?stream=americatv",color:"#ff6600"},
-{name:"TUDN USA",url:"https://streamxhd.com/live1.php?stream=tudn_usa",color:"#00a651"},
-{name:"TUDN",url:"https://tvf90.com/online/canal.php?stream=tudn",color:"#00a651"},
-{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max",color:"#f5c518"},
-{name:"FOX Deportes",url:"https://tvf90.com/online/canal.php?stream=foxdeportes",color:"#0033a0"},
-{name:"FS1 USA",url:"https://tvf90.com/online/canal.php?stream=foxsports1_usa",color:"#0033a0"},
-{name:"FS2 USA",url:"https://tvf90.com/online/canal.php?stream=foxsports2_usa",color:"#0033a0"},
-{name:"Universo",url:"https://tvf90.com/online/canal.php?stream=universo",color:"#6b21a8"},
-{name:"BeIN Sports",url:"https://tvf90.com/online/canal.php?stream=beinsportes",color:"#000000"},
-{name:"USA Network",url:"https://tvf90.com/online/canal.php?stream=usanetwork",color:"#ff0000"},
-{name:"Telemundo",url:"https://tvf90.com/online/canal.php?stream=telemundo",color:"#e60000"},
-{name:"DAZN 1",url:"https://tvf90.com/online/canal.php?stream=dazn1",color:"#ff004e"},
-{name:"DAZN 2",url:"https://tvf90.com/online/canal.php?stream=dazn2",color:"#ff004e"},
-{name:"DAZN 3",url:"https://tvf90.com/online/canal.php?stream=dazn3",color:"#ff004e"},
-{name:"TVE",url:"https://tvf90.com/online/canal.php?stream=a1tve",color:"#ff0000"},
-];
-const bvEventsData=[
-{time:"05:30",league:"Serie A",country:"IT",flag:"🇮🇹",home:"Como",away:"Roma",status:"PRONTO",cat:"futbol",servers:[{name:"ESPN",url:"https://streamxhd.com/live1.php?stream=espn"},{name:"ESPN USA",url:"https://tvf90.com/online/canal.php?stream=espn_usa"},{name:"ESPN Deportes",url:"https://tvf90.com/online/canal.php?stream=espndeportes"}]},
-{time:"07:00",league:"LaLiga",country:"ES",flag:"🇪🇸",home:"Elche",away:"Celta",status:"PRONTO",cat:"futbol",servers:[{name:"ESPN 3",url:"https://streamxhd.com/live1.php?stream=espn3"},{name:"TUDN",url:"https://tvf90.com/online/canal.php?stream=tudn"},{name:"BeIN Sports",url:"https://tvf90.com/online/canal.php?stream=beinsportes"}]},
-{time:"10:30",league:"Premier League",country:"ENG",flag:"🏴",home:"Liverpool",away:"Man City",status:"EN VIVO",cat:"futbol",servers:[{name:"ESPN",url:"https://streamxhd.com/live1.php?stream=espn"},{name:"ESPN USA",url:"https://tvf90.com/online/canal.php?stream=espn_usa"},{name:"USA Network",url:"https://tvf90.com/online/canal.php?stream=usanetwork"},{name:"Telemundo",url:"https://tvf90.com/online/canal.php?stream=telemundo"}]},
-{time:"13:00",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"UTC",away:"Cristal",status:"PRONTO",cat:"futbol",servers:[{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max"},{name:"América TV",url:"https://streamxhd.com/live1.php?stream=americatv"}]},
-{time:"15:30",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Sport Boys",away:"Alianza Atl.",status:"PRONTO",cat:"futbol",servers:[{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max"}]},
-{time:"18:30",league:"Liga 1",country:"PE",flag:"🇵🇪",home:"Cusco",away:"Alianza Lima",status:"EN VIVO",cat:"futbol",servers:[{name:"L1 MAX",url:"https://tvf90.com/online/canal.php?stream=liga1max"},{name:"América TV",url:"https://streamxhd.com/live1.php?stream=americatv"}]},
-{time:"07:00",league:"F1 GP Singapur",country:"SGP",flag:"🇸🇬",home:"F1",away:null,status:"EN VIVO",cat:"motor",servers:[{name:"DAZN 1",url:"https://tvf90.com/online/canal.php?stream=dazn1"},{name:"DAZN 2",url:"https://tvf90.com/online/canal.php?stream=dazn2"},{name:"DAZN 3",url:"https://tvf90.com/online/canal.php?stream=dazn3"}]},
-];
-let bvMutedState=true;
-let bvCurrentCat="todos";
+const bvBuildUrl=(base,muted)=>{try{let u=new URL(base);u.searchParams.set("autoplay","1");u.searchParams.set("muted",muted?"1":"0");u.searchParams.set("t",Date.now());return u.toString();}catch{return base+(base.includes("?")?"&":"?")+"autoplay=1&muted="+(muted?"1":"0")+"&t="+Date.now();}};
+const _ = (e)=>{if(e.startsWith("http"))return e;return `https://streamxhd.com/live2.php?stream=${e}`};
 
-function bvBuildUrl(base,muted){
-  try{let u=new URL(base);u.searchParams.set("autoplay","1");u.searchParams.set("muted",muted?"1":"0");u.searchParams.set("t",Date.now());return u.toString();}
-  catch{return base+(base.includes("?")?"&":"?")+"autoplay=1&muted="+(muted?"1":"0")+"&t="+Date.now();}
-}
+
+const bvChannelsData=[
+{name:"ESPN",id:"espn",url:_("espn"),color:"#E53935",short:"ES"},
+{name:"ESPN 2",id:"espn2",url:_("espn2"),color:"#EF6C00",short:"ES2"},
+{name:"ESPN 3",id:"espn3",url:_("espn3"),color:"#F4511E",short:"ES3"},
+{name:"ESPN 4",id:"espn4",url:_("espn4"),color:"#D84315",short:"ES4"},
+{name:"ESPN 5",id:"espn5",url:_("espn5"),color:"#FF5722",short:"ES5"},
+{name:"ESPN 6",id:"espn6",url:_("espn6"),color:"#E64A19",short:"ES6"},
+{name:"ESPN 7",id:"espn7",url:_("espn7"),color:"#BF360C",short:"ES7"},
+{name:"ESPN USA",id:"espn_usa",url:_("espn_usa"),color:"#C62828",short:"ES US"},
+{name:"ESPN2 USA",id:"espn2_usa",url:_("espn2_usa"),color:"#AD1457",short:"ES2 US"},
+{name:"ESPN Deportes",id:"espn_deportes",url:_("espndeportes"),color:"#D81B60",short:"ES DEP"},
+{name:"ESPN AR",id:"espnar",url:_("espnar"),color:"#E53935",short:"ES AR"},
+{name:"ESPN 2 AR",id:"espn2ar",url:_("espn2ar"),color:"#EF6C00",short:"ES2 AR"},
+{name:"VIX 1",id:"vix1",url:_("vix1"),color:"#7B1FA2",short:"VI"},
+{name:"VIX 2",id:"vix2",url:_("vix2"),color:"#8E24AA",short:"VI2"},
+{name:"VIX 3",id:"vix3",url:_("vix3"),color:"#9C27B0",short:"VI3"},
+{name:"VIX 4",id:"vix4",url:_("vix4"),color:"#AB47BC",short:"VI4"},
+{name:"América TV",id:"america_tv",url:_("americatv"),color:"#FF8F00",short:"AM"},
+{name:"TUDN USA",id:"tudn_usa",url:_("tudn_usa"),color:"#2E7D32",short:"TU"},
+{name:"TUDN",id:"tudn",url:_("tudn"),color:"#388E3C",short:"TU"},
+{name:"L1 MAX",id:"l1max",url:_("liga1max"),color:"#F9A825",short:"L1"},
+{name:"FOX Deportes",id:"fox_deportes",url:_("foxdeportes"),color:"#1565C0",short:"FO"},
+{name:"FS1 USA",id:"fs1_usa",url:_("foxsports1_usa"),color:"#1E88E5",short:"FS1"},
+{name:"FS2 USA",id:"fs2_usa",url:_("foxsports2_usa"),color:"#42A5F5",short:"FS2"},
+{name:"FOX One",id:"fox1ar",url:_("foxone"),color:"#283593",short:"FOX1"},
+{name:"FOX Sports 1 AR",id:"fox2ar",url:_("fox2ar"),color:"#283593",short:"FS AR"},
+{name:"Universo",id:"universo",url:_("universo"),color:"#6A1B9A",short:"UN"},
+{name:"BeIN Sports",id:"bein_sports",url:_("beinsportes"),color:"#6D4C41",short:"BE"},
+{name:"USA Network",id:"usa_network",url:_("usanetwork"),color:"#FF3D00",short:"USA"},
+{name:"Telemundo",id:"telemundo",url:_("telemundo"),color:"#00ACC1",short:"TE"},
+{name:"DAZN 1",id:"dazn1",url:_("dazn1"),color:"#212121",short:"DZ1"},
+{name:"DAZN 2",id:"dazn2",url:_("dazn2"),color:"#424242",short:"DZ2"},
+{name:"DAZN 3",id:"dazn3",url:_("dazn3"),color:"#616161",short:"DZ3"},
+{name:"DSports",id:"dsports",url:_("dsports"),color:"#0D47A1",short:"DS"},
+{name:"DSports 2",id:"dsports2",url:_("dsports2"),color:"#1976D2",short:"DS2"},
+{name:"DSports Global",id:"dsports_global",url:"https://streamxhd.click/channel/?id=dsports",color:"#0D47A1",short:"DS G"},
+{name:"Win Sports +",id:"winplus",url:_("winplus"),color:"#00897B",short:"WIN+"},
+{name:"Win Sports",id:"winsports",url:_("winsports"),color:"#00796B",short:"WIN"},
+{name:"TNT Sports",id:"tntsports",url:_("tntsports"),color:"#FF0000",short:"TNT"},
+{name:"Tigo Sports",id:"tigo1",url:_("tigo1"),color:"#0000FF",short:"TIGO"},
+{name:"Premiere 1",id:"premiere1",url:_("premiere1"),color:"#006400",short:"PR1"},
+{name:"Premiere 2",id:"premiere2",url:_("premiere2"),color:"#006400",short:"PR2"},
+{name:"SporTV 1",id:"sporttvbr1",url:_("sporttvbr1"),color:"#FF0000",short:"SP1"},
+{name:"Disney+ 1",id:"disney1",url:_("disney1"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 2",id:"disney2",url:_("disney2"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 3",id:"disney3",url:_("disney3"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 4",id:"disney4",url:_("disney4"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 5",id:"disney5",url:_("disney5"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 6",id:"disney6",url:_("disney6"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 7",id:"disney7",url:_("disney7"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 8",id:"disney8",url:_("disney8"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 9",id:"disney9",url:_("disney9"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 10",id:"disney10",url:_("disney10"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 11",id:"disney11",url:_("disney11"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 12",id:"disney12",url:_("disney12"),color:"#0F3FA8",short:"D+"},
+{name:"Disney+ 13",id:"disney13",url:_("disney13"),color:"#0F3FA8",short:"D+"},
+{name:"Max 1",id:"max1",url:_("max1"),color:"#4527A0",short:"MAX"},
+{name:"Max 2",id:"max2",url:_("max2"),color:"#4527A0",short:"MAX2"},
+{name:"Max 3",id:"max3",url:_("max3"),color:"#4527A0",short:"MAX3"},
+{name:"Max 4",id:"max4",url:_("max4"),color:"#4527A0",short:"MAX4"},
+{name:"NBA Pass 1",id:"nba1",url:_("nba1"),color:"#0D47A1",short:"NBA"},
+{name:"NBA Pass 2",id:"nba2",url:_("nba2"),color:"#0D47A1",short:"NBA2"},
+{name:"NBA Pass 3",id:"nba3",url:_("nba3"),color:"#0D47A1",short:"NBA3"},
+{name:"NBA Pass 4",id:"nba4",url:_("nba4"),color:"#0D47A1",short:"NBA4"},
+{name:"NBA Pass 5",id:"nba5",url:_("nba5"),color:"#0D47A1",short:"NBA5"},
+];
+
+
+const bvEventsData=[
+{id:"1",time:"10:30",home:"Lokomotiv Moscow",away:"Akron Tolyatti",league:"Copa de Rusia",code:"RUS",status:"PRONTO",servers:[{label:"DSports 2",url:_("dsports2")}]},
+{id:"2",time:"10:45",home:"Alemania",away:"Japón",league:"Amistoso Femenino",code:"FIFA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney1")}]},
+{id:"3",time:"11:45",home:"Sabah",away:"Slavia Praha",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney2")},{label:"ESPN 2",url:_("espn2")},{label:"Vix",url:_("vix1")}]},
+{id:"4",time:"11:45",home:"Lens",away:"Sporting CP",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney3")},{label:"ESPN",url:_("espn")}]},
+{id:"5",time:"14:00",home:"Atlético Madrid",away:"Man United",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney4")},{label:"ESPN",url:_("espn")}]},
+{id:"6",time:"14:00",home:"Galatasaray",away:"Barcelona",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney5")},{label:"ESPN 5",url:_("espn5")}]},
+{id:"7",time:"14:00",home:"Arsenal",away:"Lille",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney6")},{label:"ESPN 4",url:_("espn4")}]},
+{id:"8",time:"14:00",home:"Villarreal",away:"Napoli",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney7")},{label:"ESPN 6",url:_("espn6")}]},
+{id:"9",time:"14:00",home:"Viking",away:"Bayern München",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney8")},{label:"ESPN 2",url:_("espn2")}]},
+{id:"10",time:"14:00",home:"RB Leipzig",away:"PSV",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney9")},{label:"ESPN 7",url:_("espn7")}]},
+{id:"11",time:"14:00",home:"Inter",away:"Club Brugge",league:"Champions League",code:"CHA",status:"PRONTO",servers:[{label:"Disney +",url:_("disney10")},{label:"ESPN 3",url:_("espn3")}]},
+{id:"20",time:"19:30",home:"Boca Juniors",away:"Vasco da Gama",league:"Copa Sudamericana",code:"SUD",status:"PRONTO",servers:[{label:"DSports",url:_("dsports")},{label:"ESPN",url:_("espn")}]},
+{id:"16",time:"18:30",home:"Bucaramanga",away:"Rionegro Águilas",league:"Liga Colombia",code:"CO",status:"PRONTO",servers:[{label:"Win Sports +",url:_("winplus")}]},
+];
+
+let bvMutedState=true;
 function bvLoad(url,title){
   const iframe=document.getElementById("bv-iframe");
   iframe.src=bvBuildUrl(url,bvMutedState);
@@ -852,7 +879,6 @@ function bvUnmute(){
   document.getElementById("bv-muted-badge").textContent="SONIDO ACTIVO";
   document.getElementById("bv-muted-badge").style.background="rgba(0,255,136,.2)";
   document.getElementById("bv-muted-badge").style.color="#00ff88";
-  document.getElementById("bv-muted-badge").style.borderColor="rgba(0,255,136,.3)";
   document.getElementById("bv-mute-btn").textContent="🔊";
   const iframe=document.getElementById("bv-iframe");
   try{let u=new URL(iframe.src);u.searchParams.set("muted","0");iframe.src=u.toString();}catch{}
@@ -870,41 +896,24 @@ function bvFS(){
   const el=document.getElementById("bv-player-wrap");
   if(document.fullscreenElement) document.exitFullscreen(); else el.requestFullscreen();
 }
-function bvCopy(){
-  try{navigator.clipboard.writeText(document.getElementById("bv-iframe").src);
-  const c=document.getElementById("bv-copied");c.style.display="block";setTimeout(()=>c.style.display="none",2000);}catch{}
-}
-function bvSetCat(cat){
-  bvCurrentCat=cat;
-  document.querySelectorAll(".bv-cat").forEach(b=>{
-    if(b.dataset.cat===cat){b.style.background="#00ff88";b.style.color="#000";b.style.borderColor="#00ff88";}
-    else{b.style.background="rgba(255,255,255,.06)";b.style.color="rgba(255,255,255,.6)";b.style.borderColor="rgba(255,255,255,.1)";}
-  });
-  bvFilter();
-}
 function bvFilter(){
   const q=document.getElementById("bv-search").value.toLowerCase();
   const container=document.getElementById("bv-events");
-  const filtered=bvEventsData.filter(e=>{
-    const catOk=bvCurrentCat==="todos"||e.cat===bvCurrentCat;
-    const qOk=!q|| (e.home+" "+(e.away||"")+" "+e.league).toLowerCase().includes(q);
-    return catOk&&qOk;
-  });
+  const filtered=bvEventsData.filter(e=>!q|| (e.home+" "+e.away+" "+e.league).toLowerCase().includes(q));
   document.getElementById("bv-count").textContent=filtered.length+" EVENTOS";
   container.innerHTML=filtered.map(ev=>`
     <div style="padding:12px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:10px">
-      <div style="min-width:52px;text-align:center"><div style="font-family:monospace;font-weight:800;font-size:12px;color:#fff">${ev.time}</div><div style="font-size:8px;padding:2px 6px;border-radius:9999px;border:1px solid ${ev.status==='EN VIVO'?'rgba(239,68,68,.3)':'rgba(0,255,136,.2)'};background:${ev.status==='EN VIVO'?'rgba(239,68,68,.15)':'rgba(0,255,136,.1)'};color:${ev.status==='EN VIVO'?'#fca5a5':'#00ff88'};font-weight:800">${ev.status}</div><div style="margin-top:6px">⚽</div></div>
-      <div style="flex:1;min-width:0"><div style="display:flex;gap:6px;align-items:center"><span style="font-size:9px;padding:1px 6px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)">${ev.flag} ${ev.country}</span><span style="font-size:10px;color:rgba(255,255,255,.5)">${ev.league}</span></div><div style="margin-top:4px;font-weight:700;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ev.home}${ev.away?' vs '+ev.away:''}</div><div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">${ev.servers.map(s=>`<button onclick="bvLoad('${s.url}','${ev.home}${ev.away?' vs '+ev.away:''} • ${s.name}')" style="font-size:10px;font-family:monospace;padding:4px 10px;border-radius:9999px;background:#0f141e;border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">▶ ${s.name}</button>`).join("")}</div></div>
-      <button onclick="bvLoad('${ev.servers[0].url}','${ev.home}${ev.away?' vs '+ev.away:''}')" style="height:28px;width:28px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">▶</button>
+      <div style="min-width:52px;text-align:center"><div style="font-family:monospace;font-weight:800;font-size:12px;color:#fff">${ev.time}</div><div style="font-size:8px;padding:2px 6px;border-radius:9999px;border:1px solid rgba(0,255,136,.2);background:rgba(0,255,136,.1);color:#00ff88;font-weight:800">${ev.status}</div></div>
+      <div style="flex:1;min-width:0"><div style="display:flex;gap:6px;align-items:center"><span style="font-size:9px;padding:1px 6px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)">${ev.code}</span><span style="font-size:10px;color:rgba(255,255,255,.5)">${ev.league}</span></div><div style="margin-top:4px;font-weight:700;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ev.home} vs ${ev.away}</div><div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">${ev.servers.map(s=>`<button onclick="bvLoad('${s.url}','${ev.home} vs ${ev.away} • ${s.label}')" style="font-size:10px;font-family:monospace;padding:4px 10px;border-radius:9999px;background:#0f141e;border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">▶ ${s.label}</button>`).join("")}</div></div>
+      <button onclick="bvLoad('${ev.servers[0].url}','${ev.home} vs ${ev.away}')" style="height:28px;width:28px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">▶</button>
     </div>
   `).join("") || '<div style="padding:24px;text-align:center;color:rgba(255,255,255,.4);font-size:12px">Sin resultados</div>';
 }
-
 function bvInit(){
   document.getElementById("bv-channels").innerHTML=bvChannelsData.map(ch=>`
     <button onclick="bvLoad('${ch.url}','${ch.name} • 24/7')" style="text-align:left;padding:10px;border-radius:12px;background:#0f141e;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px;cursor:pointer;width:100%">
       <div style="height:32px;width:32px;border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;background:${ch.color}">${ch.name.substring(0,2).toUpperCase()}</div>
-      <div style="min-width:0"><div style="font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ch.name}</div><div style="font-size:9px;color:rgba(255,255,255,.4)">24/7 • LIVE</div></div>
+      <div style="min-width:0"><div style="font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ch.name}</div><div style="font-size:9px;color:rgba(255,255,255,.4)">24/7 • LIVE • live2.php</div></div>
     </button>
   `).join("");
   bvFilter();
@@ -913,7 +922,8 @@ function bvInit(){
 document.addEventListener("DOMContentLoaded",bvInit);
 if(document.readyState!=="loading") bvInit();
 </script>
-<!-- ===== FIN BLOQUE VIVO FUTBOL CORREGIDO ===== -->
+</section>
+<!-- ===== FIN BLOQUE VIVO FUTBOL NUEVO SIN 404 ===== -->
 
 
 
