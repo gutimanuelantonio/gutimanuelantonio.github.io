@@ -709,89 +709,62 @@ body{top:0!important;}
 
 
 
-<!-- ===== BLOQUE FUTBOL EN VIVO CANALES - NUEVO - LIMPIO - live1.php - 16 OCT 2026 ===== -->
-<section id="bloque-vivo-futbol" style="max-width:1320px;margin:20px auto;padding:0 8px;box-sizing:border-box;">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Sora:wght@600;700;800&display=swap');
-#bloque-vivo-futbol *{font-family: Inter, system-ui, sans-serif; box-sizing:border-box}
-#bloque-vivo-futbol h1,#bloque-vivo-futbol h2,#bloque-vivo-futbol .sora{font-family: Sora, Inter, sans-serif}
-@keyframes pulse-dot{0%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}100%{transform:scale(1);opacity:1}}
-@keyframes live-glow{0%,100%{box-shadow:0 0 12px rgba(0,255,136,.5)}50%{box-shadow:0 0 24px rgba(0,255,136,.9)}}
-#bloque-vivo-futbol .card-glow:hover{box-shadow:0 0 0 1px rgba(0,255,136,.35), 0 12px 40px rgba(0,0,0,.6), 0 0 32px rgba(0,255,136,.18)}
-</style>
-<div id="futbol-canales-root"></div>
-<script type="module">
-const Tl=[{id:"argentina",title:"Argentina",country:"AR",flag:"🇦🇷",color:"#74ACDF",dot:"bg-[#74ACDF]",desc:"Liga Profesional • Copa",channels:["fox1ar","fox2ar","fox3ar","tycsports","espnpremium","tntpremium","espnar","espn2ar","espn3ar","espn4ar","tvpublica","telefe","eltrece","americav","tn","a24"]},{id:"espana",title:"España",country:"ES",flag:"🇪🇸",color:"#FFC400",dot:"bg-[#FFC400]",desc:"LaLiga • DAZN • Movistar",channels:["dazn","daznla1","dazn2","dazn3","dazn4","daznf1","movistarlaliga","laligahypermotion","movistarplus","vamos","gol"]},{id:"peru",title:"Perú / Liga 1",country:"PE",flag:"🇵🇪",color:"#D91023",dot:"bg-[#D91023]",desc:"Liga 1 Max • GolPerú",channels:["liga1max","golperu","latina","americatv","atv"]},{id:"chile",title:"Chile",country:"CL",flag:"🇨🇱",color:"#FF3B30",dot:"bg-[#FF3B30]",desc:"TNT Sports Chile",channels:["tntchile","tntchile2","tntchile3","canal13cl","chilevision","mega"]},{id:"colombia",title:"Colombia",country:"CO",flag:"🇨🇴",color:"#FFD500",dot:"bg-[#FFD500]",desc:"Win Sports • Caracol",channels:["win","winplus","caracol","rcn","winplus2"]},{id:"ecuador",title:"Ecuador",country:"EC",flag:"🇪🇨",color:"#FFD100",dot:"bg-[#FFD100]",desc:"GolTV • DSports EC",channels:["ecuavisa","teleamazonas","goltvecu","dsports-ec"]},{id:"mexico",title:"México",country:"MX",flag:"🇲🇽",color:"#006847",dot:"bg-[#006847]",desc:"TUDN • Azteca • Televisa",channels:["tudn","espnmx","espn2mx","espn3mx","foxmx","fox2mx","fox3mx","azteca7","canal5mx","lasestrellas"]},{id:"usa",title:"USA / Internacional",country:"US",flag:"🌎",color:"#00ff88",dot:"bg-[#00ff88]",desc:"ESPN • Fox Sports • DSPORTS • NBA • MLB",channels:["espn","espn2","espn3","espn4","espn5","espn6","espn7","espndeportes","foxdeportes","foxsports1","foxsports2","tycint","dsports","dsports2","dsportsplus","dsportsplus2","nba","nbatv","mlb","mlbnetwork"]},{id:"premier",title:"Premier / Champions",country:"UK",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",color:"#7D2AE8",dot:"bg-[#7D2AE8]",desc:"Sky • TNT Sports UK • DAZN UK",channels:["espnuk","skysports","skysportspremier","tntsportsuk","tntuk1","tntuk2","tntuk3","daznuk"]},{id:"brasil",title:"Brasil",country:"BR",flag:"🇧🇷",color:"#009739",dot:"bg-[#009739]",desc:"Globo • Sportv • Premiere",channels:["globo","sportv","sportv2","sportv3","premiere1","premiere2","premiere3","espnbrasil"]}];
-function k0(e){return e.replace(/-/g," ").replace(/tv$/," TV").toUpperCase()}
-function initFutbolCanales(){
-  const root=document.getElementById('futbol-canales-root');
-  if(!root) return;
-  let search='', activeChannel=null;
-  const Vc=Tl.reduce((e,t)=>e+t.channels.length,0);
-  function render(){
-    const filtered = !search.trim() ? Tl : Tl.map(p=>({...p,channels:p.channels.filter(h=>h.toLowerCase().includes(search.toLowerCase())||p.title.toLowerCase().includes(search.toLowerCase())||p.country.toLowerCase().includes(search.toLowerCase()))})).filter(p=>p.channels.length>0);
-    root.innerHTML = `
-    <div style="background:#070f0a;border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);color:#fff">
-      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.06);background:linear-gradient(90deg,#070f0a,#102218,#070f0a);align-items:center">
-        <div style="display:flex;align-items:center;gap:12px"><div style="height:36px;width:36px;border-radius:9999px;background:#00ff88;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:13px;box-shadow:0 0 18px rgba(0,255,136,.7)">●</div><div><div style="font-family:Sora;font-weight:800;letter-spacing:-0.02em;font-size:18px;line-height:1">STREAMXHD <span style="color:#00ff88">LIVE</span><span style="margin-left:8px;color:rgba(255,255,255,.5);font-size:13px;font-weight:600">• ${Vc} CANALES 24/7</span></div></div></div>
-        <div style="display:flex;gap:8px;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:11px;font-weight:700"><span style="height:8px;width:8px;border-radius:9999px;background:#00ff88;animation:pulse-dot 1.3s infinite;display:inline-block"></span> EN VIVO <span style="background:#00ff88;color:#000;padding:2px 8px;border-radius:9999px;font-size:10px;font-weight:900;margin-left:4px">TODO EL DÍA</span></span><a href="https://streamxhd.com/" target="_blank" style="font-size:11px;color:#00ff88;font-weight:700;text-decoration:none">Embed Live Sports - Agenda ↗</a></div>
+<!-- ===== BLOQUE NUEVO APUESTAS DEPORTIVAS - REEMPLAZO FUTBOL EN VIVO - CON TUS 2 OK.RU ===== -->
+<section id="bloque-nuevo-apuestas" style="max-width:1320px;margin:22px auto;padding:0 8px;box-sizing:border-box;font-family:Inter,system-ui,sans-serif;">
+  <style>
+    #bloque-nuevo-apuestas .apuestas-card{background:linear-gradient(180deg,#0e1510 0%,#0a0f14 100%);border:1px solid rgba(0,255,136,.25);border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5), 0 0 32px rgba(0,255,136,.12)}
+    #bloque-nuevo-apuestas .apuestas-head{padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    #bloque-nuevo-apuestas .apuestas-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px}
+    @media(max-width:900px){#bloque-nuevo-apuestas .apuestas-grid{grid-template-columns:1fr}}
+    #bloque-nuevo-apuestas .video-box{background:#000;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);position:relative}
+    #bloque-nuevo-apuestas .video-16x9{position:relative;width:100%;padding-bottom:56.25%;background:#000}
+    #bloque-nuevo-apuestas .video-16x9 iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    #bloque-nuevo-apuestas .video-title{padding:12px 14px;font-weight:800;font-size:13px;color:#fff;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px}
+    #bloque-nuevo-apuestas .like-row{padding:16px 22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.2)}
+    #bloque-nuevo-apuestas .btn-like{border:none;padding:10px 18px;border-radius:9999px;font-weight:800;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s}
+    #bloque-nuevo-apuestas .btn-like:hover{transform:translateY(-1px)}
+  </style>
+  <div class="apuestas-card">
+    <div class="apuestas-head">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px"><div style="height:10px;width:10px;border-radius:50%;background:#00ff88;box-shadow:0 0 12px #00ff88"></div><h2 style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:900;letter-spacing:-.02em;color:#fff">APUESTAS DEPORTIVAS</h2><span style="background:#00ff88;color:#000;padding:4px 10px;border-radius:9999px;font-size:10px;font-weight:900">HD</span></div>
+        <p style="margin:8px 0 0;color:#94a3b8;font-size:13px">Análisis deportivo viendo las cuotas y posibles ganadores. Disfruta de nuestro canal.</p>
       </div>
-      <div style="padding:20px 20px 12px">
-        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end">
-          <div><h1 style="font-family:Sora;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:.95;margin:0">FUTBOL EN VIVO <span style="color:rgba(255,255,255,.2)">•</span> <span style="color:#00ff88">HD</span> <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.7)">- Todos los canales</span> <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:9999px;background:#00ff88;color:#000;font-size:10px;font-weight:900;letter-spacing:1px;box-shadow:0 0 20px rgba(0,255,136,.45);margin-left:6px"><span style="height:6px;width:6px;border-radius:9999px;background:#000;animation: pulse-dot 1.3s infinite;display:inline-block"></span> LIVE</span></h1><p style="margin-top:8px;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.45);font-weight:600;text-transform:uppercase">Bloque limpio • Sin eventos antiguos • Solo canales 24/7 • live1.php?stream=ID • Fondo #070f0a • Tarjetas #121c16</p></div>
-          <div style="position:relative;width:360px;max-width:100%"><input id="fc-search" value="${search}" placeholder="Buscar canal, liga o país… ej: fox1ar, liga1max, dazn" style="width:100%;height:44px;border-radius:9999px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08);padding-left:44px;padding-right:40px;font-size:13px;color:#fff;outline:none"><span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4)">🔍</span>${search?'<button id="fc-clear" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:28px;width:28px;border-radius:9999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">✕</button>':''}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5)">STREAMXHD • 365Perú</div>
+    </div>
+
+    <div class="apuestas-grid">
+      <!-- VIDEO 1 -->
+      <div class="video-box">
+        <div class="video-title">🎬 VIDEO 1 - Análisis de Cuotas</div>
+        <div class="video-16x9">
+          <iframe src="https://ok.ru/videoembed/16868676012603?nochat=1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
         </div>
-        <div style="margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:10px"><span style="color:rgba(255,255,255,.3);font-weight:700;letter-spacing:1px">FILTRO RÁPIDO:</span>${Tl.map(a=>`<button data-filter="${a.title}" class="fc-filter" style="padding:6px 12px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-weight:700;cursor:pointer">${a.flag} ${a.title}</button>`).join('')}<button data-filter="" class="fc-filter" style="padding:6px 14px;border-radius:9999px;background:rgba(0,255,136,.15);border:1px solid rgba(0,255,136,.3);color:#00ff88;font-weight:900">LIMPIAR</button><span style="margin-left:auto;color:rgba(255,255,255,.25)">${filtered.reduce((a,p)=>a+p.channels.length,0)} canales visibles</span></div>
       </div>
-      <div style="padding:0 16px 20px;display:flex;flex-direction:column;gap:32px">
-        ${filtered.map(a=>`
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:0 4px">
-            <div style="height:36px;width:36px;border-radius:10px;background:#121c16;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 0 1px ${a.color}22,0 0 18px ${a.color}22">${a.flag}</div>
-            <div style="display:flex;align-items:center;gap:10px"><h2 style="font-family:Sora;font-size:18px;font-weight:800;letter-spacing:-0.02em;margin:0">${a.title.toUpperCase()} <span style="height:8px;width:8px;border-radius:9999px;background:${a.color};display:inline-block;box-shadow:0 0 8px ${a.color};margin-left:4px"></span></h2><span style="padding:3px 10px;border-radius:9999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:10px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.6)">${a.channels.length} CANALES</span><span style="font-size:11px;color:rgba(255,255,255,.35);display:none" class="desc-md">${a.desc}</span></div>
-            <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.1),transparent);margin-left:12px"></div>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px" class="fc-grid">
-            ${a.channels.map(p=>{
-              const h=p.slice(0,4).toUpperCase();
-              return `<div style="position:relative;border-radius:16px;background:#121c16;border:1px solid rgba(255,255,255,.07);overflow:hidden;padding:14px 14px;display:flex;flex-direction:column;gap:12px;transition:.3s" class="card-glow">
-                <div style="position:absolute;top:0;left:0;right:0;height:2px;opacity:.6;background:linear-gradient(90deg,${a.color},transparent)"></div>
-                <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="display:flex;gap:10px;align-items:center;min-width:0"><div style="height:40px;width:40px;flex-shrink:0;border-radius:12px;background:linear-gradient(to bottom right,#000,#0a1a0f);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;letter-spacing:1px;color:#fff">${h}</div><div style="min-width:0"><div style="font-size:12px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${k0(p)}</div><div style="margin-top:4px;display:flex;align-items:center;gap:6px"><span style="height:6px;width:6px;border-radius:9999px;background:#00ff88;display:inline-block;animation:pulse-dot 1.3s infinite"></span><span style="font-size:9px;color:rgba(255,255,255,.5);font-weight:700;letter-spacing:1px">24/7 • HD</span></div></div></div><span style="flex-shrink:0;padding:4px 8px;border-radius:9999px;font-size:8px;font-weight:900;letter-spacing:1px;border:1px solid ${a.color}35;background:${a.color}14;color:${a.color}">${a.flag} ${a.country}</span></div>
-                <div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:32px;border-radius:9999px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 12px;gap:8px;min-width:0"><div style="height:6px;width:6px;border-radius:9999px;background:#00ff88;flex-shrink:0"></div><span style="font-size:10px;color:rgba(255,255,255,.5);font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">stream=${p}</span></div><button data-channel="${p}" class="fc-ver" style="flex-shrink:0;height:32px;padding:0 16px;border-radius:9999px;background:#00ff88;color:#000;font-size:10px;font-weight:900;letter-spacing:1px;box-shadow:0 0 16px rgba(0,255,136,.4);border:none;cursor:pointer;display:flex;align-items:center;gap:6px">▶ VER</button></div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.25)"><span>live1.php?stream=${p}</span><span>↗ EN VIVO</span></div>
-              </div>`
-            }).join('')}
-          </div>
-        </div>`).join('')}
-        ${filtered.length===0?`<div style="padding:80px 20px;text-align:center"><div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;padding:32px 40px;border-radius:20px;background:#121c16;border:1px solid rgba(255,255,255,.1)"><div style="font-size:18px;font-weight:700">No hay canales para "${search}"</div><div style="font-size:12px;color:rgba(255,255,255,.5)">Prueba con: fox1ar, win, liga1max, dazn, tntchile, globo</div><button id="fc-clear2" style="margin-top:8px;padding:0 20px;height:36px;border-radius:9999px;background:#00ff88;color:#000;font-size:11px;font-weight:900">LIMPIAR FILTRO</button></div></div>`:''}
-      </div>
-      <div style="margin-top:12px;border-radius:16px;background:#0a1a0f;border:1px solid rgba(255,255,255,.06);padding:16px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center">
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><div style="font-size:12px;font-weight:700;letter-spacing:.5px;color:rgba(255,255,255,.7)">FUTBOL EN VIVO • HD - Todos los canales • ${Vc} señales</div><div style="display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:9999px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08)"><div style="height:24px;width:24px;border-radius:9999px;background:rgba(0,255,136,.2);border:1px solid rgba(0,255,136,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#00ff88">HD</div><a href="https://streamxhd.com/" target="_blank" style="font-size:12px;font-weight:700;color:#fff;text-decoration:none">Embed Live Sports - Agenda</a><span style="font-size:10px;color:rgba(255,255,255,.3)">• fuente oficial • live1.php</span></div></div>
-        <div style="display:flex;align-items:center;gap:12px"><a href="https://streamxhd.com/" target="_blank" style="font-size:11px;padding:6px 14px;border-radius:9999px;background:#00ff88;color:#000;font-weight:900;text-decoration:none">IR A STREAMXHD.COM ↗</a><span style="font-size:10px;color:rgba(255,255,255,.25)">© 2026 • bloque limpio • solo canales</span></div>
+      <!-- VIDEO 2 -->
+      <div class="video-box">
+        <div class="video-title">🏆 VIDEO 2 - Posibles Ganadores</div>
+        <div class="video-16x9">
+          <iframe src="https://ok.ru/videoembed/16868676078139?nochat=1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+        </div>
       </div>
     </div>
-    <div id="fc-modal" style="display:${activeChannel?'flex':'none'};position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:12px"><div id="fc-modal-bg" style="position:absolute;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px)"></div><div style="position:relative;width:100%;max-width:1080px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.15);background:#0a1410;box-shadow:0 30px 120px rgba(0,0,0,.95),0 0 0 1px rgba(0,255,136,.15),0 0 70px rgba(0,255,136,.18)"><div style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.1);background:#0f2317"><div style="display:flex;align-items:center;gap:12px;min-width:0"><div style="height:32px;width:32px;border-radius:9999px;background:#00ff88;color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0">${activeChannel?activeChannel.slice(0,4).toUpperCase():''}</div><div style="min-width:0"><div style="font-size:13px;font-weight:700;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${activeChannel?activeChannel.toUpperCase()+' • EN VIVO HD':''}</div><div style="font-size:10px;color:rgba(255,255,255,.5);font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">https://streamxhd.com/live1.php?stream=${activeChannel||''}</div></div><span style="display:inline-flex;padding:3px 8px;border-radius:9999px;background:#ff2a4d;color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;align-items:center;gap:4px"><span style="height:4px;width:4px;border-radius:9999px;background:#fff;animation:pulse-dot 1s infinite;display:inline-block"></span> LIVE</span></div><button id="fc-close" style="height:36px;width:36px;border-radius:9999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer">✕</button></div><div style="position:relative;aspect-ratio:16/9;background:#000">${activeChannel?`<iframe src="https://streamxhd.com/live1.php?stream=${activeChannel}" title="stream ${activeChannel}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>`:''}</div><div style="padding:12px 20px;background:#070f0a;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center"><div style="display:flex;align-items:center;gap:12px;font-size:11px;color:rgba(255,255,255,.5)"><a href="https://streamxhd.com/" target="_blank" style="color:#00ff88;font-weight:700">Embed Live Sports - Agenda</a><span>• Si no carga, prueba otro canal.</span></div><div style="display:flex;gap:8px"><button id="fc-close2" style="padding:0 16px;height:32px;border-radius:9999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:11px;font-weight:700;cursor:pointer">CERRAR</button><a href="https://streamxhd.com/live1.php?stream=${activeChannel||''}" target="_blank" style="padding:0 16px;height:32px;border-radius:9999px;background:#00ff88;color:#000;font-size:11px;font-weight:900;text-decoration:none;display:flex;align-items:center">ABRIR EN PESTAÑA ↗</a></div></div></div></div>
-    `;
-    // events
-    document.getElementById('fc-search')?.addEventListener('input', (e)=>{search=e.target.value; render(); document.getElementById('fc-search')?.focus(); const v=search; setTimeout(()=>{const el=document.getElementById('fc-search'); if(el){el.value=v; el.setSelectionRange(v.length,v.length)}} ,0)});
-    document.getElementById('fc-clear')?.addEventListener('click', ()=>{search=''; render()});
-    document.getElementById('fc-clear2')?.addEventListener('click', ()=>{search=''; render()});
-    document.querySelectorAll('.fc-filter').forEach(b=>b.addEventListener('click', ()=>{search=b.getAttribute('data-filter')||''; render()}));
-    document.querySelectorAll('.fc-ver').forEach(b=>b.addEventListener('click', ()=>{activeChannel=b.getAttribute('data-channel'); render()}));
-    document.getElementById('fc-close')?.addEventListener('click', ()=>{activeChannel=null; render()});
-    document.getElementById('fc-close2')?.addEventListener('click', ()=>{activeChannel=null; render()});
-    document.getElementById('fc-modal-bg')?.addEventListener('click', ()=>{activeChannel=null; render()});
-  }
-  render();
-}
-document.addEventListener('DOMContentLoaded', initFutbolCanales);
-if(document.readyState!=='loading') initFutbolCanales();
-</script>
-<!-- ===== FIN BLOQUE FUTBOL EN VIVO CANALES ===== -->
 
-
-
-
+    <div class="like-row">
+      <div style="color:#fff;font-weight:800;font-size:14px">¿Te gustan los videos? Comenta. ¡Dale tu like!</div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-like" style="background:#fff;color:#000" onclick="let e=this;let c=e.querySelector('span');c.textContent=parseInt(c.textContent)+1;e.style.background='#00ff88'">👍 Me gusta <span style="background:#000;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;margin-left:4px">0</span></button>
+        <button class="btn-like" style="background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12)" onclick="let e=this;let c=e.querySelector('span');c.textContent=parseInt(c.textContent)+1">👎 No me gusta <span style="background:rgba(255,255,255,.15);color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;margin-left:4px">0</span></button>
+      </div>
+    </div>
+    <div style="padding:0 22px 20px;display:flex;gap:10px">
+      <input id="apuestas-coment-input" placeholder="Escribe un comentario..." style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:9999px;padding:10px 14px;color:#fff;font-size:13px">
+      <button onclick="let i=document.getElementById('apuestas-coment-input');let l=document.getElementById('apuestas-coment-list');if(!i.value.trim())return;let d=document.createElement('div');d.style.cssText='padding:10px 14px;background:rgba(255,255,255,.04);border-radius:10px;margin-top:8px;color:#e2e8f0;font-size:13px';d.textContent=i.value;i.value='';l.prepend(d);" style="background:#00ff88;color:#000;border:none;padding:10px 18px;border-radius:9999px;font-weight:900;cursor:pointer">Enviar</button>
+    </div>
+    <div id="apuestas-coment-list" style="padding:0 22px 22px;display:flex;flex-direction:column;gap:8px"></div>
+  </div>
+</section>
+<!-- ===== FIN BLOQUE NUEVO APUESTAS DEPORTIVAS ===== -->
 
 
 <!-- === TRADUCTOR 365PERU DISCRETO - NO TAPA CHAT NI MENUS === -->
