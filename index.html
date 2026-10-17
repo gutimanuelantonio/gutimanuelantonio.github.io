@@ -767,6 +767,193 @@ body{top:0!important;}
 <!-- ===== FIN BLOQUE NUEVO APUESTAS DEPORTIVAS ===== -->
 
 
+<!-- ===== INICIO BLOQUE FUTBOL VIVO - RESPONSIVE ===== -->
+<section id="futbol-vivo" style="margin:24px 0;width:100%;box-sizing:border-box">
+<style>
+  #futbol-vivo *{box-sizing:border-box}
+  #fv-wrap{width:100%;max-width:1280px;margin:0 auto;background:#0a0f1a;border:2px solid #00FF88;border-radius:18px;overflow:hidden;box-shadow:0 0 28px rgba(0,255,136,.25),inset 0 0 24px rgba(0,255,136,.06);font-family:Inter,system-ui,sans-serif}
+  #fv-header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:14px 18px;background:#0e1a2f;border-bottom:1px solid rgba(0,255,136,.18);position:sticky;top:0;z-index:5}
+  #fv-title{font-weight:900;font-size:clamp(18px,3vw,28px);letter-spacing:-.02em;color:#fff;line-height:1}
+  #fv-title span{color:#00FF88}
+  #fv-badge{display:flex;align-items:center;gap:8px}
+  #fv-live{display:flex;align-items:center;gap:6px;background:rgba(255,26,26,.1);border:1px solid rgba(255,26,26,.3);padding:6px 12px;border-radius:999px;color:#ff3b3b;font-size:11px;font-weight:900;letter-spacing:1px}
+  #fv-live-dot{width:10px;height:10px;background:#ff1a1a;border-radius:50%;animation:fvPulse 1.2s infinite;box-shadow:0 0 10px #ff1a1a}
+  @keyframes fvPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+  #fv-clock{font-family:monospace;background:#000;border:1px solid rgba(255,255,255,.1);padding:6px 12px;border-radius:8px;font-size:12px;color:#fff;display:flex;gap:6px;align-items:center}
+  #fv-layout{display:grid;grid-template-columns:1fr 380px}
+  @media(max-width:1024px){#fv-layout{grid-template-columns:1fr}}
+  #fv-player-col{padding:12px;background:#0a0f1a;min-width:0}
+  #fv-player-box{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;border:1px solid rgba(0,255,136,.18)}
+  #fv-player-box iframe{width:100%;height:100%;border:0;position:absolute;inset:0}
+  #fv-mute-overlay{position:absolute;inset:0;background:rgba(10,15,26,.85);backdrop-filter:blur(2px);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+  #fv-mute-circle{width:88px;height:88px;border-radius:50%;background:#00FF88;display:grid;place-items:center;box-shadow:0 0 40px rgba(0,255,136,.6);animation:fvPulse 2s infinite}
+  #fv-channels{margin-top:18px}
+  #fv-channels h3{font-size:12px;font-weight:900;letter-spacing:1px;color:#fff;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  #fv-ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+  @media(max-width:640px){#fv-ch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .fv-ch{padding:10px;border-radius:8px;background:#111e36;border:1px solid rgba(255,255,255,.07);color:#fff;font-size:11px;font-weight:700;cursor:pointer;transition:.2s;text-align:left}
+  .fv-ch:hover{border-color:rgba(0,255,136,.5);background:#162750;transform:translateY(-1px);box-shadow:0 0 12px rgba(0,255,136,.15)}
+  .fv-ch small{display:block;font-size:8px;color:#9ca3af;margin-top:2px;font-weight:900}
+  #fv-sidebar{background:#0d1528;border-left:1px solid rgba(0,255,136,.12);display:flex;flex-direction:column;min-width:0}
+  @media(max-width:1024px){#fv-sidebar{border-left:0;border-top:1px solid rgba(0,255,136,.12)}}
+  #fv-search{width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px 10px 36px;color:#fff;font-size:12px;outline:none}
+  #fv-search:focus{border-color:rgba(0,255,136,.4)}
+  .fv-filter{padding:6px 12px;border-radius:999px;font-size:11px;font-weight:800;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);cursor:pointer;white-space:nowrap}
+  .fv-filter.active{background:#00FF88;color:#000;border-color:#00FF88;box-shadow:0 0 12px rgba(0,255,136,.4)}
+  #fv-list{flex:1;overflow-y:auto;max-height:720px;padding:8px;display:flex;flex-direction:column;gap:8px;background:rgba(10,15,26,.4)}
+  @media(max-width:1024px){#fv-list{max-height:500px}}
+  .fv-item{border-radius:10px;border:1px solid rgba(255,255,255,.06);background:#0f1a2e;padding:10px;transition:.2s;cursor:pointer}
+  .fv-item.active{border-color:rgba(0,255,136,.4);background:#111e36;box-shadow:0 0 12px rgba(0,255,136,.12)}
+  .fv-item-head{display:flex;justify-content:space-between;align-items:center}
+  .fv-time{font-family:monospace;font-size:11px;font-weight:800;color:#00FF88}
+  .fv-league{font-size:9px;font-weight:900;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1)}
+  .fv-pronto{font-size:9px;font-weight:900;background:#00FF88;color:#000;padding:2px 8px;border-radius:999px;letter-spacing:.5px}
+  .fv-match{font-weight:800;font-size:13px;color:#fff;margin-top:6px;line-height:1.2}
+  .fv-servers{margin-top:8px;border-top:1px solid rgba(255,255,255,.06);padding-top:8px;display:flex;flex-direction:column;gap:6px}
+  .fv-srv{display:flex;justify-content:space-between;align-items:center;gap:8px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:8px 10px}
+  .fv-srv-name{font-size:11px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
+  .fv-btn{font-size:11px;font-weight:900;padding:6px 10px;border-radius:6px;border:none;cursor:pointer;transition:.15s}
+  .fv-btn-play{background:#00FF88;color:#000;box-shadow:0 0 8px rgba(0,255,136,.3)}
+  .fv-btn-play:hover{transform:scale(1.03)}
+  .fv-btn-copy{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.1)}
+  #fv-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#111e36;border:1px solid rgba(0,255,136,.3);color:#fff;padding:10px 16px;border-radius:999px;font-size:12px;z-index:9999;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+</style>
+
+<div id="fv-wrap">
+  <div id="fv-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="background:#00FF88;color:#000;font-size:10px;font-weight:900;padding:3px 8px;border-radius:4px;letter-spacing:.5px">BLOQUE VIVO FUTBOL • HD</span><span style="width:8px;height:8px;background:#00FF88;border-radius:50%;animation:fvPulse 2s infinite;display:inline-block"></span></div>
+      <div id="fv-title">FUTBOL VIVO • <span>24/7 - 14 OCT</span></div>
+    </div>
+    <div id="fv-badge">
+      <div id="fv-live"><span id="fv-live-dot"></span>EN VIVO</div>
+      <div id="fv-clock">⏱ <span id="fv-time">--:--:--</span> <span style="color:#00FF88;font-weight:800">PET</span></div>
+    </div>
+  </div>
+
+  <div id="fv-layout">
+    <div id="fv-player-col">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:11px">
+        <span style="display:flex;align-items:center;gap:6px;background:#111e36;border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:999px"><span style="width:6px;height:6px;background:#00FF88;border-radius:50%"></span><span id="fv-now">ESPN • En vivo</span><span id="fv-state" style="margin-left:6px;background:rgba(234,179,8,.2);border:1px solid rgba(234,179,8,.3);color:#fde047;padding:1px 6px;border-radius:999px;font-size:9px">MUTED</span></span>
+        <span style="color:#00FF88;font-weight:900;font-size:10px;letter-spacing:1px">▶ CLICK PARA ACTIVAR SONIDO</span>
+      </div>
+      <div id="fv-player-box">
+        <iframe id="fv-iframe" src="https://streamxhd.com/live2.php?stream=espn" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+        <div id="fv-mute-overlay" onclick="document.getElementById('fv-mute-overlay').style.display='none';document.getElementById('fv-state').textContent='LIVE';document.getElementById('fv-state').style.background='rgba(0,255,136,.2)';document.getElementById('fv-state').style.color='#00FF88'">
+          <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.7);border:1px solid rgba(0,255,136,.3);padding:4px 8px;border-radius:6px;font-size:10px;color:#00FF88;font-weight:800">CLICK PARA ACTIVAR SONIDO</div>
+          <div id="fv-mute-circle">🔊</div>
+          <div style="margin-top:14px;text-align:center;color:#fff;font-weight:900;font-size:14px;text-transform:uppercase">Click para activar audio<br><span style="font-weight:500;font-size:11px;color:rgba(255,255,255,.5);text-transform:none">Inicia silenciado por Chrome / Safari</span></div>
+        </div>
+      </div>
+
+      <div id="fv-channels">
+        <h3><span style="width:4px;height:18px;background:#00FF88;display:inline-block;box-shadow:0 0 8px #00FF88"></span> Canales 24/7 - TODOS LOS CANALES (54)</h3>
+        <div id="fv-ch-grid"></div>
+      </div>
+    </div>
+
+    <div id="fv-sidebar">
+      <div style="padding:12px;border-bottom:1px solid rgba(255,255,255,.05)">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="color:#00FF88;font-weight:900;font-size:12px;letter-spacing:1px">Agenda por dias <span id="fv-count" style="background:#00FF88;color:#000;padding:2px 8px;border-radius:999px;margin-left:6px;font-size:10px">0 EVENTOS</span></span><span style="font-size:10px;color:rgba(255,255,255,.3)" id="fv-total">78 TOTAL</span></div>
+        <div style="margin-top:6px;font-size:11px;font-weight:800;color:rgba(255,255,255,.6)">MIÉRCOLES, 14 DE OCTUBRE DE 2026</div>
+        <div style="position:relative;margin-top:12px"><span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.4">🔍</span><input id="fv-search" placeholder="Buscar equipo, liga..." oninput="fvRender()"></div>
+        <div style="margin-top:10px;display:flex;gap:6px;overflow-x:auto;padding-bottom:4px" id="fv-filters"></div>
+      </div>
+      <div id="fv-list"></div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;padding:8px 14px;background:#0e1a2f;border-top:1px solid rgba(0,255,136,.1);font-size:11px;color:rgba(255,255,255,.5)"><span><span style="background:#fff;color:#000;padding:2px 6px;border-radius:4px;font-weight:900;font-size:10px">ES</span> Español • PET UTC-5</span><span style="display:none">14 OCT 2026</span></div>
+</div>
+<div id="fv-toast"></div>
+
+<script>
+const fvP = s => s.startsWith('http')?s:`https://streamxhd.com/live2.php?stream=${s}`;
+const fvEvents = [
+{id:1,time:'06:30',code:'ENG',league:'Premier League',home:'Everton',away:'Chelsea',servers:[['Disney +','disney1'],['ESPN','espn'],['ESPN AR','espnar'],['HBO Max 1','max1'],['Universo','universo']]},
+{id:2,time:'06:30',code:'ENG',league:'Championship',home:'Watford',away:'Charlton',servers:[['ESPN 5','espn5']]},
+{id:3,time:'07:00',code:'ES',league:'LaLiga',home:'Espanyol',away:'Atlético Madrid',servers:[['DSports','dsports'],['ESPN Deportes','espndeportes'],['ESPN+','espnplus1'],['DAZN LaLiga','daznlaliga']]},
+{id:6,time:'08:00',code:'IT',league:'Serie A',home:'Venezia',away:'Napoli',servers:[['Disney +','disney2'],['ESPN 3','espn3']]},
+{id:10,time:'08:30',code:'ALE',league:'Bundesliga',home:'Schalke 04',away:'Mainz 05',servers:[['Disney +','disney7'],['ESPN 5','espn5']]},
+{id:14,time:'09:00',code:'ENG',league:'Premier',home:'Man City',away:'Ipswich',servers:[['Disney +','disney11'],['ESPN','espn'],['Telemundo','telemundo']]},
+{id:17,time:'09:15',code:'ES',league:'LaLiga',home:'Villarreal',away:'Elche',servers:[['Disney +','disney13'],['ESPN 2','espn2']]},
+{id:25,time:'11:30',code:'ENG',league:'Premier',home:'Newcastle',away:'Aston Villa',servers:[['Disney +','disney19'],['HBO Max 3','max3']]},
+{id:26,time:'11:30',code:'ES',league:'LaLiga',home:'Real Betis',away:'Barcelona',servers:[['DSports','dsports'],['ESPN+','espnplus3']]},
+{id:28,time:'11:30',code:'ALE',league:'Bundesliga',home:'Bayern München',away:'RB Leipzig',servers:[['Disney +','disney20'],['ESPN','espn']]},
+{id:33,time:'13:30',code:'MLS',league:'MLS',home:'Philadelphia Union',away:'Charlotte',servers:[['Apple TV','appletv1']]},
+{id:38,time:'14:00',code:'ES',league:'LaLiga',home:'Valencia',away:'Athletic Club',servers:[['Disney +','disney25'],['ESPN 3','espn3']]},
+{id:43,time:'15:00',code:'PE',league:'Liga 1',home:'Juan Pablo II',away:'Sport Boys',servers:[['L1 Max','l1max']]},
+{id:44,time:'15:00',code:'COL',league:'Liga Colombia',home:'Boyacá Chicó',away:'Atlético Nacional',servers:[['Win Sports+','winplus']]},
+{id:58,time:'18:07',code:'MEX',league:'Liga MX',home:'Guadalajara',away:'Tigres UANL',servers:[['Universo','universo'],['Prime Video 2','amazon2']]},
+{id:59,time:'18:30',code:'MLS',league:'MLS',home:'Atlanta United',away:'Inter Miami',servers:[['Apple TV Es','appletv3'],['Apple TV En','appletv4']]},
+{id:70,time:'20:00',code:'MEX',league:'Liga MX',home:'León',away:'América',servers:[['FOX One','foxone'],['TUDN USA','tudn_usa']]},
+{id:73,time:'20:30',code:'PE',league:'Liga 1',home:'Alianza Lima',away:'Atlético Grau',servers:[['L1 Max','l1max']]},
+{id:78,time:'22:10',code:'MEX',league:'Liga MX',home:'Cruz Azul',away:'Juárez',servers:[['TUDN MX','tudnmx'],['Canal 5 MX','canal5mx']]},
+];
+const fvChannels = [
+['ESPN','espn','USA'],['ESPN 2','espn2','HD'],['ESPN 3','espn3','HD'],['ESPN 4','espn4','HD'],['ESPN 5','espn5','HD'],['ESPN Deportes','espndeportes','ES'],['FOX Sports','fox1ar','AR'],['FOX Sports 2','fox2ar','AR'],['Disney+ 1','disney1','PREMIUM'],['Disney+ 2','disney2','PREMIUM'],['Disney+ Premium','disney10','4K'],['Max 1','max1','HBO'],['L1 Max','l1max','PE'],['TUDN MX','tudnmx','MX'],['DAZN LaLiga','daznlaliga','ES'],['DSports','dsports','GLOBAL'],['TNT Sports','tntsports','AR'],['Win Sports+','winplus','COL'],['Apple TV','appletv1','MLS'],['Paramount+','paramount1','UFC']
+];
+let fvActive=null,fvFilter='Todos',fvQuery='';
+const fvFilters = ['Todos','Futbol','ENG','ES','PE','MEX','MLS'];
+function fvToast(m){const t=document.getElementById('fv-toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+function fvPlay(name,code){
+  const url=fvP(code);
+  document.getElementById('fv-iframe').src=url;
+  document.getElementById('fv-now').textContent=name+' • En vivo';
+  document.getElementById('fv-mute-overlay').style.display='none';
+  document.getElementById('fv-state').textContent='LIVE';
+  fvToast('Cargando: '+name);
+  document.getElementById('fv-player-box').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function fvCopy(url){
+  const u=fvP(url);
+  navigator.clipboard.writeText(u).then(()=>fvToast('Link copiado')).catch(()=>fvToast(u));
+}
+function fvRender(){
+  fvQuery=document.getElementById('fv-search').value.toLowerCase();
+  const list=document.getElementById('fv-list');
+  const filtered=fvEvents.filter(e=>{
+    const q=!fvQuery || (e.home+' '+e.away+' '+e.league).toLowerCase().includes(fvQuery);
+    let f=true;
+    if(fvFilter==='Futbol') f=true;
+    else if(['ENG','ES','PE','MEX','MLS'].includes(fvFilter)) f=e.code===fvFilter || e.league.includes(fvFilter);
+    return q&&f;
+  });
+  document.getElementById('fv-count').textContent=filtered.length+' EVENTOS';
+  list.innerHTML=filtered.map(ev=>{
+    const isActive=fvActive===ev.id;
+    return `<div class="fv-item ${isActive?'active':''}" onclick="fvToggle(${ev.id})">
+      <div class="fv-item-head"><div style="display:flex;gap:6px;align-items:center"><span class="fv-time">${ev.time}</span><span class="fv-league">${ev.code}</span><span style="font-size:10px;color:rgba(255,255,255,.35)" class="fv-league-name">${ev.league}</span></div><div style="display:flex;gap:6px;align-items:center"><span class="fv-pronto">PRONTO</span><span style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:10px;transform:${isActive?'rotate(90deg)':''}">▶</span></div></div>
+      <div class="fv-match">${ev.home} <span style="color:rgba(255,255,255,.3);font-weight:400;margin:0 4px">VS</span> ${ev.away}</div>
+      ${isActive?`<div class="fv-servers"><div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:2px">Servidores: <span style="background:rgba(255,255,255,.1);color:#fff;padding:1px 6px;border-radius:4px;font-weight:800">${ev.servers.length}</span></div>${ev.servers.map((s,i)=>`<div class="fv-srv"><div><div class="fv-srv-name">${i+1}. ${s[0]}</div><div style="font-size:9px;color:rgba(255,255,255,.3);font-family:monospace;max-width:140px;overflow:hidden;text-overflow:ellipsis">${fvP(s[1])}</div></div><div style="display:flex;gap:6px"><button class="fv-btn fv-btn-play" onclick="event.stopPropagation();fvPlay('${s[0]}','${s[1]}')">Ver aquí</button><button class="fv-btn fv-btn-copy" onclick="event.stopPropagation();fvCopy('${s[1]}')">Copiar</button></div></div>`).join('')}</div>`:''}
+    </div>`;
+  }).join('');
+}
+function fvToggle(id){fvActive=fvActive===id?null:id;fvRender()}
+function fvInit(){
+  // clock PET
+  setInterval(()=>{
+    const now=new Date();
+    const utc=now.getTime()+now.getTimezoneOffset()*60000;
+    const pet=new Date(utc-5*3600000);
+    document.getElementById('fv-time').textContent=pet.toTimeString().split(' ')[0];
+  },1000);
+  // channels
+  const grid=document.getElementById('fv-ch-grid');
+  grid.innerHTML=fvChannels.map(c=>`<button class="fv-ch" onclick="fvPlay('${c[0]}','${c[1]}')">${c[0]}<small>${c[1]} • ${c[2]}</small></button>`).join('');
+  // filters
+  const ff=document.getElementById('fv-filters');
+  ff.innerHTML=fvFilters.map(f=>`<button class="fv-filter ${fvFilter===f?'active':''}" onclick="fvSetFilter('${f}')">${f}</button>`).join('');
+  fvRender();
+}
+function fvSetFilter(f){fvFilter=f;document.querySelectorAll('.fv-filter').forEach(b=>b.classList.toggle('active',b.textContent===f));fvRender()}
+fvInit();
+</script>
+</section>
+<!-- ===== FIN BLOQUE FUTBOL VIVO ===== -->
+
+
+
 <!-- === TRADUCTOR 365PERU DISCRETO - NO TAPA CHAT NI MENUS === -->
 <button id="peru-translator-discreet-btn" onclick="peruToggleTranslator()" title="Traducir página">
   🌐 <span id="peru-lang-current">ES</span>
