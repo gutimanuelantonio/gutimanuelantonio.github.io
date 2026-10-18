@@ -821,6 +821,107 @@ body{top:0!important;}
 <!-- ===== FIN NUEVO BLOQUE PRINCIPAL 365PERU.COM ===== -->
 
 
+<!-- ===== SEGUNDO BLOQUE - PELICULAS REACT 2026 - TU REPRODUCTOR ===== -->
+<section id="segundo-bloque-peliculas-365" style="width:100%;background:#0a0a0a;padding:30px 0 20px;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700;800&display=swap');
+#segundo-bloque-peliculas-365 .glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08)}
+#segundo-bloque-peliculas-365 .prb-card{transition:all .3s;cursor:pointer}
+#segundo-bloque-peliculas-365 .prb-card:hover{transform:translateY(-2px);background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.14)}
+#segundo-bloque-peliculas-365 .custom-scroll::-webkit-scrollbar{width:6px}
+#segundo-bloque-peliculas-365 .custom-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:10px}
+#segundo-bloque-peliculas-365{font-family:Inter,sans-serif}
+</style>
+<div style="max-width:1600px;margin:0 auto;padding:0 16px;">
+  <!-- HEADER PELICULAS -->
+  <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+    <div>
+      <h2 style="font-family:Poppins,sans-serif;font-size:clamp(20px,3vw,32px);font-weight:800;line-height:1.1;color:#fff">🎬 PELÍCULAS - Clásicos, Estrenos, Netflix y Variadas</h2>
+      <p style="margin-top:8px;color:rgba(255,255,255,.55);font-size:13px">Somos creadores de contenido, disfruta de nuestra página web <span style="display:inline-flex;margin-left:8px;padding:2px 8px;border-radius:999px;background:rgba(229,9,20,.15);color:#ff6b73;font-size:10px;letter-spacing:1px;border:1px solid rgba(229,9,20,.2)">HD • SIN ANUNCIOS</span></p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="prb-cats"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.65fr .9fr;gap:20px;align-items:start">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="width:40px;height:40px;border-radius:12px;background:#E50914;display:grid;place-items:center;box-shadow:0 0 20px rgba(229,9,20,.5)">▶</div>
+          <div><div style="font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.4);font-weight:700">REPRODUCIENDO AHORA</div><div id="prb-current-title" style="font-size:18px;font-weight:800;color:#fff">Animales 2026</div></div>
+        </div>
+        <input id="prb-search" placeholder="🔍 Buscar película..." style="height:36px;width:220px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:0 14px;color:#fff;font-size:13px;outline:none">
+      </div>
+      <div style="position:relative;border-radius:20px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.08);aspect-ratio:16/9">
+        <iframe id="prb-player" src="https://ok.ru/videoembed/16161594673711?nochat=1" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen allow="autoplay; fullscreen"></iframe>
+      </div>
+      <div style="margin-top:16px;border-radius:20px;background:linear-gradient(135deg,#E50914,#b20710,#3a0a0c);padding:18px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div><div style="font-size:10px;letter-spacing:2px;font-weight:800;color:#fff;background:rgba(255,255,255,.15);display:inline-flex;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.2)">🚀 OFERTA LIMITADA • SOLO 50 SOLES</div><div style="font-size:20px;font-weight:800;color:#fff;margin-top:8px">Creamos tu Página Web Profesional</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:4px">Landing Page por solo <b style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:6px">50 soles</b>. Sin mensualidad.</div></div>
+        <a href="https://wa.me/51901397859?text=Hola%20quiero%20mi%20pagina%20web%20por%2050%20soles" target="_blank" style="background:#25D366;color:#000;padding:12px 20px;border-radius:999px;font-weight:900;text-decoration:none;display:inline-flex;align-items:center;gap:8px">💬 Contactar por WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:10px"><span style="font-size:12px;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,.6)">LISTA</span><span id="prb-count" style="font-size:11px;color:rgba(255,255,255,.4)">14 títulos</span></div>
+      <div id="prb-list" style="display:grid;gap:8px;max-height:720px;overflow:auto;padding-right:4px" class="custom-scroll"></div>
+      <div style="margin-top:12px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:12px;display:flex;gap:10px;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center">💡</div><div style="font-size:11px;color:rgba(255,255,255,.5)"><b style="color:rgba(255,255,255,.8)">Reproductor estático:</b> Al hacer click solo cambia el video, sin mover la página.</div></div>
+    </div>
+  </div>
+</div>
+<script>
+const pelis = [
+{id:"16161594673711",title:"Animales 2026",cats:["Estrenos 2026","Netflix"],year:"2026",desc:"Thriller salvaje • Estreno exclusivo"},
+{id:"16406040742574",title:"taxi",cats:["Estrenos 2026","Variadas"],year:"2026",desc:"Acción urbana sin frenos"},
+{id:"16398728759982",title:"Renfield vampiro",cats:["Estrenos 2026","Clásicos"],year:"2023",desc:"Comedia sangrienta • El asistente de Drácula"},
+{id:"16398840892078",title:"Send Help",cats:["Estrenos 2026"],year:"2026",desc:"Supervivencia extrema"},
+{id:"16397510576814",title:"capitan America",cats:["Superhéroes","Acción"],year:"2011",desc:"El primer vengador"},
+{id:"16396621122222",title:"Alita",cats:["Acción","Netflix"],year:"2019",desc:"Ángel de batalla • Sci-Fi épico"},
+{id:"16396490246830",title:"Capitan America Civil War",cats:["Superhéroes"],year:"2016",desc:"Héroe vs héroe"},
+{id:"16364414700206",title:"Prácticamente magia",cats:["Clásicos","Netflix"],year:"1998",desc:"Romance y hechizos"},
+{id:"16367896169134",title:"iron man 3",cats:["Superhéroes"],year:"2013",desc:"Tony Stark al límite"},
+{id:"7349803092643",title:"SHAOLIN SOCCER",cats:["Clásicos","Variadas"],year:"2001",desc:"Kung Fu + Fútbol = Leyenda"},
+{id:"7618448198191",title:"guardianes de alta mar",cats:["Variadas"],year:"2023",desc:"Aventura en mar abierto"},
+{id:"11628841929263",title:"mi nombre es khan",cats:["Clásicos","Netflix"],year:"2010",desc:"Drama épico de Bollywood"},
+{id:"7647757535791",title:"Sigo con dios",cats:["Variadas"],year:"2024",desc:"Fe que mueve montañas"},
+{id:"14982356273876",title:"luci (Lucy)",cats:["Acción","Netflix"],year:"2014",desc:"Luc Besson • Poder al 100%"}
+];
+const categorias = ["Todos","Clásicos","Estrenos 2026","Netflix","Variadas","Acción","Superhéroes"];
+let catActiva = "Todos";
+let idActivo = pelis[0].id;
+function renderCats(){
+  const c = document.getElementById('prb-cats');
+  c.innerHTML = categorias.map(cat=>`<button onclick="setCat('${cat}')" style="height:32px;padding:0 16px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid ${catActiva===cat?'#E50914':'rgba(255,255,255,.1)'};background:${catActiva===cat?'#E50914':'rgba(255,255,255,.05)'};color:${catActiva===cat?'#fff':'rgba(255,255,255,.6)'};cursor:pointer">${cat}</button>`).join('');
+}
+function setCat(cat){catActiva=cat;renderCats();renderList(document.getElementById('prb-search').value||'')}
+function selectPeli(id){
+  idActivo=id;
+  const p = pelis.find(x=>x.id===id);
+  document.getElementById('prb-player').src=`https://ok.ru/videoembed/${id}?nochat=1&autoplay=1`;
+  document.getElementById('prb-current-title').textContent=p.title;
+  renderList(document.getElementById('prb-search').value||'');
+}
+function renderList(filtro){
+  const q = filtro.toLowerCase();
+  const lista = pelis.filter(p=> (catActiva==="Todos"||p.cats.includes(catActiva)) && p.title.toLowerCase().includes(q));
+  document.getElementById('prb-count').textContent = lista.length + " títulos";
+  document.getElementById('prb-list').innerHTML = lista.map(p=>{
+    const activo = p.id===idActivo;
+    return `<button onclick="selectPeli('${p.id}')" class="prb-card" style="text-align:left;width:100%;display:flex;gap:12px;padding:12px;border-radius:14px;border:1px solid ${activo?'rgba(229,9,20,.4)':'rgba(255,255,255,.06)'};background:${activo?'rgba(229,9,20,.1)':'rgba(255,255,255,.03)'}">
+      <div style="width:56px;height:72px;border-radius:10px;background:${activo?'#E50914':'linear-gradient(135deg,#27272a,#18181b)'};display:grid;place-items:center;font-weight:800;color:#fff;flex-shrink:0">${p.title.slice(0,2).toUpperCase()}</div>
+      <div style="flex:1;min-width:0"><div style="font-weight:700;color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:2px">${p.desc}</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${p.cats.slice(0,2).map(c=>`<span style="font-size:9px;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5)">${c}</span>`).join('')}</div></div>
+      <div style="font-size:10px;color:rgba(255,255,255,.3)">${p.year}</div>
+    </button>`;
+  }).join('');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  if(document.getElementById('prb-cats')){renderCats(); renderList(''); document.getElementById('prb-search').addEventListener('input',e=>renderList(e.target.value));}
+});
+</script>
+</section>
+<!-- ===== FIN SEGUNDO BLOQUE ===== -->
+
+
+
+
+
 
 
 
