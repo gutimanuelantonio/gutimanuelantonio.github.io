@@ -919,6 +919,259 @@ document.addEventListener('DOMContentLoaded',()=>{
 <!-- ===== FIN SEGUNDO BLOQUE ===== -->
 
 
+<!-- ===== TERCER BLOQUE - PROGRAMACION FUTBOL VIVO HOY - FIXED AISLADO 24 OCT ===== -->
+<section id="futbol-hoy-24oct" aria-label="Programación Fútbol en Vivo Hoy">
+<style>
+#futbol-hoy-24oct{--fh-bg:#f6f5f2;--fh-surface:#ffffff;--fh-surface2:#f0efe9;--fh-surface3:#e8e6df;--fh-border:#e2ddd3;--fh-text:#141412;--fh-text2:#6b6760;--fh-muted:#9c9992;--fh-accent:#ff3b1f;--fh-chip-bg:#141412;--fh-chip-text:#ffffff;all:initial;display:block;width:100%;background:var(--fh-bg);color:var(--fh-text);font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;box-sizing:border-box;contain:layout style;isolation:isolate;letter-spacing:-.01em}
+#futbol-hoy-24oct *{box-sizing:border-box;font-family:inherit}
+#futbol-hoy-24oct .fh-mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+#futbol-hoy-24oct .fh-shell{max-width:1440px;margin:0 auto;padding:0 20px}
+#futbol-hoy-24oct .fh-topbar{position:sticky;top:0;z-index:5;background:rgba(246,245,242,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--fh-border)}
+#futbol-hoy-24oct .fh-header-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;flex-wrap:wrap}
+#futbol-hoy-24oct .fh-brand{display:flex;align-items:center;gap:14px}
+#futbol-hoy-24oct .fh-badge{height:38px;width:38px;border-radius:999px;background:var(--fh-chip-bg);color:var(--fh-chip-text);display:grid;place-items:center;font-weight:800;font-size:14px;flex-shrink:0}
+#futbol-hoy-24oct .fh-title{margin:0;font-size:clamp(16px,2.2vw,22px);font-weight:800;line-height:.95;text-transform:uppercase;letter-spacing:-.02em}
+#futbol-hoy-24oct .fh-sub{margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#futbol-hoy-24oct .fh-pill{border:1px solid var(--fh-border);background:var(--fh-surface2);padding:4px 10px;border-radius:999px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+#futbol-hoy-24oct .fh-dot{height:6px;width:6px;border-radius:999px;background:#10b981;display:inline-block;animation:fh-pulse 2s infinite}
+@keyframes fh-pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.7)}50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
+#futbol-hoy-24oct .fh-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#futbol-hoy-24oct .fh-count{padding:8px 12px;border-radius:999px;background:var(--fh-surface);border:1px solid var(--fh-border);font-size:11px;font-weight:700}
+#futbol-hoy-24oct .fh-count-accent{background:var(--fh-accent);color:#fff;border-color:var(--fh-accent)}
+#futbol-hoy-24oct .fh-search{position:relative}
+#futbol-hoy-24oct .fh-search input{width:260px;max-width:46vw;padding:10px 14px 10px 36px;border-radius:999px;border:1px solid var(--fh-border);background:var(--fh-surface);font-size:13px;outline:none;color:var(--fh-text)}
+#futbol-hoy-24oct .fh-search input:focus{border-color:var(--fh-text)}
+#futbol-hoy-24oct .fh-search span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px}
+#futbol-hoy-24oct .fh-cats{padding-bottom:12px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+#futbol-hoy-24oct .fh-cats::-webkit-scrollbar{display:none}
+#futbol-hoy-24oct .fh-cat{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.02em;border:1px solid var(--fh-border);background:var(--fh-surface);color:var(--fh-text2);cursor:pointer;transition:.15s;white-space:nowrap}
+#futbol-hoy-24oct .fh-cat.active{background:var(--fh-chip-bg);color:var(--fh-chip-text);border-color:var(--fh-chip-bg)}
+#futbol-hoy-24oct .fh-cat i{height:8px;width:8px;border-radius:999px;display:inline-block}
+#futbol-hoy-24oct .fh-cat b{margin-left:2px;padding:2px 6px;border-radius:999px;background:var(--fh-surface2);font-size:10px;font-weight:700}
+#futbol-hoy-24oct .fh-cat.active b{background:rgba(255,255,255,.15);color:var(--fh-chip-text)}
+#futbol-hoy-24oct .fh-meta-bar{width:100%;border-bottom:1px solid var(--fh-border);background:var(--fh-surface)}
+#futbol-hoy-24oct .fh-meta-inner{max-width:1440px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:12px;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+#futbol-hoy-24oct .fh-meta-sep{width:1px;height:12px;background:var(--fh-border);display:inline-block}
+#futbol-hoy-24oct .fh-main{max-width:1440px;margin:0 auto;padding:20px}
+#futbol-hoy-24oct .fh-groups{display:flex;flex-direction:column;gap:34px}
+#futbol-hoy-24oct .fh-group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
+#futbol-hoy-24oct .fh-group-title{display:flex;align-items:center;gap:10px}
+#futbol-hoy-24oct .fh-group-bar{height:28px;width:4px;border-radius:999px}
+#futbol-hoy-24oct .fh-group-name{font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+#futbol-hoy-24oct .fh-group-name span.count{display:inline-flex;align-items:center;justify-content:center;height:20px;min-width:20px;padding:0 6px;border-radius:999px;background:var(--fh-surface2);border:1px solid var(--fh-border);font-size:10px}
+#futbol-hoy-24oct .fh-group-sub{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--fh-text2);margin-top:2px}
+#futbol-hoy-24oct .fh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+@media(max-width:680px){#futbol-hoy-24oct .fh-grid{grid-template-columns:1fr}#futbol-hoy-24oct .fh-search input{width:100%}#futbol-hoy-24oct .fh-right{width:100%}#futbol-hoy-24oct .fh-search{flex:1}}
+#futbol-hoy-24oct .fh-card{position:relative;display:flex;border-radius:16px;border:1px solid var(--fh-border);background:var(--fh-surface);overflow:hidden;transition:.15s}
+#futbol-hoy-24oct .fh-card:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,0,0,.06)}
+#futbol-hoy-24oct .fh-card.live{border-color:rgba(255,59,31,.35);box-shadow:0 0 0 1px rgba(255,59,31,.12) inset}
+#futbol-hoy-24oct .fh-time{width:86px;flex-shrink:0;background:rgba(240,239,233,.8);border-right:1px solid var(--fh-border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 8px}
+#futbol-hoy-24oct .fh-time strong{font-size:21px;font-weight:800;letter-spacing:-.04em;line-height:1}
+#futbol-hoy-24oct .fh-badge-live{display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:999px;background:#dc2626;color:#fff;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+#futbol-hoy-24oct .fh-badge-live i{height:4px;width:4px;border-radius:999px;background:#fff;display:inline-block}
+#futbol-hoy-24oct .fh-badge-soon{display:inline-flex;padding:2px 6px;border-radius:999px;background:var(--fh-chip-bg);color:var(--fh-chip-text);font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+#futbol-hoy-24oct .fh-badge-final{display:inline-flex;padding:2px 6px;border-radius:999px;background:var(--fh-surface3);color:var(--fh-muted);font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+#futbol-hoy-24oct .fh-card-body{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+#futbol-hoy-24oct .fh-league{display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--fh-text2)}
+#futbol-hoy-24oct .fh-league i{height:7px;width:7px;border-radius:999px;flex-shrink:0}
+#futbol-hoy-24oct .fh-match{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:14px;font-weight:700;line-height:1.2}
+#futbol-hoy-24oct .fh-vs{height:18px;padding:0 6px;border-radius:6px;background:var(--fh-surface3);border:1px solid var(--fh-border);font-size:9px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+#futbol-hoy-24oct .fh-channels{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+#futbol-hoy-24oct .fh-ch{padding:4px 9px;border-radius:999px;background:var(--fh-surface);border:1px solid var(--fh-border);font-size:10px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+#futbol-hoy-24oct .fh-accent-line{position:absolute;left:0;top:0;bottom:0;width:3px}
+#futbol-hoy-24oct .fh-empty{text-align:center;padding:64px 20px}
+#futbol-hoy-24oct .fh-empty-box{max-width:420px;margin:0 auto;border-radius:16px;background:var(--fh-surface);border:1px solid var(--fh-border);padding:28px}
+#futbol-hoy-24oct .fh-footer{margin-top:20px;border-top:1px solid var(--fh-border);background:var(--fh-surface);padding:18px 20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+#futbol-hoy-24oct .fh-footer p{font-size:11px;line-height:1.6;color:var(--fh-text2);max-width:720px;margin:0}
+</style>
+
+<div class="fh-topbar">
+  <div class="fh-shell">
+    <div class="fh-header-row">
+      <div class="fh-brand">
+        <div class="fh-badge">24</div>
+        <div>
+          <h2 class="fh-title">Programación Fútbol — Sábado 24 de Octubre</h2>
+          <div class="fh-sub">
+            <span class="fh-pill"><i class="fh-dot"></i> Lima • GMT-5 • En vivo</span>
+            <span class="fh-pill" style="background:var(--fh-surface)">SÁB 25 OCT 2026 • HORARIO OFICIAL</span>
+          </div>
+        </div>
+      </div>
+      <div class="fh-right">
+        <span class="fh-count" id="fh-total">0 partidos</span>
+        <span class="fh-count fh-count-accent" id="fh-liga1">0 Liga 1</span>
+        <div class="fh-search"><span>🔍</span><input id="fh-search" placeholder="Buscar equipo, liga, canal..." type="search" autocomplete="off"></div>
+      </div>
+    </div>
+    <div class="fh-cats" id="fh-cats"></div>
+  </div>
+</div>
+
+<div class="fh-meta-bar">
+  <div class="fh-meta-inner">
+    <span id="fh-visible">🏆 0 eventos visibles</span><span class="fh-meta-sep"></span><span>🕐 Ordenado por hora ascendente • Lima</span><span class="fh-meta-sep"></span><span>📺 Solo canales oficiales</span>
+  </div>
+</div>
+
+<div class="fh-main">
+  <div id="fh-mount"></div>
+</div>
+
+<div class="fh-footer">
+  <p><b style="color:var(--fh-text)">Nota oficial:</b> Horario Lima - Perú (GMT-5). Todos los horarios corresponden al sábado 24 de octubre de 2026. Canales listados son transmisores oficiales. No se incluyen enlaces no oficiales. Programación sujeta a cambios del broadcaster.</p>
+  <div style="display:flex;gap:8px"><span class="fh-pill">Hecho para Lima</span><span class="fh-pill" style="background:var(--fh-accent);color:#fff;border-color:var(--fh-accent);font-weight:800">100% Responsive</span></div>
+</div>
+
+<script>
+(function(){
+const DATA=[
+{time:"06:30",home:"Aston Villa",away:"Manchester City",league:"Premier League",category:"Premier League",channels:["Disney+","ESPN","ESPN AR","Universo","HBO Max 1"],highlight:true},
+{time:"06:30",home:"Charlton Athletic",away:"Norwich City",league:"Championship",category:"Championship",channels:["ESPN 5"]},
+{time:"07:00",home:"Rayo Vallecano",away:"Elche",league:"LaLiga",category:"LaLiga",channels:["Disney+","ESPN 2","ESPN+","ESPN Deportes"]},
+{time:"07:00",home:"Córdoba",away:"Eibar",league:"LaLiga SmartBank",category:"LaLiga SmartBank",channels:["LaLiga Hypermotion"]},
+{time:"08:00",home:"Central Español",away:"Albion",league:"Liga Uruguay",category:"Liga Uruguay",channels:["Disney+"]},
+{time:"08:00",home:"Cagliari",away:"Bologna",league:"Serie A",category:"Serie A",channels:["Disney+"]},
+{time:"08:00",home:"Como",away:"Sassuolo",league:"Serie A",category:"Serie A",channels:["Disney+","ESPN 3"]},
+{time:"08:30",home:"Augsburg",away:"Union Berlin",league:"Bundesliga",category:"Bundesliga",channels:["Disney+"]},
+{time:"08:30",home:"Köln",away:"Schalke 04",league:"Bundesliga",category:"Bundesliga",channels:["Disney+","ESPN 5"]},
+{time:"08:30",home:"Mainz 05",away:"Werder Bremen",league:"Bundesliga",category:"Bundesliga",channels:["Disney+"]},
+{time:"08:30",home:"Paderborn",away:"Hamburger SV",league:"Bundesliga",category:"Bundesliga",channels:["Disney+"]},
+{time:"08:30",home:"RB Leipzig",away:"Elversberg",league:"Bundesliga",category:"Bundesliga",channels:["Disney+"]},
+{time:"09:00",home:"Arsenal",away:"Everton",league:"Premier League",category:"Premier League",channels:["Disney+","ESPN","ESPN AR","Universo","Telemundo"],highlight:true},
+{time:"09:00",home:"Coventry City",away:"Fulham",league:"Championship",category:"Championship",channels:["Disney+"]},
+{time:"09:00",home:"Preston North End",away:"West Brom",league:"Championship",category:"Championship",channels:["FOX Sports 1 AR"]},
+{time:"09:00",home:"UFC",away:"Preliminares",league:"UFC",category:"UFC",vsLabel:"Preliminares",channels:["Paramount+"]},
+{time:"09:15",home:"Racing Santander",away:"Espanyol",league:"LaLiga",category:"LaLiga",channels:["Disney+","ESPN 2","ESPN+","ESPN Deportes","DAZN LaLiga"]},
+{time:"09:15",home:"Leganés",away:"Mallorca",league:"LaLiga SmartBank",category:"LaLiga SmartBank",channels:["LaLiga Hypermotion"]},
+{time:"10:00",home:"Brasil",away:"Noruega",league:"Mundial Femenino Sub-17",category:"Mundial Femenino Sub-17",channels:["DSports 2","TUDN MX","SporTV 1"]},
+{time:"10:30",home:"La Serena",away:"Dep. Concepción",league:"Liga Chile",category:"Liga Chile",channels:["TNT Sports Chile"]},
+{time:"11:00",home:"Napoli",away:"Roma",league:"Serie A",category:"Serie A",channels:["Disney+","ESPN 3","Universo"],highlight:true},
+{time:"11:30",home:"Manta",away:"Dep. Cuenca",league:"Liga Ecuador",category:"Liga Ecuador",channels:["Zapping EC"]},
+{time:"11:30",home:"Chelsea",away:"Tottenham",league:"Premier League",category:"Premier League",channels:["Disney+","ESPN","ESPN AR","Telemundo","HBO Max 2"],highlight:true},
+{time:"11:30",home:"Valencia",away:"Villarreal",league:"LaLiga",category:"LaLiga",channels:["DSports","ESPN+"]},
+{time:"11:30",home:"Girona",away:"Celta de Vigo II",league:"LaLiga SmartBank",category:"LaLiga SmartBank",channels:["LaLiga Hypermotion 2"]},
+{time:"11:30",home:"Las Palmas",away:"Real Sociedad II",league:"LaLiga SmartBank",category:"LaLiga SmartBank",channels:["LaLiga Hypermotion"]},
+{time:"11:30",home:"Borussia Dortmund",away:"Eintracht Frankfurt",league:"Bundesliga",category:"Bundesliga",channels:["Disney+"],highlight:true},
+{time:"12:30",home:"F1",away:"GP USA Austin - Práctica 3",league:"Fórmula 1",category:"Fórmula 1",vsLabel:"GP",channels:["Disney+","ESPN 2","DAZN F1"]},
+{time:"12:45",home:"Sport Huancayo",away:"Alianza Atlético",league:"Liga 1 Perú",category:"Liga 1 Perú",channels:["L1 Max"],highlight:true},
+{time:"12:45",home:"Banfield",away:"Lanús",league:"Liga Profesional",category:"Liga Profesional",channels:["TNT Sports"]},
+{time:"13:00",home:"Venezuela",away:"Japón",league:"Mundial Femenino Sub-17",category:"Mundial Femenino Sub-17",channels:["DSports 2"]},
+{time:"13:00",home:"UFC",away:"Volkanovski vs Evloev",league:"UFC",category:"UFC",vsLabel:"Estelar",channels:["Paramount+"]},
+{time:"14:00",home:"Atlético Madrid",away:"Deportivo La Coruña",league:"LaLiga",category:"LaLiga",channels:["Disney+","ESPN","ESPN+","M LaLiga"],highlight:true},
+{time:"14:00",home:"Almería",away:"Real Oviedo",league:"LaLiga SmartBank",category:"LaLiga SmartBank",channels:["LaLiga Hypermotion"]},
+{time:"15:15",home:"Cusco FC",away:"Sporting Cristal",league:"Liga 1 Perú",category:"Liga 1 Perú",channels:["L1 Max"],highlight:true},
+{time:"16:00",home:"F1",away:"GP USA - Clasificación",league:"Fórmula 1",category:"Fórmula 1",vsLabel:"Clasificación",channels:["Disney+","ESPN","DAZN F1"],highlight:true},
+{time:"19:00",home:"Monterrey",away:"Guadalajara",league:"Liga MX",category:"Liga MX",channels:["Canal 5 MX","TUDN MX"],highlight:true},
+{time:"19:30",home:"Universitario",away:"Juan Pablo II",league:"Liga 1 Perú",category:"Liga 1 Perú",channels:["L1 Max"],highlight:true},
+{time:"19:30",home:"Rosario Central",away:"Huracán",league:"Liga Profesional",category:"Liga Profesional",channels:["ESPN Premium"]}
+];
+const COLORS={"Premier League":"#3d14ff","Championship":"#00b894","LaLiga":"#ff1844","LaLiga SmartBank":"#ff7a00","Serie A":"#0a7cff","Bundesliga":"#d00c0c","Ligue 1":"#102baf","Liga 1 Perú":"#c8102e","Liga Profesional":"#00a8e8","Liga Chile":"#c8102e","Liga Ecuador":"#ffcc00","Liga Uruguay":"#5ab4e6","Brasileirão":"#009c3b","Liga MX":"#006847","MLS":"#e30613","Fórmula 1":"#e10600","UFC":"#111111","NBA":"#ff6a00"};
+const ORDER=["Liga 1 Perú","Premier League","LaLiga","Bundesliga","Serie A","Ligue 1","Brasileirão","Liga MX","MLS","Championship","LaLiga SmartBank","Fórmula 1","Mundial Femenino Sub-17","Liga Chile","Liga Ecuador","Liga Uruguay","Liga Profesional","UFC"];
+
+function toMin(t){let [h,m]=t.split(":").map(Number);return h*60+m;}
+
+const root=document.getElementById('futbol-hoy-24oct');
+if(!root) return;
+const mount=root.querySelector('#fh-mount');
+const catsEl=root.querySelector('#fh-cats');
+const searchEl=root.querySelector('#fh-search');
+const totalEl=root.querySelector('#fh-total');
+const liga1El=root.querySelector('#fh-liga1');
+const visibleEl=root.querySelector('#fh-visible');
+
+totalEl.textContent=DATA.length+" partidos";
+liga1El.textContent=DATA.filter(d=>d.category==="Liga 1 Perú").length+" Liga 1 Perú";
+
+let activeCat="Todas";
+let q="";
+
+function allCats(){
+  let set=new Set(DATA.map(d=>d.category));
+  let ordered=ORDER.filter(c=>set.has(c));
+  let rest=[...set].filter(c=>!ORDER.includes(c)).sort();
+  return ["Todas",...ordered,...rest];
+}
+
+function renderCats(){
+  let list=allCats();
+  catsEl.innerHTML=list.map(cat=>{
+    let count=cat==="Todas"?DATA.length:DATA.filter(d=>d.category===cat).length;
+    let active=activeCat===cat;
+    let col=cat==="Todas"?"#ff3b1f":(COLORS[cat]||"#9c9992");
+    return `<button data-cat="${cat}" class="fh-cat ${active?'active':''}"><i style="background:${col}"></i>${cat}<b>${count}</b></button>`;
+  }).join('');
+  catsEl.querySelectorAll('.fh-cat').forEach(b=>{
+    b.addEventListener('click',()=>{
+      activeCat=b.dataset.cat;
+      renderCats();
+      renderList();
+      root.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+}
+
+function filtered(){
+  return DATA.filter(d=>{
+    if(activeCat!=="Todas" && d.category!==activeCat) return false;
+    if(q){
+      let s=q.toLowerCase();
+      return d.home.toLowerCase().includes(s)||d.away.toLowerCase().includes(s)||d.league.toLowerCase().includes(s)||d.channels.join(' ').toLowerCase().includes(s);
+    }
+    return true;
+  }).sort((a,b)=>toMin(a.time)-toMin(b.time));
+}
+
+function limaMin(){
+  let now=new Date();
+  let utc=now.getTime()+now.getTimezoneOffset()*60000;
+  let lima=new Date(utc - 5*3600000);
+  return lima.getHours()*60+lima.getMinutes();
+}
+
+function renderList(){
+  let list=filtered();
+  visibleEl.textContent="🏆 "+list.length+" eventos visibles";
+  if(list.length===0){
+    mount.innerHTML=`<div class="fh-empty"><div class="fh-empty-box"><div style="font-weight:800">Sin resultados</div><div style="font-size:12px;color:var(--fh-text2);margin-top:6px">Prueba otro filtro o busca "Universitario", "Premier", "Disney+"</div><button id="fh-clear" style="margin-top:14px;padding:8px 14px;border-radius:999px;background:var(--fh-chip-bg);color:var(--fh-chip-text);border:0;font-size:11px;font-weight:800;cursor:pointer">Limpiar filtros</button></div></div>`;
+    let btn=mount.querySelector('#fh-clear');
+    if(btn) btn.addEventListener('click',()=>{activeCat="Todas";q="";searchEl.value="";renderCats();renderList();});
+    return;
+  }
+  let grouped=new Map();
+  list.forEach(m=>{ if(!grouped.has(m.category)) grouped.set(m.category,[]); grouped.get(m.category).push(m); });
+  let entries=[...grouped.entries()].sort((a,b)=>{
+    let ia=ORDER.indexOf(a[0]), ib=ORDER.indexOf(b[0]);
+    if(ia!==-1&&ib!==-1) return ia-ib;
+    if(ia!==-1) return -1;
+    if(ib!==-1) return 1;
+    return a[0].localeCompare(b[0]);
+  });
+
+  let nowMin=limaMin();
+
+  mount.innerHTML=`<div class="fh-groups">${entries.map(([cat,matches])=>{
+    let col=COLORS[cat]||"#ff3b1f";
+    return `<section><div class="fh-group-head"><div class="fh-group-title"><div class="fh-group-bar" style="background:${col}"></div><div><div class="fh-group-name">${cat} <span class="count">${matches.length}</span></div><div class="fh-group-sub">Desde ${matches[0].time} • ${cat==="Liga 1 Perú"?"Horario estelar Perú":"Oficial"}</div></div></div></div><div class="fh-grid">${matches.map(m=>{
+      let isLive=nowMin>=toMin(m.time)&&nowMin<toMin(m.time)+125;
+      let isPast=nowMin>toMin(m.time)+125;
+      return `<article class="fh-card ${isLive?'live':''}"><div class="fh-accent-line" style="background:${col}"></div><div class="fh-time"><strong style="color:${isPast?'var(--fh-muted)':'var(--fh-text)'}">${m.time}</strong>${isLive?'<span class="fh-badge-live"><i></i> EN VIVO</span>':isPast?'<span class="fh-badge-final">FINAL</span>':'<span class="fh-badge-soon">PRONTO</span>'}<span class="fh-mono" style="font-size:9px;color:var(--fh-muted)">🕐 GMT-5</span></div><div class="fh-card-body"><div class="fh-league"><i style="background:${col}"></i><span>${m.league}</span>${m.highlight?' 🔥':''}</div><div class="fh-match"><span>${m.home}</span><span class="fh-vs">${m.vsLabel||'VS'}</span><span>${m.away}</span></div><div class="fh-channels">${m.channels.map(ch=>`<span class="fh-ch">📺 ${ch}</span>`).join('')}</div></div></article>`;
+    }).join('')}</div></section>`;
+  }).join('')}</div>`;
+}
+
+searchEl.addEventListener('input',(e)=>{ q=e.target.value; renderList(); });
+
+renderCats();
+renderList();
+setInterval(()=>renderList(),60000);
+})();
+</script>
+</section>
+<!-- ===== FIN TERCER BLOQUE FIXED ===== -->
+
+
+
 
 
 
