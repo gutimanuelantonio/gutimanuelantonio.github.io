@@ -830,6 +830,22 @@ body{top:0!important;}
 #segundo-bloque-peliculas-365 .prb-card:hover{transform:translateY(-2px);background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.14)}
 #segundo-bloque-peliculas-365 .custom-scroll::-webkit-scrollbar{width:6px}
 #segundo-bloque-peliculas-365 .custom-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:10px}
+
+/* ===== NUEVO BADGE PRENDE APAGA ===== */
+@keyframes prendeApagaNuevo {
+  0%, 100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(255,215,0,.7), 0 0 12px rgba(255,215,0,.9); }
+  50% { opacity:0.2; transform:scale(0.85); box-shadow:0 0 0 8px rgba(255,215,0,0), 0 0 0 rgba(255,215,0,0); }
+}
+.badge-nuevo-365 {
+  display:inline-flex; align-items:center; gap:4px;
+  background: linear-gradient(90deg,#FFD700,#ffb800);
+  color:#000; font-weight:900; font-size:9px; letter-spacing:1px;
+  padding:3px 8px; border-radius:999px;
+  animation: prendeApagaNuevo 1s infinite ease-in-out;
+  border:1px solid #fff; box-shadow:0 0 12px rgba(255,215,0,.8);
+}
+.badge-nuevo-365::before { content:'●'; font-size:8px; }
+
 #segundo-bloque-peliculas-365{font-family:Inter,sans-serif}
 </style>
 <div style="max-width:1600px;margin:0 auto;padding:0 16px;">
@@ -870,6 +886,18 @@ body{top:0!important;}
 const pelis = [
 {id:"16985990105659",title:"Clásico Barcelona vs Real Madrid - Primer Tiempo",cats:["Primer Tiempo","En Vivo"],year:"Hoy 3PM",desc:"El Clásico en vivo • Primer tiempo completo • 365Perú - Gol de Mbappé"},
 {id:"16985997445691",title:"Clásico Barcelona vs Real Madrid - Segundo Tiempo",cats:["Segundo Tiempo","En Vivo"],year:"Hoy 3PM",desc:"El Clásico en vivo • Segundo tiempo completo • Final del partido"},
+{id:"3417160419999",title:"Mi Propia Jefe",cats:["Nuevo","Comedia","Estrenos 2026"],year:"Nuevo",desc:"Comedia • Nuevo estreno 365Perú", nuevo:true},
+{id:"8326256134860",title:"Canguro Jack",cats:["Nuevo","Comedia","Clásicos"],year:"Nuevo",desc:"Aventura salvaje en Australia • Nuevo", nuevo:true},
+{id:"2736201140936",title:"Un Sueño Posible",cats:["Nuevo","Drama","Netflix"],year:"Nuevo",desc:"Drama inspirador ganador del Oscar • Nuevo", nuevo:true},
+{id:"17231592950367",title:"El Corazón de la Bestia",cats:["Nuevo","Acción","Estrenos 2026"],year:"Nuevo",desc:"Acción extrema • Estreno 2026 • Nuevo", nuevo:true},
+{id:"14456083581520",title:"Escuadrón Delta - Jackie Chan",cats:["Nuevo","Acción","Clásicos"],year:"Nuevo",desc:"Jackie Chan • Acción y comedia • Nuevo", nuevo:true},
+{id:"17610305702432",title:"Matchbox 2026",cats:["Nuevo","Acción","Estrenos 2026"],year:"Nuevo",desc:"Carreras a toda velocidad • 2026 • Nuevo", nuevo:true},
+{id:"16459960289805",title:"Spider-Man: Un Nuevo Día",cats:["Nuevo","Superhéroes","Estrenos 2026"],year:"Nuevo",desc:"El trepamuros regresa • Nuevo", nuevo:true},
+{id:"15516879489625",title:"Scary Movie 6",cats:["Nuevo","Comedia","Estrenos 2026"],year:"Nuevo",desc:"La parodia más esperada • Nuevo", nuevo:true},
+{id:"14675178031629",title:"Jack Ryan",cats:["Nuevo","Acción","Variadas"],year:"Nuevo",desc:"Thriller de espionaje • Nuevo", nuevo:true},
+{id:"15773668084237",title:"Edell - Terror",cats:["Nuevo","Terror","Estrenos 2026"],year:"Nuevo",desc:"Terror intenso • Nuevo estreno", nuevo:true},
+{id:"16721333324347",title:"Wire - Drama Acción",cats:["Nuevo","Acción","Drama"],year:"Nuevo",desc:"Drama de acción callejera • Nuevo", nuevo:true},
+{id:"16142514457210",title:"Familia en Renta - Recomendada",cats:["Nuevo","Drama","Recomendada"],year:"Nuevo",desc:"Recomendada 365Perú • Familia y corazón • Nuevo", nuevo:true},
 {id:"16161594673711",title:"Animales 2026",cats:["Estrenos 2026","Netflix"],year:"2026",desc:"Thriller salvaje • Estreno exclusivo"},
 {id:"16406040742574",title:"taxi",cats:["Estrenos 2026","Variadas"],year:"2026",desc:"Acción urbana sin frenos"},
 {id:"16398728759982",title:"Renfield vampiro",cats:["Estrenos 2026","Clásicos"],year:"2023",desc:"Comedia sangrienta • El asistente de Drácula"},
@@ -885,7 +913,7 @@ const pelis = [
 {id:"7647757535791",title:"Sigo con dios",cats:["Variadas"],year:"2024",desc:"Fe que mueve montañas"},
 {id:"14982356273876",title:"luci (Lucy)",cats:["Acción","Netflix"],year:"2014",desc:"Luc Besson • Poder al 100%"}
 ];
-const categorias = ["Todos","Primer Tiempo","Segundo Tiempo","En Vivo","Clásicos","Estrenos 2026","Netflix"];
+const categorias = ["Todos","Nuevo","Primer Tiempo","Segundo Tiempo","En Vivo","Clásicos","Estrenos 2026","Netflix"];
 let catActiva = "Todos";
 let idActivo = "16985990105659";
 function renderCats(){
@@ -907,10 +935,12 @@ function renderList(filtro){
   document.getElementById('prb-count').textContent = lista.length + " títulos";
   document.getElementById('prb-list').innerHTML = lista.map(p=>{
     const activo = p.id===idActivo;
-    return `<button onclick="selectPeli('${p.id}')" class="prb-card" style="text-align:left;width:100%;display:flex;gap:12px;padding:12px;border-radius:14px;border:1px solid ${activo?'rgba(229,9,20,.4)':'rgba(255,255,255,.06)'};background:${activo?'rgba(229,9,20,.1)':'rgba(255,255,255,.03)'}">
-      <div style="width:56px;height:72px;border-radius:10px;background:${activo?'#E50914':'linear-gradient(135deg,#27272a,#18181b)'};display:grid;place-items:center;font-weight:800;color:#fff;flex-shrink:0">${p.title.slice(0,2).toUpperCase()}</div>
-      <div style="flex:1;min-width:0"><div style="font-weight:700;color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:2px">${p.desc}</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${p.cats.slice(0,2).map(c=>`<span style="font-size:9px;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5)">${c}</span>`).join('')}</div></div>
-      <div style="font-size:10px;color:rgba(255,255,255,.3)">${p.year}</div>
+    const esNuevo = p.nuevo || p.cats.includes("Nuevo");
+    const badgeNuevo = esNuevo ? `<span class="badge-nuevo-365">NUEVO</span>` : '';
+    return `<button onclick="selectPeli('${p.id}')" class="prb-card" style="text-align:left;width:100%;display:flex;gap:12px;padding:12px;border-radius:14px;border:1px solid ${activo?'rgba(229,9,20,.4)': esNuevo ? 'rgba(255,215,0,.35)' : 'rgba(255,255,255,.06)'};background:${activo?'rgba(229,9,20,.1)': esNuevo ? 'rgba(255,215,0,.07)' : 'rgba(255,255,255,.03)'}">
+      <div style="width:56px;height:72px;border-radius:10px;background:${activo?'#E50914': esNuevo ? 'linear-gradient(135deg,#FFD700,#ffb800)' : 'linear-gradient(135deg,#27272a,#18181b)'};display:grid;place-items:center;font-weight:800;color:${esNuevo && !activo ? '#000' : '#fff'};flex-shrink:0">${p.title.slice(0,2).toUpperCase()}</div>
+      <div style="flex:1;min-width:0"><div style="font-weight:700;color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px">${p.title} ${badgeNuevo}</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:2px">${p.desc}</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${p.cats.slice(0,2).map(c=> c==="Nuevo" ? `<span class="badge-nuevo-365" style="font-size:8px;padding:2px 6px">NUEVO</span>` : `<span style="font-size:9px;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5)">${c}</span>`).join('')}</div></div>
+      <div style="font-size:10px;color:${esNuevo?'#FFD700':'rgba(255,255,255,.3)'};font-weight:${esNuevo?'900':'400'}">${p.year}</div>
     </button>`;
   }).join('');
 }
