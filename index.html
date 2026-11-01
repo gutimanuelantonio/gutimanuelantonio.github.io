@@ -818,6 +818,310 @@ body{top:0!important;}
   }
   </script>
 </section>
+<!-- ===== NUEVO BLOQUE 365PERU WEB DESIGN - SLIDER + REPRODUCTOR 100% + WHATSAPP - CREADO 01 NOV 2026 ===== -->
+<section id="bloque-slider-web-365" style="width:100%; background:#080B12; position:relative; overflow:hidden; font-family:Inter,system-ui,sans-serif; border-top:1px solid #1a2233; border-bottom:1px solid #1a2233;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Inter:wght@700;800;900&display=swap');
+#bloque-slider-web-365 *{box-sizing:border-box}
+#bloque-slider-web-365 .web365-wrapper{max-width:1280px; margin:0 auto; padding:0; position:relative; z-index:2}
+
+/* REPRODUCTOR 100% */
+#bloque-slider-web-365 .repro-365-peru{
+  width:100%; 
+  background: linear-gradient(90deg,#0a0e16 0%, #111827 50%, #0a0e16 100%);
+  border:1px solid #1e293b;
+  border-left:none; border-right:none;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 18px; gap:12px;
+  position:relative; overflow:hidden;
+}
+#bloque-slider-web-365 .repro-365-peru::before{
+  content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(#00E5FF,#C8FF3D);
+}
+#bloque-slider-web-365 .repro-dot{width:10px;height:10px;background:#ef4444;border-radius:50%;box-shadow:0 0 0 0 rgba(239,68,68,.7);animation:pulseRed 1.5s infinite}
+@keyframes pulseRed{0%{box-shadow:0 0 0 0 rgba(239,68,68,.7)}70%{box-shadow:0 0 0 10px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+#bloque-slider-web-365 .repro-bar{flex:1;height:6px;background:#1e293b;border-radius:999px;overflow:hidden;position:relative}
+#bloque-slider-web-365 .repro-bar-fill{position:absolute;left:0;top:0;bottom:0;width:38%;background:linear-gradient(90deg,#00E5FF,#C8FF3D);border-radius:999px;animation:loading365 3.5s ease-in-out infinite}
+@keyframes loading365{0%{width:5%}50%{width:78%}100%{width:5%}}
+
+/* SLIDER */
+#bloque-slider-web-365 .slider-365{position:relative; width:100%; overflow:hidden; background:#0a0e16; border-radius:0; border-top:1px solid #1e293b;}
+#bloque-slider-web-365 .slider-track{display:flex; transition:transform .6s cubic-bezier(.4,0,.2,1); will-change:transform}
+#bloque-slider-web-365 .slide-365{min-width:100%; position:relative; display:grid; grid-template-columns:1.1fr .9fr; gap:0; min-height:520px}
+#bloque-slider-web-365 .slide-img{position:relative; overflow:hidden; background:#111}
+#bloque-slider-web-365 .slide-img img{width:100%; height:100%; object-fit:cover; transition:transform 6s ease}
+#bloque-slider-web-365 .slide-365:hover .slide-img img{transform:scale(1.08)}
+#bloque-slider-web-365 .slide-content{padding:32px 28px; display:flex; flex-direction:column; justify-content:center; background:radial-gradient(600px at 0% 0%, rgba(0,229,255,.12), transparent), radial-gradient(500px at 100% 100%, rgba(200,255,61,.10), transparent), #0f141e; border-left:1px solid #1e293b}
+#bloque-slider-web-365 .slide-badge{display:inline-flex; align-items:center; gap:6px; background:#C8FF3D; color:#000; font-weight:900; font-size:10px; letter-spacing:1px; padding:6px 12px; border-radius:999px; margin-bottom:12px; width:fit-content}
+#bloque-slider-web-365 .slide-title{font-family:'Space Grotesk'; font-weight:800; font-size:clamp(22px,3vw,36px); line-height:.95; letter-spacing:-1px; color:#fff; margin:8px 0 12px}
+#bloque-slider-web-365 .slide-title span{background:linear-gradient(90deg,#00E5FF,#C8FF3D); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text}
+#bloque-slider-web-365 .slide-desc{color:#94a3b8; font-size:13px; line-height:1.6}
+#bloque-slider-web-365 .slide-list{margin:16px 0 0; display:grid; gap:8px}
+#bloque-slider-web-365 .slide-list div{display:flex; gap:8px; align-items:center; color:#e2e8f0; font-size:12px; font-weight:700}
+#bloque-slider-web-365 .slide-list div b{width:26px; height:26px; border-radius:50%; background:rgba(0,229,255,.15); border:1px solid rgba(0,229,255,.3); display:grid; place-items:center; color:#00E5FF; flex-shrink:0}
+
+#bloque-slider-web-365 .slider-dots{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5}
+#bloque-slider-web-365 .dot{width:32px; height:5px; border-radius:999px; background:rgba(255,255,255,.2); cursor:pointer; transition:.3s}
+#bloque-slider-web-365 .dot.active{background:#C8FF3D; width:44px}
+#bloque-slider-web-365 .slider-arrow{position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.15); color:#fff; display:grid; place-items:center; cursor:pointer; z-index:5; backdrop-filter:blur(8px); transition:.2s}
+#bloque-slider-web-365 .slider-arrow:hover{background:#fff; color:#000}
+#bloque-slider-web-365 .arrow-prev{left:14px}
+#bloque-slider-web-365 .arrow-next{right:14px}
+
+@media(max-width:900px){
+  #bloque-slider-web-365 .slide-365{grid-template-columns:1fr; min-height:auto}
+  #bloque-slider-web-365 .slide-img{height:260px}
+  #bloque-slider-web-365 .slide-content{padding:22px 16px}
+}
+
+/* BLOQUE WEB TEXTO + WHATSAPP */
+#bloque-slider-web-365 .cta-web-365{
+  background: linear-gradient(135deg, #0f141e 0%, #10151f 50%, #0a101a 100%);
+  border-top:1px solid #1e293b;
+  padding:28px 18px;
+  display:grid; grid-template-columns:1.2fr .8fr; gap:20px; align-items:center;
+}
+#bloque-slider-web-365 .cta-left h2{
+  font-family:'Space Grotesk'; font-weight:800; font-size:clamp(22px,2.8vw,34px); line-height:1; letter-spacing:-1px; color:#fff; margin:0 0 10px
+}
+#bloque-slider-web-365 .cta-left h2 span{color:#C8FF3D}
+#bloque-slider-web-365 .cta-left p{color:#cbd5e1; font-size:13px; line-height:1.7; margin:0}
+#bloque-slider-web-365 .cta-left .highlight{color:#fff; font-weight:800; background:rgba(200,255,61,.12); border:1px solid rgba(200,255,61,.25); padding:2px 8px; border-radius:6px}
+#bloque-slider-web-365 .cta-features{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+#bloque-slider-web-365 .cta-features span{background:rgba(255,255,255,.06); border:1px solid #232c3d; color:#e2e8f0; font-size:11px; font-weight:800; padding:6px 10px; border-radius:999px; display:inline-flex; gap:5px}
+
+#bloque-slider-web-365 .cta-right{position:relative; background:rgba(16,21,31,.9); border:1px solid #232c3d; border-radius:20px; padding:18px; backdrop-filter:blur(10px)}
+#bloque-slider-web-365 .wa-btn-365{
+  width:100%; background:linear-gradient(90deg,#25D366,#128C7E); color:#fff; font-weight:900; font-size:14px; letter-spacing:.5px;
+  padding:16px 20px; border-radius:14px; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;
+  box-shadow:0 12px 24px rgba(37,211,102,.35); transition:.25s; position:relative; overflow:hidden; text-decoration:none;
+}
+#bloque-slider-web-365 .wa-btn-365:hover{transform:translateY(-3px) scale(1.02); box-shadow:0 18px 32px rgba(37,211,102,.45)}
+#bloque-slider-web-365 .wa-icon-pulse{width:44px; height:44px; background:#fff; border-radius:50%; display:grid; place-items:center; position:relative; flex-shrink:0}
+#bloque-slider-web-365 .wa-icon-pulse::before{content:''; position:absolute; inset:-6px; border-radius:50%; background:rgba(37,211,102,.35); animation:waPulse 1.6s infinite; z-index:0}
+#bloque-slider-web-365 .wa-icon-pulse svg{position:relative; z-index:1}
+@keyframes waPulse{0%{transform:scale(.8); opacity:1} 100%{transform:scale(1.6); opacity:0}}
+#bloque-slider-web-365 .wa-blink{animation:waBlink 1s ease-in-out infinite}
+@keyframes waBlink{0%,100%{opacity:1; filter:brightness(1)} 50%{opacity:.75; filter:brightness(1.25)}}
+
+#bloque-slider-web-365 .price-tag{display:flex; align-items:center; gap:10px; margin-top:14px; background:rgba(200,255,61,.08); border:1px dashed rgba(200,255,61,.35); border-radius:12px; padding:10px 12px}
+#bloque-slider-web-365 .price-tag strong{color:#C8FF3D; font-size:18px}
+#bloque-slider-web-365 .price-tag small{color:#94a3b8; font-size:11px; line-height:1.3}
+
+@media(max-width:900px){
+  #bloque-slider-web-365 .cta-web-365{grid-template-columns:1fr}
+}
+</style>
+
+<div class="web365-wrapper">
+  <!-- REPRODUCTOR 365 PERU 100% -->
+  <div class="repro-365-peru">
+    <div style="display:flex; align-items:center; gap:10px">
+      <div class="repro-dot"></div>
+      <div style="color:#fff; font-weight:900; font-size:12px; letter-spacing:1px; font-family:'Space Grotesk'">365 PERU • REPRODUCTOR OFICIAL 100%</div>
+      <div style="background:rgba(200,255,61,.15); border:1px solid rgba(200,255,61,.3); color:#C8FF3D; font-size:9px; font-weight:900; padding:3px 8px; border-radius:999px; letter-spacing:.8px">EN VIVO</div>
+    </div>
+    <div class="repro-bar"><div class="repro-bar-fill"></div></div>
+    <div style="display:flex; align-items:center; gap:8px; color:#64748b; font-size:10px; font-weight:800; white-space:nowrap">
+      <span style="color:#00E5FF">● LIVE</span> 365peru.com
+    </div>
+  </div>
+
+  <!-- SLIDER -->
+  <div class="slider-365" id="slider-365-web">
+    <div class="slider-track" id="slider-track-365">
+      <!-- SLIDE 1 -->
+      <div class="slide-365">
+        <div class="slide-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Landing Page Negocios">
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg, transparent 60%, rgba(15,20,30,.9) 100%)"></div>
+          <div style="position:absolute; top:14px; left:14px; background:rgba(0,0,0,.6); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.15); color:#fff; font-size:10px; font-weight:900; padding:6px 10px; border-radius:999px">🔥 MAS VENDIDO</div>
+        </div>
+        <div class="slide-content">
+          <div class="slide-badge">✨ LANDING PAGE PRO • 100 SOLES</div>
+          <div class="slide-title">Creamos <span>Paginas Web</span><br>para Negocios Reales</div>
+          <div class="slide-desc">No es solo una web. Es tu vendedor 24/7. Tus clientes te encuentran en Google, ven tu catálogo y te escriben directo al WhatsApp.</div>
+          <div class="slide-list">
+            <div><b>✓</b> Diseño moderno LightyPage • Carga ultra rápida</div>
+            <div><b>✓</b> Conectada a WhatsApp • Vendes mientras duermes</div>
+            <div><b>✓</b> Apareces en Google • Clientes 24/7</div>
+          </div>
+        </div>
+      </div>
+      <!-- SLIDE 2 -->
+      <div class="slide-365">
+        <div class="slide-img">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80" alt="Condominios y Subdominios">
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg, transparent 60%, rgba(15,20,30,.9) 100%)"></div>
+        </div>
+        <div class="slide-content">
+          <div class="slide-badge" style="background:#00E5FF; color:#000">☁️ HOSTING • DOMINIOS • SUBDOMINIOS</div>
+          <div class="slide-title">Trabajamos con <span>LightyPage</span><br>Condominios y Subdominios</div>
+          <div class="slide-desc"><b style="color:#fff">365peru.com ha sido creado por nosotros.</b> Usamos infraestructura LightyPage profesional: hosting veloz, condominios y subdominios ilimitados, todo en la nube.</div>
+          <div class="slide-list">
+            <div><b>☁️</b> Hosting nube + SSL gratis • 99.9% online</div>
+            <div><b>🏢</b> Condominios / Subdominios para tu marca</div>
+            <div><b>⚡</b> Cero caídas • Velocidad Google 95+</div>
+          </div>
+        </div>
+      </div>
+      <!-- SLIDE 3 -->
+      <div class="slide-365">
+        <div class="slide-img">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80" alt="Cero mantenimiento">
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg, transparent 60%, rgba(15,20,30,.9) 100%)"></div>
+        </div>
+        <div class="slide-content">
+          <div class="slide-badge" style="background:#fff; color:#000">🛡️ CERO MANTENIMIENTO • PAGO UNICO</div>
+          <div class="slide-title">Con <span>Cero Mantenimiento</span><br>y Soporte Real</div>
+          <div class="slide-desc">Pagas una sola vez. Sin mensualidades escondidas. Te entregamos tu web lista, sin dolores de cabeza. Ideal para emprendedores que quieren empezar YA.</div>
+          <div class="slide-list">
+            <div><b>💰</b> Desde <b style="color:#C8FF3D">100 soles básico</b> • Pago único</div>
+            <div><b>🔒</b> Sin mensualidades • Tú eres dueño total</div>
+            <div><b>🚀</b> Entrega rápida • Ya vendiendo en 24h</div>
+          </div>
+        </div>
+      </div>
+      <!-- SLIDE 4 -->
+      <div class="slide-365">
+        <div class="slide-img">
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80" alt="Negocios locales">
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg, transparent 60%, rgba(15,20,30,.9) 100%)"></div>
+        </div>
+        <div class="slide-content">
+          <div class="slide-badge" style="background:linear-gradient(90deg,#f59e0b,#f97316); color:#000">🇵🇪 HECHO EN PERU • 365PERU.COM</div>
+          <div class="slide-title">Tu Negocio <span>Brillando</span><br>en Google</div>
+          <div class="slide-desc"><b>365peru.com</b> es prueba de lo que hacemos. Cientos de negocios ya confían en nosotros para estar en internet.</div>
+          <div class="slide-list">
+            <div><b>🔍</b> SEO listo para Google Perú</div>
+            <div><b>📱</b> Diseño 100% celular • Se ve hermoso</div>
+            <div><b>💬</b> Botón WhatsApp flotante que convierte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-arrow arrow-prev" id="prev-365" aria-label="Anterior">‹</button>
+    <button class="slider-arrow arrow-next" id="next-365" aria-label="Siguiente">›</button>
+    <div class="slider-dots" id="dots-365"></div>
+  </div>
+
+  <!-- BLOQUE CTA TEXTO + WHATSAPP -->
+  <div class="cta-web-365">
+    <div class="cta-left">
+      <h2>Creamos <span>Paginas Web</span> para Negocios. Desde 100 Soles.</h2>
+      <p>
+        Trabajamos con <span class="highlight">LightyPage</span> • <span class="highlight">Condominios y Subdominios</span> • Y con <span class="highlight">Cero Mantenimiento</span>. 
+        <br><br>
+        <b style="color:#fff">Costo valor 100 soles básico.</b> <b style="color:#C8FF3D">365peru.com ha sido creado por nosotros.</b> Es tu mejor carta de presentación. Si no estás en Google, no existes.
+        <br><br>
+        ¿Quieres saber más de nosotros? <b style="color:#fff">¡Escríbenos ahora!</b> Respuesta en menos de 15 minutos.
+      </p>
+      <div class="cta-features">
+        <span>⚡ LightyPage Pro</span>
+        <span>🏢 Condominios</span>
+        <span>🌐 Subdominios</span>
+        <span>🛡️ Cero Mantenimiento</span>
+        <span>💰 S/100 Básico</span>
+        <span>🇵🇪 365peru.com Propio</span>
+      </div>
+    </div>
+
+    <div class="cta-right">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px">
+        <div style="color:#fff; font-weight:900; font-size:14px; font-family:'Space Grotesk'">¿QUIERES TU WEB HOY?</div>
+        <div style="background:#25D366; color:#fff; font-size:9px; font-weight:900; padding:4px 8px; border-radius:999px" class="wa-blink">● EN LINEA</div>
+      </div>
+      <p style="color:#94a3b8; font-size:11px; line-height:1.5; margin:0 0 14px">Toca el botón y se abre tu WhatsApp con mensaje listo. Sin formularios largos.</p>
+      
+      <a id="btn-wa-final-365" class="wa-btn-365 wa-blink" href="#" target="_blank" rel="noopener">
+        <div class="wa-icon-pulse">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2.14 6.36 2.14 11.74c0 1.9.53 3.76 1.54 5.38L2 22l5.02-1.59a9.6 9.6 0 004.98 1.35h.02c5.46 0 9.9-4.36 9.9-9.74S17.5 2 12.04 2zm0 17.66a7.95 7.95 0 01-4.05-1.1l-.29-.17-2.98.94.97-2.87-.19-.3a7.94 7.94 0 01-1.22-4.22c0-4.38 3.63-7.94 8.1-7.94 2.16 0 4.2.83 5.72 2.32a7.87 7.87 0 012.36 5.62c0 4.38-3.63 7.94-8.09 7.94zm4.45-5.95c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.37-1.94-1.18-.72-.63-1.2-1.4-1.34-1.64-.14-.24-.01-.37.11-.49.1-.1.24-.26.36-.4.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.29-.74-1.77-.2-.46-.39-.4-.54-.41l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.8-.84 1.96 0 1.15.86 2.27.98 2.42.12.16 1.7 2.56 4.11 3.59.57.24 1.02.38 1.37.49.57.18 1.09.15 1.5.09.46-.07 1.43-.57 1.63-1.13.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+        </div>
+        <div style="text-align:left; line-height:1.1">
+          <div style="font-size:13px">COMUNICATE POR WHATSAPP</div>
+          <div style="font-size:11px; opacity:.9; font-weight:700; margin-top:2px">+51 901 397 859 • Respuesta inmediata</div>
+        </div>
+      </a>
+
+      <div class="price-tag">
+        <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#C8FF3D,#00E5FF); display:grid; place-items:center; font-weight:900; color:#000">S/</div>
+        <div>
+          <strong>100 SOLES BÁSICO</strong><br>
+          <small>Pago único • Cero mantenimiento • Entrega 24h • 365peru.com creado por nosotros</small>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; text-align:center; color:#475569; font-size:9px">Mensaje automático: “He visto esto en Internet. Quiero saber más sobre el diseño web y planes”</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const track = document.getElementById('slider-track-365');
+  const slides = track ? track.children : [];
+  const dotsWrap = document.getElementById('dots-365');
+  const prev = document.getElementById('prev-365');
+  const next = document.getElementById('next-365');
+  if(!track || slides.length===0) return;
+  let idx = 0;
+  let timer = null;
+  const total = slides.length;
+
+  // create dots
+  for(let i=0;i<total;i++){
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0 ? ' active' : '');
+    d.addEventListener('click', ()=>goTo(i));
+    dotsWrap.appendChild(d);
+  }
+  const dots = dotsWrap.querySelectorAll('.dot');
+
+  function update(){
+    track.style.transform = 'translateX(-' + (idx*100) + '%)';
+    dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
+  }
+  function goTo(n){
+    idx = (n+total)%total;
+    update();
+    restart();
+  }
+  function nextSlide(){ goTo(idx+1); }
+  function prevSlide(){ goTo(idx-1); }
+  function restart(){
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 5000);
+  }
+  prev.addEventListener('click', prevSlide);
+  next.addEventListener('click', nextSlide);
+  
+  // touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; clearInterval(timer); }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    const diff = e.changedTouches[0].clientX - startX;
+    if(Math.abs(diff)>50){ diff<0 ? nextSlide() : prevSlide(); }
+    restart();
+  });
+
+  restart();
+  update();
+
+  // WHATSAPP con mensaje pre-cargado
+  const waBtn = document.getElementById('btn-wa-final-365');
+  const mensaje = encodeURIComponent('He visto esto en Internet. Quiero saber más. Sobre el diseño web. y planes.');
+  const numero = '51901397859';
+  const waUrl = 'https://wa.me/' + numero + '?text=' + mensaje;
+  if(waBtn){ waBtn.setAttribute('href', waUrl); }
+})();
+</script>
+</section>
+<!-- ===== FIN NUEVO BLOQUE 365PERU WEB DESIGN ===== -->
+
+
+
+
 <!-- ===== FIN NUEVO BLOQUE PRINCIPAL 365PERU.COM ===== -->
 
 
