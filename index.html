@@ -814,6 +814,63 @@ body{top:0!important;}
   }
   </script>
 </section>
+
+<!-- ===== SEGUNDO BLOQUE 365PERU - REPRODUCTOR TV EN VIVO - SOLUCIONADO ===== -->
+<section id="bloque-2-canales-en-vivo" style="background:#121214;padding:22px 12px;">
+<style>
+  #bloque-2-canales-en-vivo{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff}
+  #bloque-2-canales-en-vivo .b2-wrap{width:100%;max-width:1100px;margin:0 auto;background:#1e1e24;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  #bloque-2-canales-en-vivo .b2-title{padding:16px 20px 0;font-size:22px;font-weight:800}
+  #bloque-2-canales-en-vivo .b2-title span{color:#e50914}
+  #bloque-2-canales-en-vivo .b2-sub{padding:4px 20px 14px;color:#aaa;font-size:14px}
+  #bloque-2-canales-en-vivo .b2-iframe-wrapper{position:relative;width:100%;padding-top:56.25%;background:#000}
+  #bloque-2-canales-en-vivo .b2-iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+  #bloque-2-canales-en-vivo .b2-panel{padding:20px}
+  #bloque-2-canales-en-vivo .b2-panel h3{font-size:1.1rem;margin-bottom:12px;color:#aaa;text-transform:uppercase;letter-spacing:1px}
+  #bloque-2-canales-en-vivo .b2-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+  #bloque-2-canales-en-vivo .b2-btn{background:#2d2d35;color:#fff;border:2px solid transparent;padding:12px 15px;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s;text-align:center;font-family:inherit}
+  #bloque-2-canales-en-vivo .b2-btn:hover{background:#383842;border-color:#555}
+  #bloque-2-canales-en-vivo .b2-btn.active{background:#e50914;border-color:#e50914;box-shadow:0 0 10px rgba(229,9,20,.4)}
+  #bloque-2-canales-en-vivo .b2-fallback{padding:0 20px 16px;text-align:center}
+  #bloque-2-canales-en-vivo .b2-fallback a{color:#fff;background:#e50914;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block}
+  @media(max-width:640px){#bloque-2-canales-en-vivo{padding:12px 8px}#bloque-2-canales-en-vivo .b2-panel{padding:14px}}
+</style>
+
+<div class="b2-wrap">
+  <div class="b2-title">📺 Canales en Vivo <span>365Perú</span></div>
+  <div class="b2-sub">Toca un canal para verlo. Si no carga dentro, dale a Abrir en pestaña nueva.</div>
+
+  <div class="b2-iframe-wrapper">
+    <iframe id="b2-tv-player" src="PEGA_AQUI_TU_URL_STAR_CHANNEL" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+  </div>
+
+  <div class="b2-panel">
+    <h3>Selecciona un Canal:</h3>
+    <div class="b2-btns">
+      <button class="b2-btn active" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_STAR_CHANNEL', this)">Star Channel</button>
+      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_AMERICA_TV', this)">América TV</button>
+      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_LATINA', this)">Latina</button>
+      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_TELEMUNDO', this)">Telemundo</button>
+      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_WARNER', this)">Warner Channel</button>
+    </div>
+  </div>
+  <div class="b2-fallback"><a id="b2-open-new" href="PEGA_AQUI_TU_URL_STAR_CHANNEL" target="_blank" rel="noopener">↗ Abrir canal en pestaña nueva</a></div>
+</div>
+
+<script>
+  // LOGICA EXACTA QUE SI FUNCIONA - sin ?t=, sin referrerpolicy, sin cambios raros
+  function b2ChangeChannel(url, element) {
+    const player = document.getElementById('b2-tv-player');
+    player.src = url;
+    document.getElementById('b2-open-new').href = url;
+    const buttons = document.querySelectorAll('#bloque-2-canales-en-vivo .b2-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+  }
+</script>
+</section>
+<!-- ===== FIN SEGUNDO BLOQUE ===== -->
+
 <!-- ===== NUEVO BLOQUE 365PERU WEB DESIGN - SLIDER + REPRODUCTOR 100% + WHATSAPP - CREADO 01 NOV 2026 ===== -->
 <section id="bloque-slider-web-365" style="width:100%; background:#080B12; position:relative; overflow:hidden; font-family:Inter,system-ui,sans-serif; border-top:1px solid #1a2233; border-bottom:1px solid #1a2233;">
 <style>
