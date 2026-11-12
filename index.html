@@ -3,380 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>365Perú - Canales en Vivo</title>
-</head>
-<body>
-<section id="channel-vivo-entretenimiento" style="width:100%;background:#080B12;padding:22px 12px;font-family:Inter,system-ui,sans-serif;">
-  <div style="max-width:980px;margin:0 auto;text-align:center;">
-    <div style="display:inline-block;background:#e50914;color:#fff;font-size:11px;font-weight:900;padding:6px 12px;border-radius:999px;letter-spacing:1px;">🔴 EN VIVO</div>
-    <h2 style="color:#fff;font-size:clamp(22px,3vw,32px);font-weight:900;margin:12px 0 4px;letter-spacing:-.5px;">📺 Channel Vivo Entretenimiento - Canales en Vivo</h2>
-    <p style="color:#94a3b8;font-size:13px;margin:0;">Selecciona un canal y míralo en vivo en 365Perú</p>
-  </div>
-
-<div id="tv365-player">
-
-  <style>
-    #tv365-player,
-    #tv365-player * {
-      box-sizing: border-box;
-    }
-
-    #tv365-player {
-      width: 100%;
-      max-width: 900px;
-      margin: 15px auto;
-      background: #1e1e24;
-      color: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-
-    #tv365-player .tv365-screen {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      overflow: hidden;
-    }
-
-    #tv365-player .tv365-screen iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      background: #000;
-    }
-
-    #tv365-player .tv365-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      color: #aaa;
-      text-align: center;
-      padding: 15px;
-    }
-
-    #tv365-player .tv365-placeholder span {
-      font-size: 42px;
-      color: #e50914;
-    }
-
-    #tv365-player .tv365-placeholder strong {
-      font-size: 16px;
-      color: #fff;
-    }
-
-    #tv365-player .tv365-placeholder small {
-      font-size: 12px;
-    }
-
-    #tv365-player .tv365-panel {
-      padding: 20px;
-    }
-
-    #tv365-player .tv365-title {
-      color: #ccc;
-      font-size: 15px;
-      font-weight: bold;
-      margin: 0 0 14px;
-      letter-spacing: 1px;
-    }
-
-    #tv365-player .tv365-buttons {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    #tv365-player .tv365-btn {
-      background: #303039;
-      color: #fff;
-      border: 2px solid transparent;
-      padding: 13px 8px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: .2s;
-      width: 100%;
-      min-width: 0;
-    }
-
-    #tv365-player .tv365-btn:hover {
-      background: #44444e;
-      border-color: #777;
-    }
-
-    #tv365-player .tv365-btn.active {
-      background: #e50914;
-      border-color: #e50914;
-      box-shadow: 0 0 12px rgba(229,9,20,.4);
-    }
-
-    #tv365-player .tv365-btn:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 3px;
-    }
-
-    /* TABLETS */
-    @media (max-width: 700px) {
-      #tv365-player .tv365-buttons {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    /* CELULARES */
-    @media (max-width: 480px) {
-      #tv365-player {
-        border-radius: 8px;
-      }
-
-      #tv365-player .tv365-panel {
-        padding: 12px;
-      }
-
-      #tv365-player .tv365-title {
-        font-size: 13px;
-      }
-
-      #tv365-player .tv365-buttons {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      #tv365-player .tv365-btn {
-        padding: 12px 5px;
-        font-size: 12px;
-      }
-
-      #tv365-player .tv365-placeholder span {
-        font-size: 32px;
-      }
-
-      #tv365-player .tv365-placeholder strong {
-        font-size: 13px;
-      }
-
-      #tv365-player .tv365-placeholder small {
-        font-size: 10px;
-      }
-    }
-  </style>
-
-  <!-- PANTALLA DEL REPRODUCTOR -->
-
-  <div class="tv365-screen">
-
-    <iframe
-      data-tv365-frame
-      title="365 Perú TV en vivo"
-      scrolling="no"
-      allowfullscreen
-      allow="autoplay; encrypted-media; picture-in-picture"
-      referrerpolicy="no-referrer-when-downgrade"
-      style="display:none;">
-    </iframe>
-
-    <!-- PANTALLA INICIAL -->
-
-    <div class="tv365-placeholder" data-tv365-placeholder>
-      <span>▶</span>
-      <strong>SELECCIONA UN CANAL</strong>
-      <small>Presiona un botón para comenzar la reproducción</small>
-    </div>
-
-  </div>
-
-  <!-- LISTA DE CANALES -->
-
-  <div class="tv365-panel">
-
-    <p class="tv365-title" data-tv365-title>
-      SELECCIONA UN CANAL
-    </p>
-
-    <div class="tv365-buttons">
-
-      <!-- ENTRETENIMIENTO -->
-
-      <button type="button" class="tv365-btn"
-        data-name="Star Channel"
-        data-url="https://embed.saohgdassregions.com/embed2/starchannel.php">
-        Star Channel
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="América TV"
-        data-url="https://embed.saohgdassregions.com/embed2/americatv.php">
-        América TV
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Latina"
-        data-url="https://embed.saohgdassregions.com/embed2/latina.php">
-        Latina
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Telemundo"
-        data-url="https://embed.saohgdassregions.com/embed2/telemundo51.php">
-        Telemundo
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Warner Channel"
-        data-url="https://embed.saohgdassregions.com/embed2/warnerchannel.php">
-        Warner Channel
-      </button>
-
-      <!-- ESPN -->
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN Deportes"
-        data-url="https://tvf90.com/online/canal.php?stream=espndeportes">
-        ESPN Deportes
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN"
-        data-url="https://tvf90.com/online/canal.php?stream=espn">
-        ESPN
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 2"
-        data-url="https://tvf90.com/online/canal.php?stream=espn2">
-        ESPN 2
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 3"
-        data-url="https://tvf90.com/online/canal.php?stream=espn3">
-        ESPN 3
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 4"
-        data-url="https://tvf90.com/online/canal.php?stream=espn4">
-        ESPN 4
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 5"
-        data-url="https://tvf90.com/online/canal.php?stream=espn5">
-        ESPN 5
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 6"
-        data-url="https://tvf90.com/online/canal.php?stream=espn6">
-        ESPN 6
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 7"
-        data-url="https://tvf90.com/online/canal.php?stream=espn7">
-        ESPN 7
-      </button>
-
-      <!-- DEPORTES INTERNACIONALES -->
-
-      <button type="button" class="tv365-btn"
-        data-name="Sport TV Brasil 1"
-        data-url="https://streamxhd.com/live1.php?stream=sporttvbr1">
-        Sport TV Brasil 1
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="TyC Sports"
-        data-url="https://tvf90.com/online/canal.php?stream=tycsports">
-        TyC Sports
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Sport TV Brasil 2"
-        data-url="https://streamxhd.com/live1.php?stream=sporttvbr2">
-        Sport TV Brasil 2
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="América TV HD"
-        data-url="https://streamxhd.com/live1.php?stream=americatv">
-        América TV HD
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="TUDN USA"
-        data-url="https://streamxhd.com/live1.php?stream=tudn_usa">
-        TUDN USA
-      </button>
-
-    </div>
-  </div>
-
-  <!-- CONTROL DE REPRODUCCIÓN -->
-
-  <script>
-    (function () {
-
-      const root = document.getElementById('tv365-player');
-
-      if (!root || root.dataset.initialized === 'true') return;
-
-      root.dataset.initialized = 'true';
-
-      const frame = root.querySelector('[data-tv365-frame]');
-      const placeholder = root.querySelector('[data-tv365-placeholder]');
-      const title = root.querySelector('[data-tv365-title]');
-      const buttons = root.querySelectorAll('.tv365-btn');
-
-      buttons.forEach(function (button) {
-
-        button.addEventListener('click', function () {
-
-          const url = button.getAttribute('data-url');
-          const name = button.getAttribute('data-name');
-
-          if (!url) return;
-
-          placeholder.style.display = 'none';
-          frame.style.display = 'block';
-
-          /* Reproducción únicamente después del clic */
-          frame.src = url;
-          frame.title = name;
-
-          title.textContent = 'REPRODUCIENDO: ' + name;
-
-          /* Botón activo */
-          buttons.forEach(function (item) {
-            item.classList.remove('active');
-            item.setAttribute('aria-pressed', 'false');
-          });
-
-          button.classList.add('active');
-          button.setAttribute('aria-pressed', 'true');
-
-        });
-
-      });
-
-    })();
-  </script>
-
-</div>
-</section>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== SEO MASTER 365PERU - FUTBOL EN VIVO + ENTRETENIMIENTO ===== -->
 <title>El Clásico Barcelona vs Real Madrid Hoy 3PM - En Vivo Gratis | 365Perú.com - Fútbol en Vivo</title>
@@ -917,8 +543,8 @@ body{top:0!important;}
   transform: translateX(4px);
 }
 </style>
-
-
+</head>
+<body class="min-h-screen pb-[140px]">
 
 
 <!-- ===== NUEVO BLOQUE PRINCIPAL 365PERU.COM - CREADO 08 OCT 2026 ===== -->
@@ -1189,10 +815,7 @@ body{top:0!important;}
   </script>
 </section>
 
-<!-- ===== NUEVO BLOQUE - TELEVISION EN VIVO - CANALES EN VIVO - 365PERU ===== -->
-<!-- BLOQUE TELEVISION EN VIVO / CANALES EN VIVO ELIMINADO POR PEDIDO DEL USUARIO -->
 
-<!-- ===== FIN NUEVO BLOQUE - TELEVISION EN VIVO - CANALES EN VIVO ===== -->
 
 <!-- ===== NUEVO BLOQUE 365PERU WEB DESIGN - SLIDER + REPRODUCTOR 100% + WHATSAPP - CREADO 01 NOV 2026 ===== -->
 <section id="bloque-slider-web-365" style="width:100%; background:#080B12; position:relative; overflow:hidden; font-family:Inter,system-ui,sans-serif; border-top:1px solid #1a2233; border-bottom:1px solid #1a2233;">
@@ -1499,7 +1122,10 @@ body{top:0!important;}
 <!-- ===== FIN NUEVO BLOQUE PRINCIPAL 365PERU.COM ===== -->
 
 
-<!-- ESPACIO LIMPIO - AQUI VA TU NUEVO BLOQUE DE PROGRAMACION -->
+
+
+
+
 
 <!-- ===== SEGUNDO BLOQUE - PELICULAS REACT 2026 - TU REPRODUCTOR ===== -->
 <section id="segundo-bloque-peliculas-365" style="width:100%;background:#0a0a0a;padding:30px 0 20px;">
@@ -1635,307 +1261,168 @@ document.addEventListener('DOMContentLoaded',()=>{
 <!-- BLOQUE APUESTAS DEPORTIVAS ELIMINADO -->
 
 
-<!-- ===== INICIO BLOQUE FUTBOL EN VIVO HOY - CHANNEL VIVO - NUEVO 23 OCT 2026 - 90 CANALES + INTRO BLOG ===== -->
-<section id="futbol-en-vivo-hoy-channel-vivo-final" style="width:100%;max-width:100%;margin:0 auto;display:block;background:#0f141e;padding:0;font-family:Inter,system-ui,sans-serif;">
+<!-- ===== NUEVO BLOQUE 365PERU - EVENTOS HOY + REPRODUCTOR - 12 NOV 2026 ===== -->
+<section id="eventos-hoy-365">
 <style>
-#futbol-en-vivo-hoy-channel-vivo-final *{box-sizing:border-box}
-@keyframes marquee365{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes pulseGreen{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}50%{box-shadow:0 0 0 12px rgba(37,211,102,0)}}
-.marquee-track{display:flex;animation:marquee365 40s linear infinite;width:max-content}
-.marquee-track:hover{animation-play-state:paused}
+#eventos-hoy-365{box-sizing:border-box;width:100%;background:#070a12;padding:18px 0 28px;font-family:Inter,system-ui,sans-serif;color:#e2e8f0}
+#eventos-hoy-365 *{box-sizing:border-box}
+.ev-wrap{max-width:1280px;margin:0 auto;padding:0 14px}
+.ev-head{display:flex;flex-wrap:wrap;gap:10px;align-items:end;justify-content:space-between;margin-bottom:12px}
+.ev-head h2{margin:0;font-size:clamp(22px,3vw,32px);font-weight:900;line-height:1.05;letter-spacing:-.5px;color:#fff}
+.ev-head h2 span{color:#e50914}
+.ev-head p{margin:6px 0 0;color:#94a3b8;font-size:13px}
+.ev-pill{display:flex;gap:8px;flex-wrap:wrap}
+.ev-pill b{background:#e50914;color:#fff;padding:8px 12px;border-radius:999px;font-size:12px}
+.ev-pill i{background:#111827;border:1px solid #1f2937;color:#cbd5e1;padding:8px 12px;border-radius:999px;font-size:12px;font-style:normal}
+/* SLIDER LIGAS */
+.ev-marquee{overflow:hidden;background:linear-gradient(90deg,#0f1215,#1a1f26);border:1px solid #232e3a;border-radius:14px;height:54px;display:flex;align-items:center;position:relative;margin-bottom:14px}
+.ev-track{display:flex;gap:0;animation:evSlide 32s linear infinite;width:max-content}
+.ev-marquee:hover .ev-track{animation-play-state:paused}
+@keyframes evSlide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ev-liga{display:flex;align-items:center;gap:8px;padding:0 18px;white-space:nowrap;font-size:13px;font-weight:800;color:#e2e8f0;border-right:1px solid #1e293b}
+.ev-liga em{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:900;color:#fff;flex-shrink:0}
+.l-ucl{background:#0A3D8F}.l-nations{background:#1e40af}.l-fifa{background:#065f46}.l-laliga{background:#e11d48}.l-seriea{background:#0369a1}.l-arg{background:#7c3aed}.l-lib{background:#b45309}.l-bun{background:#dc2626}.l-premier{background:#4c1d95}.l-conca{background:#0f766e}.l-col{background:#ca8a04}
+/* LAYOUT */
+.ev-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:14px;align-items:start}
+@media(max-width:900px){.ev-grid{grid-template-columns:1fr}}
+.ev-player{background:#0a0e16;border:1px solid #1e293b;border-radius:16px;overflow:hidden;position:sticky;top:12px}
+@media(max-width:900px){.ev-player{position:static}}
+.ev-player-top{padding:14px 16px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.ev-player-top strong{font-size:15px;color:#fff}
+.ev-player-top span{font-size:11px;color:#94a3b8}
+.ev-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.ev-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ev-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:#cbd5e1;background:radial-gradient(circle at 50% 30%,#1e293b,#000)}
+.ev-empty b{font-size:18px;color:#fff;display:block;margin-bottom:6px}
+.ev-actions{padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap}
+.ev-btn{border:0;cursor:pointer;padding:11px 14px;border-radius:999px;font-weight:800;font-size:13px}
+.ev-btn.primary{background:#e50914;color:#fff}
+.ev-btn.ghost{background:#111827;border:1px solid #334155;color:#e2e8f0}
+.ev-now{padding:0 16px 14px;font-size:12px;color:#94a3b8}
+/* MENU DERECHA */
+.ev-menu{background:#0a0e16;border:1px solid #1e293b;border-radius:16px;overflow:hidden}
+.ev-menu-head{padding:14px 16px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
+.ev-menu-head strong{color:#fff;font-size:15px}
+.ev-menu-head span{background:#e50914;color:#fff;font-size:11px;font-weight:900;padding:4px 9px;border-radius:999px}
+.ev-filter{display:flex;gap:6px;flex-wrap:wrap;padding:10px 12px;border-bottom:1px solid #1e293b}
+.ev-filter button{border:1px solid #334155;background:#111827;color:#cbd5e1;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:700;cursor:pointer}
+.ev-filter button.on{background:#e50914;border-color:#e50914;color:#fff}
+.ev-list{max-height:720px;overflow-y:auto}
+.ev-item{border-bottom:1px solid #1e293b}
+.ev-item-head{width:100%;background:transparent;border:0;color:inherit;text-align:left;padding:12px 14px;cursor:pointer;display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center}
+.ev-item-head:hover,.ev-item.open .ev-item-head{background:#111827}
+.ev-time{font-size:13px;font-weight:900;color:#fff}
+.ev-time small{display:block;font-size:10px;color:#22c55e;letter-spacing:.5px}
+.ev-teams{font-size:13px;font-weight:800;color:#fff;line-height:1.3}
+.ev-teams small{display:block;font-size:11px;color:#94a3b8;font-weight:600}
+.ev-arrow{font-size:16px;color:#94a3b8;transition:.2s}
+.ev-item.open .ev-arrow{transform:rotate(180deg);color:#fff}
+.ev-channels{display:none;padding:0 12px 12px}
+.ev-item.open .ev-channels{display:block}
+.ev-ch{border:2px solid #334155;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:8px;background:#0f141e;transition:.15s}
+.ev-ch:hover{border-color:#e50914;box-shadow:0 0 0 3px rgba(229,9,20,.18)}
+.ev-ch b{font-size:13px;color:#fff}
+.ev-ch span{font-size:11px;color:#94a3b8;display:block}
+.ev-ch button{border:0;background:#e50914;color:#fff;font-weight:900;padding:9px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.ev-ch button.copy{background:#111827;border:1px solid #475569;color:#e2e8f0;padding:9px 10px}
+.ev-note{padding:12px 14px;font-size:11px;color:#64748b;line-height:1.6}
 </style>
-
-<!-- INTRO BLOG SEO -->
-<div style="max-width:1600px;margin:0 auto;padding:18px 16px;">
-  <div style="background:linear-gradient(135deg,#1a1f26 0%,#0f141e 100%);border:1px solid #1e293b;border-radius:18px;padding:20px 22px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;">
-    <div>
-      <h1 style="margin:0;color:#fff;font-size:clamp(18px,3vw,28px);font-weight:900;line-height:1.1;letter-spacing:-.5px">fútbol en vivo. Transmisión en vivo. Canales Channel en vivo.</h1>
-      <p style="margin:10px 0 0;color:#94a3b8;font-size:13px;line-height:1.6">somos un sitio web de entretenimiento <b style="color:#e2e8f0">365peru.com</b> Somos creadores de página web. Para proyectos de negocios. Criamos catálogos, imágenes videos formularios para tu sitio web. ¿Te gustaría que te creáramos una página web para tu negocio? <b style="color:#22c55e">No pagas dominio, no pagas hosting. Cero mantenimiento.</b> ¿Quieres saber más? Enviamos un WhatsApp.</p>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <span style="background:#111827;border:1px solid #1f2937;padding:4px 10px;border-radius:9999px;color:#94a3b8;font-size:10px">⚽ Fútbol en Vivo Gratis Hoy</span>
-        <span style="background:#111827;border:1px solid #1f2937;padding:4px 10px;border-radius:9999px;color:#94a3b8;font-size:10px">📺 Canales en Vivo 24/7</span>
-        <span style="background:#111827;border:1px solid #1f2937;padding:4px 10px;border-radius:9999px;color:#94a3b8;font-size:10px">🎬 Entretenimiento Full Gratis</span>
+<div class="ev-wrap">
+  <div class="ev-head">
+    <div><h2>⚽ Eventos de Hoy <span>• 365Perú</span></h2><p>Jueves, 12 de noviembre de 2026 · Haz clic en un evento para ver sus canales y reproducirlo.</p></div>
+    <div class="ev-pill"><b>14 eventos</b><i>🟢 En vivo / Pronto</i></div>
+  </div>
+  <div class="ev-marquee" aria-label="Ligas que se transmiten hoy">
+    <div class="ev-track" id="ev-track"></div>
+  </div>
+  <div class="ev-grid">
+    <div class="ev-player">
+      <div class="ev-player-top"><div><strong id="ev-now-title">Elige un evento y un canal</strong><br><span id="ev-now-sub">Reproductor estático · Se queda fijo mientras bajas el menú</span></div><span>● 365Perú EN VIVO</span></div>
+      <div class="ev-frame">
+        <iframe id="ev-iframe" src="" allowfullscreen allow="autoplay; fullscreen"></iframe>
+        <div class="ev-empty" id="ev-empty"><div><b>▶ Toca un canal para verlo aquí</b>Si no carga dentro, usa “Abrir en pestaña nueva”.</div></div>
       </div>
+      <div class="ev-actions">
+        <button class="ev-btn primary" onclick="evOpenNew()">↗ Abrir en pestaña nueva</button>
+        <button class="ev-btn ghost" onclick="evCopyCurrent()">⧉ Copiar link del canal</button>
+        <span id="ev-copy-msg" style="font-size:12px;color:#22c55e;align-self:center"></span>
+      </div>
+      <div class="ev-now" id="ev-now-info">Sin canal seleccionado todavía.</div>
     </div>
-    <div style="background:#0a0e16;border:1px solid #1e293b;border-radius:14px;padding:16px;text-align:center">
-      <div style="font-size:12px;font-weight:800;color:#e2e8f0;letter-spacing:.5px">¿QUIERES TU WEB COMO ESTA?</div>
-      <div style="font-size:11px;color:#64748b;margin:6px 0 12px">Landing pages, catálogos, reproductores, tiendas</div>
-      <a href="https://wa.me/51901397859?text=he%20visto%20su%20p%C3%A1gina%20web%20y%20quiero%20saber%20m%C3%A1s%20de%20la%20p%C3%A1gina%20web.%20Precios%20e%20informaci%C3%B3n." target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:900;font-size:13px;padding:14px 20px;border-radius:9999px;text-decoration:none;animation:pulseGreen 2s infinite;box-shadow:0 8px 24px rgba(37,211,102,.3);transition:.2s">
-        <span style="font-size:18px">💬</span> ¡Quiero mi Página Web! - Contáctanos
-      </a>
-      <div style="font-size:9px;color:#475569;margin-top:10px">Al contactar envías: "he visto su página web y quiero saber más..."</div>
-      <div style="font-size:10px;color:#22c55e;margin-top:6px;font-weight:700">📱 +51 901 397 859</div>
-    </div>
+    <aside class="ev-menu">
+      <div class="ev-menu-head"><strong>📅 Eventos por liga · Horario</strong><span>HOY</span></div>
+      <div class="ev-filter" id="ev-filter"></div>
+      <div class="ev-list" id="ev-list"></div>
+      <div class="ev-note">Horarios en hora de Perú. Al dar clic en un evento se despliegan sus canales. Al dar clic en “Ver aquí” el canal se reproduce en el reproductor de la izquierda.</div>
+    </aside>
   </div>
 </div>
-
-<!-- MARQUEE LIGAS DENTRO DEL BLOQUE -->
-<div style="max-width:1600px;margin:0 auto;padding:0 16px 12px;">
-  <div style="background:linear-gradient(90deg,#0f1215,#1a1f26);border:1px solid #232e3a;border-radius:14px 14px 0 0;overflow:hidden;position:relative;height:48px;display:flex;align-items:center">
-    <div style="position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,#0f141e 20%,transparent);z-index:2"></div>
-    <div style="position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(270deg,#0f141e 20%,transparent);z-index:2"></div>
-    <div class="marquee-track">
-      <div style="display:flex;align-items:center;gap:18px;padding-right:18px">
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#0A3D8F;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900">UCL</span> Champions League</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#37003C;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900">PL</span> Premier League</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#FF4B44;color:#fff;display:grid;place-items:center;font-size:7px;font-weight:900">LIGA</span> LaLiga Española</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#D20515;color:#fff;display:grid;place-items:center;font-size:8px;font-weight:900">BUN</span> Bundesliga</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#091C3E;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900">L1</span> Ligue 1 Francia</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#FFD700;color:#000;display:grid;place-items:center;font-size:8px;font-weight:900">L1P</span> Liga 1 Perú MAX</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#008CFF;color:#fff;display:grid;place-items:center;font-size:8px;font-weight:900">SA</span> Serie A Italiana</span>
-        <span style="color:#334155">•</span>
-        <span style="color:#22c55e;font-size:12px;font-weight:900;white-space:nowrap">Transmisiones canales en vivo. Disfrútalo en vivo.</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:18px;padding-right:18px">
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#0A3D8F;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900">UCL</span> Champions League</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#37003C;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900">PL</span> Premier League</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#FF4B44;color:#fff;display:grid;place-items:center;font-size:7px;font-weight:900">LIGA</span> LaLiga Española</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#D20515;color:#fff;display:grid;place-items:center;font-size:8px;font-weight:900">BUN</span> Bundesliga</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#091C3E;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900">L1</span> Ligue 1 Francia</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#FFD700;color:#000;display:grid;place-items:center;font-size:8px;font-weight:900">L1P</span> Liga 1 Perú MAX</span>
-        <span style="color:#334155">•</span>
-        <span style="display:flex;align-items:center;gap:6px;color:#e2e8f0;font-size:12px;font-weight:800;white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;background:#008CFF;color:#fff;display:grid;place-items:center;font-size:8px;font-weight:900">SA</span> Serie A Italiana</span>
-        <span style="color:#334155">•</span>
-        <span style="color:#22c55e;font-size:12px;font-weight:900;white-space:nowrap">Transmisiones canales en vivo. Disfrútalo en vivo.</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PLAYER + CANALES POR LIGA -->
-<div style="max-width:1600px;margin:0 auto;padding:0 16px 20px;display:flex;flex-direction:column;gap:16px">
-  <div style="display:flex;flex-direction:column;gap:16px">
-    <div style="display:grid;grid-template-columns:1fr;gap:16px">
-      <div style="display:grid;grid-template-columns:1fr;gap:16px" class="lg:grid-cols-[1.6fr_.9fr]" id="mainGrid">
-        <!-- LEFT -->
-        <div>
-          <div style="position:relative;background:#000;aspect-ratio:16/9;width:100%;overflow:hidden;border-radius:0 0 14px 14px;border:1px solid #1e293b;border-top:0">
-            <iframe id="mainPlayer365" src="https://streamxhd.sbs/channel/?id=dsports" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
-            <div id="overlay365" onclick="this.style.display='none'" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.78);z-index:10;cursor:pointer">
-              <div style="width:72px;height:72px;border-radius:50%;background:#1a1f26;border:1px solid #2a3441;display:grid;place-items:center;font-size:28px">▶</div>
-              <div style="margin-top:10px;color:#fff;font-weight:800;font-size:14px">Click para activar</div>
-              <div style="color:#64748b;font-size:11px;margin-top:4px">Reproductor 365Peru - 90 canales - streamxhd.sbs</div>
-            </div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:38px;background:#0f1215;border-top:1px solid #1a1f26;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:11px;color:#94a3b8">
-              <div>MANUAL | Calidad <b style="color:#00ff88">AUTO 1080p</b></div>
-              <div>Latencia ~2.4s <span style="display:inline-block;width:8px;height:8px;background:#00ff88;border-radius:50%;margin-left:6px;box-shadow:0 0 8px #00ff88"></span></div>
-            </div>
-          </div>
-
-          <!-- TODOS LOS CANALES ABAJO -->
-          <div style="margin-top:14px;background:#0a0e16;border:1px solid #1e293b;border-radius:14px;padding:12px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-              <h3 style="margin:0;color:#e2e8f0;font-size:13px;font-weight:900">📺 Todos los Canales - 90 canales</h3>
-              <span style="background:#111827;border:1px solid #1f2937;color:#64748b;font-size:10px;padding:4px 8px;border-radius:9999px">streamxhd.sbs • Responsive</span>
-            </div>
-            <div id="gridTodos365" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"></div>
-          </div>
-        </div>
-
-        <!-- RIGHT - CANALES POR LIGA -->
-        <div style="background:#0a0e16;border:1px solid #1e293b;border-radius:14px;padding:12px;align-self:start;position:sticky;top:12px;max-height:90vh;overflow-y:auto">
-          <h3 style="margin:0 0 12px;color:#e2e8f0;font-size:13px;font-weight:900">⚽ Canales por Liga</h3>
-          <div id="ligasContainer" style="display:flex;flex-direction:column;gap:8px"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-(function(){
-  const Uc = [
-    {id:"espnplus4",name:"ESPN Plus 4",short:"E+4",color:"#E53935",stream:"espnplus4"},
-    {id:"espndeportes",name:"ESPN Deportes",short:"EDEP",color:"#E53935",stream:"espndeportes"},
-    {id:"mlaliga",name:"LaLiga - Movistar",short:"MLAL",color:"#212121",stream:"mlaliga"},
-    {id:"appletv1",name:"Apple TV 1",short:"ATV1",color:"#000000",stream:"appletv1"},
-    {id:"appletv2",name:"Apple TV 2",short:"ATV2",color:"#000000",stream:"appletv2"},
-    {id:"appletv3",name:"Apple TV 3",short:"ATV3",color:"#000000",stream:"appletv3"},
-    {id:"appletv4",name:"Apple TV 4",short:"ATV4",color:"#000000",stream:"appletv4"},
-    {id:"appletv5",name:"Apple TV 5",short:"ATV5",color:"#000000",stream:"appletv5"},
-    {id:"appletv6",name:"Apple TV 6",short:"ATV6",color:"#000000",stream:"appletv6"},
-    {id:"appletv7",name:"Apple TV 7",short:"ATV7",color:"#000000",stream:"appletv7"},
-    {id:"america-tv",name:"América TV",short:"AMTV",color:"#E53935",stream:"america-tv"},
-    {id:"atv",name:"ATV",short:"ATV",color:"#1E88E5",stream:"atv"},
-    {id:"beinsports",name:"BeIN Sports",short:"BEIN",color:"#6D4C41",stream:"beinsports"},
-    {id:"beinsports2",name:"BeIN 2",short:"B2",color:"#6D4C41",stream:"beinsports2"},
-    {id:"beinsports3",name:"BeIN 3",short:"B3",color:"#6D4C41",stream:"beinsports3"},
-    {id:"canal13",name:"Canal 13",short:"C13",color:"#FF6F00",stream:"canal13"},
-    {id:"caracol",name:"Caracol",short:"CARA",color:"#2E7D32",stream:"caracol"},
-    {id:"chilevision",name:"Chilevisión",short:"CHV",color:"#E53935",stream:"chilevision"},
-    {id:"dazn1",name:"DAZN 1",short:"D1",color:"#212121",stream:"dazn1"},
-    {id:"dazn2",name:"DAZN 2",short:"D2",color:"#212121",stream:"dazn2"},
-    {id:"dazn3",name:"DAZN 3",short:"D3",color:"#212121",stream:"dazn3"},
-    {id:"daznf1",name:"DAZN F1",short:"F1",color:"#212121",stream:"daznf1"},
-    {id:"daznla1",name:"DAZN LaLiga 1",short:"LAL1",color:"#212121",stream:"daznla1"},
-    {id:"disney1",name:"Disney+ 1",short:"D+1",color:"#0F3FA8",stream:"disney1"},
-    {id:"disney10",name:"Disney+ 10",short:"D+10",color:"#0F3FA8",stream:"disney10"},
-    {id:"disney11",name:"Disney+ 11",short:"D+11",color:"#0F3FA8",stream:"disney11"},
-    {id:"disney12",name:"Disney+ 12",short:"D+12",color:"#0F3FA8",stream:"disney12"},
-    {id:"disney13",name:"Disney+ 13",short:"D+13",color:"#0F3FA8",stream:"disney13"},
-    {id:"disney2",name:"Disney+ 2",short:"D+2",color:"#0F3FA8",stream:"disney2"},
-    {id:"disney3",name:"Disney+ 3",short:"D+3",color:"#0F3FA8",stream:"disney3"},
-    {id:"disney4",name:"Disney+ 4",short:"D+4",color:"#0F3FA8",stream:"disney4"},
-    {id:"disney5",name:"Disney+ 5",short:"D+5",color:"#0F3FA8",stream:"disney5"},
-    {id:"disney6",name:"Disney+ 6",short:"D+6",color:"#0F3FA8",stream:"disney6"},
-    {id:"disney7",name:"Disney+ 7",short:"D+7",color:"#0F3FA8",stream:"disney7"},
-    {id:"disney8",name:"Disney+ 8",short:"D+8",color:"#0F3FA8",stream:"disney8"},
-    {id:"disney9",name:"Disney+ 9",short:"D+9",color:"#0F3FA8",stream:"disney9"},
-    {id:"dsports",name:"DSports",short:"DS",color:"#0D47A1",stream:"dsports"},
-    {id:"dsports2",name:"DSports 2",short:"DS2",color:"#0D47A1",stream:"dsports2"},
-    {id:"dsportsglobal",name:"DSports Global",short:"DSG",color:"#0D47A1",stream:"dsportsglobal"},
-    {id:"dsportsplus",name:"DSports Plus",short:"DSP",color:"#0D47A1",stream:"dsportsplus"},
-    {id:"espn",name:"ESPN",short:"ESPN",color:"#E53935",stream:"espn"},
-    {id:"espn2",name:"ESPN 2",short:"E2",color:"#E53935",stream:"espn2"},
-    {id:"espn2usa",name:"ESPN2 USA",short:"E2US",color:"#E53935",stream:"espn2usa"},
-    {id:"espn3",name:"ESPN 3",short:"E3",color:"#E53935",stream:"espn3"},
-    {id:"espn4",name:"ESPN 4",short:"E4",color:"#E53935",stream:"espn4"},
-    {id:"espn5",name:"ESPN 5",short:"E5",color:"#E53935",stream:"espn5"},
-    {id:"espn6",name:"ESPN 6",short:"E6",color:"#E53935",stream:"espn6"},
-    {id:"espn7",name:"ESPN 7",short:"E7",color:"#E53935",stream:"espn7"},
-    {id:"espnarg",name:"ESPN AR",short:"EAR",color:"#E53935",stream:"espnarg"},
-    {id:"espndeportes",name:"ESPN Deportes",short:"EDEP",color:"#E53935",stream:"espndeportes"},
-    {id:"espnextra",name:"ESPN Extra",short:"EEX",color:"#E53935",stream:"espnextra"},
-    {id:"espnpremium",name:"ESPN Premium",short:"EPRE",color:"#E53935",stream:"espnpremium"},
-    {id:"espnusa",name:"ESPN USA",short:"EUS",color:"#E53935",stream:"espnusa"},
-    {id:"fox1ar",name:"FOX 1 AR",short:"F1AR",color:"#283593",stream:"fox1ar"},
-    {id:"fox2ar",name:"FOX 2 AR",short:"F2AR",color:"#283593",stream:"fox2ar"},
-    {id:"fox3ar",name:"FOX 3 AR",short:"F3AR",color:"#283593",stream:"fox3ar"},
-    {id:"foxdeportes",name:"FOX Deportes",short:"FDEP",color:"#283593",stream:"foxdeportes"},
-    {id:"foxone",name:"FOX One",short:"FONE",color:"#283593",stream:"foxone"},
-    {id:"foxsports2ar",name:"FOX Sports 2 AR",short:"FS2",color:"#283593",stream:"foxsports2ar"},
-    {id:"foxsports3ar",name:"FOX Sports 3 AR",short:"FS3",color:"#283593",stream:"foxsports3ar"},
-    {id:"foxsportsar",name:"FOX Sports AR",short:"FSAR",color:"#283593",stream:"foxsportsar"},
-    {id:"fs1usa",name:"FS1 USA",short:"FS1",color:"#283593",stream:"fs1usa"},
-    {id:"fs2usa",name:"FS2 USA",short:"FS2U",color:"#283593",stream:"fs2usa"},
-    {id:"gol",name:"GOL TV",short:"GOL",color:"#F9A825",stream:"gol"},
-    {id:"golperu",name:"GOL Perú",short:"GOLP",color:"#F9A825",stream:"golperu"},
-    {id:"l1max",name:"L1 MAX",short:"L1M",color:"#F9A825",stream:"l1max"},
-    {id:"liga1max",name:"Liga 1 MAX",short:"LIGA",color:"#F9A825",stream:"liga1max"},
-    {id:"max1",name:"MAX 1",short:"MAX1",color:"#4527A0",stream:"max1"},
-    {id:"max2",name:"MAX 2",short:"MAX2",color:"#4527A0",stream:"max2"},
-    {id:"max3",name:"MAX 3",short:"MAX3",color:"#4527A0",stream:"max3"},
-    {id:"max4",name:"MAX 4",short:"MAX4",color:"#4527A0",stream:"max4"},
-    {id:"movistarlaliga",name:"Movistar LaLiga",short:"MLAL",color:"#212121",stream:"movistarlaliga"},
-    {id:"nba1",name:"NBA 1",short:"NBA1",color:"#0D47A1",stream:"nba1"},
-    {id:"nba2",name:"NBA 2",short:"NBA2",color:"#0D47A1",stream:"nba2"},
-    {id:"nba3",name:"NBA 3",short:"NBA3",color:"#0D47A1",stream:"nba3"},
-    {id:"nba4",name:"NBA 4",short:"NBA4",color:"#0D47A1",stream:"nba4"},
-    {id:"nba5",name:"NBA 5",short:"NBA5",color:"#0D47A1",stream:"nba5"},
-    {id:"premiere1",name:"Premiere 1",short:"PR1",color:"#2E7D32",stream:"premiere1"},
-    {id:"premiere2",name:"Premiere 2",short:"PR2",color:"#2E7D32",stream:"premiere2"},
-    {id:"sportv1",name:"SporTV 1",short:"SP1",color:"#2E7D32",stream:"sportv1"},
-    {id:"sportv2",name:"SporTV 2",short:"SP2",color:"#2E7D32",stream:"sportv2"},
-    {id:"sportv3",name:"SporTV 3",short:"SP3",color:"#2E7D32",stream:"sportv3"},
-    {id:"telemundo",name:"Telemundo",short:"TELE",color:"#2E7D32",stream:"telemundo"},
-    {id:"tigosports",name:"Tigo Sports",short:"TIGO",color:"#2E7D32",stream:"tigosports"},
-    {id:"tnt",name:"TNT",short:"TNT",color:"#FF6F00",stream:"tnt"},
-    {id:"tntchile",name:"TNT Chile",short:"TNTCH",color:"#FF6F00",stream:"tntchile"},
-    {id:"tntpremium",name:"TNT Premium",short:"TNTP",color:"#FF6F00",stream:"tntpremium"},
-    {id:"tntsports",name:"TNT Sports",short:"TNTS",color:"#FF6F00",stream:"tntsports"},
-    {id:"tudn",name:"TUDN",short:"TUDN",color:"#2E7D32",stream:"tudn"},
-    {id:"tudnusa",name:"TUDN USA",short:"TUDNUS",color:"#2E7D32",stream:"tudnusa"},
-    {id:"tycsports",name:"TyC Sports",short:"TYC",color:"#00897B",stream:"tycsports"},
-    {id:"tycsportsint",name:"TyC Int",short:"TYCI",color:"#00897B",stream:"tycsportsint"},
-    {id:"universo",name:"Universo",short:"UNIV",color:"#2E7D32",stream:"universo"},
-    {id:"usa",name:"USA Network",short:"USA",color:"#2E7D32",stream:"usa"},
-    {id:"vix1",name:"VIX 1",short:"VIX1",color:"#7B1FA2",stream:"vix1"},
-    {id:"vix2",name:"VIX 2",short:"VIX2",color:"#7B1FA2",stream:"vix2"},
-    {id:"vix3",name:"VIX 3",short:"VIX3",color:"#7B1FA2",stream:"vix3"},
-    {id:"vix4",name:"VIX 4",short:"VIX4",color:"#7B1FA2",stream:"vix4"},
-    {id:"win",name:"Win Sports",short:"WIN",color:"#00897B",stream:"win"},
-    {id:"winplus",name:"Win+",short:"WIN+",color:"#00897B",stream:"winplus"}
-  ];
-
-
-  const customStreams = {
-    "dsportsglobal": "https://streamxhd.sbs/channel/?id=dsports",
-    "ps1": "https://streamxhd.click/channel/?id=ps1",
-    "dsports": "https://streamxhd.sbs/live1.php?stream=dsports",
-    "espnplus4": "https://streamxhd.sbs/live1.php?stream=espnplus4",
-    "espndeportes": "https://streamxhd.sbs/live1.php?stream=espndeportes",
-    "daznlaliga": "https://streamxhd.sbs/live1.php?stream=daznlaliga"
-  };
-
-  const ligas = {
-    "El Clásico Barcelona vs Real Madrid 3PM": ["dsportsglobal","ps1","dsports","espnplus4","espndeportes","daznlaliga"],
-    "LaLiga Española": ["espnplus4","espndeportes","mlaliga","movistarlaliga","daznla1","dazn1","dazn2","dsports","dsports2","espn","espn2","espnarg","disney1","disney2","foxone"],
-    "Premier League": ["espn","espn2","espn3","disney1","disney2","disney3","tnt","dazn1","usa","espnusa"],
-    "Serie A": ["espn","disney3","disney4","disney5","dazn2","fox1ar","espn4"],
-    "Bundesliga": ["espn","espn2","disney6","dazn1","fox2ar"],
-    "Ligue 1 Francia": ["espn","disney7","dazn3","espn5"],
-    "Champions League": ["espn","espn2","disney1","disney2","disney3","disney4","disney5","disney6","fox1ar","tnt","max1","max2","max3","max4"],
-    "Copa Libertadores": ["fox1ar","fox2ar","foxsportsar","dsports","dsportsglobal","disney10","disney11","espn","espnpremium"],
-    "Copa Sudamericana": ["dsports","dsportsplus","disney12","disney13","espn2"],
-    "Liga Argentina": ["espnpremium","tntsports","tntpremium","foxsportsar","foxsports2ar","tycsports","fox1ar","espnarg","fox3ar"],
-    "Brasileirão": ["premiere1","premiere2","sportv1","sportv2","sportv3","espn","disney10"],
-    "Liga 1 Perú": ["l1max","liga1max","golperu","gol","america-tv","atv"],
-    "Liga Colombiana": ["win","winplus","caracol","canal13","chilevision"],
-    "MLS USA": ["appletv1","appletv2","appletv3","appletv4","appletv5","appletv6","appletv7","tudn","tudnusa","telemundo","universo","fs1usa","foxdeportes","fs2usa","usa"],
-    "NBA": ["nba1","nba2","nba3","nba4","nba5","espn","espn2"],
-    "Otros / Entretenimiento": ["beinsports","beinsports2","beinsports3","daznf1","tigosports","tycsportsint","vix1","vix2","vix3","vix4"]
-  };
-
-  const xm = (s)=>"https://streamxhd.sbs/live1.php?stream="+s;
-  const main = document.getElementById('mainPlayer365');
-  const overlay = document.getElementById('overlay365');
-  const gridTodos = document.getElementById('gridTodos365');
-  const ligasCont = document.getElementById('ligasContainer');
-
-  function loadChannel(stream){
-    main.src = xm(stream);
-    if(overlay) overlay.style.display='none';
-    window.scrollTo({top:document.getElementById('futbol-en-vivo-hoy-channel-vivo-final').offsetTop - 10, behavior:'smooth'});
-  }
-
-  function makeBtn(c, small){
-    const b = document.createElement('button');
-    b.style.cssText = small ? 'background:#111827;border:1px solid #1f2937;border-radius:10px;padding:6px 8px;display:flex;align-items:center;gap:6px;cursor:pointer;text-align:left;width:100%' : 'background:#1a1f26;border:1px solid #232e3a;border-radius:12px;padding:10px;cursor:pointer;text-align:left;width:100%';
-    b.innerHTML = '<div style="width:26px;height:26px;border-radius:6px;background:'+c.color+';display:grid;place-items:center;color:#fff;font-size:8px;font-weight:900;flex-shrink:0">'+c.short+'</div><div style="flex:1;min-width:0"><div style="color:#e2e8f0;font-size:'+(small?'10px':'11px')+';font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+c.name+'</div><div style="color:#64748b;font-size:9px">'+c.stream+'</div></div><span style="color:#334155">▶</span>';
-    b.onclick = ()=>loadChannel(c.stream);
-    b.onmouseenter = ()=>b.style.borderColor = '#00ff88';
-    b.onmouseleave = ()=>b.style.borderColor = small ? '#1f2937' : '#232e3a';
-    return b;
-  }
-
-  // Todos
-  Uc.forEach(c=>{ gridTodos.appendChild(makeBtn(c,false)); });
-
-  // Por ligas
-  Object.entries(ligas).forEach(([liga, streams])=>{
-    const details = document.createElement('details');
-    details.style.cssText = 'background:#111827;border:1px solid #1f2937;border-radius:10px;overflow:hidden';
-    const summary = document.createElement('summary');
-    summary.style.cssText = 'list-style:none;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:#e2e8f0;font-size:12px;font-weight:800';
-    const canalesLiga = streams.map(s=>Uc.find(x=>x.stream===s)).filter(Boolean);
-    summary.innerHTML = '<span>'+liga+'</span><span style="background:#0f141e;border:1px solid #1e293b;padding:2px 8px;border-radius:9999px;font-size:10px;color:#94a3b8">'+canalesLiga.length+' canales</span>';
-    const inner = document.createElement('div');
-    inner.style.cssText = 'padding:8px;display:grid;grid-template-columns:1fr;gap:6px;background:#0a0e16;border-top:1px solid #1e293b';
-    canalesLiga.forEach(c=>{ inner.appendChild(makeBtn(c,true)); });
-    details.appendChild(summary);
-    details.appendChild(inner);
-    ligasCont.appendChild(details);
-  });
-
-  // Responsive grid adjustment
-  const style = document.createElement('style');
-  style.textContent = '@media(min-width:640px){#gridTodos365{grid-template-columns:repeat(4,1fr)!important}}@media(min-width:1024px){#gridTodos365{grid-template-columns:repeat(5,1fr)!important}#mainGrid{grid-template-columns:1.6fr .9fr!important}}@media(min-width:1280px){#gridTodos365{grid-template-columns:repeat(6,1fr)!important}}';
-  document.head.appendChild(style);
-})();
+const evLeagues=[
+ {n:'Champions League Femenina',c:'l-ucl',i:'UCL'},
+ {n:'UEFA Liga de Naciones',c:'l-nations',i:'UNL'},
+ {n:'Fútbol FIFA',c:'l-fifa',i:'FIFA'},
+ {n:'LaLiga Española',c:'l-laliga',i:'LIGA'},
+ {n:'Serie A Italiana',c:'l-seriea',i:'SA'},
+ {n:'Liga Argentina',c:'l-arg',i:'ARG'},
+ {n:'Copa Libertadores',c:'l-lib',i:'LIB'},
+ {n:'Bundesliga',c:'l-bun',i:'BUN'},
+ {n:'Premier League',c:'l-premier',i:'PL'},
+ {n:'Liga Colombia',c:'l-col',i:'COL'},
+ {n:'Concacaf Liga de Naciones',c:'l-conca',i:'CCF'}
+];
+const evData=[
+ {t:'12:00',liga:'Liga de Naciones',cat:'Naciones',teams:'Armenia vs Chipre',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney1'}]},
+ {t:'12:00',liga:'Liga de Naciones',cat:'Naciones',teams:'Turquía vs Bélgica',ch:[{n:'ESPN',u:'https://streamxhd.sbs/live1.php?stream=espn'},{n:'ESPN AR',u:'https://streamxhd.sbs/live1.php?stream=espnar'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney2'}]},
+ {t:'12:45',liga:'Champions League Femenina',cat:'Champions',teams:'Barcelona vs Arsenal',ch:[{n:'ESPN 2',u:'https://streamxhd.sbs/live1.php?stream=espn2'},{n:'ESPN Deportes',u:'https://streamxhd.sbs/live1.php?stream=espndeportes'}]},
+ {t:'13:00',liga:'Torneo de Reserva',cat:'Argentina',teams:'Rosario Central vs River Plate',ch:[{n:'TNT Sports',u:'https://streamxhd.sbs/live1.php?stream=tntsports'}]},
+ {t:'14:45',liga:'Liga de Naciones',cat:'Naciones',teams:'San Marino vs Bielorrusia',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney3'}]},
+ {t:'14:45',liga:'Liga de Naciones',cat:'Naciones',teams:'Montenegro vs Letonia',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney4'}]},
+ {t:'14:45',liga:'Liga de Naciones',cat:'Naciones',teams:'Italia vs Francia',ch:[{n:'ESPN',u:'https://streamxhd.sbs/live1.php?stream=espn'},{n:'ESPN AR',u:'https://streamxhd.sbs/live1.php?stream=espnar'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney5'},{n:'ViX +',u:'https://streamxhd.sbs/live1.php?stream=vix1'}]},
+ {t:'14:45',liga:'Liga de Naciones',cat:'Naciones',teams:'Inglaterra vs Croacia',ch:[{n:'ESPN 2',u:'https://streamxhd.sbs/live1.php?stream=espn2'},{n:'ESPN 2 AR',u:'https://streamxhd.sbs/live1.php?stream=espn2ar'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney6'},{n:'ViX +',u:'https://streamxhd.sbs/live1.php?stream=vix2'}]},
+ {t:'14:45',liga:'Liga de Naciones',cat:'Naciones',teams:'Albania vs Finlandia',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney7'}]},
+ {t:'14:45',liga:'Liga de Naciones',cat:'Naciones',teams:'República Checa vs España',ch:[{n:'ESPN 3',u:'https://streamxhd.sbs/live1.php?stream=espn3'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney8'},{n:'La 1 ES',u:'https://streamxhd.sbs/live1.php?stream=la1es'}]},
+ {t:'15:00',liga:'Concacaf Liga de Naciones',cat:'Concacaf',teams:'Bonaire vs Cuba',ch:[{n:'ViX',u:'https://streamxhd.sbs/live1.php?stream=vix3'}]},
+ {t:'17:00',liga:'Liga Colombia',cat:'Colombia',teams:'Deportivo Pasto vs Junior',ch:[{n:'Win Sports +',u:'https://streamxhd.sbs/live1.php?stream=winplus'}]},
+ {t:'18:00',liga:'Supercopa Argentina',cat:'Argentina',teams:'Estudiantes vs Independiente Rivadavia',ch:[{n:'ESPN AR',u:'https://streamxhd.sbs/live1.php?stream=espnar'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney9'}]},
+ {t:'19:00',liga:'Liga Colombia',cat:'Colombia',teams:'Llaneros vs Boyacá Chicó',ch:[{n:'Win Sports +',u:'https://streamxhd.sbs/live1.php?stream=winplus'},{n:'Win Sports',u:'https://streamxhd.sbs/live1.php?stream=winsports'}]}
+];
+let evCurrent=null, evFilter='Todos';
+function evRenderSlider(){
+  const half=evLeagues.map(l=>`<span class="ev-liga"><em class="${l.c}">${l.i}</em>${l.n}</span>`).join('');
+  document.getElementById('ev-track').innerHTML=half+half;
+}
+function evRenderFilter(){
+  const cats=['Todos',...new Set(evData.map(e=>e.cat))];
+  document.getElementById('ev-filter').innerHTML=cats.map(c=>`<button class="${c===evFilter?'on':''}" onclick="evSetFilter('${c}')">${c}</button>`).join('');
+}
+function evSetFilter(c){evFilter=c;evRenderFilter();evRenderList();}
+function evRenderList(){
+  const list=document.getElementById('ev-list');
+  const data=evData.filter(e=>evFilter==='Todos'||e.cat===evFilter);
+  list.innerHTML=data.map((e,idx)=>{
+    const gi=evData.indexOf(e);
+    return `<div class="ev-item" id="ev-item-${gi}"><button class="ev-item-head" onclick="evToggle(${gi})"><span class="ev-time">${e.t}<small>PRONTO</small></span><span class="ev-teams">${e.teams}<small>${e.liga} · ${e.ch.length} canal${e.ch.length>1?'es':''}</small></span><span class="ev-arrow">▾</span></button><div class="ev-channels">${e.ch.map((c,ci)=>`<div class="ev-ch"><div><b>${ci+1} · ${c.n}</b><span>${e.teams}</span></div><div style="display:flex;gap:6px"><button onclick="evPlay(${gi},${ci})">▶ Ver aquí</button><button class="copy" onclick="evCopy('${c.u}')">Copiar</button></div></div>`).join('')}</div></div>`;
+  }).join('');
+}
+function evToggle(i){document.querySelectorAll('.ev-item').forEach(el=>{if(el.id!=='ev-item-'+i)el.classList.remove('open')});document.getElementById('ev-item-'+i).classList.toggle('open');}
+function evPlay(gi,ci){
+  const e=evData[gi], c=e.ch[ci]; evCurrent=c.u;
+  document.getElementById('ev-iframe').src=c.u;
+  document.getElementById('ev-empty').style.display='none';
+  document.getElementById('ev-now-title').textContent=e.teams+' · '+c.n;
+  document.getElementById('ev-now-info').textContent='Reproduciendo: '+e.teams+' — '+e.liga+' · '+e.t+' · Canal: '+c.n;
+  document.getElementById('ev-item-'+gi).classList.add('open');
+  if(window.innerWidth<900) document.getElementById('eventos-hoy-365').scrollIntoView({behavior:'smooth'});
+}
+function evOpenNew(){if(!evCurrent){alert('Primero elige un canal.');return;} window.open(evCurrent,'_blank');}
+function evCopy(u){navigator.clipboard&&navigator.clipboard.writeText(u);document.getElementById('ev-copy-msg').textContent='¡Link copiado!';setTimeout(()=>document.getElementById('ev-copy-msg').textContent='',2000);}
+function evCopyCurrent(){if(!evCurrent){alert('Primero elige un canal.');return;} evCopy(evCurrent);}
+evRenderSlider();evRenderFilter();evRenderList();
 </script>
 </section>
-<!-- ===== FIN BLOQUE FUTBOL EN VIVO HOY - 90 CANALES FINAL ===== -->
+<!-- ===== FIN NUEVO BLOQUE 365PERU - EVENTOS HOY ===== -->
+
 
 
 <!-- === TRADUCTOR 365PERU DISCRETO - NO TAPA CHAT NI MENUS === -->
@@ -2106,7 +1593,7 @@ function validarYCorregirIframe(codigo, validationId, previewId){
 function descargarSitioWeb(){
   try{
     let html = document.documentElement.outerHTML;
-    if(!/^\n' + html;
+    if(!/^<!doctype/i.test(html)) html = '<!DOCTYPE html>\n' + html;
     html = html.replace(/blogsDinamicos=raw\?JSON\.parse\(raw\):\[[\s\S]*?\];/, 'blogsDinamicos=raw?JSON.parse(raw):'+JSON.stringify(blogsDinamicos)+';');
     html = html.replace(/deportesDinamicos=raw\?JSON\.parse\(raw\):\[[\s\S]*?\];/, 'deportesDinamicos=raw?JSON.parse(raw):'+JSON.stringify(deportesDinamicos)+';');
     html = html.replace(/anunciosDinamicos=raw\?JSON\.parse\(raw\):\[[\s\S]*?\];/, 'anunciosDinamicos=raw?JSON.parse(raw):'+JSON.stringify(anunciosDinamicos)+';');
@@ -3849,7 +3336,7 @@ function render(){
  }
  else { if(selectedId==='myblog-hub'){ mainContent= vistaActualBlog!==null? getBlogDetalleHTML(vistaActualBlog) : getMyBlogInsideHTML(); } else { mainContent=getMiBlogHubCardHTML(); } }
  app.innerHTML=`
-<div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px;color:#000"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px"><span style="color:#000">365</span><span style="color:#000">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
+<header class="bg-white border-b sticky top-0 z-[60] w-full"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px;color:#000"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px"><span style="color:#000">365</span><span style="color:#000">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
 
 <div style="max-width:1280px;margin:8px auto 0;padding:0 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
 <button onclick="setCat('musica')" style="padding:6px 12px;border-radius:9999px;border:1px solid #7C4494;font-size:11px;font-weight:900;white-space:nowrap;background:#fdf4ff;color:#7C4494">🎵 Música</button>
@@ -4493,9 +3980,9 @@ document.addEventListener('click',function(ev){
     </div>
   </div>
   <div style="background:#080B12">
-    
-
-
+    <!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Landing pages que trabajan mientras tú no</title>
@@ -4612,11 +4099,11 @@ document.addEventListener('click',function(ev){
   transform: translateX(4px);
 }
 </style>
-
-
+</head>
+<body>
 <div class="bg-grid"></div>
 <nav><div class="wrap"><div class="brand"><span class="dot"></span>tu.proyecto/web</div><button class="nav-cta" onclick="document.getElementById('formulario').scrollIntoView()">Quiero mi landing</button></div></nav>
-<div class="wrap"><div><p class="kicker">Diseño web para negocios que venden por redes</p><h1>Tu proyecto merece algo mejor que un link en la bio</h1><p class="lead">Diseño y publico una página propia para tu negocio, conectada a tu WhatsApp, para que cada persona que llega desde TikTok o Instagram pueda ver, preguntar y comprar sin salir del flujo.</p><div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView()">Ver planes desde S/20</button><button class="btn-ghost" onclick="document.getElementById('formulario').scrollIntoView()">Hablar por WhatsApp</button></div></div><div class="flow"><div class="flow-step"><div class="flow-num">1</div><div><h4>Publicas en TikTok o Instagram</h4><p>Tu contenido genera curiosidad sobre lo que ofreces.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">2</div><div><h4>La persona entra a tu landing</h4><p>Ve fotos, videos, precios y todo lo que necesita para decidir.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">3</div><div><h4>Te escribe directo al WhatsApp</h4><p>El formulario ya recogió sus datos y su interés. Solo respondes.</p></div></div></div></div></header>
+<header class="hero"><div class="wrap"><div><p class="kicker">Diseño web para negocios que venden por redes</p><h1>Tu proyecto merece algo mejor que un link en la bio</h1><p class="lead">Diseño y publico una página propia para tu negocio, conectada a tu WhatsApp, para que cada persona que llega desde TikTok o Instagram pueda ver, preguntar y comprar sin salir del flujo.</p><div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView()">Ver planes desde S/20</button><button class="btn-ghost" onclick="document.getElementById('formulario').scrollIntoView()">Hablar por WhatsApp</button></div></div><div class="flow"><div class="flow-step"><div class="flow-num">1</div><div><h4>Publicas en TikTok o Instagram</h4><p>Tu contenido genera curiosidad sobre lo que ofreces.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">2</div><div><h4>La persona entra a tu landing</h4><p>Ve fotos, videos, precios y todo lo que necesita para decidir.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">3</div><div><h4>Te escribe directo al WhatsApp</h4><p>El formulario ya recogió sus datos y su interés. Solo respondes.</p></div></div></div></div></header>
 <section class="explain"><div class="wrap"><div><h2>¿Qué es una landing page, en simple?</h2><p class="sticky-note">Piénsalo como tu vitrina, pero una que nunca cierra y que nadie te puede tapar con un cartel.</p></div><div><div class="analogy">Una <strong>landing page</strong> es una sola página web hecha para un objetivo: que la persona que llega desde tu red social entienda tu oferta en segundos y dé el siguiente paso — escribirte, pedir precio o comprar. A diferencia de un perfil de Instagram o TikTok, tú decides todo lo que se ve: el orden, las fotos, el precio, el botón de contacto. Nadie más pone anuncios ahí ni te compite por la atención.</div><div class="compare"><div class="card"><h4>Solo en redes sociales</h4><ul><li>El algoritmo decide quién te ve</li><li>Compites con anuncios de otros</li><li>El perfil se ve igual para todos</li><li>Contactar te implica seguir el hilo del chat</li></ul></div><div class="card win"><h4>Con tu landing page</h4><ul><li>Un solo link, control total del mensaje</li><li>Sin distracciones ni anuncios de otros</li><li>Galería, videos y precios organizados</li><li>El formulario ya te manda todo listo al WhatsApp</li></ul></div></div></div></div></section>
 <section class="benefits"><div class="wrap"><h2>Funciona para ti y para quien te contrata</h2><div class="benefit-grid"><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><h3>Trabaja 24/7</h3><p>La página sigue mostrando el proyecto y recibiendo consultas aunque tú estés durmiendo o con otro cliente.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#FF2E9A" stroke-width="1.6"><path d="M4 12h16M4 6h16M4 18h10"/></svg><h3>Todo ya está configurado</h3><p>El cliente no arma nada: llenar y enviar. La información llega ordenada directo a tu WhatsApp.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C8FF3D" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg><h3>Organización eficaz</h3><p>Cada consulta llega con categoría, país y detalles del proyecto — sabes con qué estás tratando antes de responder.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.6"><path d="M4 20l4-10 4 6 4-8 4 12"/></svg><h3>Se comparte en un clic</h3><p>Un solo link en la bio de TikTok o Instagram conecta directo con tu vitrina completa.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#FF2E9A" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8l9 6 9-6"/></svg><h3>Un solo lugar para todo</h3><p>Fotos, videos y galería del proyecto en un mismo sitio, sin depender del orden del feed.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C8FF3D" stroke-width="1.6"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg><h3>Crece con tu negocio</h3><p>Empiezas simple con el plan básico y subes a pasarela de pago y carrito cuando lo necesites.</p></div></div></div></section>
 <section class="plans" id="planes"><div class="wrap"><div class="plans-head"><h2>Planes para tu landing page</h2><p>Precios en soles. Elige uno y te llevamos directo al formulario para coordinar los detalles por WhatsApp o correo.</p></div><div class="plan-grid">
@@ -4977,6 +4464,63 @@ window.addEventListener('popstate',()=>{
 <!-- ===== FIN VISTA PELICULAS EN VIVO ===== -->
 
 
-<!-- ESPACIO LIMPIO PARA TU NUEVO BLOQUE -->
+<!-- ===== BLOQUE SEO OCULTO - NO SE VE PERO GOOGLE LO LEE - TODAS LAS LIGAS EN VIVO ===== -->
+<div id="seo-oculto-365peru-futbol-vivo" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+  <h1>Fútbol en Vivo Gratis Hoy - 365Perú.com - Ver Fútbol en Vivo</h1>
+  <h2>Premier League en Vivo, Champions League en Vivo Gratis, La Liga Española en Vivo, Liga Peruana en Vivo Liga 1 Max</h2>
+  <p>Ver fútbol en vivo gratis hoy en 365Perú.com transmisiones en vivo 24/7. Fútbol en vivo, fútbol libre, ver canales en vivo gratis, canales en vivo, canal en vivo, channel en vivo, channel en vivo gratis, transmisiones en vivo, transmisión en vivo fútbol hoy.</p>
+  <p>Premier League transmisión en vivo hoy, Champions League transmisión en vivo gratis, La Liga Española en vivo hoy, Liga 1 Max Perú en vivo, Liga MX en vivo, Serie A italiana en vivo, Bundesliga alemana en vivo, Ligue 1 Francia en vivo, Copa Libertadores en vivo, Copa Sudamericana en vivo, Brasileirão en vivo, Liga Argentina en vivo, MLS en vivo, fútbol peruano en vivo.</p>
+  <p>Canales en vivo gratis 24/7: Liga 1 Max en vivo, GolPerú en vivo, América TV en vivo, Latina en vivo, ATV en vivo, Willax en vivo, DirecTV Sports en vivo, ESPN en vivo, Fox Sports en vivo, TyC Sports en vivo, Win Sports en vivo. Channel en vivo gratis.</p>
+  <p>Entretenimiento full gratis 365peru.com con entretenimiento gratuito, entretenimiento en vivo, canales en vivo gratis, música gratis en vivo, noticias del día en vivo, intrattenimento full gratis, televisión en vivo gratis, ver tv en vivo gratis.</p>
+  <p>Ver partido en vivo hoy, ver partido de hoy en vivo gratis, fútbol en vivo hoy gratis por internet, transmisiones deportivas en vivo, partidos de hoy en vivo, resultados en vivo hoy.</p>
+</div>
+
+<!-- BLOQUE SEO VISIBLE PERO MUY DISCRETO AL FINAL - AYUDA A RANKING SIN MOLESTAR -->
+<section id="seo-footer-futbol-vivo" style="max-width:1280px;margin:40px auto 0;padding:20px 16px;background:#0a0e16;border-radius:18px;border:1px solid #1e293b;font-family:Inter,sans-serif;">
+<style>
+#seo-footer-futbol-vivo h2{color:#f8fafc;font-size:14px;font-weight:900;margin:0 0 10px;letter-spacing:-.3px}
+#seo-footer-futbol-vivo h3{color:#94a3b8;font-size:11px;font-weight:800;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.8px}
+#seo-footer-futbol-vivo p, #seo-footer-futbol-vivo li{color:#64748b;font-size:11px;line-height:1.6;margin:0}
+#seo-footer-futbol-vivo ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:8px 0 0}
+#seo-footer-futbol-vivo li{background:#111827;border:1px solid #1f2937;padding:4px 9px;border-radius:9999px;color:#94a3b8;font-size:10px}
+#seo-footer-futbol-vivo a{color:#38bdf8;text-decoration:none}
+</style>
+<h2>⚽ 365Perú.com - Fútbol en Vivo Gratis Hoy | Canales en Vivo 24/7</h2>
+<p>En <strong style="color:#e2e8f0">365Perú.com</strong> encuentras <strong style="color:#e2e8f0">fútbol en vivo gratis hoy</strong>, <strong style="color:#e2e8f0">canales en vivo gratis</strong>, <strong style="color:#e2e8f0">channel en vivo</strong>, <strong style="color:#e2e8f0">transmisiones en vivo</strong> 24/7, <strong style="color:#e2e8f0">entretenimiento full gratis</strong> y <strong style="color:#e2e8f0">música gratis en vivo</strong>. Guía diaria para ver <strong>Premier League en vivo, Champions League gratis, La Liga Española en vivo, Liga 1 Max Perú, Liga MX, Serie A, Bundesliga, Copa Libertadores</strong> y noticias del día.</p>
+<h3>Todas las ligas en vivo hoy</h3>
+<ul>
+<li>Premier League en vivo hoy</li>
+<li>Champions League en vivo gratis</li>
+<li>La Liga Española en vivo</li>
+<li>Liga 1 Max Perú en vivo</li>
+<li>Liga MX México en vivo</li>
+<li>Serie A Italia en vivo</li>
+<li>Bundesliga Alemana en vivo</li>
+<li>Ligue 1 Francia en vivo</li>
+<li>Copa Libertadores en vivo</li>
+<li>Copa Sudamericana en vivo</li>
+<li>Brasileirão en vivo</li>
+<li>Liga Argentina en vivo</li>
+<li>MLS USA en vivo</li>
+<li>Europa League en vivo</li>
+<li>Eliminatorias en vivo</li>
+<li>Fútbol Libre en vivo</li>
+</ul>
+<h3>Canales y entretenimiento en vivo</h3>
+<ul>
+<li>Ver canales en vivo gratis</li>
+<li>Canal en vivo gratis</li>
+<li>Channel en vivo gratis</li>
+<li>Transmisiones en vivo 24/7</li>
+<li>Entretenimiento en vivo gratis</li>
+<li>Música gratis en vivo</li>
+<li>Noticias del día en vivo</li>
+<li>TV en vivo gratis Perú</li>
+<li>Intrattenimento full gratis</li>
+</ul>
+<p style="margin-top:12px;color:#475569">365Perú.com es tu guía de <a href="/">fútbol en vivo hoy</a> - informamos dónde ver cada partido, horarios, canales en vivo y resultados. Transmisiones oficiales según disponibilidad.</p>
+</section>
+<!-- FIN BLOQUE SEO -->
+
 </body>
 </html>
