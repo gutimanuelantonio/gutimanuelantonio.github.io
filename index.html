@@ -3,6 +3,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>365Perú - Canales en Vivo</title>
+</head>
+<body>
+<section id="channel-vivo-entretenimiento" style="width:100%;background:#080B12;padding:22px 12px;font-family:Inter,system-ui,sans-serif;">
+  <div style="max-width:980px;margin:0 auto;text-align:center;">
+    <div style="display:inline-block;background:#e50914;color:#fff;font-size:11px;font-weight:900;padding:6px 12px;border-radius:999px;letter-spacing:1px;">🔴 EN VIVO</div>
+    <h2 style="color:#fff;font-size:clamp(22px,3vw,32px);font-weight:900;margin:12px 0 4px;letter-spacing:-.5px;">📺 Channel Vivo Entretenimiento - Canales en Vivo</h2>
+    <p style="color:#94a3b8;font-size:13px;margin:0;">Selecciona un canal y míralo en vivo en 365Perú</p>
+  </div>
+
+<div id="tv365-player">
+
+  <style>
+    #tv365-player,
+    #tv365-player * {
+      box-sizing: border-box;
+    }
+
+    #tv365-player {
+      width: 100%;
+      max-width: 900px;
+      margin: 15px auto;
+      background: #1e1e24;
+      color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    #tv365-player .tv365-screen {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #tv365-player .tv365-screen iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    #tv365-player .tv365-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: #aaa;
+      text-align: center;
+      padding: 15px;
+    }
+
+    #tv365-player .tv365-placeholder span {
+      font-size: 42px;
+      color: #e50914;
+    }
+
+    #tv365-player .tv365-placeholder strong {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    #tv365-player .tv365-placeholder small {
+      font-size: 12px;
+    }
+
+    #tv365-player .tv365-panel {
+      padding: 20px;
+    }
+
+    #tv365-player .tv365-title {
+      color: #ccc;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0 0 14px;
+      letter-spacing: 1px;
+    }
+
+    #tv365-player .tv365-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #tv365-player .tv365-btn {
+      background: #303039;
+      color: #fff;
+      border: 2px solid transparent;
+      padding: 13px 8px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+      width: 100%;
+      min-width: 0;
+    }
+
+    #tv365-player .tv365-btn:hover {
+      background: #44444e;
+      border-color: #777;
+    }
+
+    #tv365-player .tv365-btn.active {
+      background: #e50914;
+      border-color: #e50914;
+      box-shadow: 0 0 12px rgba(229,9,20,.4);
+    }
+
+    #tv365-player .tv365-btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    /* TABLETS */
+    @media (max-width: 700px) {
+      #tv365-player .tv365-buttons {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* CELULARES */
+    @media (max-width: 480px) {
+      #tv365-player {
+        border-radius: 8px;
+      }
+
+      #tv365-player .tv365-panel {
+        padding: 12px;
+      }
+
+      #tv365-player .tv365-title {
+        font-size: 13px;
+      }
+
+      #tv365-player .tv365-buttons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      #tv365-player .tv365-btn {
+        padding: 12px 5px;
+        font-size: 12px;
+      }
+
+      #tv365-player .tv365-placeholder span {
+        font-size: 32px;
+      }
+
+      #tv365-player .tv365-placeholder strong {
+        font-size: 13px;
+      }
+
+      #tv365-player .tv365-placeholder small {
+        font-size: 10px;
+      }
+    }
+  </style>
+
+  <!-- PANTALLA DEL REPRODUCTOR -->
+
+  <div class="tv365-screen">
+
+    <iframe
+      data-tv365-frame
+      title="365 Perú TV en vivo"
+      scrolling="no"
+      allowfullscreen
+      allow="autoplay; encrypted-media; picture-in-picture"
+      referrerpolicy="no-referrer-when-downgrade"
+      style="display:none;">
+    </iframe>
+
+    <!-- PANTALLA INICIAL -->
+
+    <div class="tv365-placeholder" data-tv365-placeholder>
+      <span>▶</span>
+      <strong>SELECCIONA UN CANAL</strong>
+      <small>Presiona un botón para comenzar la reproducción</small>
+    </div>
+
+  </div>
+
+  <!-- LISTA DE CANALES -->
+
+  <div class="tv365-panel">
+
+    <p class="tv365-title" data-tv365-title>
+      SELECCIONA UN CANAL
+    </p>
+
+    <div class="tv365-buttons">
+
+      <!-- ENTRETENIMIENTO -->
+
+      <button type="button" class="tv365-btn"
+        data-name="Star Channel"
+        data-url="https://embed.saohgdassregions.com/embed2/starchannel.php">
+        Star Channel
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="América TV"
+        data-url="https://embed.saohgdassregions.com/embed2/americatv.php">
+        América TV
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Latina"
+        data-url="https://embed.saohgdassregions.com/embed2/latina.php">
+        Latina
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Telemundo"
+        data-url="https://embed.saohgdassregions.com/embed2/telemundo51.php">
+        Telemundo
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Warner Channel"
+        data-url="https://embed.saohgdassregions.com/embed2/warnerchannel.php">
+        Warner Channel
+      </button>
+
+      <!-- ESPN -->
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN Deportes"
+        data-url="https://tvf90.com/online/canal.php?stream=espndeportes">
+        ESPN Deportes
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN"
+        data-url="https://tvf90.com/online/canal.php?stream=espn">
+        ESPN
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 2"
+        data-url="https://tvf90.com/online/canal.php?stream=espn2">
+        ESPN 2
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 3"
+        data-url="https://tvf90.com/online/canal.php?stream=espn3">
+        ESPN 3
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 4"
+        data-url="https://tvf90.com/online/canal.php?stream=espn4">
+        ESPN 4
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 5"
+        data-url="https://tvf90.com/online/canal.php?stream=espn5">
+        ESPN 5
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 6"
+        data-url="https://tvf90.com/online/canal.php?stream=espn6">
+        ESPN 6
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 7"
+        data-url="https://tvf90.com/online/canal.php?stream=espn7">
+        ESPN 7
+      </button>
+
+      <!-- DEPORTES INTERNACIONALES -->
+
+      <button type="button" class="tv365-btn"
+        data-name="Sport TV Brasil 1"
+        data-url="https://streamxhd.com/live1.php?stream=sporttvbr1">
+        Sport TV Brasil 1
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="TyC Sports"
+        data-url="https://tvf90.com/online/canal.php?stream=tycsports">
+        TyC Sports
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Sport TV Brasil 2"
+        data-url="https://streamxhd.com/live1.php?stream=sporttvbr2">
+        Sport TV Brasil 2
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="América TV HD"
+        data-url="https://streamxhd.com/live1.php?stream=americatv">
+        América TV HD
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="TUDN USA"
+        data-url="https://streamxhd.com/live1.php?stream=tudn_usa">
+        TUDN USA
+      </button>
+
+    </div>
+  </div>
+
+  <!-- CONTROL DE REPRODUCCIÓN -->
+
+  <script>
+    (function () {
+
+      const root = document.getElementById('tv365-player');
+
+      if (!root || root.dataset.initialized === 'true') return;
+
+      root.dataset.initialized = 'true';
+
+      const frame = root.querySelector('[data-tv365-frame]');
+      const placeholder = root.querySelector('[data-tv365-placeholder]');
+      const title = root.querySelector('[data-tv365-title]');
+      const buttons = root.querySelectorAll('.tv365-btn');
+
+      buttons.forEach(function (button) {
+
+        button.addEventListener('click', function () {
+
+          const url = button.getAttribute('data-url');
+          const name = button.getAttribute('data-name');
+
+          if (!url) return;
+
+          placeholder.style.display = 'none';
+          frame.style.display = 'block';
+
+          /* Reproducción únicamente después del clic */
+          frame.src = url;
+          frame.title = name;
+
+          title.textContent = 'REPRODUCIENDO: ' + name;
+
+          /* Botón activo */
+          buttons.forEach(function (item) {
+            item.classList.remove('active');
+            item.setAttribute('aria-pressed', 'false');
+          });
+
+          button.classList.add('active');
+          button.setAttribute('aria-pressed', 'true');
+
+        });
+
+      });
+
+    })();
+  </script>
+
+</div>
+</section>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== SEO MASTER 365PERU - FUTBOL EN VIVO + ENTRETENIMIENTO ===== -->
 <title>El Clásico Barcelona vs Real Madrid Hoy 3PM - En Vivo Gratis | 365Perú.com - Fútbol en Vivo</title>
@@ -543,8 +917,8 @@ body{top:0!important;}
   transform: translateX(4px);
 }
 </style>
-</head>
-<body class="min-h-screen pb-[140px]">
+
+
 
 
 <!-- ===== NUEVO BLOQUE PRINCIPAL 365PERU.COM - CREADO 08 OCT 2026 ===== -->
@@ -816,374 +1190,8 @@ body{top:0!important;}
 </section>
 
 <!-- ===== NUEVO BLOQUE - TELEVISION EN VIVO - CANALES EN VIVO - 365PERU ===== -->
-<section id="bloque-television-en-vivo-canales-en-vivo" style="width:100%;background:#080B12;padding:22px 12px;font-family:Inter,system-ui,sans-serif;">
-  <div style="max-width:980px;margin:0 auto;text-align:center;">
-    <div style="display:inline-block;background:#e50914;color:#fff;font-size:11px;font-weight:900;padding:6px 12px;border-radius:999px;letter-spacing:1px;">🔴 EN VIVO</div>
-    <h2 style="color:#fff;font-size:clamp(22px,3vw,32px);font-weight:900;margin:12px 0 4px;letter-spacing:-.5px;">📺 Televisión en Vivo - Canales en Vivo</h2>
-    <p style="color:#94a3b8;font-size:13px;margin:0;">Selecciona un canal y míralo en vivo en 365Perú</p>
-  </div>
+<!-- BLOQUE TELEVISION EN VIVO / CANALES EN VIVO ELIMINADO POR PEDIDO DEL USUARIO -->
 
-<div id="tv365-player">
-
-  <style>
-    #tv365-player,
-    #tv365-player * {
-      box-sizing: border-box;
-    }
-
-    #tv365-player {
-      width: 100%;
-      max-width: 900px;
-      margin: 15px auto;
-      background: #1e1e24;
-      color: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-
-    #tv365-player .tv365-screen {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      overflow: hidden;
-    }
-
-    #tv365-player .tv365-screen iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      background: #000;
-    }
-
-    #tv365-player .tv365-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      color: #aaa;
-      text-align: center;
-      padding: 15px;
-    }
-
-    #tv365-player .tv365-placeholder span {
-      font-size: 42px;
-      color: #e50914;
-    }
-
-    #tv365-player .tv365-placeholder strong {
-      font-size: 16px;
-      color: #fff;
-    }
-
-    #tv365-player .tv365-placeholder small {
-      font-size: 12px;
-    }
-
-    #tv365-player .tv365-panel {
-      padding: 20px;
-    }
-
-    #tv365-player .tv365-title {
-      color: #ccc;
-      font-size: 15px;
-      font-weight: bold;
-      margin: 0 0 14px;
-      letter-spacing: 1px;
-    }
-
-    #tv365-player .tv365-buttons {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    #tv365-player .tv365-btn {
-      background: #303039;
-      color: #fff;
-      border: 2px solid transparent;
-      padding: 13px 8px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: .2s;
-      width: 100%;
-      min-width: 0;
-    }
-
-    #tv365-player .tv365-btn:hover {
-      background: #44444e;
-      border-color: #777;
-    }
-
-    #tv365-player .tv365-btn.active {
-      background: #e50914;
-      border-color: #e50914;
-      box-shadow: 0 0 12px rgba(229,9,20,.4);
-    }
-
-    #tv365-player .tv365-btn:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 3px;
-    }
-
-    /* TABLETS */
-    @media (max-width: 700px) {
-      #tv365-player .tv365-buttons {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    /* CELULARES */
-    @media (max-width: 480px) {
-      #tv365-player {
-        border-radius: 8px;
-      }
-
-      #tv365-player .tv365-panel {
-        padding: 12px;
-      }
-
-      #tv365-player .tv365-title {
-        font-size: 13px;
-      }
-
-      #tv365-player .tv365-buttons {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      #tv365-player .tv365-btn {
-        padding: 12px 5px;
-        font-size: 12px;
-      }
-
-      #tv365-player .tv365-placeholder span {
-        font-size: 32px;
-      }
-
-      #tv365-player .tv365-placeholder strong {
-        font-size: 13px;
-      }
-
-      #tv365-player .tv365-placeholder small {
-        font-size: 10px;
-      }
-    }
-  </style>
-
-  <!-- PANTALLA DEL REPRODUCTOR -->
-
-  <div class="tv365-screen">
-
-    <iframe
-      data-tv365-frame
-      title="365 Perú TV en vivo"
-      scrolling="no"
-      allowfullscreen
-      allow="autoplay; encrypted-media; picture-in-picture"
-      referrerpolicy="no-referrer-when-downgrade"
-      style="display:none;">
-    </iframe>
-
-    <!-- PANTALLA INICIAL -->
-
-    <div class="tv365-placeholder" data-tv365-placeholder>
-      <span>▶</span>
-      <strong>SELECCIONA UN CANAL</strong>
-      <small>Presiona un botón para comenzar la reproducción</small>
-    </div>
-
-  </div>
-
-  <!-- LISTA DE CANALES -->
-
-  <div class="tv365-panel">
-
-    <p class="tv365-title" data-tv365-title>
-      SELECCIONA UN CANAL
-    </p>
-
-    <div class="tv365-buttons">
-
-      <!-- ENTRETENIMIENTO -->
-
-      <button type="button" class="tv365-btn"
-        data-name="Star Channel"
-        data-url="https://embed.saohgdassregions.com/embed2/starchannel.php">
-        Star Channel
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="América TV"
-        data-url="https://embed.saohgdassregions.com/embed2/americatv.php">
-        América TV
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Latina"
-        data-url="https://embed.saohgdassregions.com/embed2/latina.php">
-        Latina
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Telemundo"
-        data-url="https://embed.saohgdassregions.com/embed2/telemundo51.php">
-        Telemundo
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Warner Channel"
-        data-url="https://embed.saohgdassregions.com/embed2/warnerchannel.php">
-        Warner Channel
-      </button>
-
-      <!-- ESPN -->
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN Deportes"
-        data-url="https://tvf90.com/online/canal.php?stream=espndeportes">
-        ESPN Deportes
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN"
-        data-url="https://tvf90.com/online/canal.php?stream=espn">
-        ESPN
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 2"
-        data-url="https://tvf90.com/online/canal.php?stream=espn2">
-        ESPN 2
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 3"
-        data-url="https://tvf90.com/online/canal.php?stream=espn3">
-        ESPN 3
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 4"
-        data-url="https://tvf90.com/online/canal.php?stream=espn4">
-        ESPN 4
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 5"
-        data-url="https://tvf90.com/online/canal.php?stream=espn5">
-        ESPN 5
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 6"
-        data-url="https://tvf90.com/online/canal.php?stream=espn6">
-        ESPN 6
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="ESPN 7"
-        data-url="https://tvf90.com/online/canal.php?stream=espn7">
-        ESPN 7
-      </button>
-
-      <!-- DEPORTES INTERNACIONALES -->
-
-      <button type="button" class="tv365-btn"
-        data-name="Sport TV Brasil 1"
-        data-url="https://streamxhd.com/live1.php?stream=sporttvbr1">
-        Sport TV Brasil 1
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="TyC Sports"
-        data-url="https://tvf90.com/online/canal.php?stream=tycsports">
-        TyC Sports
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="Sport TV Brasil 2"
-        data-url="https://streamxhd.com/live1.php?stream=sporttvbr2">
-        Sport TV Brasil 2
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="América TV HD"
-        data-url="https://streamxhd.com/live1.php?stream=americatv">
-        América TV HD
-      </button>
-
-      <button type="button" class="tv365-btn"
-        data-name="TUDN USA"
-        data-url="https://streamxhd.com/live1.php?stream=tudn_usa">
-        TUDN USA
-      </button>
-
-    </div>
-  </div>
-
-  <!-- CONTROL DE REPRODUCCIÓN -->
-
-  <script>
-    (function () {
-
-      const root = document.getElementById('tv365-player');
-
-      if (!root || root.dataset.initialized === 'true') return;
-
-      root.dataset.initialized = 'true';
-
-      const frame = root.querySelector('[data-tv365-frame]');
-      const placeholder = root.querySelector('[data-tv365-placeholder]');
-      const title = root.querySelector('[data-tv365-title]');
-      const buttons = root.querySelectorAll('.tv365-btn');
-
-      buttons.forEach(function (button) {
-
-        button.addEventListener('click', function () {
-
-          const url = button.getAttribute('data-url');
-          const name = button.getAttribute('data-name');
-
-          if (!url) return;
-
-          placeholder.style.display = 'none';
-          frame.style.display = 'block';
-
-          /* Reproducción únicamente después del clic */
-          frame.src = url;
-          frame.title = name;
-
-          title.textContent = 'REPRODUCIENDO: ' + name;
-
-          /* Botón activo */
-          buttons.forEach(function (item) {
-            item.classList.remove('active');
-            item.setAttribute('aria-pressed', 'false');
-          });
-
-          button.classList.add('active');
-          button.setAttribute('aria-pressed', 'true');
-
-        });
-
-      });
-
-    })();
-  </script>
-
-</div>
-</section>
 <!-- ===== FIN NUEVO BLOQUE - TELEVISION EN VIVO - CANALES EN VIVO ===== -->
 
 <!-- ===== NUEVO BLOQUE 365PERU WEB DESIGN - SLIDER + REPRODUCTOR 100% + WHATSAPP - CREADO 01 NOV 2026 ===== -->
@@ -2098,7 +2106,7 @@ function validarYCorregirIframe(codigo, validationId, previewId){
 function descargarSitioWeb(){
   try{
     let html = document.documentElement.outerHTML;
-    if(!/^<!doctype/i.test(html)) html = '<!DOCTYPE html>\n' + html;
+    if(!/^\n' + html;
     html = html.replace(/blogsDinamicos=raw\?JSON\.parse\(raw\):\[[\s\S]*?\];/, 'blogsDinamicos=raw?JSON.parse(raw):'+JSON.stringify(blogsDinamicos)+';');
     html = html.replace(/deportesDinamicos=raw\?JSON\.parse\(raw\):\[[\s\S]*?\];/, 'deportesDinamicos=raw?JSON.parse(raw):'+JSON.stringify(deportesDinamicos)+';');
     html = html.replace(/anunciosDinamicos=raw\?JSON\.parse\(raw\):\[[\s\S]*?\];/, 'anunciosDinamicos=raw?JSON.parse(raw):'+JSON.stringify(anunciosDinamicos)+';');
@@ -3841,7 +3849,7 @@ function render(){
  }
  else { if(selectedId==='myblog-hub'){ mainContent= vistaActualBlog!==null? getBlogDetalleHTML(vistaActualBlog) : getMyBlogInsideHTML(); } else { mainContent=getMiBlogHubCardHTML(); } }
  app.innerHTML=`
-<header class="bg-white border-b sticky top-0 z-[60] w-full"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px;color:#000"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px"><span style="color:#000">365</span><span style="color:#000">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
+<div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px;color:#000"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px"><span style="color:#000">365</span><span style="color:#000">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
 
 <div style="max-width:1280px;margin:8px auto 0;padding:0 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
 <button onclick="setCat('musica')" style="padding:6px 12px;border-radius:9999px;border:1px solid #7C4494;font-size:11px;font-weight:900;white-space:nowrap;background:#fdf4ff;color:#7C4494">🎵 Música</button>
@@ -4485,9 +4493,9 @@ document.addEventListener('click',function(ev){
     </div>
   </div>
   <div style="background:#080B12">
-    <!DOCTYPE html>
-<html lang="es">
-<head>
+    
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Landing pages que trabajan mientras tú no</title>
@@ -4604,11 +4612,11 @@ document.addEventListener('click',function(ev){
   transform: translateX(4px);
 }
 </style>
-</head>
-<body>
+
+
 <div class="bg-grid"></div>
 <nav><div class="wrap"><div class="brand"><span class="dot"></span>tu.proyecto/web</div><button class="nav-cta" onclick="document.getElementById('formulario').scrollIntoView()">Quiero mi landing</button></div></nav>
-<header class="hero"><div class="wrap"><div><p class="kicker">Diseño web para negocios que venden por redes</p><h1>Tu proyecto merece algo mejor que un link en la bio</h1><p class="lead">Diseño y publico una página propia para tu negocio, conectada a tu WhatsApp, para que cada persona que llega desde TikTok o Instagram pueda ver, preguntar y comprar sin salir del flujo.</p><div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView()">Ver planes desde S/20</button><button class="btn-ghost" onclick="document.getElementById('formulario').scrollIntoView()">Hablar por WhatsApp</button></div></div><div class="flow"><div class="flow-step"><div class="flow-num">1</div><div><h4>Publicas en TikTok o Instagram</h4><p>Tu contenido genera curiosidad sobre lo que ofreces.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">2</div><div><h4>La persona entra a tu landing</h4><p>Ve fotos, videos, precios y todo lo que necesita para decidir.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">3</div><div><h4>Te escribe directo al WhatsApp</h4><p>El formulario ya recogió sus datos y su interés. Solo respondes.</p></div></div></div></div></header>
+<div class="wrap"><div><p class="kicker">Diseño web para negocios que venden por redes</p><h1>Tu proyecto merece algo mejor que un link en la bio</h1><p class="lead">Diseño y publico una página propia para tu negocio, conectada a tu WhatsApp, para que cada persona que llega desde TikTok o Instagram pueda ver, preguntar y comprar sin salir del flujo.</p><div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView()">Ver planes desde S/20</button><button class="btn-ghost" onclick="document.getElementById('formulario').scrollIntoView()">Hablar por WhatsApp</button></div></div><div class="flow"><div class="flow-step"><div class="flow-num">1</div><div><h4>Publicas en TikTok o Instagram</h4><p>Tu contenido genera curiosidad sobre lo que ofreces.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">2</div><div><h4>La persona entra a tu landing</h4><p>Ve fotos, videos, precios y todo lo que necesita para decidir.</p></div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-num">3</div><div><h4>Te escribe directo al WhatsApp</h4><p>El formulario ya recogió sus datos y su interés. Solo respondes.</p></div></div></div></div></header>
 <section class="explain"><div class="wrap"><div><h2>¿Qué es una landing page, en simple?</h2><p class="sticky-note">Piénsalo como tu vitrina, pero una que nunca cierra y que nadie te puede tapar con un cartel.</p></div><div><div class="analogy">Una <strong>landing page</strong> es una sola página web hecha para un objetivo: que la persona que llega desde tu red social entienda tu oferta en segundos y dé el siguiente paso — escribirte, pedir precio o comprar. A diferencia de un perfil de Instagram o TikTok, tú decides todo lo que se ve: el orden, las fotos, el precio, el botón de contacto. Nadie más pone anuncios ahí ni te compite por la atención.</div><div class="compare"><div class="card"><h4>Solo en redes sociales</h4><ul><li>El algoritmo decide quién te ve</li><li>Compites con anuncios de otros</li><li>El perfil se ve igual para todos</li><li>Contactar te implica seguir el hilo del chat</li></ul></div><div class="card win"><h4>Con tu landing page</h4><ul><li>Un solo link, control total del mensaje</li><li>Sin distracciones ni anuncios de otros</li><li>Galería, videos y precios organizados</li><li>El formulario ya te manda todo listo al WhatsApp</li></ul></div></div></div></div></section>
 <section class="benefits"><div class="wrap"><h2>Funciona para ti y para quien te contrata</h2><div class="benefit-grid"><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><h3>Trabaja 24/7</h3><p>La página sigue mostrando el proyecto y recibiendo consultas aunque tú estés durmiendo o con otro cliente.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#FF2E9A" stroke-width="1.6"><path d="M4 12h16M4 6h16M4 18h10"/></svg><h3>Todo ya está configurado</h3><p>El cliente no arma nada: llenar y enviar. La información llega ordenada directo a tu WhatsApp.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C8FF3D" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg><h3>Organización eficaz</h3><p>Cada consulta llega con categoría, país y detalles del proyecto — sabes con qué estás tratando antes de responder.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.6"><path d="M4 20l4-10 4 6 4-8 4 12"/></svg><h3>Se comparte en un clic</h3><p>Un solo link en la bio de TikTok o Instagram conecta directo con tu vitrina completa.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#FF2E9A" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8l9 6 9-6"/></svg><h3>Un solo lugar para todo</h3><p>Fotos, videos y galería del proyecto en un mismo sitio, sin depender del orden del feed.</p></div><div class="benefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C8FF3D" stroke-width="1.6"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg><h3>Crece con tu negocio</h3><p>Empiezas simple con el plan básico y subes a pasarela de pago y carrito cuando lo necesites.</p></div></div></div></section>
 <section class="plans" id="planes"><div class="wrap"><div class="plans-head"><h2>Planes para tu landing page</h2><p>Precios en soles. Elige uno y te llevamos directo al formulario para coordinar los detalles por WhatsApp o correo.</p></div><div class="plan-grid">
@@ -4970,6 +4978,5 @@ window.addEventListener('popstate',()=>{
 
 
 <!-- ESPACIO LIMPIO PARA TU NUEVO BLOQUE -->
-
 </body>
 </html>
