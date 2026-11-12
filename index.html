@@ -815,61 +815,376 @@ body{top:0!important;}
   </script>
 </section>
 
-<!-- ===== SEGUNDO BLOQUE 365PERU - REPRODUCTOR TV EN VIVO - SOLUCIONADO ===== -->
-<section id="bloque-2-canales-en-vivo" style="background:#121214;padding:22px 12px;">
-<style>
-  #bloque-2-canales-en-vivo{font-family:'Segoe UI',Tahoma,sans-serif;color:#fff}
-  #bloque-2-canales-en-vivo .b2-wrap{width:100%;max-width:1100px;margin:0 auto;background:#1e1e24;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-  #bloque-2-canales-en-vivo .b2-title{padding:16px 20px 0;font-size:22px;font-weight:800}
-  #bloque-2-canales-en-vivo .b2-title span{color:#e50914}
-  #bloque-2-canales-en-vivo .b2-sub{padding:4px 20px 14px;color:#aaa;font-size:14px}
-  #bloque-2-canales-en-vivo .b2-iframe-wrapper{position:relative;width:100%;padding-top:56.25%;background:#000}
-  #bloque-2-canales-en-vivo .b2-iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-  #bloque-2-canales-en-vivo .b2-panel{padding:20px}
-  #bloque-2-canales-en-vivo .b2-panel h3{font-size:1.1rem;margin-bottom:12px;color:#aaa;text-transform:uppercase;letter-spacing:1px}
-  #bloque-2-canales-en-vivo .b2-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-  #bloque-2-canales-en-vivo .b2-btn{background:#2d2d35;color:#fff;border:2px solid transparent;padding:12px 15px;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s;text-align:center;font-family:inherit}
-  #bloque-2-canales-en-vivo .b2-btn:hover{background:#383842;border-color:#555}
-  #bloque-2-canales-en-vivo .b2-btn.active{background:#e50914;border-color:#e50914;box-shadow:0 0 10px rgba(229,9,20,.4)}
-  #bloque-2-canales-en-vivo .b2-fallback{padding:0 20px 16px;text-align:center}
-  #bloque-2-canales-en-vivo .b2-fallback a{color:#fff;background:#e50914;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block}
-  @media(max-width:640px){#bloque-2-canales-en-vivo{padding:12px 8px}#bloque-2-canales-en-vivo .b2-panel{padding:14px}}
-</style>
-
-<div class="b2-wrap">
-  <div class="b2-title">📺 Canales en Vivo <span>365Perú</span></div>
-  <div class="b2-sub">Toca un canal para verlo. Si no carga dentro, dale a Abrir en pestaña nueva.</div>
-
-  <div class="b2-iframe-wrapper">
-    <iframe id="b2-tv-player" src="PEGA_AQUI_TU_URL_STAR_CHANNEL" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+<!-- ===== NUEVO BLOQUE - TELEVISION EN VIVO - CANALES EN VIVO - 365PERU ===== -->
+<section id="bloque-television-en-vivo-canales-en-vivo" style="width:100%;background:#080B12;padding:22px 12px;font-family:Inter,system-ui,sans-serif;">
+  <div style="max-width:980px;margin:0 auto;text-align:center;">
+    <div style="display:inline-block;background:#e50914;color:#fff;font-size:11px;font-weight:900;padding:6px 12px;border-radius:999px;letter-spacing:1px;">🔴 EN VIVO</div>
+    <h2 style="color:#fff;font-size:clamp(22px,3vw,32px);font-weight:900;margin:12px 0 4px;letter-spacing:-.5px;">📺 Televisión en Vivo - Canales en Vivo</h2>
+    <p style="color:#94a3b8;font-size:13px;margin:0;">Selecciona un canal y míralo en vivo en 365Perú</p>
   </div>
 
-  <div class="b2-panel">
-    <h3>Selecciona un Canal:</h3>
-    <div class="b2-btns">
-      <button class="b2-btn active" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_STAR_CHANNEL', this)">Star Channel</button>
-      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_AMERICA_TV', this)">América TV</button>
-      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_LATINA', this)">Latina</button>
-      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_TELEMUNDO', this)">Telemundo</button>
-      <button class="b2-btn" onclick="b2ChangeChannel('PEGA_AQUI_TU_URL_WARNER', this)">Warner Channel</button>
+<div id="tv365-player">
+
+  <style>
+    #tv365-player,
+    #tv365-player * {
+      box-sizing: border-box;
+    }
+
+    #tv365-player {
+      width: 100%;
+      max-width: 900px;
+      margin: 15px auto;
+      background: #1e1e24;
+      color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    #tv365-player .tv365-screen {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #tv365-player .tv365-screen iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    #tv365-player .tv365-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: #aaa;
+      text-align: center;
+      padding: 15px;
+    }
+
+    #tv365-player .tv365-placeholder span {
+      font-size: 42px;
+      color: #e50914;
+    }
+
+    #tv365-player .tv365-placeholder strong {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    #tv365-player .tv365-placeholder small {
+      font-size: 12px;
+    }
+
+    #tv365-player .tv365-panel {
+      padding: 20px;
+    }
+
+    #tv365-player .tv365-title {
+      color: #ccc;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0 0 14px;
+      letter-spacing: 1px;
+    }
+
+    #tv365-player .tv365-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #tv365-player .tv365-btn {
+      background: #303039;
+      color: #fff;
+      border: 2px solid transparent;
+      padding: 13px 8px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+      width: 100%;
+      min-width: 0;
+    }
+
+    #tv365-player .tv365-btn:hover {
+      background: #44444e;
+      border-color: #777;
+    }
+
+    #tv365-player .tv365-btn.active {
+      background: #e50914;
+      border-color: #e50914;
+      box-shadow: 0 0 12px rgba(229,9,20,.4);
+    }
+
+    #tv365-player .tv365-btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    /* TABLETS */
+    @media (max-width: 700px) {
+      #tv365-player .tv365-buttons {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* CELULARES */
+    @media (max-width: 480px) {
+      #tv365-player {
+        border-radius: 8px;
+      }
+
+      #tv365-player .tv365-panel {
+        padding: 12px;
+      }
+
+      #tv365-player .tv365-title {
+        font-size: 13px;
+      }
+
+      #tv365-player .tv365-buttons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      #tv365-player .tv365-btn {
+        padding: 12px 5px;
+        font-size: 12px;
+      }
+
+      #tv365-player .tv365-placeholder span {
+        font-size: 32px;
+      }
+
+      #tv365-player .tv365-placeholder strong {
+        font-size: 13px;
+      }
+
+      #tv365-player .tv365-placeholder small {
+        font-size: 10px;
+      }
+    }
+  </style>
+
+  <!-- PANTALLA DEL REPRODUCTOR -->
+
+  <div class="tv365-screen">
+
+    <iframe
+      data-tv365-frame
+      title="365 Perú TV en vivo"
+      scrolling="no"
+      allowfullscreen
+      allow="autoplay; encrypted-media; picture-in-picture"
+      referrerpolicy="no-referrer-when-downgrade"
+      style="display:none;">
+    </iframe>
+
+    <!-- PANTALLA INICIAL -->
+
+    <div class="tv365-placeholder" data-tv365-placeholder>
+      <span>▶</span>
+      <strong>SELECCIONA UN CANAL</strong>
+      <small>Presiona un botón para comenzar la reproducción</small>
+    </div>
+
+  </div>
+
+  <!-- LISTA DE CANALES -->
+
+  <div class="tv365-panel">
+
+    <p class="tv365-title" data-tv365-title>
+      SELECCIONA UN CANAL
+    </p>
+
+    <div class="tv365-buttons">
+
+      <!-- ENTRETENIMIENTO -->
+
+      <button type="button" class="tv365-btn"
+        data-name="Star Channel"
+        data-url="https://embed.saohgdassregions.com/embed2/starchannel.php">
+        Star Channel
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="América TV"
+        data-url="https://embed.saohgdassregions.com/embed2/americatv.php">
+        América TV
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Latina"
+        data-url="https://embed.saohgdassregions.com/embed2/latina.php">
+        Latina
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Telemundo"
+        data-url="https://embed.saohgdassregions.com/embed2/telemundo51.php">
+        Telemundo
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Warner Channel"
+        data-url="https://embed.saohgdassregions.com/embed2/warnerchannel.php">
+        Warner Channel
+      </button>
+
+      <!-- ESPN -->
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN Deportes"
+        data-url="https://tvf90.com/online/canal.php?stream=espndeportes">
+        ESPN Deportes
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN"
+        data-url="https://tvf90.com/online/canal.php?stream=espn">
+        ESPN
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 2"
+        data-url="https://tvf90.com/online/canal.php?stream=espn2">
+        ESPN 2
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 3"
+        data-url="https://tvf90.com/online/canal.php?stream=espn3">
+        ESPN 3
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 4"
+        data-url="https://tvf90.com/online/canal.php?stream=espn4">
+        ESPN 4
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 5"
+        data-url="https://tvf90.com/online/canal.php?stream=espn5">
+        ESPN 5
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 6"
+        data-url="https://tvf90.com/online/canal.php?stream=espn6">
+        ESPN 6
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="ESPN 7"
+        data-url="https://tvf90.com/online/canal.php?stream=espn7">
+        ESPN 7
+      </button>
+
+      <!-- DEPORTES INTERNACIONALES -->
+
+      <button type="button" class="tv365-btn"
+        data-name="Sport TV Brasil 1"
+        data-url="https://streamxhd.com/live1.php?stream=sporttvbr1">
+        Sport TV Brasil 1
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="TyC Sports"
+        data-url="https://tvf90.com/online/canal.php?stream=tycsports">
+        TyC Sports
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="Sport TV Brasil 2"
+        data-url="https://streamxhd.com/live1.php?stream=sporttvbr2">
+        Sport TV Brasil 2
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="América TV HD"
+        data-url="https://streamxhd.com/live1.php?stream=americatv">
+        América TV HD
+      </button>
+
+      <button type="button" class="tv365-btn"
+        data-name="TUDN USA"
+        data-url="https://streamxhd.com/live1.php?stream=tudn_usa">
+        TUDN USA
+      </button>
+
     </div>
   </div>
-  <div class="b2-fallback"><a id="b2-open-new" href="PEGA_AQUI_TU_URL_STAR_CHANNEL" target="_blank" rel="noopener">↗ Abrir canal en pestaña nueva</a></div>
-</div>
 
-<script>
-  // LOGICA EXACTA QUE SI FUNCIONA - sin ?t=, sin referrerpolicy, sin cambios raros
-  function b2ChangeChannel(url, element) {
-    const player = document.getElementById('b2-tv-player');
-    player.src = url;
-    document.getElementById('b2-open-new').href = url;
-    const buttons = document.querySelectorAll('#bloque-2-canales-en-vivo .b2-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    element.classList.add('active');
-  }
-</script>
+  <!-- CONTROL DE REPRODUCCIÓN -->
+
+  <script>
+    (function () {
+
+      const root = document.getElementById('tv365-player');
+
+      if (!root || root.dataset.initialized === 'true') return;
+
+      root.dataset.initialized = 'true';
+
+      const frame = root.querySelector('[data-tv365-frame]');
+      const placeholder = root.querySelector('[data-tv365-placeholder]');
+      const title = root.querySelector('[data-tv365-title]');
+      const buttons = root.querySelectorAll('.tv365-btn');
+
+      buttons.forEach(function (button) {
+
+        button.addEventListener('click', function () {
+
+          const url = button.getAttribute('data-url');
+          const name = button.getAttribute('data-name');
+
+          if (!url) return;
+
+          placeholder.style.display = 'none';
+          frame.style.display = 'block';
+
+          /* Reproducción únicamente después del clic */
+          frame.src = url;
+          frame.title = name;
+
+          title.textContent = 'REPRODUCIENDO: ' + name;
+
+          /* Botón activo */
+          buttons.forEach(function (item) {
+            item.classList.remove('active');
+            item.setAttribute('aria-pressed', 'false');
+          });
+
+          button.classList.add('active');
+          button.setAttribute('aria-pressed', 'true');
+
+        });
+
+      });
+
+    })();
+  </script>
+
+</div>
 </section>
-<!-- ===== FIN SEGUNDO BLOQUE ===== -->
+<!-- ===== FIN NUEVO BLOQUE - TELEVISION EN VIVO - CANALES EN VIVO ===== -->
 
 <!-- ===== NUEVO BLOQUE 365PERU WEB DESIGN - SLIDER + REPRODUCTOR 100% + WHATSAPP - CREADO 01 NOV 2026 ===== -->
 <section id="bloque-slider-web-365" style="width:100%; background:#080B12; position:relative; overflow:hidden; font-family:Inter,system-ui,sans-serif; border-top:1px solid #1a2233; border-bottom:1px solid #1a2233;">
@@ -1176,208 +1491,7 @@ body{top:0!important;}
 <!-- ===== FIN NUEVO BLOQUE PRINCIPAL 365PERU.COM ===== -->
 
 
-<!-- ===== BLOQUE PROGRAMACION UEFA LIGA DE NACIONES - 365PERU ===== -->
-<section id="liga-naciones-365">
-<style>
-#liga-naciones-365{box-sizing:border-box;width:100%;background:#070a12;padding:18px 0 28px;font-family:Inter,system-ui,sans-serif}
-#liga-naciones-365 *{box-sizing:border-box}
-.ln-wrap{max-width:980px;margin:0 auto;padding:0 14px}
-.ln-header{background:linear-gradient(135deg,#111827,#0f172a 55%,#1e0a12);border:2px solid #e30613;border-radius:22px;padding:18px;box-shadow:0 18px 40px rgba(227,6,19,.22),0 8px 24px rgba(0,0,0,.45);margin-bottom:18px}
-.ln-header h2{margin:0;color:#fff;font-size:22px;font-weight:900;line-height:1.2}
-.ln-header h2 span{color:#38bdf8}
-.ln-sub{color:#cbd5e1;font-size:13px;margin:8px 0 0}
-.ln-badge{display:inline-block;background:#e30613;color:#fff;font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;margin-top:12px}
-.ln-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.ln-controls input{flex:1;min-width:220px;background:#0f172a;border:1px solid #334155;color:#fff;padding:12px 14px;border-radius:12px;outline:none}
-.ln-controls input::placeholder{color:#94a3b8}
-.ln-tab{background:#111827;border:1px solid #334155;color:#e2e8f0;padding:10px 14px;border-radius:999px;font-weight:800;font-size:12px;cursor:pointer}
-.ln-tab.active{background:#e30613;border-color:#e30613;color:#fff}
-.ln-jornada{margin-bottom:22px}
-.ln-jornada-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.ln-jornada-head h3{color:#fff;font-size:17px;margin:0}
-.ln-jornada-head span{color:#94a3b8;font-size:12px;font-weight:700}
-.ln-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.ln-card{background:#0f172a;border:1px solid #1e293b;border-radius:14px;padding:12px}
-.ln-top{display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;font-weight:800;margin-bottom:10px}
-.ln-estado{padding:4px 8px;border-radius:999px;color:#fff;font-size:10px}
-.ln-estado.fin{background:#334155}
-.ln-estado.prox{background:#16a34a}
-.ln-match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;color:#fff;font-weight:800;font-size:14px}
-.ln-team.right{text-align:right}
-.ln-score{background:#e30613;padding:6px 10px;border-radius:9px;white-space:nowrap}
-.ln-vs{background:#1e293b;color:#cbd5e1;padding:6px 10px;border-radius:9px;font-size:12px}
-.ln-empty{display:none;color:#cbd5e1;text-align:center;padding:20px;background:#0f172a;border-radius:14px}
-@media(max-width:640px){.ln-grid{grid-template-columns:1fr}.ln-header h2{font-size:19px}}
-</style>
-<div class="ln-wrap">
-  <div class="ln-header">
-    <h2>⚽ Programación de UEFA de Naciones <span>• 365Perú</span></h2>
-    <p class="ln-sub">Partidos de Liga de Naciones · Fase de grupos</p>
-    <span class="ln-badge">43 partidos · Jornada 3, 4 y 5 de 6</span>
-  </div>
-  <div class="ln-controls">
-    <input id="ln-q" placeholder="🔍 Buscar equipo..." oninput="lnFilter()">
-    <button class="ln-tab active" data-tab="todas" onclick="lnTab(this)">Todas</button>
-    <button class="ln-tab" data-tab="j3" onclick="lnTab(this)">Jornada 3</button>
-    <button class="ln-tab" data-tab="j4" onclick="lnTab(this)">Jornada 4</button>
-    <button class="ln-tab" data-tab="j5" onclick="lnTab(this)">Jornada 5</button>
-  </div>
-  <div class="ln-jornada" data-jornada-block="j3">
-      <div class="ln-jornada-head"><h3>Fase de grupos · Jornada 3 de 6</h3><span>Resultados</span></div>
-      <div class="ln-grid"><article class="ln-card" data-jornada="j3" data-search="polonia rumania 2/10">
-      <div class="ln-top"><span>2/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Polonia</span><span class="ln-score">6 - 0</span><span class="ln-team right">Rumania</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="islas feroe eslovaquia 2/10">
-      <div class="ln-top"><span>2/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Islas Feroe</span><span class="ln-score">1 - 1</span><span class="ln-team right">Eslovaquia</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="bélgica turquía 2/10">
-      <div class="ln-top"><span>2/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Bélgica</span><span class="ln-score">3 - 0</span><span class="ln-team right">Turquía</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="hungría georgia 2/10">
-      <div class="ln-top"><span>2/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Hungría</span><span class="ln-score">1 - 0</span><span class="ln-team right">Georgia</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="finlandia albania 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Finlandia</span><span class="ln-score">2 - 1</span><span class="ln-team right">Albania</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="islandia bulgaria 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Islandia</span><span class="ln-score">3 - 0</span><span class="ln-team right">Bulgaria</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="bielorrusia san marino 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Bielorrusia</span><span class="ln-score">4 - 0</span><span class="ln-team right">San Marino</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="croacia inglaterra 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Croacia</span><span class="ln-score">0 - 7</span><span class="ln-team right">Inglaterra</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="estonia luxemburgo 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Estonia</span><span class="ln-score">1 - 0</span><span class="ln-team right">Luxemburgo</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="suiza eslovenia 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Suiza</span><span class="ln-score">2 - 1</span><span class="ln-team right">Eslovenia</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="macedonia del norte escocia 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Macedonia del Norte</span><span class="ln-score">0 - 2</span><span class="ln-team right">Escocia</span></div>
-    </article><article class="ln-card" data-jornada="j3" data-search="españa chequia 3/10">
-      <div class="ln-top"><span>3/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">España</span><span class="ln-score">3 - 1</span><span class="ln-team right">Chequia</span></div>
-    </article></div>
-    </div>
-  <div class="ln-jornada" data-jornada-block="j4">
-      <div class="ln-jornada-head"><h3>Fase de grupos · Jornada 4 de 6</h3><span>Resultados</span></div>
-      <div class="ln-grid"><article class="ln-card" data-jornada="j4" data-search="azerbaiyán lituania 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Azerbaiyán</span><span class="ln-score">1 - 0</span><span class="ln-team right">Lituania</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="kosovo austria 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Kosovo</span><span class="ln-score">1 - 1</span><span class="ln-team right">Austria</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="malta andorra 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Malta</span><span class="ln-score">1 - 0</span><span class="ln-team right">Andorra</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="grecia alemania 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Grecia</span><span class="ln-score">0 - 0</span><span class="ln-team right">Alemania</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="países bajos serbia 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Países Bajos</span><span class="ln-score">2 - 1</span><span class="ln-team right">Serbia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="portugal noruega 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Portugal</span><span class="ln-score">2 - 1</span><span class="ln-team right">Noruega</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="gales dinamarca 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Gales</span><span class="ln-score">0 - 1</span><span class="ln-team right">Dinamarca</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="irlanda israel 4/10">
-      <div class="ln-top"><span>4/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Irlanda</span><span class="ln-score">1 - 1</span><span class="ln-team right">Israel</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="chipre letonia 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Chipre</span><span class="ln-score">2 - 1</span><span class="ln-team right">Letonia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="italia turquía 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Italia</span><span class="ln-score">3 - 1</span><span class="ln-team right">Turquía</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="rumania suecia 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Rumania</span><span class="ln-score">0 - 1</span><span class="ln-team right">Suecia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="bosnia y herzegovina polonia 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Bosnia y Herzegovina</span><span class="ln-score">1 - 0</span><span class="ln-team right">Polonia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="francia bélgica 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Francia</span><span class="ln-score">4 - 1</span><span class="ln-team right">Bélgica</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="montenegro armenia 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Montenegro</span><span class="ln-score">0 - 0</span><span class="ln-team right">Armenia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="ucrania hungría 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Ucrania</span><span class="ln-score">1 - 2</span><span class="ln-team right">Hungría</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="irlanda del norte georgia 5/10">
-      <div class="ln-top"><span>5/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Irlanda del Norte</span><span class="ln-score">0 - 0</span><span class="ln-team right">Georgia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="kazajistán islas feroe 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Kazajistán</span><span class="ln-score">2 - 2</span><span class="ln-team right">Islas Feroe</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="croacia españa 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Croacia</span><span class="ln-score">1 - 2</span><span class="ln-team right">España</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="moldavia eslovaquia 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Moldavia</span><span class="ln-score">0 - 4</span><span class="ln-team right">Eslovaquia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="luxemburgo bulgaria 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Luxemburgo</span><span class="ln-score">0 - 2</span><span class="ln-team right">Bulgaria</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="bielorrusia finlandia 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Bielorrusia</span><span class="ln-score">1 - 0</span><span class="ln-team right">Finlandia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="albania san marino 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Albania</span><span class="ln-score">2 - 1</span><span class="ln-team right">San Marino</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="estonia islandia 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Estonia</span><span class="ln-score">0 - 0</span><span class="ln-team right">Islandia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="inglaterra chequia 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Inglaterra</span><span class="ln-score">3 - 0</span><span class="ln-team right">Chequia</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="suiza macedonia del norte 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Suiza</span><span class="ln-score">3 - 0</span><span class="ln-team right">Macedonia del Norte</span></div>
-    </article><article class="ln-card" data-jornada="j4" data-search="escocia eslovenia 6/10">
-      <div class="ln-top"><span>6/10</span><span class="ln-estado fin">FINAL</span></div>
-      <div class="ln-match"><span class="ln-team">Escocia</span><span class="ln-score">1 - 2</span><span class="ln-team right">Eslovenia</span></div>
-    </article></div>
-    </div>
-  <div class="ln-jornada" data-jornada-block="j5">
-      <div class="ln-jornada-head"><h3>Fase de grupos · Jornada 5 de 6</h3><span>Mañana</span></div>
-      <div class="ln-grid"><article class="ln-card" data-jornada="j5" data-search="armenia chipre mañana · 12:00 p.m.">
-      <div class="ln-top"><span>Mañana · 12:00 p.m.</span><span class="ln-estado prox">MAÑANA</span></div>
-      <div class="ln-match"><span class="ln-team">Armenia</span><span class="ln-vs">VS</span><span class="ln-team right">Chipre</span></div>
-    </article><article class="ln-card" data-jornada="j5" data-search="turquía bélgica mañana · 12:00 p.m.">
-      <div class="ln-top"><span>Mañana · 12:00 p.m.</span><span class="ln-estado prox">MAÑANA</span></div>
-      <div class="ln-match"><span class="ln-team">Turquía</span><span class="ln-vs">VS</span><span class="ln-team right">Bélgica</span></div>
-    </article><article class="ln-card" data-jornada="j5" data-search="italia francia mañana · 2:45 p.m.">
-      <div class="ln-top"><span>Mañana · 2:45 p.m.</span><span class="ln-estado prox">MAÑANA</span></div>
-      <div class="ln-match"><span class="ln-team">Italia</span><span class="ln-vs">VS</span><span class="ln-team right">Francia</span></div>
-    </article><article class="ln-card" data-jornada="j5" data-search="chequia españa mañana · 2:45 p.m.">
-      <div class="ln-top"><span>Mañana · 2:45 p.m.</span><span class="ln-estado prox">MAÑANA</span></div>
-      <div class="ln-match"><span class="ln-team">Chequia</span><span class="ln-vs">VS</span><span class="ln-team right">España</span></div>
-    </article><article class="ln-card" data-jornada="j5" data-search="albania finlandia mañana · 2:45 p.m.">
-      <div class="ln-top"><span>Mañana · 2:45 p.m.</span><span class="ln-estado prox">MAÑANA</span></div>
-      <div class="ln-match"><span class="ln-team">Albania</span><span class="ln-vs">VS</span><span class="ln-team right">Finlandia</span></div>
-    </article></div>
-    </div>
-  <div class="ln-empty" id="ln-empty">Sin resultados para esa búsqueda.</div>
-</div>
-<script>
-let lnJornada='todas';
-function lnTab(btn){document.querySelectorAll('.ln-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');lnJornada=btn.dataset.tab;lnFilter();}
-function lnFilter(){var q=(document.getElementById('ln-q').value||'').toLowerCase();var shown=0;
-document.querySelectorAll('.ln-card').forEach(function(c){var okJ=lnJornada==='todas'||c.dataset.jornada===lnJornada;var okQ=!q||c.dataset.search.includes(q);c.style.display=(okJ&&okQ)?'':'none';if(okJ&&okQ) shown++;});
-document.querySelectorAll('.ln-jornada').forEach(function(j){var vis=[...j.querySelectorAll('.ln-card')].some(c=>c.style.display!=='none');j.style.display=vis?'':'none';});
-document.getElementById('ln-empty').style.display=shown?'none':'block';}
-</script>
-</section>
-<!-- ===== FIN BLOQUE PROGRAMACION UEFA LIGA DE NACIONES ===== -->
-
-
-
+<!-- ESPACIO LIMPIO - AQUI VA TU NUEVO BLOQUE DE PROGRAMACION -->
 
 <!-- ===== SEGUNDO BLOQUE - PELICULAS REACT 2026 - TU REPRODUCTOR ===== -->
 <section id="segundo-bloque-peliculas-365" style="width:100%;background:#0a0a0a;padding:30px 0 20px;">
@@ -4855,63 +4969,7 @@ window.addEventListener('popstate',()=>{
 <!-- ===== FIN VISTA PELICULAS EN VIVO ===== -->
 
 
-<!-- ===== BLOQUE SEO OCULTO - NO SE VE PERO GOOGLE LO LEE - TODAS LAS LIGAS EN VIVO ===== -->
-<div id="seo-oculto-365peru-futbol-vivo" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-  <h1>Fútbol en Vivo Gratis Hoy - 365Perú.com - Ver Fútbol en Vivo</h1>
-  <h2>Premier League en Vivo, Champions League en Vivo Gratis, La Liga Española en Vivo, Liga Peruana en Vivo Liga 1 Max</h2>
-  <p>Ver fútbol en vivo gratis hoy en 365Perú.com transmisiones en vivo 24/7. Fútbol en vivo, fútbol libre, ver canales en vivo gratis, canales en vivo, canal en vivo, channel en vivo, channel en vivo gratis, transmisiones en vivo, transmisión en vivo fútbol hoy.</p>
-  <p>Premier League transmisión en vivo hoy, Champions League transmisión en vivo gratis, La Liga Española en vivo hoy, Liga 1 Max Perú en vivo, Liga MX en vivo, Serie A italiana en vivo, Bundesliga alemana en vivo, Ligue 1 Francia en vivo, Copa Libertadores en vivo, Copa Sudamericana en vivo, Brasileirão en vivo, Liga Argentina en vivo, MLS en vivo, fútbol peruano en vivo.</p>
-  <p>Canales en vivo gratis 24/7: Liga 1 Max en vivo, GolPerú en vivo, América TV en vivo, Latina en vivo, ATV en vivo, Willax en vivo, DirecTV Sports en vivo, ESPN en vivo, Fox Sports en vivo, TyC Sports en vivo, Win Sports en vivo. Channel en vivo gratis.</p>
-  <p>Entretenimiento full gratis 365peru.com con entretenimiento gratuito, entretenimiento en vivo, canales en vivo gratis, música gratis en vivo, noticias del día en vivo, intrattenimento full gratis, televisión en vivo gratis, ver tv en vivo gratis.</p>
-  <p>Ver partido en vivo hoy, ver partido de hoy en vivo gratis, fútbol en vivo hoy gratis por internet, transmisiones deportivas en vivo, partidos de hoy en vivo, resultados en vivo hoy.</p>
-</div>
-
-<!-- BLOQUE SEO VISIBLE PERO MUY DISCRETO AL FINAL - AYUDA A RANKING SIN MOLESTAR -->
-<section id="seo-footer-futbol-vivo" style="max-width:1280px;margin:40px auto 0;padding:20px 16px;background:#0a0e16;border-radius:18px;border:1px solid #1e293b;font-family:Inter,sans-serif;">
-<style>
-#seo-footer-futbol-vivo h2{color:#f8fafc;font-size:14px;font-weight:900;margin:0 0 10px;letter-spacing:-.3px}
-#seo-footer-futbol-vivo h3{color:#94a3b8;font-size:11px;font-weight:800;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.8px}
-#seo-footer-futbol-vivo p, #seo-footer-futbol-vivo li{color:#64748b;font-size:11px;line-height:1.6;margin:0}
-#seo-footer-futbol-vivo ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:8px 0 0}
-#seo-footer-futbol-vivo li{background:#111827;border:1px solid #1f2937;padding:4px 9px;border-radius:9999px;color:#94a3b8;font-size:10px}
-#seo-footer-futbol-vivo a{color:#38bdf8;text-decoration:none}
-</style>
-<h2>⚽ 365Perú.com - Fútbol en Vivo Gratis Hoy | Canales en Vivo 24/7</h2>
-<p>En <strong style="color:#e2e8f0">365Perú.com</strong> encuentras <strong style="color:#e2e8f0">fútbol en vivo gratis hoy</strong>, <strong style="color:#e2e8f0">canales en vivo gratis</strong>, <strong style="color:#e2e8f0">channel en vivo</strong>, <strong style="color:#e2e8f0">transmisiones en vivo</strong> 24/7, <strong style="color:#e2e8f0">entretenimiento full gratis</strong> y <strong style="color:#e2e8f0">música gratis en vivo</strong>. Guía diaria para ver <strong>Premier League en vivo, Champions League gratis, La Liga Española en vivo, Liga 1 Max Perú, Liga MX, Serie A, Bundesliga, Copa Libertadores</strong> y noticias del día.</p>
-<h3>Todas las ligas en vivo hoy</h3>
-<ul>
-<li>Premier League en vivo hoy</li>
-<li>Champions League en vivo gratis</li>
-<li>La Liga Española en vivo</li>
-<li>Liga 1 Max Perú en vivo</li>
-<li>Liga MX México en vivo</li>
-<li>Serie A Italia en vivo</li>
-<li>Bundesliga Alemana en vivo</li>
-<li>Ligue 1 Francia en vivo</li>
-<li>Copa Libertadores en vivo</li>
-<li>Copa Sudamericana en vivo</li>
-<li>Brasileirão en vivo</li>
-<li>Liga Argentina en vivo</li>
-<li>MLS USA en vivo</li>
-<li>Europa League en vivo</li>
-<li>Eliminatorias en vivo</li>
-<li>Fútbol Libre en vivo</li>
-</ul>
-<h3>Canales y entretenimiento en vivo</h3>
-<ul>
-<li>Ver canales en vivo gratis</li>
-<li>Canal en vivo gratis</li>
-<li>Channel en vivo gratis</li>
-<li>Transmisiones en vivo 24/7</li>
-<li>Entretenimiento en vivo gratis</li>
-<li>Música gratis en vivo</li>
-<li>Noticias del día en vivo</li>
-<li>TV en vivo gratis Perú</li>
-<li>Intrattenimento full gratis</li>
-</ul>
-<p style="margin-top:12px;color:#475569">365Perú.com es tu guía de <a href="/">fútbol en vivo hoy</a> - informamos dónde ver cada partido, horarios, canales en vivo y resultados. Transmisiones oficiales según disponibilidad.</p>
-</section>
-<!-- FIN BLOQUE SEO -->
+<!-- ESPACIO LIMPIO PARA TU NUEVO BLOQUE -->
 
 </body>
 </html>
