@@ -1654,6 +1654,45 @@ evRenderSlider();evRenderFilter();evRenderList();
 <!-- BLOQUE REPRODUCTOR MARVEL ELIMINADO -->
 
 
+<style id="css-entretenimiento-pulse-365">
+/* ===== BOTON ENTRETENIMIENTO PALPITANDO - 365 PERU ===== */
+.btn-entretenimiento-pulse{
+  background:linear-gradient(90deg,#ef4444,#f59e0b,#ef4444) !important;
+  background-size:200% 100% !important;
+  color:#fff !important;
+  border:2px solid #facc15 !important;
+  box-shadow:0 0 0 0 rgba(239,68,68,.7), 0 0 18px rgba(245,158,11,.6) !important;
+  animation:entPulse365 1.6s ease-in-out infinite !important;
+  font-weight:900 !important;
+}
+@keyframes entPulse365{
+  0%{ transform:scale(1); box-shadow:0 0 0 0 rgba(239,68,68,.7), 0 0 12px rgba(245,158,11,.5); }
+  50%{ transform:scale(1.07); box-shadow:0 0 0 10px rgba(239,68,68,0), 0 0 28px rgba(245,158,11,.9); }
+  100%{ transform:scale(1); box-shadow:0 0 0 0 rgba(239,68,68,0), 0 0 12px rgba(245,158,11,.5); }
+}
+.btn-entretenimiento-pulse span{ animation:entTextoPulse365 1.6s ease-in-out infinite; display:inline-block; }
+@keyframes entTextoPulse365{
+  0%,100%{ transform:scale(1); opacity:1; }
+  50%{ transform:scale(1.12); opacity:.85; }
+}
+</style>
+<style id="css-modo-solo-365">body.modo-solo-365 > *:not(#app):not(script):not(style){display:none !important} body.modo-solo-365 #app{display:block !important}</style>
+<style id="css-entretenimiento-pulse-365">
+.btn-entretenimiento-pulse{
+  background:linear-gradient(90deg,#ef4444,#f59e0b,#ef4444) !important;
+  background-size:200% 100% !important;
+  color:#fff !important;
+  border:2px solid #facc15 !important;
+  box-shadow:0 0 0 0 rgba(239,68,68,.7), 0 0 18px rgba(245,158,11,.6) !important;
+  animation:entPulse365 1.6s ease-in-out infinite !important;
+  font-weight:900 !important;
+}
+@keyframes entPulse365{
+  0%{ transform:scale(1); box-shadow:0 0 0 0 rgba(239,68,68,.7), 0 0 12px rgba(245,158,11,.5); }
+  50%{ transform:scale(1.07); box-shadow:0 0 0 10px rgba(239,68,68,0), 0 0 28px rgba(245,158,11,.9); }
+  100%{ transform:scale(1); box-shadow:0 0 0 0 rgba(239,68,68,0), 0 0 12px rgba(245,158,11,.5); }
+}
+</style>
 <div id="app"></div>
 
 <!-- ====== TWITCH PRINCIPAL 365PERU + BOTONES DIRECTOS ====== -->
@@ -1687,7 +1726,7 @@ evRenderSlider();evRenderFilter();evRenderList();
   <div onclick="setCat('miblog'); toggleMobileMenu()" class="mobile-menu-item">📝 Mi Blog</div>
   <div onclick="openProductosPlanes365(); toggleMobileMenu()" class="mobile-menu-item" style="background:linear-gradient(90deg,#00E5FF,#C8FF3D);color:#04070c;font-weight:900;border:2px solid #00E5FF;box-shadow:0 0 14px rgba(0,229,255,.4)">📦 Productos / Planes</div>
   <div onclick="setCat('videos'); toggleMobileMenu()" class="mobile-menu-item">🎬 Videos 14</div>
-  <div onclick="setCat('religion'); toggleMobileMenu()" class="mobile-menu-item">📺 Entretenimiento 10</div>
+  <div onclick="setCat('entretenimiento-solo'); toggleMobileMenu()" class="mobile-menu-item btn-entretenimiento-pulse">📺 Entretenimiento 10</div>
   <div onclick="setCat('anuncia'); toggleMobileMenu()" class="mobile-menu-item" style="background:#f59e0b;color:#000">📢 Anuncia - NUEVO ADMIN</div>
   <div class="allons-mobile-wrap" id="allonsMobileWrap">
     <button class="allons-mobile-btn" onclick="toggleAllonsMobile(event)">🛠 Servicios Allons-y <span class="arrow">▼</span></button>
@@ -2115,7 +2154,7 @@ const canalesEntretenimiento = [
 {id:"americatv",name:"AMÉRICA TV",url:"https://embed.saohgdassregions.com/embed2/americatv.php",category:"nacional",isLive:true,logo:"AMTV",thumb:"https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=600&q=80"},
 {id:"latina",name:"LATINA TV",url:"https://embed.saohgdassregions.com/embed2/latina.php",category:"nacional",isLive:true,logo:"LAT",thumb:"https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=600&q=80"},
 {id:"panamericana",name:"PANAMERICANA TV",url:"https://geo.dailymotion.com/player/x1ks1a.html?video=xa50i1c",category:"nacional",isLive:true,logo:"PAN",thumb:"https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=600&q=80"},
-{id:"wilax",name:"WILAX TV",url:"https://embed.saohgdassregions.com/embed2/wilax.php",category:"nacional",isLive:true,logo:"WILAX",thumb:"https://images.unsplash.com/photo-1590602847861-f357a9af8f4c?auto=format&fit=crop&w=600&q=80"},
+{id:"wilax",name:"WILAX TV",url:"https://geo.dailymotion.com/player/x14ru6.html?video=xa63dow",iframe:'<iframe loading="lazy" src="https://geo.dailymotion.com/player/x14ru6.html?video=xa63dow" title="Willax en vivo" allow="autoplay; fullscreen; picture-in-picture; web-share" allowfullscreen="" frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://geo.dailymotion.com/player/x14ru6.html?video=xa63dow" data-ll-status="loaded" class="entered lazyloaded" data-gtm-yt-inspected-17="true"></iframe>',category:"nacional",isLive:true,logo:"WILAX",thumb:"https://images.unsplash.com/photo-1590602847861-f357a9af8f4c?auto=format&fit=crop&w=600&q=80"},
 
 {id:"starchannel",name:"STAR CHANNEL",url:"https://embed.saohgdassregions.com/embed2/starchannel.php",category:"cine",isLive:true,logo:"STAR",thumb:"https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80"},
 {id:"warner",name:"WARNER BROS",url:"https://embed.saohgdassregions.com/embed2/warnerchannel.php",category:"cine",isLive:true,logo:"WB",thumb:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"},
@@ -2570,6 +2609,115 @@ function getEntretenimientoBloquesHTML(){
 </div>
   `;
 }
+function getEntretenimientoSoloHTML(){
+  // CONTENIDO LIMPIO - TU CODIGO ORIGINAL ADAPTADO RESPONSIVE A LA BANDEJA - MENUS INTACTOS
+  return `
+<div style="max-width:1280px;margin:12px auto 0;padding:0 8px"><button onclick="salirModoSolo()" style="background:#fff;color:#0284c7;border:2px solid #0ea5e9;padding:10px 18px;border-radius:9999px;font-weight:900;font-size:12px;cursor:pointer">⬅ VOLVER AL INICIO</button></div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+.ent-bandeja{font-family:'Inter',sans-serif;background:#080808;color:#fff;border-radius:16px;overflow:hidden;width:100%;max-width:100%;box-sizing:border-box}
+.ent-bandeja *{box-sizing:border-box}
+.ent-font-bebas{font-family:'Bebas Neue',sans-serif}
+.ent-gold-gradient{background:linear-gradient(135deg,#D4AF37 0%,#F6E27A 50%,#D4AF37 100%)}
+.ent-gold-text{background:linear-gradient(135deg,#D4AF37 0%,#F6E27A 50%,#D4AF37 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ent-player-wrap{position:relative;overflow:hidden;border-radius:16px;background:#000;border:1px solid #1e1e1e;box-shadow:0 20px 60px rgba(0,0,0,0.6);width:100%}
+.ent-player{position:relative;aspect-ratio:16/9;background:#000;width:100%}
+.ent-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%}
+@media(min-width:640px){.ent-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1024px){.ent-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:1280px){.ent-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.ent-card{position:relative;text-align:left;border-radius:14px;border:1px solid #1a1a1a;background:#1a1a1a;padding:1px;transition:all .2s;cursor:pointer;width:100%;min-width:0}
+.ent-card.active{background:linear-gradient(to bottom right,#D4AF37,#8c7328);box-shadow:0 0 20px rgba(212,175,55,.35)}
+.ent-card-inner{border-radius:13px;background:#0f0f0f;padding:12px;display:flex;flex-direction:column;gap:10px;height:100%;width:100%}
+.ent-card.active .ent-card-inner{background:#14120a}
+</style>
+
+<div class="ent-bandeja">
+  <div style="position:sticky;top:0;z-index:20;border-bottom:1px solid #1a1a1a;background:rgba(8,8,8,.95);backdrop-filter:blur(16px);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="height:36px;width:36px;border-radius:10px;display:flex;align-items:center;justify-content:center" class="ent-gold-gradient">🏆</div>
+      <div style="line-height:1">
+        <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span class="ent-font-bebas" style="font-size:26px;letter-spacing:.02em">365</span><span class="ent-font-bebas ent-gold-text" style="font-size:26px;letter-spacing:.02em">PERÚ</span><span style="margin-left:8px;font-size:10px;font-weight:700;letter-spacing:.2em;color:#D4AF37;border:1px solid rgba(212,175,55,.3);padding:2px 8px;border-radius:9999px">PREMIUM</span></div>
+        <div style="font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,.4);margin-top:-2px">EN VIVO • 30 CANALES</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="display:flex;align-items:center;gap:8px;background:#111;border:1px solid #222;border-radius:9999px;padding:6px 12px">
+        <span style="height:8px;width:8px;background:#ef4444;border-radius:50%;display:inline-block"></span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.8)">ON AIR</span>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5)">👥 12.4k viendo</div>
+    </div>
+  </div>
+
+  <div style="padding:16px;width:100%;max-width:100%">
+    <div class="ent-player-wrap" id="ent-player-wrap">
+      <div style="height:44px;background:#111;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;justify-content:space-between;padding:0 16px;flex-wrap:wrap;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="height:24px;width:24px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center">▶</div>
+          <span id="ent-main-name" style="font-weight:700;font-size:13px">${canalesEntretenimiento[0].name}</span>
+          <span id="ent-main-live" style="background:#dc2626;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px">LIVE</span>
+          <span id="ent-main-new" style="background:#D4AF37;color:#000;font-size:9px;font-weight:900;padding:2px 6px;border-radius:4px;display:none">NUEVO</span>
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4)">📡 HD • 1080p</div>
+      </div>
+      <div class="ent-player" id="ent-player">
+        <iframe id="ent-iframe" src="${canalesEntretenimiento[0].url}" allow="${getAllowAttr(canalesEntretenimiento[0])}" allowfullscreen frameborder="0" scrolling="no"></iframe>
+      </div>
+      <div style="background:#0e0e0e;padding:10px 16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:11px;color:rgba(255,255,255,.5)">
+        <span>🛡️ Reproducción segura • Si no carga, cambia de canal o recarga.</span>
+        <span><code id="ent-allow-code" style="font-size:10px;background:#1a1a1a;border:1px solid #222;padding:3px 6px;border-radius:6px;color:#D4AF37">${getAllowAttr(canalesEntretenimiento[0])}</code></span>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 class="ent-font-bebas" style="font-size:28px">CANALES <span class="ent-gold-text">EN VIVO</span></h2>
+        <span id="ent-count" style="background:#1a1a1a;border:1px solid #222;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px">${canalesEntretenimiento.length} canales</span>
+      </div>
+      <div style="display:flex;gap:6px;background:#0e0e0e;border:1px solid #1a1a1a;border-radius:9999px;padding:4px;overflow-x:auto">
+        <button onclick="filtrarEnt('todos')" data-f="todos" style="padding:6px 12px;border-radius:9999px;font-size:10px;font-weight:700;background:#D4AF37;color:#000">TODOS</button>
+        <button onclick="filtrarEnt('deportes')" data-f="deportes" style="padding:6px 12px;border-radius:9999px;font-size:10px;font-weight:700;color:rgba(255,255,255,.5);background:transparent;border:none;cursor:pointer">DEPORTES</button>
+        <button onclick="filtrarEnt('nacional')" data-f="nacional" style="padding:6px 12px;border-radius:9999px;font-size:10px;font-weight:700;color:rgba(255,255,255,.5);background:transparent;border:none;cursor:pointer">PERÚ</button>
+        <button onclick="filtrarEnt('cine')" data-f="cine" style="padding:6px 12px;border-radius:9999px;font-size:10px;font-weight:700;color:rgba(255,255,255,.5);background:transparent;border:none;cursor:pointer">CINE</button>
+      </div>
+    </div>
+
+    <div class="ent-grid" id="ent-grid" style="margin-top:16px">
+      ${canalesEntretenimiento.map(ch=>`
+        <button data-url="${ch.url}" data-allow="${getAllowAttr(ch)}" onclick="playEntCanal('${ch.id}')" class="ent-card ${ch.id===canalesEntretenimiento[0].id?'active':''}" data-cat="${ch.category}" data-id="${ch.id}">
+          <div class="ent-card-inner">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div style="height:32px;width:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;background:#1e1e1e;color:#fff;flex-shrink:0">${ch.logo}</div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
+                ${ch.isLive?'<span style="display:flex;align-items:center;gap:4px;font-size:8px;font-weight:700;color:#f87171"><span style="height:6px;width:6px;background:#ef4444;border-radius:50%;display:inline-block"></span>LIVE</span>':''}
+                ${ch.isNew?'<span style="font-size:7px;font-weight:900;padding:2px 5px;border-radius:4px;background:#D4AF37;color:#000">NUEVO</span>':''}
+              </div>
+            </div>
+            <div style="min-width:0;overflow:hidden">
+              <div style="font-weight:700;font-size:12px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ch.name}</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📺 ${ch.category}</div>
+            </div>
+          </div>
+        </button>
+      `).join('')}
+    </div>
+
+    <div style="margin-top:16px;border-radius:12px;background:#0f0f0f;border:1px solid #1a1a1a;padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:rgba(255,255,255,.4)">
+      <span>⚡ Total 33 canales: Willax, Latina, América, Liga 1 Max, ESPN, Fox Sports, Win Sports, GolPerú y más</span>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:16px;background:#fff;border-radius:12px;border:1px solid #e5e7eb">
+      <button onclick="setCat('miblog'); window.scrollTo({top:0,behavior:'smooth'})" style="background:linear-gradient(90deg,#0ea5e9,#0284c7);color:#fff;border:none;padding:12px 22px;border-radius:9999px;font-weight:900;font-size:12px;cursor:pointer">🏠 VOLVER AL INICIO</button>
+      <button onclick="setCat('miblog'); window.scrollTo({top:0,behavior:'smooth'})" style="background:#fff;color:#0284c7;border:2px solid #0ea5e9;padding:12px 22px;border-radius:9999px;font-weight:900;font-size:12px;cursor:pointer">📝 VOLVER AL BLOG</button>
+    </div>
+  </div>
+</div>
+  `;
+}
+
+function salirModoSolo(){ document.body.classList.remove('modo-solo-365'); currentCat='miblog'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
 function playEntCanal(id){
   const ch = canalesEntretenimiento.find(c=>c.id===id);
   if(!ch) return;
@@ -2578,10 +2726,17 @@ function playEntCanal(id){
   const allowCode = document.getElementById('ent-allow-code');
   const live = document.getElementById('ent-main-live');
   const neu = document.getElementById('ent-main-new');
-  if(iframe){
-    iframe.src = ch.url;
-    iframe.setAttribute('allow', getAllowAttr(ch));
-    iframe.setAttribute('title', ch.id==='willax' ? 'Willax en vivo' : ch.name);
+  var playerBox = document.getElementById('ent-player');
+  if(ch.iframe){
+    if(playerBox) playerBox.innerHTML = ch.iframe;
+  } else if(playerBox && !document.getElementById('ent-iframe')){
+    playerBox.innerHTML = '<iframe id="ent-iframe" src="" allow="" allowfullscreen frameborder="0" scrolling="no"></iframe>';
+  }
+  var iframe2 = document.getElementById('ent-iframe');
+  if(iframe2){
+    iframe2.src = ch.url;
+    iframe2.setAttribute('allow', getAllowAttr(ch));
+    iframe2.setAttribute('title', ch.id==='willax' ? 'Willax en vivo' : ch.name);
   }
   if(name) name.textContent = ch.name;
   if(allowCode) allowCode.textContent = getAllowAttr(ch);
@@ -3502,6 +3657,13 @@ function copyLink(url){ navigator.clipboard.writeText(url).then(function(){ var 
 
 function render(){
  const app=document.getElementById("app");
+ if(currentCat==="entretenimiento-solo"){
+   document.body.classList.add('modo-solo-365');
+   app.innerHTML = getEntretenimientoSoloHTML();
+   window.scrollTo({top:0,behavior:'smooth'});
+   return;
+ }
+ document.body.classList.remove('modo-solo-365');
  cargarBlogs(); cargarDeportes(); cargarAnuncios(); cargarStoragePremium();
  let mainContent="";
  if(currentCat==="musica"){ if(selectedId==='musica-hub'){ mainContent= vistaActualMusica!==null? getMusicaDetalleHTML(vistaActualMusica) : getMusicaInsideHTML(); } else { mainContent=getMusicaHubCardHTML(); } }
@@ -3531,7 +3693,7 @@ function render(){
 <button onclick="setCat('musica')" style="padding:6px 12px;border-radius:9999px;border:1px solid #7C4494;font-size:11px;font-weight:900;white-space:nowrap;background:#fdf4ff;color:#7C4494">🎵 Música</button>
 <button onclick="setCat('miblog')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='miblog'?'background:#111;color:#fff':''}">📝 My Blog FIX</button>
 <button onclick="setCat('videos')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='videos'?'background:#111;color:#fff':''}">🎬 Videos FIX</button>
-<button onclick="setCat('religion')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='religion'?'background:#111;color:#fff':''}">📺 Entretenimiento</button>
+<button class="btn-entretenimiento-pulse" onclick="setCat('entretenimiento-solo')" style="padding:6px 12px;border-radius:9999px;border:1px solid #111;font-size:11px;font-weight:700;white-space:nowrap;${currentCat==='religion'?'background:#111;color:#fff':''}">📺 Entretenimiento</button>
 <button onclick="setCat('anuncia')" style="padding:6px 12px;border-radius:9999px;border:1px solid #f59e0b;font-size:11px;font-weight:900;white-space:nowrap;background:#facc15;color:#000" class="btn-anuncia-fix-pulse">📢 Anuncia FIX</button>
 <button onclick="openProductosPlanes365()" style="padding:6px 12px;border-radius:9999px;border:1px solid #00E5FF;font-size:11px;font-weight:900;white-space:nowrap;background:linear-gradient(90deg,#00E5FF,#C8FF3D);color:#04070c;box-shadow:0 0 12px rgba(0,229,255,.3)">📦 Productos / Planes</button>
 <div class="allons-dropdown">
