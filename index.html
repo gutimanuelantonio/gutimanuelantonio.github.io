@@ -2095,8 +2095,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 </style>
 <div class="ev-wrap">
   <div class="ev-head">
-    <div><h2>⚽ Eventos de Hoy <span>• 365Perú</span></h2><p>Martes, 17 de noviembre de 2026 · Haz clic en un evento para ver sus canales y reproducirlo.</p></div>
-    <div class="ev-pill"><b>29 eventos · Hoy</b><i>🟢 En vivo / Pronto</i></div>
+    <div><h2>⚽ Eventos de Hoy <span>• 365Perú</span></h2><p>Miércoles, 18 de noviembre de 2026 · Haz clic en un evento para ver sus canales y reproducirlo.</p></div>
+    <div class="ev-pill"><b>27 eventos · Hoy</b><i>🟢 En vivo / Pronto</i></div>
   </div>
   <div class="ev-marquee" aria-label="Ligas que se transmiten hoy">
     <div class="ev-track" id="ev-track"></div>
@@ -2125,43 +2125,41 @@ document.addEventListener('DOMContentLoaded',()=>{
 </div>
 <script>
 const evLeagues=[
- {n:'Amistoso Internacional',c:'l-fifa',i:'AMI'},
- {n:'Liga de Naciones de la UEFA',c:'l-nations',i:'UNL'},
- {n:'Liga de Naciones de la CONCACAF',c:'l-conca',i:'CCF'},
- {n:'Copa Colombia',c:'l-col',i:'COL'},
+ {n:'ATP Finals',c:'l-fifa',i:'ATP'},
+ {n:'Champions League Femenina',c:'l-nations',i:'CHA'},
+ {n:'Liga 1',c:'l-conca',i:'PE'},
+ {n:'Brasileirão',c:'l-col',i:'BR'},
  {n:'NBA',c:'l-nba',i:'NBA'},
  {n:'NHL',c:'l-nba',i:'NHL'}
 ];
 const evData=[
- {t:'05:00',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Singapur vs Brasil',s:'PRONTO',ch:[{n:'Sportv BR',u:'https://streamxhd.sbs/live1.php?stream=sporttvbr1'}]},
- {t:'08:10',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Japón vs Paraguay',s:'PRONTO',ch:[{n:'Evento 1',u:'https://streamxhd.sbs/live1.php?stream=evento1'}]},
- {t:'11:00',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Rusia vs Venezuela',s:'PRONTO',ch:[{n:'Evento 2',u:'https://streamxhd.sbs/live1.php?stream=evento2'}]},
- {t:'11:30',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Kuwait vs Honduras',s:'PRONTO',ch:[{n:'Evento 3',u:'https://streamxhd.sbs/live1.php?stream=evento3'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Bosnia-Herzegovina vs Rumania',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney1'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Hungría vs Irlanda del Norte',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney2'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'República de Irlanda vs Kosovo',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney3'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Israel vs Austria',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney4'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Polonia vs Suecia',s:'PRONTO',ch:[{n:'ESPN 5',u:'https://streamxhd.sbs/live1.php?stream=espn5'},{n:'SporTV 2',u:'https://streamxhd.sbs/live1.php?stream=sporttvbr2'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney5'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Gales vs Portugal',s:'PRONTO',ch:[{n:'ESPN',u:'https://streamxhd.sbs/live1.php?stream=espn'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney6'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Dinamarca vs Noruega',s:'PRONTO',ch:[{n:'ESPN 4',u:'https://streamxhd.sbs/live1.php?stream=espn4'},{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney7'}]},
- {t:'14:45',liga:'Liga de Naciones de la UEFA',cat:'Naciones',teams:'Ucrania vs Georgia',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney8'}]},
- {t:'18:00',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Argentina vs Costa Rica',s:'PRONTO',ch:[{n:'DSports Global',u:'https://streamhdx.xyz/channel/?id=dsports'},{n:'DSports',u:'https://streamxhd.sbs/live1.php?stream=dsports'},{n:'TyC Sports',u:'https://streamxhd.sbs/live1.php?stream=tycsports'},{n:'ViX',u:'https://streamxhd.sbs/live1.php?stream=vix1'}]},
- {t:'18:00',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Chile vs Colombia',s:'PRONTO',ch:[{n:'Evento 1',u:'https://streamxhd.sbs/live1.php?stream=evento1'}]},
- {t:'18:30',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Ecuador vs Bolivia',s:'PRONTO',ch:[{n:'Evento 2',u:'https://streamxhd.sbs/live1.php?stream=evento2'}]},
- {t:'18:30',liga:'Amistoso Internacional',cat:'Fútbol',teams:'Uruguay vs República Dominicana',s:'PRONTO',ch:[{n:'Evento 3',u:'https://streamxhd.sbs/live1.php?stream=evento3'}]},
- {t:'18:30',liga:'Copa Colombia',cat:'Fútbol',teams:'Atlético Nacional vs Once Caldas',s:'PRONTO',ch:[{n:'Win Sports +',u:'https://streamxhd.sbs/live1.php?stream=winplus'}]},
- {t:'19:00',liga:'Liga de Naciones de la CONCACAF',cat:'Fútbol',teams:'Estados Unidos vs Haití',s:'PRONTO',ch:[{n:'Universo',u:'https://streamxhd.sbs/live1.php?stream=universo'}]},
- {t:'19:30',liga:'NBA',cat:'NBA',teams:'Toronto Raptors vs New York Knicks',s:'PRONTO',ch:[{n:'NBA League Pass 1',u:'https://streamxhd.sbs/live1.php?stream=nba1'}]},
- {t:'19:30',liga:'NHL',cat:'NHL',teams:'Chicago Blackhawks vs Toronto Maple Leafs',s:'PRONTO',ch:[{n:'ESPN 3',u:'https://streamxhd.sbs/live1.php?stream=espn3'}]},
- {t:'20:00',liga:'NBA',cat:'NBA',teams:'San Antonio Spurs vs Detroit Pistons',s:'PRONTO',ch:[{n:'Prime Video',u:'https://streamxhd.sbs/live1.php?stream=amazon2'},{n:'NBA League Pass 2',u:'https://streamxhd.sbs/live1.php?stream=nba2'}]},
- {t:'20:00',liga:'NBA',cat:'NBA',teams:'Minnesota Timberwolves vs Portland Trail Blazers',s:'PRONTO',ch:[{n:'NBA League Pass 3',u:'https://streamxhd.sbs/live1.php?stream=nba3'}]},
- {t:'20:00',liga:'Liga de Naciones de la CONCACAF',cat:'Fútbol',teams:'El Salvador vs Saint Martin',s:'PRONTO',ch:[{n:'ViX',u:'https://streamxhd.sbs/live1.php?stream=vix2'}]},
- {t:'20:30',liga:'Copa Colombia',cat:'Fútbol',teams:'América de Cali vs Inter Bogotá',s:'PRONTO',ch:[{n:'Win Sports +',u:'https://streamxhd.sbs/live1.php?stream=winplus'}]},
- {t:'21:30',liga:'Liga de Naciones de la CONCACAF',cat:'Fútbol',teams:'México vs Jamaica',s:'PRONTO',ch:[{n:'Canal 5 MX',u:'https://streamxhd.sbs/live1.php?stream=canal5mx'},{n:'Amazon 1',u:'https://streamxhd.sbs/live1.php?stream=amazon1'},{n:'Azteca 7',u:'https://streamxhd.sbs/live1.php?stream=azteca7'}]},
- {t:'22:00',liga:'NHL',cat:'NHL',teams:'Vegas Golden Knights vs Dallas Stars',s:'PRONTO',ch:[{n:'ESPN 3',u:'https://streamxhd.sbs/live1.php?stream=espn3'}]},
- {t:'22:00',liga:'Liga de Naciones de la CONCACAF',cat:'Fútbol',teams:'Nicaragua vs Montserrat',s:'PRONTO',ch:[{n:'ViX',u:'https://streamxhd.sbs/live1.php?stream=vix3'}]},
- {t:'22:30',liga:'NBA',cat:'NBA',teams:'Los Angeles Clippers vs Utah Jazz',s:'PRONTO',ch:[{n:'NBA League Pass 4',u:'https://streamxhd.sbs/live1.php?stream=nba4'}]},
- {t:'23:00',liga:'NBA',cat:'NBA',teams:'Los Angeles Lakers vs Charlotte Hornets',s:'PRONTO',ch:[{n:'Prime Video',u:'https://streamxhd.sbs/live1.php?stream=amazon3'},{n:'NBA League Pass 5',u:'https://streamxhd.sbs/live1.php?stream=nba5'}]},
+ {t:'08:00',liga:'ATP Finals',cat:'Tenis',teams:'Carlos Alcaraz vs Daniil Medvedev',s:'PRONTO',ch:[{n:'ESPN 2',u:'https://streamxhd.sbs/live1.php?stream=espn2'}]},
+ {t:'12:45',liga:'Champions League Femenina',cat:'Fútbol',teams:'Real Madrid vs Inter Milano',s:'PRONTO',ch:[{n:'ESPN 2',u:'https://streamxhd.sbs/live1.php?stream=espn2'},{n:'ESPN Deportes',u:'https://streamxhd.sbs/live1.php?stream=espndeportes'}]},
+ {t:'12:45',liga:'Champions League Femenina',cat:'Fútbol',teams:'Häcken vs Manchester City',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney1'}]},
+ {t:'15:00',liga:'Champions League Femenina',cat:'Fútbol',teams:'Juventus vs OH Leuven',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney2'}]},
+ {t:'15:00',liga:'Champions League Femenina',cat:'Fútbol',teams:'Chelsea vs PSG',s:'PRONTO',ch:[{n:'ESPN 4',u:'https://streamxhd.sbs/live1.php?stream=espn4'},{n:'ESPN Deportes',u:'https://streamxhd.sbs/live1.php?stream=espndeportes'}]},
+ {t:'15:00',liga:'Liga 1',cat:'Fútbol',teams:'Alianza Atlético vs Melgar',s:'PRONTO',ch:[{n:'L1 Max',u:'https://streamxhd.sbs/live1.php?stream=l1max'}]},
+ {t:'17:30',liga:'Brasileirão',cat:'Fútbol',teams:'Coritiba vs Santos',s:'PRONTO',ch:[{n:'Premiere 7',u:'https://streamxhd.sbs/live1.php?stream=premiere7'}]},
+ {t:'18:00',liga:'Brasileirão',cat:'Fútbol',teams:'Remo vs Chapecoense',s:'PRONTO',ch:[{n:'Premiere 6',u:'https://streamxhd.sbs/live1.php?stream=premiere6'}]},
+ {t:'18:30',liga:'Brasileirão',cat:'Fútbol',teams:'Flamengo vs Athletico-PR',s:'PRONTO',ch:[{n:'Sportv BR',u:'https://streamxhd.sbs/live1.php?stream=sporttvbr1'},{n:'Premiere 1',u:'https://streamxhd.sbs/live1.php?stream=premiere1'}]},
+ {t:'18:30',liga:'Brasileirão',cat:'Fútbol',teams:'Cruzeiro vs Palmeiras',s:'PRONTO',ch:[{n:'Premiere 2',u:'https://streamxhd.sbs/live1.php?stream=premiere2'}]},
+ {t:'19:00',liga:'NBA',cat:'NBA',teams:'Miami Heat vs Milwaukee Bucks',s:'PRONTO',ch:[{n:'ESPN 2',u:'https://streamxhd.sbs/live1.php?stream=espn2'},{n:'NBA League Pass 1',u:'https://streamxhd.sbs/live1.php?stream=nba1'}]},
+ {t:'19:00',liga:'NBA',cat:'NBA',teams:'Indiana Pacers vs Houston Rockets',s:'PRONTO',ch:[{n:'NBA League Pass 2',u:'https://streamxhd.sbs/live1.php?stream=nba2'}]},
+ {t:'19:00',liga:'NBA',cat:'NBA',teams:'Orlando Magic vs Philadelphia 76ers',s:'PRONTO',ch:[{n:'NBA League Pass 3',u:'https://streamxhd.sbs/live1.php?stream=nba3'}]},
+ {t:'19:00',liga:'NBA',cat:'NBA',teams:'Cleveland Cavaliers vs Memphis Grizzlies',s:'PRONTO',ch:[{n:'NBA League Pass 4',u:'https://streamxhd.sbs/live1.php?stream=nba4'}]},
+ {t:'19:30',liga:'NBA',cat:'NBA',teams:'Brooklyn Nets vs Chicago Bulls',s:'PRONTO',ch:[{n:'NBA League Pass 5',u:'https://streamxhd.sbs/live1.php?stream=nba5'}]},
+ {t:'19:30',liga:'NBA',cat:'NBA',teams:'Toronto Raptors vs Washington Wizards',s:'PRONTO',ch:[{n:'NBA League Pass 6',u:'https://streamxhd.sbs/live1.php?stream=nba6'}]},
+ {t:'19:30',liga:'NHL',cat:'NHL',teams:'Detroit Red Wings vs Boston Bruins',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney1'}]},
+ {t:'19:30',liga:'NHL',cat:'NHL',teams:'New Jersey Devils vs Montréal Canadiens',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney2'}]},
+ {t:'19:30',liga:'Brasileirão',cat:'Fútbol',teams:'Grêmio vs Bahia',s:'PRONTO',ch:[{n:'Premiere 5',u:'https://streamxhd.sbs/live1.php?stream=premiere5'}]},
+ {t:'19:30',liga:'Brasileirão',cat:'Fútbol',teams:'Corinthians vs Botafogo',s:'PRONTO',ch:[{n:'Premiere 3',u:'https://streamxhd.sbs/live1.php?stream=premiere3'}]},
+ {t:'20:00',liga:'NBA',cat:'NBA',teams:'New Orleans Pelicans vs Detroit Pistons',s:'PRONTO',ch:[{n:'NBA League Pass 7',u:'https://streamxhd.sbs/live1.php?stream=nba7'}]},
+ {t:'20:00',liga:'NBA',cat:'NBA',teams:'Dallas Mavericks vs Golden State Warriors',s:'PRONTO',ch:[{n:'NBA League Pass 8',u:'https://streamxhd.sbs/live1.php?stream=nba8'}]},
+ {t:'20:00',liga:'NBA',cat:'NBA',teams:'Oklahoma City Thunder vs Atlanta Hawks',s:'PRONTO',ch:[{n:'NBA League Pass 9',u:'https://streamxhd.sbs/live1.php?stream=nba9'}]},
+ {t:'21:30',liga:'NBA',cat:'NBA',teams:'Denver Nuggets vs Boston Celtics',s:'PRONTO',ch:[{n:'ESPN 2',u:'https://streamxhd.sbs/live1.php?stream=espn2'},{n:'NBA League Pass 10',u:'https://streamxhd.sbs/live1.php?stream=nba10'}]},
+ {t:'22:00',liga:'NBA',cat:'NBA',teams:'Los Angeles Lakers vs Utah Jazz',s:'PRONTO',ch:[{n:'NBA League Pass 11',u:'https://streamxhd.sbs/live1.php?stream=nba1'}]},
+ {t:'22:00',liga:'NBA',cat:'NBA',teams:'Sacramento Kings vs Phoenix Suns',s:'PRONTO',ch:[{n:'NBA League Pass 12',u:'https://streamxhd.sbs/live1.php?stream=nba2'}]},
+ {t:'22:00',liga:'NHL',cat:'NHL',teams:'Utah Mammoth vs Colorado Avalanche',s:'PRONTO',ch:[{n:'Disney +',u:'https://streamxhd.sbs/live1.php?stream=disney3'}]},
 ];
 let evCurrent=null, evFilter='Todos';
 function evRenderSlider(){
