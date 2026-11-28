@@ -547,6 +547,41 @@ body{top:0!important;}
 <body class="min-h-screen pb-[140px]">
 <!-- ===== INICIO 365PERU - HEADER + MENU + BANNER UEFA (FIJO, PRIMERO DE LA PAGINA) ===== -->
 <div id="cabecera-fija-365">
+<!-- ===== RELOJ + FECHA EN VIVO 365PERU - INICIO - HORA LOCAL DEL VISITANTE ===== -->
+<style>
+#reloj365{width:100%;background:#070a12;border-bottom:1px solid #1e293b;color:#fff;font-family:Inter,system-ui,sans-serif}
+#reloj365 .reloj365-wrap{max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+#reloj365 .reloj365-fecha{font-size:14px;font-weight:800;line-height:1.3;text-transform:capitalize}
+#reloj365 .reloj365-fecha small{display:block;font-size:11px;font-weight:600;color:#94a3b8;text-transform:none}
+#reloj365 .reloj365-hora{display:flex;align-items:center;gap:10px}
+#reloj365 .reloj365-hora b{font-size:22px;font-weight:900;letter-spacing:.5px;font-variant-numeric:tabular-nums;color:#fff}
+#reloj365 .reloj365-vivo{display:flex;align-items:center;gap:6px;background:#e50914;color:#fff;font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px}
+#reloj365 .reloj365-vivo i{width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:reloj365Blink 1s infinite}
+@keyframes reloj365Blink{0%,100%{opacity:1}50%{opacity:.2}}
+@media(max-width:640px){#reloj365 .reloj365-fecha{font-size:13px}#reloj365 .reloj365-hora b{font-size:19px}}
+</style>
+<div id="reloj365"><div class="reloj365-wrap"><div class="reloj365-fecha"><span id="reloj365-fecha">Cargando fecha…</span><small id="reloj365-zona">Hora local de tu país</small></div><div class="reloj365-hora"><span class="reloj365-vivo"><i></i>EN VIVO</span><b id="reloj365-hora">--:--:--</b></div></div></div>
+<script>
+(function(){
+  function actualizarReloj365(){
+    try{
+      var ahora=new Date();
+      var fecha=new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(ahora);
+      var hora=new Intl.DateTimeFormat('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(ahora);
+      var zona=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+      var elF=document.getElementById('reloj365-fecha');
+      var elH=document.getElementById('reloj365-hora');
+      var elZ=document.getElementById('reloj365-zona');
+      if(elF) elF.textContent=fecha.charAt(0).toUpperCase()+fecha.slice(1);
+      if(elH) elH.textContent=hora;
+      if(elZ) elZ.textContent=zona?('Hora local • '+zona):'Hora local de tu país';
+    }catch(e){}
+  }
+  actualizarReloj365();
+  setInterval(actualizarReloj365,1000);
+})();
+</script>
+<!-- ===== FIN RELOJ + FECHA EN VIVO 365PERU ===== -->
 <header class="bg-white border-b sticky top-0 z-[60] w-full"><div style="max-width:1280px;margin:0 auto;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><div onclick="setCat('miblog')" style="font-weight:900;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:8px;color:#000"><img src="https://i.ibb.co/ZRDhjrkC/blog-oficial-final-transparente.png" style="width:32px;height:32px;background:#000;border-radius:8px;padding:4px"><span style="color:#000">365</span><span style="color:#000">Perú.com</span><span style="background:#22c55e;color:#fff;font-size:9px;padding:2px 6px;border-radius:9999px">FIX TOTAL</span></div><button onclick="toggleMobileMenu()" style="background:#0a0e16;border:1px solid #26314a;color:#fff;padding:8px 12px;border-radius:10px;font-weight:900;font-size:13px">☰ MENÚ</button></div></header>
 
 <div style="max-width:1280px;margin:8px auto 0;padding:0 8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">
